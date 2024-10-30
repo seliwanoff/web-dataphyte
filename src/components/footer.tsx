@@ -1,0 +1,60 @@
+import twitter from "../assets/images/twitter.png";
+import facebook from "../assets/images/facebook.png";
+import imstagram from "../assets/images/instagram.png";
+
+const Footer = () => {
+  return (
+    <footer className="w-full bg-[#462F78] px-[110px] py-[32px] ">
+      <div className=" pt-[52px] max-w-[1221px] mx-auto flex  justify-between ">
+        <div className="flex gap-[23px] flex-col w-full max-w-[286px]">
+          <h1 className="font-Poppins text-[24px]  font-semibold leading-6 text-white">
+            Dataphyte
+          </h1>
+          <p className="font-Satoshi text-white text-[14px] font-bold leading-6">
+            Lorem ipsum dolor sit amet consectetur. Aliquet sed scelerisque id
+            cursus interdum.
+          </p>
+        </div>
+        <div className="flex gap-[115px] ">
+          <div className="flex flex-col">
+            <h2 className="font-bold text-white text-[16px] leading-6 font-Satoshi">
+              Company
+            </h2>
+
+            <ul className="list-none flex flex-col mt-[40px] gap-4 font-medium text-[14px]  leading-[20px] text-[#F2EEFB]">
+              <li>About Us</li>
+              <li>FAQ</li>
+              <li>Blog (coming soon)</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+          <div className="flex flex-col">
+            <h2 className="font-bold text-white text-[16px] leading-6 font-Satoshi">
+              Legal
+            </h2>
+
+            <ul className="list-none flex flex-col mt-[40px] gap-4 font-medium text-[14px]  leading-[20px] text-[#F2EEFB]">
+              <li>Privacy</li>
+              <li>Term and conditions</li>
+              <li>Security</li>
+            </ul>
+          </div>
+        </div>
+        <div className=" flex flex-col gap-2">
+          <div className="flex items-center gap-[32px]">
+            <img src={facebook} alt="" className="h-6" />
+            <img src={twitter} alt="" className="h-6" />
+            <img src={imstagram} alt="" className="h-6" />
+          </div>
+          <ul className="list-none flex flex-col mt-[40px] gap-4 font-medium text-[14px] text-end  leading-[20px] text-[#F2EEFB]">
+            <li>Company address goes here</li>
+            <li>contact@nubia.com</li>
+            <li>+234 (909) 060 6099</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
