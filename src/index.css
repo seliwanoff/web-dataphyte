@@ -44,3 +44,7 @@ code {
 .bg-hero-pattern {
   background-image: url("./assets/images/Rectangle.png");
 }
+
+.parent-sroll::-webkit-scrollbar {
+  height: 1px;
+}

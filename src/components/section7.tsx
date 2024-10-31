@@ -3,8 +3,8 @@ import star from "../assets/images/star.png";
 
 const Section7 = () => {
   return (
-    <div className="w-full  bg-white  py-[32px] px-[110px]">
-      <div className="w-full max-w-[1221px]  mx-auto flex justify-between  ">
+    <div className="w-full  bg-white  py-[32px] xl:px-[110px] px-[24px]">
+      <div className="w-full max-w-[1221px]  mx-auto flex  xl:items-center xl:flex-nowrap flex-wrap justify-between xl:flex-row flex-col-reverse gap-6">
         <div className="flex flex-col gap-[48px] pr-9 justify-start">
           <div className="flex items-center gap-[10px] py-[8px] px-[12px]">
             <img src={star} alt="" className="h-[16.29px]" />
@@ -26,7 +26,7 @@ const Section7 = () => {
               habitant dui consectetur sed nam amet, magna. Iet se
             </p>
           </div>
-          <button className="py-4 px-8 rounded-[36px] bg-[#7F55DA] text-center text-white font-Satoshi font-bold text-[16px] leading-[21.6px] w-fit">
+          <button className="py-4 px-8 rounded-[36px] bg-[#7F55DA] text-center text-white font-Satoshi font-bold text-[16px] leading-[21.6px] xl:w-fit">
             Search minerals
           </button>
         </div>

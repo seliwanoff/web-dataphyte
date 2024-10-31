@@ -4,8 +4,8 @@ import imstagram from "../assets/images/instagram.png";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#462F78] px-[110px] py-[32px] ">
-      <div className=" pt-[52px] max-w-[1221px] mx-auto flex  justify-between ">
+    <footer className="w-full bg-[#462F78] xl:px-[110px] xl:py-[32px] py-[16px] px-[24px]">
+      <div className=" xl:pt-[52px] pt-[20px] max-w-[1221px] mx-auto flex xl:flex-nowrap flex-wrap gap-[32px] justify-between ">
         <div className="flex gap-[23px] flex-col w-full max-w-[286px]">
           <h1 className="font-Poppins text-[24px]  font-semibold leading-6 text-white">
             Dataphyte
@@ -15,7 +15,7 @@ const Footer = () => {
             cursus interdum.
           </p>
         </div>
-        <div className="flex gap-[115px] ">
+        <div className="flex gap-[115px] xl:flex-nowrap flex-wrap ">
           <div className="flex flex-col">
             <h2 className="font-bold text-white text-[16px] leading-6 font-Satoshi">
               Company

@@ -4,7 +4,7 @@ import avater from "../assets/images/Avatar.png";
 
 const EachNewsCard = () => {
   return (
-    <div className="w-full max-w-[390px] grid  gap-6">
+    <div className="w-full max-w-[390px] flex flex-col h-fit basis-[390px] xl:flex-grow-0 xl:flex-shrink-0  gap-6">
       <img src={image} alt="" className="h-[222PX] mb-3" />
 
       <div className="flex flex-col gap-[32px]">
@@ -22,7 +22,7 @@ const EachNewsCard = () => {
               The Basics of Mineral Mining: Understanding the Process
             </h3>
 
-            <img src={arrow} alt="" className="h-[22.29]" />
+            <img src={arrow} alt="" className="h-[26.29]" />
           </div>
 
           <p className="font-Inter text-[16px] leading-6  font-normal text-[#475467] p-0 m-0">
