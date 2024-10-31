@@ -1,6 +1,6 @@
 import Banner from "../components/banner";
 import Footer from "../components/footer";
-import Header from "../components/header";
+//import Header from "../components/header";
 import Section3 from "../components/section3";
 import Section4 from "../components/section4";
 import Sectin5 from "../components/section5";
@@ -45,7 +45,7 @@ const Home = () => {
   return (
     <>
       <PreloaderProvider images={images}>
-        <Header />
+        {/**  <Header /> */}
         <Banner />
         <Section3 />
         <Section4 />

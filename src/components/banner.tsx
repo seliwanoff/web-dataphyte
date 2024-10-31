@@ -1,5 +1,5 @@
 import banner from "../assets/images/banner.png";
-import search from "../assets/images/search-normal.png";
+import SearchBar from "./search/search";
 const Banner = () => {
   return (
     <div className="w-full relative">
@@ -19,20 +19,12 @@ const Banner = () => {
           mining sites and stay informed with up-to-date information for all key
           stakeholders.
         </p>
-        <div className="xl:py-[6px]  py-[3.54]  pl-6 bg-white rounded-[46px] border border-[#F2F2F2] shadow xl:h-[52px]  w-full xl:max-w-[577px] mx-auto flex gap-[10px] items-center ">
-          <input
-            type="text"
-            className="outline-none border-none text-[#828282] text-[14px] leading-6 font-normal font-Poppins xl:w-3/4 w-full"
-            placeholder="Search minerals, mining sites, Documents"
-          />
-          <button
-            className="bg-[#7F55DA] h-full py-2 px-6 rounded-[26px] text-[#fff] text-[14px] leading-6 font-normal flex items-center justify-center font-Poppins
-]"
-          >
-            <img src={search} alt="" className="h-[18px] mr-1" />
-            <span>Search</span>
-          </button>
-        </div>
+
+        <SearchBar
+          style="mx-auto"
+          bg="bg-white"
+          border="border border-[#F2F2F2]"
+        />
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
-import React from "react";
-//import logo from "./logo.svg";
-import "./App.css";
-//import Header from "./components/header";
-import Home from "./Home/home";
+import { BrowserRouter as Router } from "react-router-dom";
 
-function App() {
-  return <Home />;
-}
+import RouteWrapper from "./route/route";
+
+const App: React.FC = () => {
+  return (
+    <Router>
+      <RouteWrapper />
+    </Router>
+  );
+};
 
 export default App;

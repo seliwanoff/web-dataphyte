@@ -48,3 +48,20 @@ code {
 .parent-sroll::-webkit-scrollbar {
   height: 1px;
 }
+/* Add this to your main CSS file (e.g., styles.css) */
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: #7f55da; /* Change the color of the loading bar */
+  height: 2px; /* Change the height of the loading bar */
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px #7f55da, 0 0 5px #7f55da; /* Add shadow to the loading bar */
+}
+
+#nprogress .spinner {
+  border-top-color: #7f55da; /* Change the spinner color */
+}
