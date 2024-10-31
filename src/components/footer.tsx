@@ -15,7 +15,7 @@ const Footer = () => {
             cursus interdum.
           </p>
         </div>
-        <div className="flex gap-[115px] xl:flex-nowrap flex-wrap ">
+        <div className="flex gap-[115px]  ">
           <div className="flex flex-col">
             <h2 className="font-bold text-white text-[16px] leading-6 font-Satoshi">
               Company
@@ -46,7 +46,7 @@ const Footer = () => {
             <img src={twitter} alt="" className="h-6" />
             <img src={imstagram} alt="" className="h-6" />
           </div>
-          <ul className="list-none flex flex-col mt-[40px] gap-4 font-medium text-[14px] text-end  leading-[20px] text-[#F2EEFB]">
+          <ul className="list-none flex flex-col mt-[40px] gap-4 font-medium text-[14px] xl:text-end  leading-[20px] text-[#F2EEFB]">
             <li>Company address goes here</li>
             <li>contact@nubia.com</li>
             <li>+234 (909) 060 6099</li>

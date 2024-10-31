@@ -2,7 +2,8 @@ import d1 from "../assets/images/d1.png";
 import d2 from "../assets/images/d2.png";
 import d21 from "../assets/images/d21.png";
 import d3 from "../assets/images/d3.png";
-import d4 from "../assets/images/d5.png";
+import d4 from "../assets/images/access.png";
+import d5 from "../assets/images/d5.png";
 
 const Section4 = () => {
   return (
@@ -24,7 +25,7 @@ const Section4 = () => {
           </button>
         </div>
       </div>
-      <div className="text-white xl:mt-[72px] mt-[30px] w-full max-w-[1221px]  mx-auto flex xl:flex-wrap items-center justify-center gap-1 xl:gap-[16px] relative">
+      <div className="text-white xl:mt-[72px] mt-[30px] w-full max-w-[1221px]  mx-auto flex items-center justify-center gap-1 xl:gap-[16px] relative">
         <img
           src={d1}
           alt=""
@@ -45,9 +46,12 @@ const Section4 = () => {
         <img
           src={d3}
           alt=""
-          className=" xl:h-[396px]  h-[107.34px] saturate-0"
+          className=" xl:h-[396px]  h-[107.34px] saturate-0 "
         />
-        <img src={d4} alt="" className="xl:h-[396px] h-[144.99px]" />
+        <div className=" bg-no-custom xl:h-[535px]  h-[144.9px] bg-clip-content  relative">
+          <img src={d4} alt="" className="h-full z-0" />
+          <img src={d5} alt="" className="h-full z-0 absolute top-0" />
+        </div>
       </div>
     </div>
   );

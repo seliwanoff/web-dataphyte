@@ -6,7 +6,7 @@ const Banner = () => {
       <img
         src={banner}
         alt=""
-        className="mx-auto h-[360px] xl:h-[796px] w-full max-w-[1750px]"
+        className="mx-auto h-[420px] xl:h-[796px] w-full max-w-[1750px]"
       />
       <div className="absolute  xl:top-[284px] top-[40px] w-full px-6 xl:px-0 xl:max-w-[1154px] left-1/2 transform -translate-x-1/2 flex flex-col xl:gap-10  gap-6 ">
         <h2 className="text-white font-polySans font-semibold lg:text-[56px] text-[24px] lg:leading-[70px] leading-[33.22px] text-center">

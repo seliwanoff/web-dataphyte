@@ -15,7 +15,7 @@ const Section7 = () => {
           </div>
           <div className="flex flex-col gap-[16px]">
             <h1
-              className="font-Satoshi font-bold text-[32px] leading-[38px]
+              className="font-Satoshi font-bold text-[24px] xl:text-[32px]  leading-8 xl:leading-[38px]
 "
             >
               World <span className="text-[#7F55DA]"> minerals data </span>{" "}
@@ -30,7 +30,7 @@ const Section7 = () => {
             Search minerals
           </button>
         </div>
-        <img src={bgleftbanner} alt="" className="h-[530px]" />
+        <img src={bgleftbanner} alt="" className="xl:h-[530px] h-[305px]" />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
-import africa from "../assets/images/africa.png";
+import africa from "../assets/images/lgmap.png";
+import africa2 from "../assets/images/africa2.png";
 
 const Sectin5 = () => {
   return (
@@ -17,8 +18,16 @@ const Sectin5 = () => {
         <img
           src={africa}
           alt=""
-          className="xl:h-[541.54px] h-[394px] mx-auto mt-[56px]"
+          className="xl:h-[541.54px] hidden xl:block h-[394px] mx-auto mt-[56px]"
         />
+        <img
+          src={africa2}
+          alt=""
+          className="xl:h-[541.54px] block xl:hidden h-[394px] mx-auto mt-[56px]"
+        />
+        <button className="py-4  mt-[40px] xl:hidden px-8 rounded-[36px] bg-[#7F55DA] text-center text-white font-Satoshi font-bold text-[16px] leading-[21.6px] w-full xl:w-fit">
+          Explore Interactive Map
+        </button>
       </div>
     </div>
   );

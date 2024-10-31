@@ -7,6 +7,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
+        "no-custom": `linear-gradient(190.17deg, rgba(0, 0, 0, 0) 56.26%, rgba(0, 0, 0, 0.75) 79.08%)`,
         "custom-gradient": `linear-gradient(61.65deg, #131212 65.57%, #5A4487 100%), linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4))`,
       },
       fontFamily: {
