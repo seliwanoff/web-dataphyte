@@ -1,6 +1,10 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import EachComponent from "./SearchEachComponent";
+import MiningSearchWidget from "./MiningSeachWidget";
+import CompanySearchWidget from "./CompnySearchWidget";
+import Maintable from "../../Search/mainTableSearch";
+import DocumentSearchMobileWidget from "./DocumentMobileSearchWidget";
 
 interface SearchWidgetProps {
   title?: string;
@@ -26,6 +30,195 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
               miningCount={4}
               docCount={1500}
             />
+          ) : title === "Mining Sites" ? (
+            <>
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />{" "}
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />{" "}
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />{" "}
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />{" "}
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />{" "}
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />{" "}
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />{" "}
+              <MiningSearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={1500}
+              />
+            </>
+          ) : title === "Documents" ? (
+            <>
+              <div className="xl:block hidden w-full">
+                <Maintable />
+              </div>
+              <div className="xl:hidden block w-full">
+                <DocumentSearchMobileWidget
+                  mineralName={"Dataphyte Colbalt mining site"}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  mineral={"Maganese"}
+                  docCount={5}
+                />
+                <DocumentSearchMobileWidget
+                  mineralName={"Dataphyte Colbalt mining site"}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  mineral={"Maganese"}
+                  docCount={5}
+                />{" "}
+                <DocumentSearchMobileWidget
+                  mineralName={"Dataphyte Colbalt mining site"}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  mineral={"Maganese"}
+                  docCount={5}
+                />{" "}
+                <DocumentSearchMobileWidget
+                  mineralName={"Dataphyte Colbalt mining site"}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  mineral={"Maganese"}
+                  docCount={5}
+                />{" "}
+                <DocumentSearchMobileWidget
+                  mineralName={"Dataphyte Colbalt mining site"}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  mineral={"Maganese"}
+                  docCount={5}
+                />{" "}
+                <DocumentSearchMobileWidget
+                  mineralName={"Dataphyte Colbalt mining site"}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  mineral={"Maganese"}
+                  docCount={5}
+                />{" "}
+                <DocumentSearchMobileWidget
+                  mineralName={"Dataphyte Colbalt mining site"}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  mineral={"Maganese"}
+                  docCount={5}
+                />
+              </div>
+            </>
+          ) : title === "Companies" ? (
+            <>
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+              <CompanySearchWidget
+                mineralName={"Dataphyte Colbalt mining site"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Maganese"}
+                docCount={5}
+              />
+            </>
           ) : (
             <>
               <EachComponent

@@ -44,7 +44,18 @@ code {
 .bg-hero-pattern {
   background-image: url("./assets/images/Rectangle.png");
 }
-
+.column {
+  @apply font-Satoshi font-medium text-[14px] text-[#4f4f4f] leading-[18.9px] w-full text-left;
+}
+.thead {
+  @apply bg-[#fbfbfb] h-[40px];
+}
+.tbody {
+  @apply w-full;
+}
+.row {
+  @apply py-4 border-b border-b-[#F2F2F2] font-normal text-xs font-polySans text-[#333333];
+}
 .parent-sroll::-webkit-scrollbar {
   height: 1px;
 }

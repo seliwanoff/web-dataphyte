@@ -10,6 +10,9 @@ const SeachTableFormat = () => {
     <div className="w-full xl:px-[110px] px-[24px]">
       <SearchWidget title="Minerals" />
       <SearchWidget title="Mining Type" />
+      <SearchWidget title="Mining Sites" />
+      <SearchWidget title="Documents" />
+      <SearchWidget title="Companies" />
     </div>
   );
 };
