@@ -11,7 +11,7 @@ const SearchResult = () => {
         <div className="w-full   flex items-center">
           <div className="flex  gap-2 items-center text-nowrap">
             <span className="font-Poppins font-semibold text-[#202020] text-[20px] leading-6">
-              “${queryName}”
+              “{queryName}”
             </span>{" "}
             <span className="font-Poppins font-normal text-[#202020] text-[20px]">
               search results:
