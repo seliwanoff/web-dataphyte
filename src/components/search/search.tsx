@@ -29,7 +29,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ style, bg, border }) => {
         placeholder="Search minerals, mining sites, Documents"
       />
       <button
-        className="bg-[#7F55DA] h-full py-2 px-6 rounded-[26px] text-white text-[14px] leading-6 font-normal flex items-center justify-center font-Poppins"
+        className="bg-[#7F55DA] h-full py-2 xl:mr-0  mr-1 px-6 rounded-[26px] text-white text-[14px] leading-6 font-normal flex items-center justify-center font-Poppins"
         type="button"
         onClick={handleSearch}
       >
