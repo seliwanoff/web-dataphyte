@@ -7,7 +7,7 @@ const SearchResult = () => {
   const queryName = queryParams.get("query") || "Default Title";
   return (
     <div className="w-full xl:px-[110px]  py-[32px] px-[24px]">
-      <div className="max-w-[1224px] mx-auto overflow-x-auto parent-sroll">
+      <div className="max-w-[1750px] mx-auto overflow-x-auto parent-sroll">
         <div className="w-full   flex items-center">
           <div className="flex  gap-2 items-center text-nowrap">
             <span className="font-Poppins font-semibold text-[#202020] text-[20px] leading-6">

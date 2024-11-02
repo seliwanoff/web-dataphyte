@@ -7,7 +7,7 @@ const SeachTableFormat = () => {
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || "Default Title";
   return (
-    <div className="w-full xl:px-[110px] px-[24px]">
+    <div className="w-full max-w-[1750px] mx-auto xl:px-[110px] px-[24px]">
       <SearchWidget title="Minerals" />
       <SearchWidget title="Mining Type" />
       <SearchWidget title="Mining Sites" />

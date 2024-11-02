@@ -20,7 +20,7 @@ const DocumentSearchMobileWidget: React.FC<CompanySearchWidgetProps> = ({
   mineral,
 }) => {
   return (
-    <div className="gap-[10px] p-[12px] mt-4  flex-grow border border-[#e0e0e0] rounded-[8px] w-full basis-[360px] max-w-[360px]">
+    <div className="gap-[10px] p-[12px] mt-4  flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <div className="flex gap-[10px] items-center">
         <div className="flex flex-col gap-[4px]">
           <div className="flex items-center gap-2">

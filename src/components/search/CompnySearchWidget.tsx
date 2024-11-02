@@ -18,7 +18,7 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
   mineral,
 }) => {
   return (
-    <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] w-full basis-[360px] max-w-[360px]">
+    <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <div className="flex gap-[10px] items-center">
         <div className="flex flex-col gap-[4px]">
           <h3 className="p-0 m-0 font-semibold font-Poppins text-[16px] leading-6 text-[#000]">

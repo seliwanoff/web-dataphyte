@@ -16,7 +16,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
   const queryName = queryParams.get("query") || title || "Default Title";
 
   return (
-    <div className="w-full max-w-[1224px] flex flex-col gap-[40px] border-b-2 border-[#cecece] mx-auto pb-[32px] pt-[32px]">
+    <div className="w-full max-w-[1750px] flex flex-col gap-[40px] border-b-2 border-[#cecece] mx-auto pb-[32px] pt-[32px]">
       <div className="flex flex-col gap-[24px]">
         <span className="text-[#373737] font-semibold text-[18px] leading-6 font-Poppins">
           {title}

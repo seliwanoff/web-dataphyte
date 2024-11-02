@@ -3,7 +3,7 @@ import menu from "../assets/images/Hamburger_LG.svg";
 const Header = () => {
   return (
     <div className="w-full">
-      <header className=" h-[98px] justify-center flex w-full items-center bg-white max-w-[1750px] mx-auto lg:px-[100px] px-[24px] ">
+      <header className=" h-[98px] justify-center  flex w-full items-center bg-white max-w-[1750px] mx-auto lg:px-[100px] px-[24px] ">
         <div className="w-full  flex justify-between items-center">
           <h2 className="text-[#7F55DA]  text-2xl leading-6 font-semibold font-Poppins">
             Dataphyte
