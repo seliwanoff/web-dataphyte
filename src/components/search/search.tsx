@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import search from "../../assets/images/search-normal.png";
 interface SearchBarProps {
   style?: string;
@@ -8,8 +8,11 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ style, bg, border }) => {
-  const [query, setQuery] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const queryName = queryParams.get("query") || "" || "";
+  const [query, setQuery] = useState(queryName);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
