@@ -59,9 +59,13 @@ code {
 .parent-sroll::-webkit-scrollbar {
   height: 1px;
 }
+.eachrow {
+  @apply border-b-8 border-[#F3F3F3];
+}
 .widthl {
   @apply w-full basis-[391px] max-w-[500px];
 }
+
 /* Add this to your main CSS file (e.g., styles.css) */
 #nprogress {
   pointer-events: none;

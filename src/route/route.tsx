@@ -12,6 +12,9 @@ import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import React, { Suspense, useEffect } from "react";
 const Home = React.lazy(() => import("../Home/home"));
 const SearchWrapper = React.lazy(() => import("../Search/SearchWrapper"));
+const CountryOveViewWrapper = React.lazy(
+  () => import("../CountryOverview/CountryOverviewWrapper")
+);
 const RouteWrapper = () => {
   const location = useLocation();
 
@@ -33,6 +36,14 @@ const RouteWrapper = () => {
           element={
             <Suspense fallback={<SkeletonLoader />}>
               <SearchWrapper />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/country-overview"
+          element={
+            <Suspense fallback={<SkeletonLoader />}>
+              <CountryOveViewWrapper />
             </Suspense>
           }
         />

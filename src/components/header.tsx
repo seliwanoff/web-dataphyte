@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import menu from "../assets/images/Hamburger_LG.svg";
 
 const Header = () => {
@@ -10,8 +11,12 @@ const Header = () => {
           </h2>
           <nav className="xl:block hidden">
             <ul className="flex gap-8 items-center text-[#525252] text-[16px] leading-6 font-normal font-Poppins list-none cursor-pointer">
-              <li>Interactive Map</li>
-              <li>Country Overview</li>
+              <li>
+                <Link to={"/map"}>Interactive Map</Link>
+              </li>
+              <li>
+                <Link to={"/country-overview"}>Country Overview</Link>
+              </li>
               <li>Regulation & Policies</li>
               <li>Licenses</li>
               <li>Investigations & Reports</li>
