@@ -56,9 +56,18 @@ code {
 .row {
   @apply py-4 border-b border-b-[#F2F2F2] font-normal text-xs font-polySans text-[#333333];
 }
-.parent-sroll::-webkit-scrollbar {
-  height: 1px;
+.parent-scroll {
+  overflow-x: auto;
 }
+
+.parent-scroll::-webkit-scrollbar {
+  height: 0;
+}
+
+.parent-scroll::-webkit-scrollbar-thumb {
+  display: none;
+}
+
 .eachrow {
   @apply border-b-8 border-[#F3F3F3];
 }
@@ -66,28 +75,27 @@ code {
   @apply w-full basis-[391px] max-w-[500px];
 }
 
-/* Add this to your main CSS file (e.g., styles.css) */
 #nprogress {
   pointer-events: none;
 }
 
 #nprogress .bar {
-  background: #7f55da; /* Change the color of the loading bar */
-  height: 2px; /* Change the height of the loading bar */
+  background: #7f55da;
+  height: 2px;
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px #7f55da, 0 0 5px #7f55da; /* Add shadow to the loading bar */
+  box-shadow: 0 0 10px #7f55da, 0 0 5px #7f55da;
 }
 
 #nprogress .spinner {
-  border-top-color: #7f55da; /* Change the spinner color */
+  border-top-color: #7f55da;
 }
 .slide-in {
-  transform: translateX(100%); /* Start off the screen */
-  transition: transform 0.5s ease-in-out; /* Smooth transition */
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
 }
 
 .slide-in.active {
-  transform: translateX(0); /* Slide into view */
+  transform: translateX(0);
 }

@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom";
 import SearchType from "./SearchType";
+import { useProfileContext } from "../../context/ProfileContext";
+import PeopleProfile from "./peopleprofile";
 
 interface SearchResultProps {
   setCurrentTab: (tab: string) => void;
@@ -10,6 +12,8 @@ const SearchResult: React.FC<SearchResultProps> = ({
   setCurrentTab,
   currentTab,
 }) => {
+  const { profiles } = useProfileContext();
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || "Default Title";
@@ -26,15 +30,24 @@ const SearchResult: React.FC<SearchResultProps> = ({
   return (
     <div className="w-full xl:px-[110px] py-[32px] px-[24px]">
       <div className="max-w-[1750px] mx-auto overflow-x-auto parent-scroll">
-        <div className="w-full flex items-center">
-          <div className="flex gap-2 items-center text-nowrap">
-            <span className="font-Poppins font-semibold text-[#202020] text-[20px] leading-6">
-              “{queryName}”
-            </span>
-            <span className="font-Poppins font-normal text-[#202020] text-[20px]">
-              search results:
-            </span>
-          </div>
+        <div
+          className={`w-full xl:flex  ${
+            profiles.length > 0 ? "" : `items-center`
+          }`}
+        >
+          {profiles.length > 0 ? (
+            <PeopleProfile />
+          ) : (
+            <div className="flex gap-2 items-center text-nowrap">
+              <span className="font-Poppins font-semibold text-[#202020] text-[20px] leading-6">
+                “{queryName}”
+              </span>
+              <span className="font-Poppins font-normal text-[#202020] text-[20px]">
+                search results:
+              </span>
+            </div>
+          )}
+
           <div className="p-[10px] flex gap-[10px] items-center">
             {searchTypes.map((searchType) => (
               <SearchType

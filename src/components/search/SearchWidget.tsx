@@ -34,7 +34,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
           ) : title === "People" ? (
             <>
               <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
+                mineralName={"Ayomide Kazim"}
                 countries="Nigeria, Ghana"
                 miningCount={4}
                 mineral={"Dataphyte Limited"}
@@ -50,7 +50,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
                 role="CEO"
               />{" "}
               <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
+                mineralName={"Ayomide Peter"}
                 countries="Nigeria, Ghana"
                 miningCount={4}
                 mineral={"Dataphyte Limited"}
