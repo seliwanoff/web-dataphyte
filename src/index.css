@@ -83,3 +83,11 @@ code {
 #nprogress .spinner {
   border-top-color: #7f55da; /* Change the spinner color */
 }
+.slide-in {
+  transform: translateX(100%); /* Start off the screen */
+  transition: transform 0.5s ease-in-out; /* Smooth transition */
+}
+
+.slide-in.active {
+  transform: translateX(0); /* Slide into view */
+}
