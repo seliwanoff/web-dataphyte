@@ -5,6 +5,7 @@ import MiningSearchWidget from "./MiningSeachWidget";
 import CompanySearchWidget from "./CompnySearchWidget";
 import Maintable from "../../Search/mainTableSearch";
 import DocumentSearchMobileWidget from "./DocumentMobileSearchWidget";
+import PeopleSearchWidget from "./peopleSearch";
 
 interface SearchWidgetProps {
   title?: string;
@@ -30,6 +31,81 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
               miningCount={4}
               docCount={1500}
             />
+          ) : title === "People" ? (
+            <>
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />{" "}
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />{" "}
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />{" "}
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />{" "}
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />{" "}
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />{" "}
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />{" "}
+              <PeopleSearchWidget
+                mineralName={"Ayomide Olaoye"}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                role="CEO"
+              />
+            </>
           ) : title === "Mining Sites" ? (
             <>
               <MiningSearchWidget
