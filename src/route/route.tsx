@@ -15,6 +15,10 @@ const SearchWrapper = React.lazy(() => import("../Search/SearchWrapper"));
 const CountryOveViewWrapper = React.lazy(
   () => import("../CountryOverview/CountryOverviewWrapper")
 );
+
+const InteractiveMapWrapper = React.lazy(
+  () => import("../InteractiveMap/interactivemap")
+);
 const RouteWrapper = () => {
   const location = useLocation();
 
@@ -44,6 +48,14 @@ const RouteWrapper = () => {
           element={
             <Suspense fallback={<SkeletonLoader />}>
               <CountryOveViewWrapper />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/map"
+          element={
+            <Suspense fallback={<SkeletonLoader />}>
+              <InteractiveMapWrapper />
             </Suspense>
           }
         />

@@ -74,7 +74,7 @@ const CountryMap: React.FC = () => {
         </ComposableMap>
       </div>
 
-      {/* Display selected region details */}
+      {/*
       {selectedRegion && (
         <div className="mt-4 p-4 bg-white shadow rounded">
           <h2 className="font-semibold text-lg">Selected Region Details:</h2>
@@ -84,6 +84,7 @@ const CountryMap: React.FC = () => {
           <p>Mining Info: {selectedRegion.miningInfo}</p>
         </div>
       )}
+         */}
     </div>
   );
 };
