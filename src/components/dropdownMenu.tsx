@@ -21,7 +21,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
       <div className="w-3/4 bg-white h-full p-6 opacity-100 z-50 fixed top-0 transition-transform duration-300 ease-in-out">
         <div className="w-full flex justify-between items-center">
           <h2 className="text-[#7F55DA] text-2xl leading-6 font-semibold font-Poppins">
-            Dataphyte
+            <Link to={"/"}> Dataphyte</Link>
           </h2>
 
           <img
