@@ -1,6 +1,7 @@
 import React from "react";
 import ellipse from "../../assets/images/ellipse.png";
-import location from "../../assets/images/location.png";
+import locations from "../../assets/images/location.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface CompanySearchWidgetProps {
   mineralName: string;
@@ -17,6 +18,20 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
   docCount,
   mineral,
 }) => {
+  const navigates = useNavigate();
+
+  const location = useLocation();
+
+  const queryParams = new URLSearchParams(location.search);
+  const queryName = queryParams.get("query") || "" || "";
+
+  const handleCompanyRedirect = () => {
+    navigates(
+      `/company-profile?q=${encodeURIComponent(
+        queryName
+      )}&c=${encodeURIComponent(mineralName)}`
+    );
+  };
   return (
     <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <div className="flex gap-[10px] items-center">
@@ -30,12 +45,15 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
             </span>
           </div>
           <span className="text-[#333] text-[14px] font-normal leading-[21px] font-Poppins flex items-center">
-            <img src={location} alt="" className="h-[16px] mr-2" />
+            <img src={locations} alt="" className="h-[16px] mr-2" />
             {countries}
           </span>
         </div>
       </div>
-      <button className="mt-4  w-full py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]">
+      <button
+        className="mt-4  w-full py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]"
+        onClick={handleCompanyRedirect}
+      >
         View company profile
       </button>
     </div>

@@ -20,8 +20,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
         ? widgetTitles.map((title, index) => (
             <SearchWidget key={index} title={title} />
           ))
-        : // Render only the specific widget for the currentTab
-          widgetTitles
+        : widgetTitles
             .filter((title) => title === currentTab)
             .map((title, index) => <SearchWidget key={index} title={title} />)}
     </div>

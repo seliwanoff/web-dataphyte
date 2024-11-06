@@ -99,3 +99,10 @@ code {
 .slide-in.active {
   transform: translateX(0);
 }
+.text-gradient {
+  background: linear-gradient(95.53deg, #7f55da 52.25%, #1f0656 106.65%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}

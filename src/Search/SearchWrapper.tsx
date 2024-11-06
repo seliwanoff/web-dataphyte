@@ -9,11 +9,24 @@ import { ProfileProvider } from "../context/ProfileContext";
 
 const SearchWrapper = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
+  const Filters = [
+    "All",
+    "Minerals",
+    "Mining Type",
+    "People",
+    "Mining Sites",
+    "Documents",
+    "Companies",
+  ];
   return (
     <>
       <ProfileProvider>
         <SearchBoxFilter />
-        <SearchFilter setCurrentTab={setCurrentTab} currentTab={currentTab} />
+        <SearchFilter
+          setCurrentTab={setCurrentTab}
+          currentTab={currentTab}
+          filters={Filters}
+        />
         <SearchResult setCurrentTab={setCurrentTab} currentTab={currentTab} />
         <SeachTableFormat
           widgetTitles={[

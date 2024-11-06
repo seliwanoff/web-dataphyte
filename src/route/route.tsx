@@ -19,6 +19,10 @@ const CountryOveViewWrapper = React.lazy(
 const InteractiveMapWrapper = React.lazy(
   () => import("../InteractiveMap/interactivemap")
 );
+
+const CompanyProfileWrapper = React.lazy(
+  () => import("../Company/companyWraaper")
+);
 const RouteWrapper = () => {
   const location = useLocation();
 
@@ -56,6 +60,14 @@ const RouteWrapper = () => {
           element={
             <Suspense fallback={<SkeletonLoader />}>
               <InteractiveMapWrapper />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/company-profile"
+          element={
+            <Suspense fallback={<SkeletonLoader />}>
+              <CompanyProfileWrapper />
             </Suspense>
           }
         />
