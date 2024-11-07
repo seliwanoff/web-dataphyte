@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import ComapnyNameDescription from "../components/company/companyNameDescription";
-import CompanyWidgetSub from "../components/company/CompanyWidgetSub";
 import company from "../assets/images/company.png";
 import SearchFilter from "../components/search/searchfilter";
 import SeachTableFormat from "../components/search/SearchlayourTable";
 import { filter } from "d3";
 import { ProfileProvider } from "../context/ProfileContext";
+import Companymapping from "./CompanyMapping";
+import ComapnyNameDescription from "../components/company/companyNameDescription";
+import CompanyWidgetSub from "../components/company/CompanyWidgetSub";
 
 interface CompanyData {
   logo: string;
@@ -45,6 +46,9 @@ const CompanyProfile: React.FC = () => {
     <>
       <ProfileProvider>
         <ComapnyNameDescription />
+        <div className="xl:block hidden">
+          <Companymapping />
+        </div>
         {sections.map((section, index) => (
           <CompanyWidgetSub
             key={index}
@@ -53,6 +57,9 @@ const CompanyProfile: React.FC = () => {
             size={section.size}
           />
         ))}
+        <div className="xl:hidden block">
+          <Companymapping />
+        </div>
         <SearchFilter
           setCurrentTab={setCurrentTab}
           currentTab={currentTab}

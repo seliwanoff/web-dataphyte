@@ -23,6 +23,13 @@ const InteractiveMapWrapper = React.lazy(
 const CompanyProfileWrapper = React.lazy(
   () => import("../Company/companyWraaper")
 );
+const OrganizationMapping = React.lazy(() => import("../Company/OrgChart"));
+const RegulationWrapper = React.lazy(
+  () => import("../Regulation/regulationWrapper")
+);
+const RegulationProfile = React.lazy(
+  () => import("../Regulation/regulationProfile")
+);
 const RouteWrapper = () => {
   const location = useLocation();
 
@@ -68,6 +75,30 @@ const RouteWrapper = () => {
           element={
             <Suspense fallback={<SkeletonLoader />}>
               <CompanyProfileWrapper />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/company/organization-mapping"
+          element={
+            <Suspense fallback={<SkeletonLoader />}>
+              <OrganizationMapping />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/regulation"
+          element={
+            <Suspense fallback={<SkeletonLoader />}>
+              <RegulationWrapper />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/regulation/profile"
+          element={
+            <Suspense fallback={<SkeletonLoader />}>
+              <RegulationProfile />
             </Suspense>
           }
         />
