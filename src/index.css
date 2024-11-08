@@ -110,3 +110,22 @@ code {
 .select-shadow {
   box-shadow: 0px 1px 2px 0px #1018280d;
 }
+/* Custom scrollbar with border-radius */
+.scrollbar-rounded::-webkit-scrollbar {
+  width: 8px; /* Adjust scrollbar width */
+}
+
+.scrollbar-rounded::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Track background color */
+  border-radius: 8px; /* Rounded corners for the track */
+}
+
+.scrollbar-rounded::-webkit-scrollbar-thumb {
+  background-color: #d4d4d8; /* Scrollbar color */
+  border-radius: 8px; /* Rounded corners for the scrollbar */
+  border: 2px solid #f1f1f1; /* Space around scrollbar thumb */
+}
+
+.scrollbar-rounded::-webkit-scrollbar-thumb:hover {
+  background-color: #a3a3a9; /* Darker color on hover */
+}

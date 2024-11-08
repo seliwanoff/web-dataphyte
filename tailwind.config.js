@@ -13,6 +13,8 @@ module.exports = {
       boxShadow: {
         "custom-heavy": "0px 18px 48.5px 0px rgba(0, 0, 0, 0.08)",
         "custom-light": "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
+        "custom-1": "0px 4px 6px -2px rgba(16, 24, 40, 0.08)",
+        "custom-2": "0px 12px 16px -4px rgba(16, 24, 40, 0.14)",
       },
       fontFamily: {
         polySans: ["PolySans", "sans-serif"],
