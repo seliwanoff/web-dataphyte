@@ -9,9 +9,9 @@ import TableColumn from "../components/table/tableColumn";
 import TableRow from "../components/table/tableRow";
 const LicenseMainTable = () => {
   return (
-    <table className="bg-inherit w-full border-none mt-[20px]">
-      <thead className="thead bg-white">
-        <tr className="w-full ">
+    <table className="bg-inherit w-full border-none mt-[20px] ">
+      <thead className="thead bg-white overflow-auto flex-nowrap">
+        <tr className="w-full overflow-auto flex-nowrap">
           <TableColumn name="Country" width={20} />
           <TableColumn name="License Type" width={20} />
           <TableColumn name="License Duration" width={15} />
@@ -21,7 +21,7 @@ const LicenseMainTable = () => {
         </tr>
       </thead>
 
-      <tbody className="tbody bg-white">
+      <tbody className="tbody bg-white overflow-auto flex-nowrap">
         <tr className="">
           <HeroRow name="The file name. extention" width={20} image={doc} />
           <TableRow name="Type of license" width={20} />
