@@ -30,6 +30,7 @@ const RegulationWrapper = React.lazy(
 const RegulationProfile = React.lazy(
   () => import("../Regulation/regulationProfile")
 );
+const LicenseWrapper = React.lazy(() => import("../License/LicenseWrapper"));
 const RouteWrapper = () => {
   const location = useLocation();
 
@@ -99,6 +100,14 @@ const RouteWrapper = () => {
           element={
             <Suspense fallback={<SkeletonLoader />}>
               <RegulationProfile />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/License"
+          element={
+            <Suspense fallback={<SkeletonLoader />}>
+              <LicenseWrapper />
             </Suspense>
           }
         />
