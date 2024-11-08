@@ -66,7 +66,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
               }`}
               onClick={() => setIshowDrop(false)}
             >
-              Regulation & Policies
+              <Link to={"/regulation"}> Regulation & Policies</Link>
             </li>
             <li
               className={`${

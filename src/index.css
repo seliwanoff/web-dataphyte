@@ -53,7 +53,7 @@ code {
 .tbody {
   @apply w-full;
 }
-.row {
+.rows {
   @apply py-4 border-b border-b-[#F2F2F2] font-normal text-xs font-polySans text-[#333333];
 }
 .parent-scroll {

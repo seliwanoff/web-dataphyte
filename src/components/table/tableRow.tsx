@@ -7,7 +7,7 @@ interface TableRowProps {
 
 const TableRow: React.FC<TableRowProps> = ({ name, width }) => {
   return (
-    <td className="row" style={{ maxWidth: `${width}%` }}>
+    <td className="rows" style={{ maxWidth: `${width}%` }}>
       {name}
     </td>
   );

@@ -63,7 +63,7 @@ const IneractiveMap = () => {
   };
 
   return (
-    <div className="mt-[100px] h-[653px] w-full p-[20px] rounded-[30px] bg-[#f0f0f0]">
+    <div className="mt-[100px]  w-full p-[20px] rounded-[30px] bg-[#f0f0f0]">
       <h3 className="pb-[30px] text-[#161616] text-[32px] font-semibold font-polySans text-left">
         Select Region
       </h3>
