@@ -2,7 +2,7 @@ import Nigeria from "../../assets/images/Nigeria.png";
 
 const CountryTitle = () => {
   return (
-    <div className="mx-auto max-w-[1750px] flex flex-col gap-4">
+    <div className="mx-auto w-full max-w-[1750px] flex flex-col gap-4">
       <div className="flex gap-[40px] items-center border-b-2 border-[#cecece] pb-2">
         <div className=" gap-[8px]">
           <h3 className="text-[#161616] text-[40px] font-polySans font-semibold leading-[55.36px] p-0 m-0">

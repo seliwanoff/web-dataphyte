@@ -43,7 +43,7 @@ const CountryDownList: React.FC<CountryDownListProps> = ({
         />
       </div>
 
-      <div className="border-t border-[#EAECF0] mt-2 pt-2 max-h-[340px] overflow-y-auto scrollbar-rounded">
+      <div className="border-t border-[#EAECF0] mt-2 pt-2 max-h-[320px] overflow-y-auto scrollbar-rounded">
         {filteredItems.length > 0 ? (
           filteredItems.map((item) => (
             <div

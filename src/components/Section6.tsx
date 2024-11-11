@@ -21,7 +21,7 @@ const Section6 = () => {
             </button>
           </div>
         </div>
-        <div className=" flex items-center gap-8  xl:flex-nowrap flex-wrap xl:overflow-x-auto relative parent-sroll">
+        <div className="parent-scroll flex items-center gap-8  xl:flex-nowrap flex-wrap xl:overflow-x-auto relative">
           <EachNewsCard />
           <EachNewsCard />
           <EachNewsCard />

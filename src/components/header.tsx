@@ -57,8 +57,7 @@ const Header = () => {
                     : ""
                 }`}
               >
-                <Link to={"/reports"}></Link>
-                Investigations & Reports
+                <Link to={"/reports"}>Investigations & Reports</Link>
               </li>
               <li
                 className={`${

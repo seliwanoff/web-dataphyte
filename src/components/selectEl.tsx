@@ -29,7 +29,19 @@ const SelectEl: React.FC<SelectElProps> = ({
   setSelectedCountry,
   countries,
 }) => {
-  const [showContinentDrop, setisShowContinentDrop] = useState<boolean>(false);
+  const [showContinentDrop, setShowContinentDrop] = useState<boolean>(false);
+  const [showCountryDrop, setShowCountryDrop] = useState<boolean>(false);
+
+  const handleMainDropdownClick = () => {
+    // If country dropdown is open, close it and open continent dropdown
+    if (showCountryDrop) {
+      setShowCountryDrop(false);
+      setShowContinentDrop(true);
+    } else {
+      // Toggle continent dropdown
+      setShowContinentDrop((prev) => !prev);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-3 relative">
@@ -41,9 +53,7 @@ const SelectEl: React.FC<SelectElProps> = ({
       </label>
       <div
         className="w-full max-w-[320px] border py-[10px] px-[14px] rounded-md flex items-center justify-between select-shadow cursor-pointer"
-        onClick={() => {
-          setisShowContinentDrop(!showContinentDrop);
-        }}
+        onClick={handleMainDropdownClick}
       >
         <section className="w-full font-Inter text-[16px] font-normal leading-6 text-[#667085]">
           {selectedCountry || selectedContinent || "Select country"}
@@ -56,17 +66,21 @@ const SelectEl: React.FC<SelectElProps> = ({
           data={continents}
           setSelectedContinent={(continent) => {
             setSelectedContinent(continent);
-            setisShowContinentDrop(false);
+            setShowContinentDrop(false);
+            setShowCountryDrop(true); // Show country dropdown after selecting a continent
           }}
         />
       )}
 
-      {selectedContinent && countries.length > 0 && (
+      {showCountryDrop && selectedContinent && countries.length > 0 && (
         <CountryDownList
           title={`Select a Country in ${selectedContinent}`}
           items={countries}
           selectedItem={selectedCountry}
-          onSelect={(countryName) => setSelectedCountry(countryName)}
+          onSelect={(countryName) => {
+            setSelectedCountry(countryName);
+            setShowCountryDrop(false); // Hide country dropdown after selecting a country
+          }}
         />
       )}
     </div>

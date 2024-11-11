@@ -15,6 +15,7 @@ module.exports = {
         "custom-light": "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",
         "custom-1": "0px 4px 6px -2px rgba(16, 24, 40, 0.08)",
         "custom-2": "0px 12px 16px -4px rgba(16, 24, 40, 0.14)",
+        "input-shadow": "0px 1px 2px 0px #1018280D",
       },
       fontFamily: {
         polySans: ["PolySans", "sans-serif"],

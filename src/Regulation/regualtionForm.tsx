@@ -1,16 +1,29 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import ButtonEl from "../components/buttonEl";
 import SelectEl from "../components/selectEl";
-//import { continents } from "./country/allCountry";
-
 import { continents } from "../components/country/allCountry";
 
-const RegulationForm = () => {
+// Define the types for the props
+interface RegulationFormProps {
+  buttonLink: string;
+  onSubmit?: (selectedContinent: string, selectedCountry: string) => void;
+}
+
+const RegulationForm: React.FC<RegulationFormProps> = ({
+  buttonLink,
+  onSubmit,
+}) => {
   const [selectedContinent, setSelectedContinent] = useState<string>("");
   const [selectedCountry, setSelectedCountry] = useState<string>("");
 
   const countries =
     continents.find((c) => c.continent === selectedContinent)?.countries || [];
+
+  const handleSubmit = () => {
+    if (onSubmit) {
+      onSubmit(selectedContinent, selectedCountry);
+    }
+  };
 
   return (
     <div className="flex flex-col gap-[50px]">
@@ -22,8 +35,10 @@ const RegulationForm = () => {
         countries={countries}
       />
       <ButtonEl
+        link={buttonLink}
         selectedCountry={selectedCountry}
         selectedContinent={selectedContinent}
+        text="Continue"
       />
     </div>
   );
