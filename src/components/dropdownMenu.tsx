@@ -76,7 +76,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
               }`}
               onClick={() => setIshowDrop(false)}
             >
-              Licenses
+              <Link to={"/License"}>Licenses</Link>
             </li>
             <li
               className={`${
@@ -86,7 +86,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
               }`}
               onClick={() => setIshowDrop(false)}
             >
-              Investigations & Reports
+              <Link to={"/reports"}> Investigations & Reports</Link>
             </li>
             <li
               className={`${
@@ -96,7 +96,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
               }`}
               onClick={() => setIshowDrop(false)}
             >
-              Data & Visualization
+              <Link to={"/data"}> Data & Visualization</Link>
             </li>
           </ul>
         </nav>
