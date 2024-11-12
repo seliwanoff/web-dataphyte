@@ -7,11 +7,13 @@ import { continents } from "../components/country/allCountry";
 interface RegulationFormProps {
   buttonLink: string;
   onSubmit?: (selectedContinent: string, selectedCountry: string) => void;
+  text?: string;
 }
 
 const RegulationForm: React.FC<RegulationFormProps> = ({
   buttonLink,
   onSubmit,
+  text,
 }) => {
   const [selectedContinent, setSelectedContinent] = useState<string>("");
   const [selectedCountry, setSelectedCountry] = useState<string>("");
@@ -33,6 +35,7 @@ const RegulationForm: React.FC<RegulationFormProps> = ({
         selectedCountry={selectedCountry}
         setSelectedCountry={setSelectedCountry}
         countries={countries}
+        text={text}
       />
       <ButtonEl
         link={buttonLink}

@@ -20,6 +20,7 @@ type SelectElProps = {
   selectedCountry: string;
   setSelectedCountry: Dispatch<SetStateAction<string>>;
   countries: Country[];
+  text?: string;
 };
 
 const SelectEl: React.FC<SelectElProps> = ({
@@ -28,6 +29,7 @@ const SelectEl: React.FC<SelectElProps> = ({
   selectedCountry,
   setSelectedCountry,
   countries,
+  text,
 }) => {
   const [showContinentDrop, setShowContinentDrop] = useState<boolean>(false);
   const [showCountryDrop, setShowCountryDrop] = useState<boolean>(false);
@@ -49,7 +51,7 @@ const SelectEl: React.FC<SelectElProps> = ({
         htmlFor="country"
         className="font-Inter text-[14px] font-medium leading-5 text-[#344053]"
       >
-        Select Country
+        {text !== "" ? text : "Select Country"}
       </label>
       <div
         className="w-full max-w-[320px] border py-[10px] px-[14px] rounded-md flex items-center justify-between select-shadow cursor-pointer"

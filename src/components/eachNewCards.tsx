@@ -4,7 +4,7 @@ import avater from "../assets/images/Avatar.png";
 
 const EachNewsCard = () => {
   return (
-    <div className="w-full flex flex-col max-w-[480px] h-fit basis-[475px] xl:flex-grow-0 xl:flex-shrink-0  gap-6">
+    <div className="w-full flex flex-col max-w-[480px] h-fit basis-[400px] xl:flex-grow-0 xl:flex-shrink-0  gap-6">
       <img src={image} alt="" className="h-[222PX] mb-3" />
 
       <div className="flex flex-col gap-[32px]">
