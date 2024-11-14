@@ -4,7 +4,7 @@ import EachNewsCard from "./eachNewCards";
 const Section6 = () => {
   return (
     <div className="w-full bg-white xl:px-[110px] px-[24px] xl:py-[32px] py-[16px]">
-      <div className="max-w-[1221px]  mx-auto py-[30px] xl:py-[100px] flex  flex-col gap-16">
+      <div className="max-w-[1750px]  mx-auto py-[30px] xl:py-[100px] flex  flex-col gap-16">
         <div className="flex flex-col gap-[42px] items-center justify-center w-full">
           <div className="flex flex-col gap-4">
             <div className="h-[40px] py-[8px] px-[12px] flex gap-[10px] items-center mx-auto bg-[#7F55DA0A] rounded-[71px]">

@@ -125,8 +125,10 @@ const IneractiveMap = () => {
   }, [selectedRegion]);
 
   const generateGoogleMapsUrl = () => {
+    const googleMapApiKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
+
     if (countryLatLng) {
-      return `https://www.google.com/maps/embed/v1/view?key=AIzaSyANCcAa09J_M6N_tRRd6_K8cF8mIthUPBw&center=${countryLatLng.lat},${countryLatLng.lon}&zoom=10`;
+      return `https://www.google.com/maps/embed/v1/view?key=${googleMapApiKey}w&center=${countryLatLng.lat},${countryLatLng.lon}&zoom=10`;
     }
     return "";
   };

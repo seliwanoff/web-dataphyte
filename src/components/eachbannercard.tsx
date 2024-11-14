@@ -19,7 +19,8 @@ const EachBannerCard: React.FC<EachBannerCardProps> = ({
   linktext,
 }) => {
   return (
-    <div className="flex-grow basis-[340px]  xl:basis-[200px] relative bg-[#000000] bg-blend-darken rounded-full bg-opacity-45 saturate-[30px]">
+    <div className="flex-grow basis-[340px]  xl:basis-[200px] relative bg-[#000000] bg-blend-darken rounded-full bg-opacity-45 saturate-[30px] ">
+      <div className="absolute bg-[#00000075] h-full rounded-3xl w-full"></div>
       <img
         src={image}
         alt=""

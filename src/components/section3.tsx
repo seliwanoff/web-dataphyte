@@ -7,7 +7,7 @@ import folder from "../assets/images/folder.png";
 const Section3 = () => {
   return (
     <div className="xl:px-[110px] py-12  w-full flex justify-center px-[24px]">
-      <div className="flex flex-wrap gap-[32px]  w-full max-w-[1221px] mx-auto xl:h-[369px]">
+      <div className="flex flex-wrap gap-[32px]  w-full max-w-[1750px] mx-auto xl:h-[369px]">
         <EachBannerCard
           text={"100"}
           link={"https://m"}

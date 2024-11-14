@@ -8,7 +8,7 @@ import d5 from "../assets/images/d5.png";
 const Section4 = () => {
   return (
     <div className="bg-custom-gradient xl:px-[110px] px-[24px] xl:py-[56px] py-[40px] flex justify-center flex-col">
-      <div className="flex  justify-between w-full max-w-[1221px] mx-auto xl:gap-0 gap-[27px]">
+      <div className="flex  justify-between w-full max-w-[1750px] mx-auto xl:gap-0 gap-[27px]">
         <h3 className="font-semibold xl:text-[40px] text-[16px] xl:leading-[55.36px] leading-[22.14px] font-polySans text-white max-w-[562px]">
           Quality Mineral Services with JET Minerals
         </h3>
@@ -25,7 +25,7 @@ const Section4 = () => {
           </button>
         </div>
       </div>
-      <div className="text-white xl:mt-[72px] mt-[30px] w-full max-w-[1221px]  mx-auto flex items-center justify-center gap-1 xl:gap-[16px] relative">
+      <div className="text-white xl:mt-[72px] mt-[30px] w-full max-w-[1750px]  mx-auto flex items-center justify-center gap-1 xl:gap-[16px] relative">
         <img
           src={d1}
           alt=""

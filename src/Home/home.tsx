@@ -45,7 +45,6 @@ const Home = () => {
   return (
     <>
       <PreloaderProvider images={images}>
-        {/**  <Header /> */}
         <Banner />
         <Section3 />
         <Section4 />

@@ -1,11 +1,14 @@
 import { BrowserRouter as Router } from "react-router-dom";
 
 import RouteWrapper from "./route/route";
+import { AxiosProvider } from "./utills/AxiosContext";
 
 const App: React.FC = () => {
   return (
     <Router>
-      <RouteWrapper />
+      <AxiosProvider>
+        <RouteWrapper />
+      </AxiosProvider>
     </Router>
   );
 };
