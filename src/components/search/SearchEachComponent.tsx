@@ -7,6 +7,7 @@ interface EachComponentProps {
   countries: string;
   miningCount: number;
   docCount: number;
+  image?: any;
 }
 
 const EachComponent: React.FC<EachComponentProps> = ({
@@ -14,6 +15,7 @@ const EachComponent: React.FC<EachComponentProps> = ({
   countries,
   miningCount,
   docCount,
+  image,
 }) => {
   return (
     <div className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl ">

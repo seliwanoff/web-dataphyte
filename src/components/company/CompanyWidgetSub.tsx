@@ -3,18 +3,21 @@ import React from "react";
 interface Company {
   logo: string;
   name: string;
+  image?: string;
 }
 
 interface CompanyWidgetSubProps {
   companies: Company[];
   title: string;
   size: string;
+  image?: string;
 }
 
 const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
   companies,
   title,
   size,
+  image,
 }) => {
   return (
     <div className="w-full xl:px-[110px] px-[24px]">
@@ -29,11 +32,11 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
               <div key={index} className="flex flex-col items-center gap-2">
                 <img
                   src={company.logo}
-                  alt={company.name}
+                  alt={company.logo}
                   className="xl:h-[58.85px] h-[40px] xl:w-[58.85px] w-10"
                 />
                 <span
-                  className={`font-Poppins font-bold leading-[23.4px] ${size} text-[#161616`}
+                  className={`font-Poppins font-bold leading-[23.4px] ${size} text-[#161616]m`}
                 >
                   {company.name}
                 </span>

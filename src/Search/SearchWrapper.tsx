@@ -6,7 +6,7 @@ import SearchResult from "../components/search/SearchResult";
 import SeachTableFormat from "../components/search/SearchlayourTable";
 import { useState } from "react";
 import { ProfileProvider } from "../context/ProfileContext";
-
+import sampleDataResponse from "../data/companySampleReponse.json";
 const SearchWrapper = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
   const Filters = [
@@ -37,6 +37,7 @@ const SearchWrapper = () => {
             "Companies",
             "People",
           ]}
+          datas={sampleDataResponse}
           currentTab={currentTab}
         />
       </ProfileProvider>

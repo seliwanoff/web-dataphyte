@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import EachComponent from "./SearchEachComponent";
 import MiningSearchWidget from "./MiningSeachWidget";
@@ -9,110 +9,64 @@ import PeopleSearchWidget from "./peopleSearch";
 
 interface SearchWidgetProps {
   title?: string;
+  datas?: any;
 }
 
-const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
+const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || title || "Default Title";
 
+  const ceoAndCfo = [datas.data.ceo, datas.data.cfo].map((person, index) => ({
+    id: person.id,
+    name: `${person.title} ${person.first_name} ${person.last_name}`,
+    image: person.image,
+    location: person.location,
+    country: person.country,
+    role: index === 0 ? "CEO" : "CFO", // Assign roles dynamically
+  }));
+
   return (
-    <div className="w-full max-w-[1750px] flex flex-col gap-[40px] border-b-2 border-[#cecece] mx-auto pb-[32px] pt-[32px]">
+    <div
+      className={`w-full max-w-[1750px] flex flex-col gap-[40px] ${
+        title === "All" ? "" : " border-b-2 border-[#cecece]"
+      } mx-auto pb-[32px] pt-[32px]`}
+    >
       <div className="flex flex-col gap-[24px]">
         <span className="text-[#373737] font-semibold text-[18px] leading-6 font-Poppins">
-          {title}
+          {title === "All" ? "" : title}
         </span>
 
         <div className="flex flex-wrap gap-[24px]">
           {title === "Minerals" ? (
-            <EachComponent
-              mineralName={queryName}
-              countries="Nigeria, Ghana"
-              miningCount={4}
-              docCount={1500}
-            />
+            datas?.data.mineral.map((data: any, index: any) => (
+              <EachComponent
+                key={index}
+                mineralName={data.name}
+                countries="Nigeria, Ghana"
+                miningCount={4}
+                docCount={1500}
+              />
+            ))
           ) : title === "People" ? (
-            <>
+            ceoAndCfo.map((data: any, index: any) => (
               <PeopleSearchWidget
-                mineralName={"Ayomide Kazim"}
-                countries="Nigeria, Ghana"
+                mineralName={data.name}
+                countries={`${data.location}, ${data.country}`}
                 miningCount={4}
                 mineral={"Dataphyte Limited"}
                 docCount={1500}
-                role="CEO"
+                key={index}
+                role={data.role}
               />
-              <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />{" "}
-              <PeopleSearchWidget
-                mineralName={"Ayomide Peter"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />{" "}
-              <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />{" "}
-              <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />{" "}
-              <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />{" "}
-              <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />{" "}
-              <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />{" "}
-              <PeopleSearchWidget
-                mineralName={"Ayomide Olaoye"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role="CEO"
-              />
-            </>
+            ))
           ) : title === "Mining Sites" ? (
             <>
               <MiningSearchWidget
                 mineralName={"Dataphyte Colbalt mining site"}
                 countries="Nigeria, Ghana"
                 miningCount={4}
-                mineral={"Maganese"}
+                mineral={"Maganeses"}
                 docCount={1500}
               />
               <MiningSearchWidget
@@ -175,58 +129,19 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
           ) : title === "Documents" ? (
             <>
               <div className="xl:block hidden w-full">
-                <Maintable />
+                <Maintable datas={datas} />
               </div>
               <div className="xl:hidden block w-full">
-                <DocumentSearchMobileWidget
-                  mineralName={"Dataphyte Colbalt mining site"}
-                  countries="Nigeria, Ghana"
-                  miningCount={4}
-                  mineral={"Maganese"}
-                  docCount={5}
-                />
-                <DocumentSearchMobileWidget
-                  mineralName={"Dataphyte Colbalt mining site"}
-                  countries="Nigeria, Ghana"
-                  miningCount={4}
-                  mineral={"Maganese"}
-                  docCount={5}
-                />{" "}
-                <DocumentSearchMobileWidget
-                  mineralName={"Dataphyte Colbalt mining site"}
-                  countries="Nigeria, Ghana"
-                  miningCount={4}
-                  mineral={"Maganese"}
-                  docCount={5}
-                />{" "}
-                <DocumentSearchMobileWidget
-                  mineralName={"Dataphyte Colbalt mining site"}
-                  countries="Nigeria, Ghana"
-                  miningCount={4}
-                  mineral={"Maganese"}
-                  docCount={5}
-                />{" "}
-                <DocumentSearchMobileWidget
-                  mineralName={"Dataphyte Colbalt mining site"}
-                  countries="Nigeria, Ghana"
-                  miningCount={4}
-                  mineral={"Maganese"}
-                  docCount={5}
-                />{" "}
-                <DocumentSearchMobileWidget
-                  mineralName={"Dataphyte Colbalt mining site"}
-                  countries="Nigeria, Ghana"
-                  miningCount={4}
-                  mineral={"Maganese"}
-                  docCount={5}
-                />{" "}
-                <DocumentSearchMobileWidget
-                  mineralName={"Dataphyte Colbalt mining site"}
-                  countries="Nigeria, Ghana"
-                  miningCount={4}
-                  mineral={"Maganese"}
-                  docCount={5}
-                />
+                {datas?.data.mineral.map((data: any, index: any) => (
+                  <DocumentSearchMobileWidget
+                    mineralName={data.name}
+                    countries={data.location}
+                    miningCount={4}
+                    mineral={"Maganese"}
+                    docCount={5}
+                    key={index}
+                  />
+                ))}
               </div>
             </>
           ) : title === "Companies" ? (
@@ -296,62 +211,19 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title }) => {
               />
             </>
           ) : (
-            <>
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-              <EachComponent
-                mineralName={queryName}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />{" "}
-            </>
+            title === "Subsidiaries" && (
+              <>
+                {datas?.data.children.map((data: any, index: any) => (
+                  <EachComponent
+                    mineralName={data.name}
+                    countries={data.country}
+                    miningCount={4}
+                    docCount={1500}
+                    key={index}
+                  />
+                ))}
+              </>
+            )
           )}
         </div>
       </div>

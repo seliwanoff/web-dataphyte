@@ -7,6 +7,7 @@ import { ProfileProvider } from "../context/ProfileContext";
 import Companymapping from "./CompanyMapping";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
 import CompanyWidgetSub from "../components/company/CompanyWidgetSub";
+import CompanySampleResponse from "../data/companySampleReponse.json";
 
 interface CompanyData {
   logo: string;
@@ -16,11 +17,22 @@ interface CompanyData {
 const CompanyProfile: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
 
-  const companies: CompanyData[] = [{ logo: company, name: "DATAPHYTE" }];
-  const subsidiaries: CompanyData[] = Array(4).fill({
-    logo: company,
-    name: "GOLOKA",
-  });
+  const [sampleData, setSampleData] = useState(CompanySampleResponse);
+  const companies: CompanyData[] = [
+    {
+      logo: company,
+      name: CompanySampleResponse.data.parent,
+    },
+  ];
+
+  const subsidiaries: CompanyData[] = CompanySampleResponse.data.children.map(
+    (child: any) => ({
+      logo: company,
+      name: child.name,
+    })
+  );
+
+  // console.log(sampleData.data.parent);
 
   const sections = [
     {
@@ -45,7 +57,7 @@ const CompanyProfile: React.FC = () => {
   return (
     <>
       <ProfileProvider>
-        <ComapnyNameDescription />
+        <ComapnyNameDescription datas={sampleData} />
         <div className="xl:block hidden">
           <Companymapping />
         </div>
@@ -65,7 +77,11 @@ const CompanyProfile: React.FC = () => {
           currentTab={currentTab}
           filters={Filters}
         />
-        <SeachTableFormat widgetTitles={Filters} currentTab={currentTab} />
+        <SeachTableFormat
+          widgetTitles={Filters}
+          currentTab={currentTab}
+          datas={CompanySampleResponse}
+        />
       </ProfileProvider>
     </>
   );

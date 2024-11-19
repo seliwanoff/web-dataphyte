@@ -5,7 +5,11 @@ import ActionRow from "../components/table/actionRow";
 import HeroRow from "../components/table/HeroTable";
 import TableColumn from "../components/table/tableColumn";
 import TableRow from "../components/table/tableRow";
-const Maintable = () => {
+
+interface CompanyNameDescriptionProps {
+  datas?: any;
+}
+const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
   return (
     <table className="bg-inherit w-full border-none">
       <thead className="thead bg-white">
@@ -18,36 +22,14 @@ const Maintable = () => {
       </thead>
 
       <tbody className="tbody bg-white">
-        <tr className="">
-          <HeroRow name="The file name. extention" width={20} image={doc} />
-          <TableRow name="5th Avenue, Gwarimpa, Abuja, Nigeria" width={15} />
+        {datas?.data.document.map((data: any, index: any) => (
+          <tr className="" key={index}>
+            <HeroRow name={data.name} width={20} image={doc} />
+            <TableRow name={data.location} width={15} />
 
-          <ActionRow name="Download file" width={15} />
-        </tr>
-        <tr className="">
-          <HeroRow name="The file name. extention" width={20} image={doc} />
-          <TableRow name="5th Avenue, Gwarimpa, Abuja, Nigeria" width={15} />
-
-          <ActionRow name="Download file" width={15} />
-        </tr>
-        <tr className="">
-          <HeroRow name="The file name. extention" width={20} image={doc} />
-          <TableRow name="5th Avenue, Gwarimpa, Abuja, Nigeria" width={15} />
-
-          <ActionRow name="Download file" width={15} />
-        </tr>
-        <tr className="">
-          <HeroRow name="The file name. extention" width={20} image={doc} />
-          <TableRow name="5th Avenue, Gwarimpa, Abuja, Nigeria" width={15} />
-
-          <ActionRow name="Download file" width={15} />
-        </tr>
-        <tr className="">
-          <HeroRow name="The file name. extention" width={20} image={doc} />
-          <TableRow name="5th Avenue, Gwarimpa, Abuja, Nigeria" width={15} />
-
-          <ActionRow name="Download file" width={15} />
-        </tr>
+            <ActionRow name="Download file" width={15} />
+          </tr>
+        ))}
       </tbody>
     </table>
   );

@@ -1,28 +1,52 @@
 import React, { useRef, useEffect, useState, useMemo } from "react";
 import * as d3 from "d3";
 import worldData from "../../data/custom.geo.json";
-import Continentdata from "../../data/continents.json";
 import RegulationForm from "../../Regulation/regualtionForm";
+import africa from "../../data/africa.geo.json";
+import asia from "../../data/asia.geo.json";
+import NorthAmerica from "../../data/north-america.geo.json";
+import SouthAmerica from "../../data/south-america.geo.json";
+import Europe from "../../data/europe.geo.json";
+import Oceania from "../../data/oceania.geo.json";
+import Nigeria from "../../data/countriesdata/nigeria.json";
 import { FeatureCollection, Feature, Geometry } from "geojson";
 
 interface GeoProperties {
-  CONTINENT: string;
+  CONTINENT?: string;
+  country?: string;
   lat?: number;
   lon?: number;
+
+  name?: string;
   [key: string]: any;
 }
 
 type GeoFeature = Feature<Geometry, GeoProperties>;
 
-// Explicitly assert imported data as FeatureCollection
 const worldGeoData = worldData as unknown as FeatureCollection<
   Geometry,
   GeoProperties
 >;
-const continentGeoData = Continentdata as unknown as FeatureCollection<
-  Geometry,
-  GeoProperties
->;
+
+const continentGeoDataMap: Record<
+  string,
+  FeatureCollection<Geometry, GeoProperties>
+> = {
+  Africa: africa as FeatureCollection<Geometry, GeoProperties>,
+  Asia: asia as FeatureCollection<Geometry, GeoProperties>,
+  "North America": NorthAmerica as FeatureCollection<Geometry, GeoProperties>,
+  "South America": SouthAmerica as FeatureCollection<Geometry, GeoProperties>,
+  Europe: Europe as FeatureCollection<Geometry, GeoProperties>,
+  Oceania: Oceania as FeatureCollection<Geometry, GeoProperties>,
+};
+
+const countryGeoDataMap: Record<
+  string,
+  FeatureCollection<Geometry, GeoProperties>
+> = {
+  Nigeria: Nigeria as FeatureCollection<Geometry, GeoProperties>,
+  // Add additional countries here
+};
 
 const InteractiveMap: React.FC = () => {
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -30,12 +54,11 @@ const InteractiveMap: React.FC = () => {
   const [selectedContinent, setSelectedContinent] = useState<string | null>(
     null
   );
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
   const [countryLatLng, setCountryLatLng] = useState<{
     lat: number;
     lon: number;
   } | null>(null);
-  const [selectedRegionData, setSelectedRegionData] =
-    useState<GeoFeature | null>(null); // Store selected region data
 
   useEffect(() => {
     d3.select(svgRef.current).selectAll("*").remove();
@@ -43,16 +66,12 @@ const InteractiveMap: React.FC = () => {
     const baseWidth = 800;
     const baseHeight = 400;
 
-    // Set geoData with type assertion for filtered features
-    const geoData: FeatureCollection<Geometry, GeoProperties> = {
-      type: "FeatureCollection",
-      features: selectedContinent
-        ? (continentGeoData.features.filter(
-            (feature: GeoFeature) =>
-              feature.properties.CONTINENT === selectedContinent
-          ) as GeoFeature[])
-        : worldGeoData.features,
-    };
+    const geoData: FeatureCollection<Geometry, GeoProperties> =
+      selectedCountry && countryGeoDataMap[selectedCountry]
+        ? countryGeoDataMap[selectedCountry]
+        : selectedContinent && continentGeoDataMap[selectedContinent]
+        ? continentGeoDataMap[selectedContinent]
+        : worldGeoData;
 
     const svg = d3
       .select(svgRef.current)
@@ -65,37 +84,36 @@ const InteractiveMap: React.FC = () => {
       .fitSize([baseWidth, baseHeight], geoData);
     const pathGenerator = d3.geoPath().projection(projection);
 
-    const colorScale = (region: string | null) =>
-      selectedRegion === region ? "black" : "#272727";
-
     svg
       .selectAll<SVGPathElement, GeoFeature>("path")
       .data(geoData.features)
       .join("path")
       .attr("d", pathGenerator)
-      .attr("fill", (d) => colorScale(d.properties.CONTINENT))
+      .attr("fill", "#272727")
       .attr("stroke", "#FFFFFF")
       .on("click", (event, d) => {
-        console.log(d);
-        const region = d.properties.continent || d.properties.region_un;
-        setSelectedRegion(region);
-        setSelectedContinent(region);
-
-        const lat = d.properties.lat ?? 0;
-        const lon = d.properties.lon ?? 0;
-        setCountryLatLng({ lat, lon });
-
-        setSelectedRegionData(d);
+        if (!selectedContinent) {
+          const continent = d.properties.continent;
+          setSelectedContinent(continent);
+        } else if (!selectedCountry) {
+          const country = d.properties.geounit;
+          setSelectedCountry(country);
+          setCountryLatLng({
+            lat: d.properties.lat ?? 0,
+            lon: d.properties.lon ?? 0,
+          });
+        }
       });
+  }, [selectedContinent, selectedCountry]);
 
-    if (!selectedRegion) {
-      svg
-        .transition()
-        .duration(1000)
-        .attr("viewBox", `0 0 ${baseWidth} ${baseHeight}`);
+  const resetMap = () => {
+    if (selectedCountry) {
+      setSelectedCountry(null);
+    } else if (selectedContinent) {
+      setSelectedContinent(null);
     }
-  }, [selectedRegion, selectedContinent]);
-  console.log(selectedContinent);
+  };
+
   const generateGoogleMapsUrl = useMemo(() => {
     const googleMapApiKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
     return countryLatLng
@@ -106,18 +124,19 @@ const InteractiveMap: React.FC = () => {
   return (
     <div className="w-full">
       <div className="mt-[100px] w-full p-[30px] rounded-[30px] bg-[#f0f0f0]">
-        <h3 className="pb-[30px] text-[#161616] text-[32px] font-semibold font-polySans text-left">
-          Select Region
-        </h3>
         <svg ref={svgRef}></svg>
-
-        {selectedContinent && (
-          <div className="text-[32px] font-semibold leading-[44.29px] text-end text-[#8B5CF6] font-polySans">
-            {" "}
-            {selectedContinent}
-          </div>
-        )}
+        <div className="text-[32px] font-semibold text-right text-[#8B5CF6]">
+          {selectedCountry || selectedContinent || ""}
+        </div>
       </div>
+      {(selectedContinent || selectedCountry) && (
+        <button
+          onClick={resetMap}
+          className="mt-4 px-4 py-2 bg-[#8B5CF6] text-white rounded-md font-polySans"
+        >
+          Go Back
+        </button>
+      )}
       <div className="flex gap-[38px] items-center mt-11">
         <div className="border border-[#656565] inline-block w-full"></div>
         <span className="font-Poppins text-[16px] font-medium leading-6 text-center text-[#202020]">
@@ -125,32 +144,6 @@ const InteractiveMap: React.FC = () => {
         </span>
         <div className="border border-[#656565] inline-block w-full"></div>
       </div>
-      {/**
-      {countryLatLng && (
-        <div className="w-full mt-10">
-          <iframe
-            src={generateGoogleMapsUrl}
-            width="100%"
-            height="693"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-          ></iframe>
-        </div>
-      )}
-        */}
-
-      {/*
-      {selectedRegionData && (
-        <div className="w-full mt-10">
-          <h4 className="text-[18px] font-semibold">Region Data:</h4>
-          <pre className="bg-[#f5f5f5] p-[15px] rounded-[10px]">
-            {JSON.stringify(selectedRegionData, null, 2)}
-          </pre>
-        </div>
-      )}
-        */}
-
       <div className="w-full mt-10">
         <RegulationForm
           buttonLink="javascript:void(0)"
