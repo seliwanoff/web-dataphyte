@@ -39,7 +39,9 @@ const ReportDetails = React.lazy(
   () => import("../Investigation/reportDetails")
 );
 const ReportForm = React.lazy(() => import("../Investigation/reportform"));
+//import PeopleWrapper from "../People/PeopleWrapper";
 
+const PeopleWrapper = React.lazy(() => import("../People/PeopleWrapper"));
 const RouteWrapper = () => {
   const location = useLocation();
 
@@ -74,6 +76,8 @@ const RouteWrapper = () => {
           <Route path="/reports/details" element={<ReportDetails />} />
           <Route path="/reports/form" element={<ReportForm />} />
           <Route path="/data" element={<DataVisualiztionWrapper />} />
+
+          <Route path="/people" element={<PeopleWrapper />} />
         </Routes>
       </Suspense>
     </Layout>

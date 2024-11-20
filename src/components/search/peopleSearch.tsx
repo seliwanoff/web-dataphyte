@@ -3,6 +3,7 @@ import ellipse from "../../assets/images/ellipse.png";
 import location from "../../assets/images/location.png";
 import profile from "../../assets/images/profiledata.png";
 import { useProfileContext } from "../../context/ProfileContext";
+import { useNavigate } from "react-router-dom";
 
 interface PeopleSearchWidgetProps {
   mineralName: string;
@@ -22,8 +23,10 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
   role,
 }) => {
   const { addProfile } = useProfileContext();
-
+  const navigate = useNavigate();
   const handleViewProfile = () => {
+    navigate("/people");
+    /**
     addProfile({
       mineralName,
       countries,
@@ -31,7 +34,8 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
       docCount,
       mineral,
       role,
-    });
+    })
+      */
   };
 
   return (

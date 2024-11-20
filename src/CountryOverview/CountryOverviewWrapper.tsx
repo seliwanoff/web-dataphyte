@@ -4,6 +4,7 @@ import CountryStatistics from "../components/country/CountryStatistics";
 import CountryTitle from "../components/country/CuntryTitle";
 import DocumentSearchMobileWidget from "../components/search/DocumentMobileSearchWidget";
 import Maintable from "../Search/mainTableSearch";
+import companySampleResponse from "../data/companySampleReponse.json";
 
 const CountryOveViewWrapper = () => {
   return (
@@ -18,7 +19,7 @@ const CountryOveViewWrapper = () => {
           Documents
         </span>
         <div className="xl:block hidden w-full mt-[32px]">
-          <Maintable />
+          <Maintable datas={companySampleResponse} />
         </div>
         <div className="xl:hidden block w-full mt-[32px]">
           <DocumentSearchMobileWidget

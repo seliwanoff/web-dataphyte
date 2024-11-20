@@ -11,25 +11,32 @@ interface SearchWidgetProps {
   title?: string;
   datas?: any;
 }
+interface DataProps {
+  minerals?: any[];
+  documents?: any[];
+  mineralType?: any[];
+  location?: any[];
+}
+const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
+  const isDataAvailable = (key: keyof DataProps) => datas.data[key]?.length > 0;
 
-const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
-  // console.log(datas.data.cfo);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || title || "Default Title";
+  const combined = [
+    ...datas.data.ceo.map((persons: any) => ({ ...persons, role: "CEO" })),
+    ...datas.data.cfo.map((persons: any) => ({ ...persons, role: "CFO" })),
+    ...datas.data.cto.map((persons: any) => ({ ...persons, role: "CTO" })),
+  ];
 
-  const ceoAndCfo = [datas.data.ceo, datas.data.cfo, datas.data.cto].map(
-    (person, index) => ({
-      id: person.id,
-      name: `${person.title} ${person.first_name} ${person.last_name}`,
-      image: person.image,
-      location: person.location,
-      country: person.country,
-      role: index === 0 ? "CEO" : "CFO", // Assign roles dynamically
-    })
-  );
-
-  // console.log(ceoAndCfo);
+  const ceoAndCfo = combined.map((person, index) => ({
+    id: person.id,
+    name: `${person.name}`,
+    image: person.image,
+    location: person.location,
+    country: person.country,
+    role: person.role,
+  }));
 
   return (
     <div
@@ -44,15 +51,21 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
 
         <div className="flex flex-wrap gap-[24px]">
           {title === "Minerals" ? (
-            datas?.data.mineral.map((data: any, index: any) => (
-              <EachComponent
-                key={index}
-                mineralName={data.name}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                docCount={1500}
-              />
-            ))
+            datas.data.mineral.length > 0 ? (
+              datas?.data.mineral.map((data: any, index: any) => (
+                <EachComponent
+                  key={index}
+                  mineralName={data.name}
+                  countries="Nigeria, Ghana"
+                  miningCount={4}
+                  docCount={1500}
+                />
+              ))
+            ) : (
+              <span className="font-polySans text-xl text-black text-center block w-full">
+                No Data Fetch
+              </span>
+            )
           ) : title === "People" ? (
             ceoAndCfo.map((data: any, index: any) => (
               <PeopleSearchWidget
@@ -133,11 +146,17 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
             </>
           ) : title === "Documents" ? (
             <>
-              <div className="xl:block hidden w-full">
-                <Maintable datas={datas} />
-              </div>
+              {datas.data?.document ? (
+                <div className="xl:block hidden w-full">
+                  <Maintable datas={datas} />
+                </div>
+              ) : (
+                <span className="font-polySans text-xl text-black text-center block w-full">
+                  No Data Fetch
+                </span>
+              )}
               <div className="xl:hidden block w-full">
-                {datas.data.document &&
+                {datas.data?.document ? (
                   datas?.data?.document.map((data: any, index: any) => (
                     <DocumentSearchMobileWidget
                       mineralName={data.name}
@@ -147,7 +166,12 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
                       docCount={5}
                       key={index}
                     />
-                  ))}
+                  ))
+                ) : (
+                  <span className="font-polySans text-xl text-black text-center block w-full">
+                    No Data Fetch
+                  </span>
+                )}
               </div>
             </>
           ) : title === "Companies" ? (
@@ -217,17 +241,23 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               />
             </>
           ) : (
-            title === "Subsidiaries" && (
+            title === "Mining Type" && (
               <>
-                {datas?.data.children.map((data: any, index: any) => (
-                  <EachComponent
-                    mineralName={data.name}
-                    countries={data.country}
-                    miningCount={4}
-                    docCount={1500}
-                    key={index}
-                  />
-                ))}
+                {datas.data.miningtype ? (
+                  datas?.data.miningtype.map((data: any, index: any) => (
+                    <EachComponent
+                      mineralName={data.name}
+                      countries={data.country}
+                      miningCount={4}
+                      docCount={1500}
+                      key={index}
+                    />
+                  ))
+                ) : (
+                  <span className="font-polySans text-xl text-black text-center block w-full">
+                    No Data Fetch
+                  </span>
+                )}
               </>
             )
           )}
@@ -237,4 +267,4 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
   );
 };
 
-export default SearchWidget;
+export default PeopleWidget;

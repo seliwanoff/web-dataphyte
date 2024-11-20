@@ -6,17 +6,21 @@ import PeopleProfile from "./peopleprofile";
 interface SearchResultProps {
   setCurrentTab: (tab: string) => void;
   currentTab: string;
+  datas?: any;
 }
 
 const SearchResult: React.FC<SearchResultProps> = ({
   setCurrentTab,
   currentTab,
+  datas,
 }) => {
   const { profiles } = useProfileContext();
-
+  // console.log(datas);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || "Default Title";
+
+  const pathname = location.pathname;
 
   const searchTypes = [
     { type: "Minerals", count: 30 },
@@ -35,8 +39,8 @@ const SearchResult: React.FC<SearchResultProps> = ({
             profiles.length > 0 ? "" : `items-center`
           }`}
         >
-          {profiles.length > 0 ? (
-            <PeopleProfile />
+          {pathname === "/people" ? (
+            <PeopleProfile datas={datas} />
           ) : (
             <div className="flex gap-2 items-center text-nowrap">
               <span className="font-Poppins font-semibold text-[#202020] text-[20px] leading-6">
