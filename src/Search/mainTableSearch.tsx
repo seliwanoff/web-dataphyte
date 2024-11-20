@@ -24,7 +24,7 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
       <tbody className="tbody bg-white">
         {datas?.data.document.map((data: any, index: any) => (
           <tr className="" key={index}>
-            <HeroRow name={data.name} width={20} image={doc} />
+            <HeroRow name={data.name} width={20} image={doc} type={data.type} />
             <TableRow name={data.location} width={15} />
 
             <ActionRow name="Download file" width={15} />
