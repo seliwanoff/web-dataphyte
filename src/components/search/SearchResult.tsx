@@ -42,6 +42,8 @@ const SearchResult: React.FC<SearchResultProps> = ({
           {pathname === "/people" ? (
             <PeopleProfile datas={datas} />
           ) : (
+            <></>
+            /**
             <div className="flex gap-2 items-center text-nowrap">
               <span className="font-Poppins font-semibold text-[#202020] text-[20px] leading-6">
                 “{queryName}”
@@ -50,8 +52,9 @@ const SearchResult: React.FC<SearchResultProps> = ({
                 search results:
               </span>
             </div>
+            */
           )}
-
+          {/**
           <div className="p-[10px] flex gap-[10px] items-center">
             {searchTypes.map((searchType) => (
               <SearchType
@@ -61,6 +64,7 @@ const SearchResult: React.FC<SearchResultProps> = ({
               />
             ))}
           </div>
+          */}
         </div>
       </div>
     </div>

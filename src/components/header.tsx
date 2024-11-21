@@ -59,6 +59,7 @@ const Header = () => {
               >
                 <Link to={"/reports"}>Investigations & Reports</Link>
               </li>
+              {/**
               <li
                 className={`${
                   currentPath === "/data" ? "text-[#7F55DA] font-semibold" : ""
@@ -66,6 +67,7 @@ const Header = () => {
               >
                 <Link to={"/data"}>Data & Visualization</Link>
               </li>
+              */}
             </ul>
           </nav>
           <img

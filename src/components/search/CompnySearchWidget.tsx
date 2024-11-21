@@ -9,6 +9,7 @@ interface CompanySearchWidgetProps {
   miningCount: number;
   docCount: number;
   mineral?: string;
+  role?: string;
 }
 
 const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
@@ -17,6 +18,7 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
   miningCount,
   docCount,
   mineral,
+  role,
 }) => {
   const navigates = useNavigate();
 

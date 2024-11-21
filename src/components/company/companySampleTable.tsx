@@ -1,8 +1,8 @@
 import { useLocation } from "react-router-dom";
-import SearchWidget from "./SearchWidget";
-import PeopleSearchWidget from "./peopleSearch";
-import PeopleWidget from "./peopleWidget";
+
 import peopleSampleData from "../../data/peopleSampleResponse.json";
+import PeopleWidget from "../search/peopleWidget";
+import SearchWidget from "../search/SearchWidget";
 interface SeachTableFormatProps {
   widgetTitles: string[];
   currentTab: string;
@@ -14,7 +14,7 @@ interface SeachTableFormatProps {
   mineral?: any;
 }
 
-const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
+const CompanyTableFormat: React.FC<SeachTableFormatProps> = ({
   widgetTitles,
   currentTab,
   datas,
@@ -38,7 +38,6 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
       role: index === 0 ? "CEO" : "CFO", // Assign roles dynamically
     })
   );
-
   return (
     <div className="w-full max-w-[1750px] mx-auto xl:px-[110px] px-[24px]">
       {currentTab === "All"
@@ -114,4 +113,4 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
   );
 };
 
-export default SeachTableFormat;
+export default CompanyTableFormat;

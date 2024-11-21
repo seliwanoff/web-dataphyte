@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import company from "../assets/images/company.png";
 import SearchFilter from "../components/search/searchfilter";
 import SeachTableFormat from "../components/search/SearchlayourTable";
-import { filter } from "d3";
 import { ProfileProvider } from "../context/ProfileContext";
 import Companymapping from "./CompanyMapping";
 import ComapnyNameDescription from "../components/company/companyNameDescription";

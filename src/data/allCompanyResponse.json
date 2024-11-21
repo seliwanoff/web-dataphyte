@@ -1,0 +1,1441 @@
+{
+  "success": true,
+  "message": "company fetched",
+  "data": [
+    {
+      "id": 1,
+      "name": "Skiles - Grimes",
+      "country": "Lebanon",
+      "rc_number": null,
+      "ceo_id": 1,
+      "cto_id": 1,
+      "cfo_id": 1,
+      "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+      "parent_id": null,
+      "address": "74188 Shakira Inlet",
+      "image": "http://placeimg.com/640/480/nature",
+      "created_at": "2024-11-13T15:28:01.000000Z",
+      "updated_at": "2024-11-13T15:28:01.000000Z",
+      "parent": null,
+
+      "mineral": [
+        {
+          "id": 1,
+          "name": "capacitor",
+          "created_at": "2024-11-13T15:22:46.000000Z",
+          "updated_at": "2024-11-13T15:22:46.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "microchip",
+          "created_at": "2024-11-13T15:22:47.000000Z",
+          "updated_at": "2024-11-13T15:22:47.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "array",
+          "created_at": "2024-11-13T15:22:48.000000Z",
+          "updated_at": "2024-11-13T15:22:48.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": 2,
+          "name": "Beahan - Hirthe",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "008 Roy Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:07.000000Z",
+          "updated_at": "2024-11-13T15:47:07.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "Kiehn - Senger",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "2578 Justice Vista",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:15.000000Z",
+          "updated_at": "2024-11-13T15:47:15.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "Halvorson Inc",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "7673 Kuvalis Drives",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:16.000000Z",
+          "updated_at": "2024-11-13T15:47:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "Will, Toy and Kerluke",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "8549 Garret Overpass",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:17.000000Z",
+          "updated_at": "2024-11-13T15:47:17.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 1,
+          "name": "generation_polarised_ergonomic.mlp",
+          "extension": "pdf",
+          "link": "documents/documents/bo6wi6bww5iNg8FmmCeJnDuYpSx71L8Bmfcg0uIq.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:32:41.000000Z",
+          "updated_at": "2024-11-13T15:32:41.000000Z"
+        },
+        {
+          "id": 2,
+          "name": "run_walk_fantastic.spc",
+          "extension": "pdf",
+          "link": "documents/documents/s3zZ66QxQ9Q7xTmVGhBLaTgqUXUb5CF3fTS0UOge.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:40:18.000000Z",
+          "updated_at": "2024-11-13T15:40:18.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "software_accountability_maryland.xpl",
+          "extension": "pdf",
+          "link": "documents/documents/a0bUNxOGI9q8CShv1NrTU1LVynhfxTrpLa7xMVoQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:42:28.000000Z",
+          "updated_at": "2024-11-13T15:42:28.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "progressive.qt",
+          "extension": "pdf",
+          "link": "documents/documents/rkI7mtaV7vMVopYUBGzvVkoXNuhb8uixIeTZn0YB.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:44:16.000000Z",
+          "updated_at": "2024-11-13T15:44:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "vermont_unions.m1v",
+          "extension": "pdf",
+          "link": "documents/documents/2zPUbdj8qh2LiRqVGAJ8XUdOQC7O2JgyqAZT54SI.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:45:19.000000Z",
+          "updated_at": "2024-11-13T15:45:19.000000Z"
+        },
+        {
+          "id": 6,
+          "name": "plastic_account.grxml",
+          "extension": "pdf",
+          "link": "documents/documents/sujpHjLgQsIdtqLmE2u42sW1QO3oxXuOgW1DgBxQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:46:06.000000Z",
+          "updated_at": "2024-11-13T15:46:06.000000Z"
+        },
+        {
+          "id": 7,
+          "name": "assistant.gca",
+          "extension": "pdf",
+          "link": "documents/documents/ADfjtWa4UmhQR7MCMConlgOuZaP9Ipsl8QRxnx9Z.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": 1,
+          "created_at": "2024-11-13T15:46:24.000000Z",
+          "updated_at": "2024-11-13T15:46:24.000000Z"
+        }
+      ],
+      "ceo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cfo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cto": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Skiles - Grimes",
+      "country": "Lebanon",
+      "rc_number": null,
+      "ceo_id": 1,
+      "cto_id": 1,
+      "cfo_id": 1,
+      "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+      "parent_id": null,
+      "address": "74188 Shakira Inlet",
+      "image": "http://placeimg.com/640/480/nature",
+      "created_at": "2024-11-13T15:28:01.000000Z",
+      "updated_at": "2024-11-13T15:28:01.000000Z",
+      "parent": null,
+      "mineral": [
+        {
+          "id": 1,
+          "name": "capacitor",
+          "created_at": "2024-11-13T15:22:46.000000Z",
+          "updated_at": "2024-11-13T15:22:46.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "microchip",
+          "created_at": "2024-11-13T15:22:47.000000Z",
+          "updated_at": "2024-11-13T15:22:47.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "array",
+          "created_at": "2024-11-13T15:22:48.000000Z",
+          "updated_at": "2024-11-13T15:22:48.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": 2,
+          "name": "Beahan - Hirthe",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "008 Roy Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:07.000000Z",
+          "updated_at": "2024-11-13T15:47:07.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "Kiehn - Senger",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "2578 Justice Vista",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:15.000000Z",
+          "updated_at": "2024-11-13T15:47:15.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "Halvorson Inc",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "7673 Kuvalis Drives",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:16.000000Z",
+          "updated_at": "2024-11-13T15:47:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "Will, Toy and Kerluke",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "8549 Garret Overpass",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:17.000000Z",
+          "updated_at": "2024-11-13T15:47:17.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 1,
+          "name": "generation_polarised_ergonomic.mlp",
+          "extension": "pdf",
+          "link": "documents/documents/bo6wi6bww5iNg8FmmCeJnDuYpSx71L8Bmfcg0uIq.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:32:41.000000Z",
+          "updated_at": "2024-11-13T15:32:41.000000Z"
+        },
+        {
+          "id": 2,
+          "name": "run_walk_fantastic.spc",
+          "extension": "pdf",
+          "link": "documents/documents/s3zZ66QxQ9Q7xTmVGhBLaTgqUXUb5CF3fTS0UOge.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:40:18.000000Z",
+          "updated_at": "2024-11-13T15:40:18.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "software_accountability_maryland.xpl",
+          "extension": "pdf",
+          "link": "documents/documents/a0bUNxOGI9q8CShv1NrTU1LVynhfxTrpLa7xMVoQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:42:28.000000Z",
+          "updated_at": "2024-11-13T15:42:28.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "progressive.qt",
+          "extension": "pdf",
+          "link": "documents/documents/rkI7mtaV7vMVopYUBGzvVkoXNuhb8uixIeTZn0YB.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:44:16.000000Z",
+          "updated_at": "2024-11-13T15:44:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "vermont_unions.m1v",
+          "extension": "pdf",
+          "link": "documents/documents/2zPUbdj8qh2LiRqVGAJ8XUdOQC7O2JgyqAZT54SI.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:45:19.000000Z",
+          "updated_at": "2024-11-13T15:45:19.000000Z"
+        },
+        {
+          "id": 6,
+          "name": "plastic_account.grxml",
+          "extension": "pdf",
+          "link": "documents/documents/sujpHjLgQsIdtqLmE2u42sW1QO3oxXuOgW1DgBxQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:46:06.000000Z",
+          "updated_at": "2024-11-13T15:46:06.000000Z"
+        },
+        {
+          "id": 7,
+          "name": "assistant.gca",
+          "extension": "pdf",
+          "link": "documents/documents/ADfjtWa4UmhQR7MCMConlgOuZaP9Ipsl8QRxnx9Z.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": 1,
+          "created_at": "2024-11-13T15:46:24.000000Z",
+          "updated_at": "2024-11-13T15:46:24.000000Z"
+        }
+      ],
+      "ceo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cfo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cto": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Skiles - Grimes",
+      "country": "Lebanon",
+      "rc_number": null,
+      "ceo_id": 1,
+      "cto_id": 1,
+      "cfo_id": 1,
+      "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+      "parent_id": null,
+      "address": "74188 Shakira Inlet",
+      "image": "http://placeimg.com/640/480/nature",
+      "created_at": "2024-11-13T15:28:01.000000Z",
+      "updated_at": "2024-11-13T15:28:01.000000Z",
+      "parent": null,
+      "mineral": [
+        {
+          "id": 1,
+          "name": "capacitor",
+          "created_at": "2024-11-13T15:22:46.000000Z",
+          "updated_at": "2024-11-13T15:22:46.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "microchip",
+          "created_at": "2024-11-13T15:22:47.000000Z",
+          "updated_at": "2024-11-13T15:22:47.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "array",
+          "created_at": "2024-11-13T15:22:48.000000Z",
+          "updated_at": "2024-11-13T15:22:48.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": 2,
+          "name": "Beahan - Hirthe",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "008 Roy Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:07.000000Z",
+          "updated_at": "2024-11-13T15:47:07.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "Kiehn - Senger",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "2578 Justice Vista",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:15.000000Z",
+          "updated_at": "2024-11-13T15:47:15.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "Halvorson Inc",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "7673 Kuvalis Drives",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:16.000000Z",
+          "updated_at": "2024-11-13T15:47:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "Will, Toy and Kerluke",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "8549 Garret Overpass",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:17.000000Z",
+          "updated_at": "2024-11-13T15:47:17.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 1,
+          "name": "generation_polarised_ergonomic.mlp",
+          "extension": "pdf",
+          "link": "documents/documents/bo6wi6bww5iNg8FmmCeJnDuYpSx71L8Bmfcg0uIq.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:32:41.000000Z",
+          "updated_at": "2024-11-13T15:32:41.000000Z"
+        },
+        {
+          "id": 2,
+          "name": "run_walk_fantastic.spc",
+          "extension": "pdf",
+          "link": "documents/documents/s3zZ66QxQ9Q7xTmVGhBLaTgqUXUb5CF3fTS0UOge.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:40:18.000000Z",
+          "updated_at": "2024-11-13T15:40:18.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "software_accountability_maryland.xpl",
+          "extension": "pdf",
+          "link": "documents/documents/a0bUNxOGI9q8CShv1NrTU1LVynhfxTrpLa7xMVoQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:42:28.000000Z",
+          "updated_at": "2024-11-13T15:42:28.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "progressive.qt",
+          "extension": "pdf",
+          "link": "documents/documents/rkI7mtaV7vMVopYUBGzvVkoXNuhb8uixIeTZn0YB.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:44:16.000000Z",
+          "updated_at": "2024-11-13T15:44:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "vermont_unions.m1v",
+          "extension": "pdf",
+          "link": "documents/documents/2zPUbdj8qh2LiRqVGAJ8XUdOQC7O2JgyqAZT54SI.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:45:19.000000Z",
+          "updated_at": "2024-11-13T15:45:19.000000Z"
+        },
+        {
+          "id": 6,
+          "name": "plastic_account.grxml",
+          "extension": "pdf",
+          "link": "documents/documents/sujpHjLgQsIdtqLmE2u42sW1QO3oxXuOgW1DgBxQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:46:06.000000Z",
+          "updated_at": "2024-11-13T15:46:06.000000Z"
+        },
+        {
+          "id": 7,
+          "name": "assistant.gca",
+          "extension": "pdf",
+          "link": "documents/documents/ADfjtWa4UmhQR7MCMConlgOuZaP9Ipsl8QRxnx9Z.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": 1,
+          "created_at": "2024-11-13T15:46:24.000000Z",
+          "updated_at": "2024-11-13T15:46:24.000000Z"
+        }
+      ],
+      "ceo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cfo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cto": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Skiles - Grimes",
+      "country": "Lebanon",
+      "rc_number": null,
+      "ceo_id": 1,
+      "cto_id": 1,
+      "cfo_id": 1,
+      "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+      "parent_id": null,
+      "address": "74188 Shakira Inlet",
+      "image": "http://placeimg.com/640/480/nature",
+      "created_at": "2024-11-13T15:28:01.000000Z",
+      "updated_at": "2024-11-13T15:28:01.000000Z",
+      "parent": null,
+      "mineral": [
+        {
+          "id": 1,
+          "name": "capacitor",
+          "created_at": "2024-11-13T15:22:46.000000Z",
+          "updated_at": "2024-11-13T15:22:46.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "microchip",
+          "created_at": "2024-11-13T15:22:47.000000Z",
+          "updated_at": "2024-11-13T15:22:47.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "array",
+          "created_at": "2024-11-13T15:22:48.000000Z",
+          "updated_at": "2024-11-13T15:22:48.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": 2,
+          "name": "Beahan - Hirthe",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "008 Roy Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:07.000000Z",
+          "updated_at": "2024-11-13T15:47:07.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "Kiehn - Senger",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "2578 Justice Vista",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:15.000000Z",
+          "updated_at": "2024-11-13T15:47:15.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "Halvorson Inc",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "7673 Kuvalis Drives",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:16.000000Z",
+          "updated_at": "2024-11-13T15:47:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "Will, Toy and Kerluke",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "8549 Garret Overpass",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:17.000000Z",
+          "updated_at": "2024-11-13T15:47:17.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 1,
+          "name": "generation_polarised_ergonomic.mlp",
+          "extension": "pdf",
+          "link": "documents/documents/bo6wi6bww5iNg8FmmCeJnDuYpSx71L8Bmfcg0uIq.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:32:41.000000Z",
+          "updated_at": "2024-11-13T15:32:41.000000Z"
+        },
+        {
+          "id": 2,
+          "name": "run_walk_fantastic.spc",
+          "extension": "pdf",
+          "link": "documents/documents/s3zZ66QxQ9Q7xTmVGhBLaTgqUXUb5CF3fTS0UOge.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:40:18.000000Z",
+          "updated_at": "2024-11-13T15:40:18.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "software_accountability_maryland.xpl",
+          "extension": "pdf",
+          "link": "documents/documents/a0bUNxOGI9q8CShv1NrTU1LVynhfxTrpLa7xMVoQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:42:28.000000Z",
+          "updated_at": "2024-11-13T15:42:28.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "progressive.qt",
+          "extension": "pdf",
+          "link": "documents/documents/rkI7mtaV7vMVopYUBGzvVkoXNuhb8uixIeTZn0YB.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:44:16.000000Z",
+          "updated_at": "2024-11-13T15:44:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "vermont_unions.m1v",
+          "extension": "pdf",
+          "link": "documents/documents/2zPUbdj8qh2LiRqVGAJ8XUdOQC7O2JgyqAZT54SI.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:45:19.000000Z",
+          "updated_at": "2024-11-13T15:45:19.000000Z"
+        },
+        {
+          "id": 6,
+          "name": "plastic_account.grxml",
+          "extension": "pdf",
+          "link": "documents/documents/sujpHjLgQsIdtqLmE2u42sW1QO3oxXuOgW1DgBxQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:46:06.000000Z",
+          "updated_at": "2024-11-13T15:46:06.000000Z"
+        },
+        {
+          "id": 7,
+          "name": "assistant.gca",
+          "extension": "pdf",
+          "link": "documents/documents/ADfjtWa4UmhQR7MCMConlgOuZaP9Ipsl8QRxnx9Z.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": 1,
+          "created_at": "2024-11-13T15:46:24.000000Z",
+          "updated_at": "2024-11-13T15:46:24.000000Z"
+        }
+      ],
+      "ceo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cfo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cto": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Skiles - Grimes",
+      "country": "Lebanon",
+      "rc_number": null,
+      "ceo_id": 1,
+      "cto_id": 1,
+      "cfo_id": 1,
+      "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+      "parent_id": null,
+      "address": "74188 Shakira Inlet",
+      "image": "http://placeimg.com/640/480/nature",
+      "created_at": "2024-11-13T15:28:01.000000Z",
+      "updated_at": "2024-11-13T15:28:01.000000Z",
+      "parent": null,
+      "mineral": [
+        {
+          "id": 1,
+          "name": "capacitor",
+          "created_at": "2024-11-13T15:22:46.000000Z",
+          "updated_at": "2024-11-13T15:22:46.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "microchip",
+          "created_at": "2024-11-13T15:22:47.000000Z",
+          "updated_at": "2024-11-13T15:22:47.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "array",
+          "created_at": "2024-11-13T15:22:48.000000Z",
+          "updated_at": "2024-11-13T15:22:48.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": 2,
+          "name": "Beahan - Hirthe",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "008 Roy Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:07.000000Z",
+          "updated_at": "2024-11-13T15:47:07.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "Kiehn - Senger",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "2578 Justice Vista",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:15.000000Z",
+          "updated_at": "2024-11-13T15:47:15.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "Halvorson Inc",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "7673 Kuvalis Drives",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:16.000000Z",
+          "updated_at": "2024-11-13T15:47:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "Will, Toy and Kerluke",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "8549 Garret Overpass",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:17.000000Z",
+          "updated_at": "2024-11-13T15:47:17.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 1,
+          "name": "generation_polarised_ergonomic.mlp",
+          "extension": "pdf",
+          "link": "documents/documents/bo6wi6bww5iNg8FmmCeJnDuYpSx71L8Bmfcg0uIq.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:32:41.000000Z",
+          "updated_at": "2024-11-13T15:32:41.000000Z"
+        },
+        {
+          "id": 2,
+          "name": "run_walk_fantastic.spc",
+          "extension": "pdf",
+          "link": "documents/documents/s3zZ66QxQ9Q7xTmVGhBLaTgqUXUb5CF3fTS0UOge.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:40:18.000000Z",
+          "updated_at": "2024-11-13T15:40:18.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "software_accountability_maryland.xpl",
+          "extension": "pdf",
+          "link": "documents/documents/a0bUNxOGI9q8CShv1NrTU1LVynhfxTrpLa7xMVoQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:42:28.000000Z",
+          "updated_at": "2024-11-13T15:42:28.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "progressive.qt",
+          "extension": "pdf",
+          "link": "documents/documents/rkI7mtaV7vMVopYUBGzvVkoXNuhb8uixIeTZn0YB.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:44:16.000000Z",
+          "updated_at": "2024-11-13T15:44:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "vermont_unions.m1v",
+          "extension": "pdf",
+          "link": "documents/documents/2zPUbdj8qh2LiRqVGAJ8XUdOQC7O2JgyqAZT54SI.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:45:19.000000Z",
+          "updated_at": "2024-11-13T15:45:19.000000Z"
+        },
+        {
+          "id": 6,
+          "name": "plastic_account.grxml",
+          "extension": "pdf",
+          "link": "documents/documents/sujpHjLgQsIdtqLmE2u42sW1QO3oxXuOgW1DgBxQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:46:06.000000Z",
+          "updated_at": "2024-11-13T15:46:06.000000Z"
+        },
+        {
+          "id": 7,
+          "name": "assistant.gca",
+          "extension": "pdf",
+          "link": "documents/documents/ADfjtWa4UmhQR7MCMConlgOuZaP9Ipsl8QRxnx9Z.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": 1,
+          "created_at": "2024-11-13T15:46:24.000000Z",
+          "updated_at": "2024-11-13T15:46:24.000000Z"
+        }
+      ],
+      "ceo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cfo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cto": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      }
+    },
+    {
+      "id": 1,
+      "name": "Skiles - Grimes",
+      "country": "Lebanon",
+      "rc_number": null,
+      "ceo_id": 1,
+      "cto_id": 1,
+      "cfo_id": 1,
+      "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+      "parent_id": null,
+      "address": "74188 Shakira Inlet",
+      "image": "http://placeimg.com/640/480/nature",
+      "created_at": "2024-11-13T15:28:01.000000Z",
+      "updated_at": "2024-11-13T15:28:01.000000Z",
+      "parent": null,
+      "mineral": [
+        {
+          "id": 1,
+          "name": "capacitor",
+          "created_at": "2024-11-13T15:22:46.000000Z",
+          "updated_at": "2024-11-13T15:22:46.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "microchip",
+          "created_at": "2024-11-13T15:22:47.000000Z",
+          "updated_at": "2024-11-13T15:22:47.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "array",
+          "created_at": "2024-11-13T15:22:48.000000Z",
+          "updated_at": "2024-11-13T15:22:48.000000Z",
+          "pivot": {
+            "company_id": 1,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "children": [
+        {
+          "id": 2,
+          "name": "Beahan - Hirthe",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "008 Roy Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:07.000000Z",
+          "updated_at": "2024-11-13T15:47:07.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "Kiehn - Senger",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "2578 Justice Vista",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:15.000000Z",
+          "updated_at": "2024-11-13T15:47:15.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "Halvorson Inc",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "7673 Kuvalis Drives",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:16.000000Z",
+          "updated_at": "2024-11-13T15:47:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "Will, Toy and Kerluke",
+          "country": "Lebanon",
+          "rc_number": null,
+          "ceo_id": 1,
+          "cto_id": 1,
+          "cfo_id": 1,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": 1,
+          "address": "8549 Garret Overpass",
+          "image": "http://placeimg.com/640/480/nature",
+          "created_at": "2024-11-13T15:47:17.000000Z",
+          "updated_at": "2024-11-13T15:47:17.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 1,
+          "name": "generation_polarised_ergonomic.mlp",
+          "extension": "pdf",
+          "link": "documents/documents/bo6wi6bww5iNg8FmmCeJnDuYpSx71L8Bmfcg0uIq.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:32:41.000000Z",
+          "updated_at": "2024-11-13T15:32:41.000000Z"
+        },
+        {
+          "id": 2,
+          "name": "run_walk_fantastic.spc",
+          "extension": "pdf",
+          "link": "documents/documents/s3zZ66QxQ9Q7xTmVGhBLaTgqUXUb5CF3fTS0UOge.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:40:18.000000Z",
+          "updated_at": "2024-11-13T15:40:18.000000Z"
+        },
+        {
+          "id": 3,
+          "name": "software_accountability_maryland.xpl",
+          "extension": "pdf",
+          "link": "documents/documents/a0bUNxOGI9q8CShv1NrTU1LVynhfxTrpLa7xMVoQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:42:28.000000Z",
+          "updated_at": "2024-11-13T15:42:28.000000Z"
+        },
+        {
+          "id": 4,
+          "name": "progressive.qt",
+          "extension": "pdf",
+          "link": "documents/documents/rkI7mtaV7vMVopYUBGzvVkoXNuhb8uixIeTZn0YB.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:44:16.000000Z",
+          "updated_at": "2024-11-13T15:44:16.000000Z"
+        },
+        {
+          "id": 5,
+          "name": "vermont_unions.m1v",
+          "extension": "pdf",
+          "link": "documents/documents/2zPUbdj8qh2LiRqVGAJ8XUdOQC7O2JgyqAZT54SI.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:45:19.000000Z",
+          "updated_at": "2024-11-13T15:45:19.000000Z"
+        },
+        {
+          "id": 6,
+          "name": "plastic_account.grxml",
+          "extension": "pdf",
+          "link": "documents/documents/sujpHjLgQsIdtqLmE2u42sW1QO3oxXuOgW1DgBxQ.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": null,
+          "created_at": "2024-11-13T15:46:06.000000Z",
+          "updated_at": "2024-11-13T15:46:06.000000Z"
+        },
+        {
+          "id": 7,
+          "name": "assistant.gca",
+          "extension": "pdf",
+          "link": "documents/documents/ADfjtWa4UmhQR7MCMConlgOuZaP9Ipsl8QRxnx9Z.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": 1,
+          "people_id": 1,
+          "mineral_id": 1,
+          "created_at": "2024-11-13T15:46:24.000000Z",
+          "updated_at": "2024-11-13T15:46:24.000000Z"
+        }
+      ],
+      "ceo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cfo": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      },
+      "cto": {
+        "id": 1,
+        "first_name": "Amelie",
+        "last_name": "program_intermediate_exclusive.aam",
+        "other_name": "infrastructures_even_keeled_steel.fst",
+        "location": "6884 Antonia Walk",
+        "country": "Lebanon",
+        "title": "Mr.",
+        "image": "http://placeimg.com/640/480/nature",
+        "created_at": "2024-11-13T15:22:55.000000Z",
+        "updated_at": "2024-11-13T15:22:55.000000Z"
+      }
+    }
+  ]
+}

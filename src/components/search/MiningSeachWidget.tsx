@@ -1,6 +1,7 @@
 import React from "react";
 import ellipse from "../../assets/images/ellipse.png";
 import location from "../../assets/images/location.png";
+import { useNavigate } from "react-router-dom";
 
 interface MiningSearchWidgetProps {
   mineralName: string;
@@ -17,6 +18,7 @@ const MiningSearchWidget: React.FC<MiningSearchWidgetProps> = ({
   docCount,
   mineral,
 }) => {
+  const navigates = useNavigate();
   return (
     <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <div className="flex gap-[10px] items-center">
@@ -40,7 +42,10 @@ const MiningSearchWidget: React.FC<MiningSearchWidgetProps> = ({
           </span>
         </div>
       </div>
-      <button className="mt-4  w-full py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]">
+      <button
+        className="mt-4  w-full py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]"
+        onClick={() => navigates("/mining-site")}
+      >
         View site location
       </button>
     </div>

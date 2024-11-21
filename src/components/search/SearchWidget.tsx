@@ -10,10 +10,23 @@ import PeopleSearchWidget from "./peopleSearch";
 interface SearchWidgetProps {
   title?: string;
   datas?: any;
+  miningSite?: any;
+  company?: any;
+  document?: any;
+  people?: any;
+  mineral?: any;
 }
 
-const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
-  // console.log(datas.data.cfo);
+const SearchWidget: React.FC<SearchWidgetProps> = ({
+  title,
+  datas,
+  miningSite,
+  company,
+  document,
+  people,
+  mineral,
+}) => {
+  //console.log(people);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || title || "Default Title";
@@ -29,8 +42,6 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
     })
   );
 
-  // console.log(ceoAndCfo);
-
   return (
     <div
       className={`w-full max-w-[1750px] flex flex-col gap-[40px] ${
@@ -44,7 +55,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
 
         <div className="flex flex-wrap gap-[24px]">
           {title === "Minerals" ? (
-            datas?.data.mineral.map((data: any, index: any) => (
+            mineral.data.map((data: any, index: any) => (
               <EachComponent
                 key={index}
                 mineralName={data.name}
@@ -54,7 +65,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               />
             ))
           ) : title === "People" ? (
-            ceoAndCfo.map((data: any, index: any) => (
+            people.data.map((data: any, index: any) => (
               <PeopleSearchWidget
                 mineralName={data.name}
                 countries={`${data.location}, ${data.country}`}
@@ -66,156 +77,45 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               />
             ))
           ) : title === "Mining Sites" ? (
-            <>
+            miningSite?.data.map((data: any, index: any) => (
               <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
+                mineralName={data.name}
+                countries={data.country}
                 miningCount={4}
-                mineral={"Maganeses"}
+                mineral={"Cobalt"}
                 docCount={1500}
               />
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />
-            </>
+            ))
           ) : title === "Documents" ? (
             <>
               <div className="xl:block hidden w-full">
-                <Maintable datas={datas} />
+                <Maintable datas={document} />
               </div>
               <div className="xl:hidden block w-full">
-                {datas.data.document &&
-                  datas?.data?.document.map((data: any, index: any) => (
+                {document.data.length > 0 &&
+                  document?.data?.map((data: any, index: any) => (
                     <DocumentSearchMobileWidget
                       mineralName={data.name}
                       countries={data.location}
                       miningCount={4}
                       mineral={"Maganese"}
                       docCount={5}
+                      type={data.type}
                       key={index}
                     />
                   ))}
               </div>
             </>
           ) : title === "Companies" ? (
-            <>
+            company?.data.map((data: any, index: any) => (
               <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
+                mineralName={data.name}
+                countries={data.country}
                 miningCount={4}
                 mineral={"Maganese"}
                 docCount={5}
               />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-            </>
+            ))
           ) : (
             title === "Subsidiaries" && (
               <>

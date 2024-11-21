@@ -1,0 +1,938 @@
+{
+  "success": true,
+  "message": "site fetched",
+  "data": [
+    {
+      "id": 7,
+      "name": "Runolfsdottir - Lemke",
+      "country": "[\"Ghana\",\"Barbados\"]",
+      "ceo_id": 2,
+      "cto_id": 2,
+      "cfo_id": 2,
+      "people_ids": null,
+      "parent_id": null,
+      "address": "7594 Breitenberg Center",
+      "image": "http://placeimg.com/640/480/nature",
+      "meta": "[\"Earum omnis voluptas sed quo ipsa ut et odio.\",\"Molestiae ut ut.\",\"Voluptas unde consectetur aut laboriosam.\",\"Blanditiis nihil iure sapiente ut dolorum praesentium maiores sapiente.\"]",
+      "other_data": "[{\"City\":\"Keelington\",\"read\":\"Rohanville\"}]",
+      "created_at": "2024-11-21T12:08:48.000000Z",
+      "updated_at": "2024-11-21T12:08:48.000000Z",
+      "parent": null,
+      "company": [
+        {
+          "id": 4,
+          "name": "Balistreri, Armstrong and Buckridge",
+          "country": "[\"Vanuatu\",\"El Salvador\"]",
+          "rc_number": "a",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": null,
+          "address": "04406 Bayer Crossroad",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Voluptatem eaque veritatis laudantium fuga.\",\"Rem quo ut.\",\"Est aut maiores voluptatem nesciunt consequatur quisquam facere nemo.\",\"Et quidem similique autem est.\"]",
+          "other_data": "[{\"City\":\"West Teagantown\",\"read\":\"Provo\"}]",
+          "created_at": "2024-11-21T12:01:41.000000Z",
+          "updated_at": "2024-11-21T12:01:41.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "company_id": 4
+          }
+        }
+      ],
+      "mineral": [
+        {
+          "id": 1,
+          "name": "circuit",
+          "country": "[\"Cocos (Keeling) Islands\",\"Latvia\"]",
+          "meta": "[\"Quia sunt quia.\",\"Quia voluptas atque aut.\",\"Velit officiis voluptas quasi debitis voluptatum.\",\"Optio asperiores omnis dicta fuga et.\"]",
+          "other_data": "[{\"City\":\"North Erik\",\"read\":\"East Ruthshire\"}]",
+          "created_at": "2024-11-21T12:00:18.000000Z",
+          "updated_at": "2024-11-21T12:00:18.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "application",
+          "country": "[\"Montenegro\",\"Mayotte\"]",
+          "meta": "[\"Veritatis molestias ut ratione et ut qui et.\",\"Quis exercitationem sed.\",\"Accusantium minima corporis minus officiis ducimus incidunt error deleniti.\",\"Facere eum vero.\"]",
+          "other_data": "[{\"City\":\"West Crystel\",\"read\":\"Rancho Cordova\"}]",
+          "created_at": "2024-11-21T12:00:19.000000Z",
+          "updated_at": "2024-11-21T12:00:19.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "card",
+          "country": "[\"Sierra Leone\",\"Eritrea\"]",
+          "meta": "[\"Tempora et pariatur.\",\"Autem provident tempora dicta.\",\"Amet a tenetur quis.\",\"Quos sit voluptatum.\"]",
+          "other_data": "[{\"City\":\"South Flo\",\"read\":\"Middletown\"}]",
+          "created_at": "2024-11-21T12:00:20.000000Z",
+          "updated_at": "2024-11-21T12:00:20.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "subsidiary": [
+        {
+          "id": 8,
+          "name": "Murazik Inc",
+          "country": "[\"Yemen\",\"San Marino\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "9019 Jenkins Extension",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Adipisci soluta quibusdam delectus porro.\",\"Iure explicabo accusamus enim ut ullam velit autem aut.\",\"Exercitationem occaecati quo non saepe temporibus possimus veniam.\",\"Aperiam odio quisquam illum dicta ex iste ea perferendis.\"]",
+          "other_data": "[{\"City\":\"North Kamren\",\"read\":\"Monaport\"}]",
+          "created_at": "2024-11-21T13:24:04.000000Z",
+          "updated_at": "2024-11-21T13:24:04.000000Z"
+        },
+        {
+          "id": 9,
+          "name": "Abshire - Klocko",
+          "country": "[\"Honduras\",\"Mozambique\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "07929 Kenna Prairie",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Nobis deleniti quibusdam sint tempore ipsam suscipit.\",\"Laboriosam quae vero suscipit iusto quia totam maiores occaecati illo.\",\"Ipsum earum occaecati dolores alias quod minima praesentium distinctio molestias.\",\"Cupiditate voluptas sit rerum nostrum.\"]",
+          "other_data": "[{\"City\":\"North Taryn\",\"read\":\"Mafaldafort\"}]",
+          "created_at": "2024-11-21T13:24:08.000000Z",
+          "updated_at": "2024-11-21T13:24:08.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 19,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "pdf",
+          "link": "documents/documents/OllJXJlA2EzmUXfjg1S4eGV6igc4Uc1RMp8ltdSk.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:18.000000Z",
+          "updated_at": "2024-11-21T13:25:18.000000Z"
+        },
+        {
+          "id": 20,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "mp4",
+          "link": "documents/documents/His3R1tyGxHEMRikX0zuKUA8wfEnaRNvShZZPEOY.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:19.000000Z",
+          "updated_at": "2024-11-21T13:25:19.000000Z"
+        },
+        {
+          "id": 21,
+          "name": "human_bus_logistical.acutc",
+          "extension": "pdf",
+          "link": "documents/documents/fJw0eVMdSl5kw5azkJSkshof8l5q1zWaoHfkHoXl.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 22,
+          "name": "human_bus_logistical.acutc",
+          "extension": "mp4",
+          "link": "documents/documents/anhIhGOgSrpUDbh7tNTnqYbvGW1dP4e7JfJQX1AM.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 23,
+          "name": "impactful.bdoc",
+          "extension": "pdf",
+          "link": "documents/documents/u6yqOk5Kgom72FL5IFZjXHbmWZSG0SyczTuuiOb6.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        },
+        {
+          "id": 24,
+          "name": "impactful.bdoc",
+          "extension": "mp4",
+          "link": "documents/documents/ClMjS54nOmwnCZI4JluJ4w40eTWymIEOnaD6Vs0d.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        }
+      ],
+      "people": [
+        {
+          "id": 2,
+          "first_name": "Bud",
+          "last_name": "Melvina",
+          "other_name": "Austin",
+          "location": "68472 Stanton Mount",
+          "country": "[\"South Georgia and the South Sandwich Islands\",\"Bermuda\"]",
+          "title": "Miss",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Facilis vitae omnis.\",\"Rerum nulla ut accusamus molestiae.\",\"Sit accusamus et possimus ea aliquid itaque eos doloremque excepturi.\",\"Ut culpa vitae.\"]",
+          "other_data": "[{\"City\":\"Olsonview\",\"read\":\"New Sammy\"}]",
+          "created_at": "2024-11-21T12:00:29.000000Z",
+          "updated_at": "2024-11-21T12:00:29.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "people_id": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Runolfsdottir - Lemke",
+      "country": "[\"Ghana\",\"Barbados\"]",
+      "ceo_id": 2,
+      "cto_id": 2,
+      "cfo_id": 2,
+      "people_ids": null,
+      "parent_id": null,
+      "address": "7594 Breitenberg Center",
+      "image": "http://placeimg.com/640/480/nature",
+      "meta": "[\"Earum omnis voluptas sed quo ipsa ut et odio.\",\"Molestiae ut ut.\",\"Voluptas unde consectetur aut laboriosam.\",\"Blanditiis nihil iure sapiente ut dolorum praesentium maiores sapiente.\"]",
+      "other_data": "[{\"City\":\"Keelington\",\"read\":\"Rohanville\"}]",
+      "created_at": "2024-11-21T12:08:48.000000Z",
+      "updated_at": "2024-11-21T12:08:48.000000Z",
+      "parent": null,
+      "company": [
+        {
+          "id": 4,
+          "name": "Balistreri, Armstrong and Buckridge",
+          "country": "[\"Vanuatu\",\"El Salvador\"]",
+          "rc_number": "a",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": null,
+          "address": "04406 Bayer Crossroad",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Voluptatem eaque veritatis laudantium fuga.\",\"Rem quo ut.\",\"Est aut maiores voluptatem nesciunt consequatur quisquam facere nemo.\",\"Et quidem similique autem est.\"]",
+          "other_data": "[{\"City\":\"West Teagantown\",\"read\":\"Provo\"}]",
+          "created_at": "2024-11-21T12:01:41.000000Z",
+          "updated_at": "2024-11-21T12:01:41.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "company_id": 4
+          }
+        }
+      ],
+      "mineral": [
+        {
+          "id": 1,
+          "name": "circuit",
+          "country": "[\"Cocos (Keeling) Islands\",\"Latvia\"]",
+          "meta": "[\"Quia sunt quia.\",\"Quia voluptas atque aut.\",\"Velit officiis voluptas quasi debitis voluptatum.\",\"Optio asperiores omnis dicta fuga et.\"]",
+          "other_data": "[{\"City\":\"North Erik\",\"read\":\"East Ruthshire\"}]",
+          "created_at": "2024-11-21T12:00:18.000000Z",
+          "updated_at": "2024-11-21T12:00:18.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "application",
+          "country": "[\"Montenegro\",\"Mayotte\"]",
+          "meta": "[\"Veritatis molestias ut ratione et ut qui et.\",\"Quis exercitationem sed.\",\"Accusantium minima corporis minus officiis ducimus incidunt error deleniti.\",\"Facere eum vero.\"]",
+          "other_data": "[{\"City\":\"West Crystel\",\"read\":\"Rancho Cordova\"}]",
+          "created_at": "2024-11-21T12:00:19.000000Z",
+          "updated_at": "2024-11-21T12:00:19.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "card",
+          "country": "[\"Sierra Leone\",\"Eritrea\"]",
+          "meta": "[\"Tempora et pariatur.\",\"Autem provident tempora dicta.\",\"Amet a tenetur quis.\",\"Quos sit voluptatum.\"]",
+          "other_data": "[{\"City\":\"South Flo\",\"read\":\"Middletown\"}]",
+          "created_at": "2024-11-21T12:00:20.000000Z",
+          "updated_at": "2024-11-21T12:00:20.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "subsidiary": [
+        {
+          "id": 8,
+          "name": "Murazik Inc",
+          "country": "[\"Yemen\",\"San Marino\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "9019 Jenkins Extension",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Adipisci soluta quibusdam delectus porro.\",\"Iure explicabo accusamus enim ut ullam velit autem aut.\",\"Exercitationem occaecati quo non saepe temporibus possimus veniam.\",\"Aperiam odio quisquam illum dicta ex iste ea perferendis.\"]",
+          "other_data": "[{\"City\":\"North Kamren\",\"read\":\"Monaport\"}]",
+          "created_at": "2024-11-21T13:24:04.000000Z",
+          "updated_at": "2024-11-21T13:24:04.000000Z"
+        },
+        {
+          "id": 9,
+          "name": "Abshire - Klocko",
+          "country": "[\"Honduras\",\"Mozambique\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "07929 Kenna Prairie",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Nobis deleniti quibusdam sint tempore ipsam suscipit.\",\"Laboriosam quae vero suscipit iusto quia totam maiores occaecati illo.\",\"Ipsum earum occaecati dolores alias quod minima praesentium distinctio molestias.\",\"Cupiditate voluptas sit rerum nostrum.\"]",
+          "other_data": "[{\"City\":\"North Taryn\",\"read\":\"Mafaldafort\"}]",
+          "created_at": "2024-11-21T13:24:08.000000Z",
+          "updated_at": "2024-11-21T13:24:08.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 19,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "pdf",
+          "link": "documents/documents/OllJXJlA2EzmUXfjg1S4eGV6igc4Uc1RMp8ltdSk.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:18.000000Z",
+          "updated_at": "2024-11-21T13:25:18.000000Z"
+        },
+        {
+          "id": 20,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "mp4",
+          "link": "documents/documents/His3R1tyGxHEMRikX0zuKUA8wfEnaRNvShZZPEOY.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:19.000000Z",
+          "updated_at": "2024-11-21T13:25:19.000000Z"
+        },
+        {
+          "id": 21,
+          "name": "human_bus_logistical.acutc",
+          "extension": "pdf",
+          "link": "documents/documents/fJw0eVMdSl5kw5azkJSkshof8l5q1zWaoHfkHoXl.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 22,
+          "name": "human_bus_logistical.acutc",
+          "extension": "mp4",
+          "link": "documents/documents/anhIhGOgSrpUDbh7tNTnqYbvGW1dP4e7JfJQX1AM.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 23,
+          "name": "impactful.bdoc",
+          "extension": "pdf",
+          "link": "documents/documents/u6yqOk5Kgom72FL5IFZjXHbmWZSG0SyczTuuiOb6.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        },
+        {
+          "id": 24,
+          "name": "impactful.bdoc",
+          "extension": "mp4",
+          "link": "documents/documents/ClMjS54nOmwnCZI4JluJ4w40eTWymIEOnaD6Vs0d.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        }
+      ],
+      "people": [
+        {
+          "id": 2,
+          "first_name": "Bud",
+          "last_name": "Melvina",
+          "other_name": "Austin",
+          "location": "68472 Stanton Mount",
+          "country": "[\"South Georgia and the South Sandwich Islands\",\"Bermuda\"]",
+          "title": "Miss",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Facilis vitae omnis.\",\"Rerum nulla ut accusamus molestiae.\",\"Sit accusamus et possimus ea aliquid itaque eos doloremque excepturi.\",\"Ut culpa vitae.\"]",
+          "other_data": "[{\"City\":\"Olsonview\",\"read\":\"New Sammy\"}]",
+          "created_at": "2024-11-21T12:00:29.000000Z",
+          "updated_at": "2024-11-21T12:00:29.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "people_id": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Runolfsdottir - Lemke",
+      "country": "[\"Ghana\",\"Barbados\"]",
+      "ceo_id": 2,
+      "cto_id": 2,
+      "cfo_id": 2,
+      "people_ids": null,
+      "parent_id": null,
+      "address": "7594 Breitenberg Center",
+      "image": "http://placeimg.com/640/480/nature",
+      "meta": "[\"Earum omnis voluptas sed quo ipsa ut et odio.\",\"Molestiae ut ut.\",\"Voluptas unde consectetur aut laboriosam.\",\"Blanditiis nihil iure sapiente ut dolorum praesentium maiores sapiente.\"]",
+      "other_data": "[{\"City\":\"Keelington\",\"read\":\"Rohanville\"}]",
+      "created_at": "2024-11-21T12:08:48.000000Z",
+      "updated_at": "2024-11-21T12:08:48.000000Z",
+      "parent": null,
+      "company": [
+        {
+          "id": 4,
+          "name": "Balistreri, Armstrong and Buckridge",
+          "country": "[\"Vanuatu\",\"El Salvador\"]",
+          "rc_number": "a",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": null,
+          "address": "04406 Bayer Crossroad",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Voluptatem eaque veritatis laudantium fuga.\",\"Rem quo ut.\",\"Est aut maiores voluptatem nesciunt consequatur quisquam facere nemo.\",\"Et quidem similique autem est.\"]",
+          "other_data": "[{\"City\":\"West Teagantown\",\"read\":\"Provo\"}]",
+          "created_at": "2024-11-21T12:01:41.000000Z",
+          "updated_at": "2024-11-21T12:01:41.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "company_id": 4
+          }
+        }
+      ],
+      "mineral": [
+        {
+          "id": 1,
+          "name": "circuit",
+          "country": "[\"Cocos (Keeling) Islands\",\"Latvia\"]",
+          "meta": "[\"Quia sunt quia.\",\"Quia voluptas atque aut.\",\"Velit officiis voluptas quasi debitis voluptatum.\",\"Optio asperiores omnis dicta fuga et.\"]",
+          "other_data": "[{\"City\":\"North Erik\",\"read\":\"East Ruthshire\"}]",
+          "created_at": "2024-11-21T12:00:18.000000Z",
+          "updated_at": "2024-11-21T12:00:18.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "application",
+          "country": "[\"Montenegro\",\"Mayotte\"]",
+          "meta": "[\"Veritatis molestias ut ratione et ut qui et.\",\"Quis exercitationem sed.\",\"Accusantium minima corporis minus officiis ducimus incidunt error deleniti.\",\"Facere eum vero.\"]",
+          "other_data": "[{\"City\":\"West Crystel\",\"read\":\"Rancho Cordova\"}]",
+          "created_at": "2024-11-21T12:00:19.000000Z",
+          "updated_at": "2024-11-21T12:00:19.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "card",
+          "country": "[\"Sierra Leone\",\"Eritrea\"]",
+          "meta": "[\"Tempora et pariatur.\",\"Autem provident tempora dicta.\",\"Amet a tenetur quis.\",\"Quos sit voluptatum.\"]",
+          "other_data": "[{\"City\":\"South Flo\",\"read\":\"Middletown\"}]",
+          "created_at": "2024-11-21T12:00:20.000000Z",
+          "updated_at": "2024-11-21T12:00:20.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "subsidiary": [
+        {
+          "id": 8,
+          "name": "Murazik Inc",
+          "country": "[\"Yemen\",\"San Marino\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "9019 Jenkins Extension",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Adipisci soluta quibusdam delectus porro.\",\"Iure explicabo accusamus enim ut ullam velit autem aut.\",\"Exercitationem occaecati quo non saepe temporibus possimus veniam.\",\"Aperiam odio quisquam illum dicta ex iste ea perferendis.\"]",
+          "other_data": "[{\"City\":\"North Kamren\",\"read\":\"Monaport\"}]",
+          "created_at": "2024-11-21T13:24:04.000000Z",
+          "updated_at": "2024-11-21T13:24:04.000000Z"
+        },
+        {
+          "id": 9,
+          "name": "Abshire - Klocko",
+          "country": "[\"Honduras\",\"Mozambique\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "07929 Kenna Prairie",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Nobis deleniti quibusdam sint tempore ipsam suscipit.\",\"Laboriosam quae vero suscipit iusto quia totam maiores occaecati illo.\",\"Ipsum earum occaecati dolores alias quod minima praesentium distinctio molestias.\",\"Cupiditate voluptas sit rerum nostrum.\"]",
+          "other_data": "[{\"City\":\"North Taryn\",\"read\":\"Mafaldafort\"}]",
+          "created_at": "2024-11-21T13:24:08.000000Z",
+          "updated_at": "2024-11-21T13:24:08.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 19,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "pdf",
+          "link": "documents/documents/OllJXJlA2EzmUXfjg1S4eGV6igc4Uc1RMp8ltdSk.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:18.000000Z",
+          "updated_at": "2024-11-21T13:25:18.000000Z"
+        },
+        {
+          "id": 20,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "mp4",
+          "link": "documents/documents/His3R1tyGxHEMRikX0zuKUA8wfEnaRNvShZZPEOY.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:19.000000Z",
+          "updated_at": "2024-11-21T13:25:19.000000Z"
+        },
+        {
+          "id": 21,
+          "name": "human_bus_logistical.acutc",
+          "extension": "pdf",
+          "link": "documents/documents/fJw0eVMdSl5kw5azkJSkshof8l5q1zWaoHfkHoXl.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 22,
+          "name": "human_bus_logistical.acutc",
+          "extension": "mp4",
+          "link": "documents/documents/anhIhGOgSrpUDbh7tNTnqYbvGW1dP4e7JfJQX1AM.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 23,
+          "name": "impactful.bdoc",
+          "extension": "pdf",
+          "link": "documents/documents/u6yqOk5Kgom72FL5IFZjXHbmWZSG0SyczTuuiOb6.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        },
+        {
+          "id": 24,
+          "name": "impactful.bdoc",
+          "extension": "mp4",
+          "link": "documents/documents/ClMjS54nOmwnCZI4JluJ4w40eTWymIEOnaD6Vs0d.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        }
+      ],
+      "people": [
+        {
+          "id": 2,
+          "first_name": "Bud",
+          "last_name": "Melvina",
+          "other_name": "Austin",
+          "location": "68472 Stanton Mount",
+          "country": "[\"South Georgia and the South Sandwich Islands\",\"Bermuda\"]",
+          "title": "Miss",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Facilis vitae omnis.\",\"Rerum nulla ut accusamus molestiae.\",\"Sit accusamus et possimus ea aliquid itaque eos doloremque excepturi.\",\"Ut culpa vitae.\"]",
+          "other_data": "[{\"City\":\"Olsonview\",\"read\":\"New Sammy\"}]",
+          "created_at": "2024-11-21T12:00:29.000000Z",
+          "updated_at": "2024-11-21T12:00:29.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "people_id": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Runolfsdottir - Lemke",
+      "country": "[\"Ghana\",\"Barbados\"]",
+      "ceo_id": 2,
+      "cto_id": 2,
+      "cfo_id": 2,
+      "people_ids": null,
+      "parent_id": null,
+      "address": "7594 Breitenberg Center",
+      "image": "http://placeimg.com/640/480/nature",
+      "meta": "[\"Earum omnis voluptas sed quo ipsa ut et odio.\",\"Molestiae ut ut.\",\"Voluptas unde consectetur aut laboriosam.\",\"Blanditiis nihil iure sapiente ut dolorum praesentium maiores sapiente.\"]",
+      "other_data": "[{\"City\":\"Keelington\",\"read\":\"Rohanville\"}]",
+      "created_at": "2024-11-21T12:08:48.000000Z",
+      "updated_at": "2024-11-21T12:08:48.000000Z",
+      "parent": null,
+      "company": [
+        {
+          "id": 4,
+          "name": "Balistreri, Armstrong and Buckridge",
+          "country": "[\"Vanuatu\",\"El Salvador\"]",
+          "rc_number": "a",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": null,
+          "address": "04406 Bayer Crossroad",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Voluptatem eaque veritatis laudantium fuga.\",\"Rem quo ut.\",\"Est aut maiores voluptatem nesciunt consequatur quisquam facere nemo.\",\"Et quidem similique autem est.\"]",
+          "other_data": "[{\"City\":\"West Teagantown\",\"read\":\"Provo\"}]",
+          "created_at": "2024-11-21T12:01:41.000000Z",
+          "updated_at": "2024-11-21T12:01:41.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "company_id": 4
+          }
+        }
+      ],
+      "mineral": [
+        {
+          "id": 1,
+          "name": "circuit",
+          "country": "[\"Cocos (Keeling) Islands\",\"Latvia\"]",
+          "meta": "[\"Quia sunt quia.\",\"Quia voluptas atque aut.\",\"Velit officiis voluptas quasi debitis voluptatum.\",\"Optio asperiores omnis dicta fuga et.\"]",
+          "other_data": "[{\"City\":\"North Erik\",\"read\":\"East Ruthshire\"}]",
+          "created_at": "2024-11-21T12:00:18.000000Z",
+          "updated_at": "2024-11-21T12:00:18.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 1
+          }
+        },
+        {
+          "id": 2,
+          "name": "application",
+          "country": "[\"Montenegro\",\"Mayotte\"]",
+          "meta": "[\"Veritatis molestias ut ratione et ut qui et.\",\"Quis exercitationem sed.\",\"Accusantium minima corporis minus officiis ducimus incidunt error deleniti.\",\"Facere eum vero.\"]",
+          "other_data": "[{\"City\":\"West Crystel\",\"read\":\"Rancho Cordova\"}]",
+          "created_at": "2024-11-21T12:00:19.000000Z",
+          "updated_at": "2024-11-21T12:00:19.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 2
+          }
+        },
+        {
+          "id": 3,
+          "name": "card",
+          "country": "[\"Sierra Leone\",\"Eritrea\"]",
+          "meta": "[\"Tempora et pariatur.\",\"Autem provident tempora dicta.\",\"Amet a tenetur quis.\",\"Quos sit voluptatum.\"]",
+          "other_data": "[{\"City\":\"South Flo\",\"read\":\"Middletown\"}]",
+          "created_at": "2024-11-21T12:00:20.000000Z",
+          "updated_at": "2024-11-21T12:00:20.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "mineral_id": 3
+          }
+        }
+      ],
+      "subsidiary": [
+        {
+          "id": 8,
+          "name": "Murazik Inc",
+          "country": "[\"Yemen\",\"San Marino\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "9019 Jenkins Extension",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Adipisci soluta quibusdam delectus porro.\",\"Iure explicabo accusamus enim ut ullam velit autem aut.\",\"Exercitationem occaecati quo non saepe temporibus possimus veniam.\",\"Aperiam odio quisquam illum dicta ex iste ea perferendis.\"]",
+          "other_data": "[{\"City\":\"North Kamren\",\"read\":\"Monaport\"}]",
+          "created_at": "2024-11-21T13:24:04.000000Z",
+          "updated_at": "2024-11-21T13:24:04.000000Z"
+        },
+        {
+          "id": 9,
+          "name": "Abshire - Klocko",
+          "country": "[\"Honduras\",\"Mozambique\"]",
+          "ceo_id": 2,
+          "cto_id": 2,
+          "cfo_id": 2,
+          "people_ids": null,
+          "parent_id": 7,
+          "address": "07929 Kenna Prairie",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Nobis deleniti quibusdam sint tempore ipsam suscipit.\",\"Laboriosam quae vero suscipit iusto quia totam maiores occaecati illo.\",\"Ipsum earum occaecati dolores alias quod minima praesentium distinctio molestias.\",\"Cupiditate voluptas sit rerum nostrum.\"]",
+          "other_data": "[{\"City\":\"North Taryn\",\"read\":\"Mafaldafort\"}]",
+          "created_at": "2024-11-21T13:24:08.000000Z",
+          "updated_at": "2024-11-21T13:24:08.000000Z"
+        }
+      ],
+      "document": [
+        {
+          "id": 19,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "pdf",
+          "link": "documents/documents/OllJXJlA2EzmUXfjg1S4eGV6igc4Uc1RMp8ltdSk.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:18.000000Z",
+          "updated_at": "2024-11-21T13:25:18.000000Z"
+        },
+        {
+          "id": 20,
+          "name": "facilitator_ssl_bacon.ssml",
+          "extension": "mp4",
+          "link": "documents/documents/His3R1tyGxHEMRikX0zuKUA8wfEnaRNvShZZPEOY.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:19.000000Z",
+          "updated_at": "2024-11-21T13:25:19.000000Z"
+        },
+        {
+          "id": 21,
+          "name": "human_bus_logistical.acutc",
+          "extension": "pdf",
+          "link": "documents/documents/fJw0eVMdSl5kw5azkJSkshof8l5q1zWaoHfkHoXl.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 22,
+          "name": "human_bus_logistical.acutc",
+          "extension": "mp4",
+          "link": "documents/documents/anhIhGOgSrpUDbh7tNTnqYbvGW1dP4e7JfJQX1AM.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:20.000000Z",
+          "updated_at": "2024-11-21T13:25:20.000000Z"
+        },
+        {
+          "id": 23,
+          "name": "impactful.bdoc",
+          "extension": "pdf",
+          "link": "documents/documents/u6yqOk5Kgom72FL5IFZjXHbmWZSG0SyczTuuiOb6.pdf",
+          "type": "pdf",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        },
+        {
+          "id": 24,
+          "name": "impactful.bdoc",
+          "extension": "mp4",
+          "link": "documents/documents/ClMjS54nOmwnCZI4JluJ4w40eTWymIEOnaD6Vs0d.mp4",
+          "type": "mp4",
+          "location": "location",
+          "company_id": null,
+          "people_id": 2,
+          "mineral_id": null,
+          "miningsite_id": 7,
+          "meta": "[\"document\"]",
+          "other_data": "[]",
+          "created_at": "2024-11-21T13:25:22.000000Z",
+          "updated_at": "2024-11-21T13:25:22.000000Z"
+        }
+      ],
+      "people": [
+        {
+          "id": 2,
+          "first_name": "Bud",
+          "last_name": "Melvina",
+          "other_name": "Austin",
+          "location": "68472 Stanton Mount",
+          "country": "[\"South Georgia and the South Sandwich Islands\",\"Bermuda\"]",
+          "title": "Miss",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Facilis vitae omnis.\",\"Rerum nulla ut accusamus molestiae.\",\"Sit accusamus et possimus ea aliquid itaque eos doloremque excepturi.\",\"Ut culpa vitae.\"]",
+          "other_data": "[{\"City\":\"Olsonview\",\"read\":\"New Sammy\"}]",
+          "created_at": "2024-11-21T12:00:29.000000Z",
+          "updated_at": "2024-11-21T12:00:29.000000Z",
+          "pivot": {
+            "mining_site_id": 7,
+            "people_id": 2
+          }
+        }
+      ]
+    }
+  ]
+}

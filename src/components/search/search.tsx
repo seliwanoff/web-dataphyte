@@ -21,7 +21,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ style, bg, border }) => {
     }
   };
   return (
-    <div
+    <form
+      onSubmit={handleSearch}
       className={`xl:py-[6px] py-[3.54px] pl-6 ${bg} rounded-[46px] shadow-custom-heavy ${border}   xl:h-[52px] w-full xl:max-w-[577px] ${style} flex gap-[10px] items-center`}
     >
       <input
@@ -33,13 +34,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ style, bg, border }) => {
       />
       <button
         className="bg-[#7F55DA] h-full py-2 xl:mr-0  mr-1 px-6 rounded-[26px] text-white text-[14px] leading-6 font-normal flex items-center justify-center font-Poppins"
-        type="button"
-        onClick={handleSearch}
+        type="submit"
       >
         <img src={search} alt="Search" className="h-[18px] mr-1" />
         <span>Search</span>
       </button>
-    </div>
+    </form>
   );
 };
 

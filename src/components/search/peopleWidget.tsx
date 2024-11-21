@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLocation } from "react-router-dom";
 import EachComponent from "./SearchEachComponent";
 import MiningSearchWidget from "./MiningSeachWidget";
 import CompanySearchWidget from "./CompnySearchWidget";
-import Maintable from "../../Search/mainTableSearch";
 import DocumentSearchMobileWidget from "./DocumentMobileSearchWidget";
 import PeopleSearchWidget from "./peopleSearch";
+import PeopleMaintable from "../table/PeopleMaintable";
 
 interface SearchWidgetProps {
   title?: string;
@@ -18,8 +18,6 @@ interface DataProps {
   location?: any[];
 }
 const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
-  const isDataAvailable = (key: keyof DataProps) => datas.data[key]?.length > 0;
-
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || title || "Default Title";
@@ -79,79 +77,23 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               />
             ))
           ) : title === "Mining Sites" ? (
-            <>
+            datas?.data.site.map((data: any, index: any) => (
               <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
+                mineralName={data.name}
+                countries={data.country}
                 miningCount={4}
-                mineral={"Maganeses"}
+                mineral={data.mineral}
                 docCount={1500}
               />
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />{" "}
-              <MiningSearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={1500}
-              />
-            </>
+            ))
           ) : title === "Documents" ? (
             <>
               {datas.data?.document ? (
                 <div className="xl:block hidden w-full">
-                  <Maintable datas={datas} />
+                  <PeopleMaintable datas={datas} />
                 </div>
               ) : (
-                <span className="font-polySans text-xl text-black text-center block w-full">
+                <span className="font-polySans text-xl text-black text-center  w-full xl:block hidden">
                   No Data Fetch
                 </span>
               )}
@@ -175,71 +117,17 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               </div>
             </>
           ) : title === "Companies" ? (
-            <>
+            ceoAndCfo.map((data: any, index: any) => (
               <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
+                mineralName={data.name}
+                countries={`${data.location}, ${data.country}`}
                 miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
+                mineral={"Dataphyte Limited"}
+                docCount={1500}
+                key={index}
+                role={data.role}
               />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-              <CompanySearchWidget
-                mineralName={"Dataphyte Colbalt mining site"}
-                countries="Nigeria, Ghana"
-                miningCount={4}
-                mineral={"Maganese"}
-                docCount={5}
-              />
-            </>
+            ))
           ) : (
             title === "Mining Type" && (
               <>

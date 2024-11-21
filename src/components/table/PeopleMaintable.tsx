@@ -1,15 +1,15 @@
 //import { table } from "console";
 
-import doc from "../assets/images/doc.png";
-import ActionRow from "../components/table/actionRow";
-import HeroRow from "../components/table/HeroTable";
-import TableColumn from "../components/table/tableColumn";
-import TableRow from "../components/table/tableRow";
+import doc from "../../assets/images/doc.png";
+import ActionRow from "./actionRow";
+import HeroRow from "./HeroTable";
+import TableColumn from "./tableColumn";
+import TableRow from "./tableRow";
 
 interface CompanyNameDescriptionProps {
   datas?: any;
 }
-const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
+const PeopleMaintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
   return (
     <table className="bg-inherit w-full border-none">
       <thead className="thead bg-white">
@@ -22,8 +22,8 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
       </thead>
 
       <tbody className="tbody bg-white">
-        {datas.data &&
-          datas?.data?.map((data: any, index: any) => (
+        {datas.data.document &&
+          datas?.data?.document?.map((data: any, index: any) => (
             <tr className="" key={index}>
               <HeroRow
                 name={data.name}
@@ -41,4 +41,4 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
   );
 };
 
-export default Maintable;
+export default PeopleMaintable;
