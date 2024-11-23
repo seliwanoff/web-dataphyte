@@ -1,16 +1,31 @@
 import uploadicon from "../assets/images/uploadicon.png";
 
-interface TextareaProps {
+interface UploadElProps<T> {
   label: string;
   placeholder?: string;
   helperText?: string;
+  name: keyof T; // Ensures the name matches a key in the form data type
+  value: string;
+  setForm: React.Dispatch<React.SetStateAction<T>>; // Matches the form data type
 }
 
-const UploadEl: React.FC<TextareaProps> = ({
+const UploadEl = <T extends Record<string, any>>({
   label,
   placeholder = "John Doe",
   helperText,
-}) => {
+  name,
+  value,
+  setForm,
+}: UploadElProps<T>) => {
+  const handleChange = (e: any) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      // Set only the file name
+      setForm((prev) => ({ ...prev, [name]: file }));
+    }
+  };
+
   return (
     <div className="flex flex-col gap-4 w-full xl:max-w-[45%] max-w-[500px] flex-grow xl:basis-[480px] bg-white ">
       <div className="flex flex-col gap-1">
@@ -29,11 +44,12 @@ const UploadEl: React.FC<TextareaProps> = ({
       <div className="w-full rounded-md h-[120px] border border-[#d0d5dd] py-[6px] px-[4px] shadow-input-shadow flex items-center justify-between relative">
         <input
           type="file"
-          name=""
-          id=""
+          name={name as string}
+          id={label}
           className="h-full absolute top-0 w-full z-50 opacity-0"
+          onChange={handleChange}
         />
-        <div className="outline-none border-none w-full font-Inter  text-[16px] font-normal leading-6 text-left text-[#667085] relative px-[12px] py-[12px]">
+        <div className="outline-none border-none w-full font-Inter text-[16px] font-normal leading-6 text-left text-[#667085] relative px-[12px] py-[12px]">
           <div className="h-full flex flex-col gap-[12px] justify-center items-center">
             <img src={uploadicon} alt="" className="h-10" />
             <div className="flex flex-col gap-2 font-Inter text-[12px] font-normal leading-[18px] text-center text-[#475467]">
