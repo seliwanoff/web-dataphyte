@@ -39,32 +39,7 @@ const SearchResult: React.FC<SearchResultProps> = ({
             profiles.length > 0 ? "" : `items-center`
           }`}
         >
-          {pathname === "/people" ? (
-            <PeopleProfile datas={datas} />
-          ) : (
-            <></>
-            /**
-            <div className="flex gap-2 items-center text-nowrap">
-              <span className="font-Poppins font-semibold text-[#202020] text-[20px] leading-6">
-                “{queryName}”
-              </span>
-              <span className="font-Poppins font-normal text-[#202020] text-[20px]">
-                search results:
-              </span>
-            </div>
-            */
-          )}
-          {/**
-          <div className="p-[10px] flex gap-[10px] items-center">
-            {searchTypes.map((searchType) => (
-              <SearchType
-                key={searchType.type}
-                type={searchType.type}
-                count={searchType.count}
-              />
-            ))}
-          </div>
-          */}
+          {pathname === "/people" ? <PeopleProfile datas={datas} /> : <></>}
         </div>
       </div>
     </div>

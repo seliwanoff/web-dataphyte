@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MapComponent from "../components/country/countryMap";
 import CountryMap from "../components/country/countryMap";
 import CountryStatistics from "../components/country/CountryStatistics";
@@ -7,12 +8,18 @@ import SearchBar from "../components/search/search";
 import Maintable from "../Search/mainTableSearch";
 
 const RegulationProfile = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
       <div className="flex xl:flex-row flex-col w-full">
         <CountryTitle />
 
-        <SearchBar border="border border-[#CCCCCC]" bg="bg-[#f0f0f0]" />
+        <SearchBar
+          border="border border-[#CCCCCC]"
+          bg="bg-[#f0f0f0]"
+          setSearchQuery={setSearchQuery}
+        />
       </div>
 
       <div className="w-full mt-[46px]">

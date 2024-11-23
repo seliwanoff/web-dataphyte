@@ -5,9 +5,15 @@ interface SearchBarProps {
   style?: string;
   bg?: string;
   border?: string;
+  setSearchQuery?: any;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ style, bg, border }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  style,
+  bg,
+  border,
+  setSearchQuery,
+}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -16,6 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ style, bg, border }) => {
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
+    setSearchQuery(query);
     if (query) {
       navigate(`/search?query=${encodeURIComponent(query)}`);
     }

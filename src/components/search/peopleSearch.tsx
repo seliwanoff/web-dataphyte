@@ -12,6 +12,7 @@ interface PeopleSearchWidgetProps {
   docCount: number;
   mineral?: string;
   role?: string;
+  id: any;
 }
 
 const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
@@ -21,11 +22,12 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
   docCount,
   mineral,
   role,
+  id,
 }) => {
   const { addProfile } = useProfileContext();
   const navigate = useNavigate();
   const handleViewProfile = () => {
-    navigate("/people");
+    navigate("/people", { state: { id: id } });
     /**
     addProfile({
       mineralName,

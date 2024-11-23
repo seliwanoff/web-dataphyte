@@ -8,6 +8,7 @@ interface EachComponentProps {
   miningCount: number;
   docCount: number;
   image?: any;
+  id?: any;
 }
 
 const EachComponent: React.FC<EachComponentProps> = ({
@@ -15,6 +16,7 @@ const EachComponent: React.FC<EachComponentProps> = ({
   countries,
   miningCount,
   docCount,
+  id,
   image,
 }) => {
   return (

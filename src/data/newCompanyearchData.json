@@ -1,0 +1,123 @@
+{
+  "data": {
+    "success": true,
+    "data": [
+      {
+        "id": 4,
+        "name": "Larson, Fritsch and Parisian",
+        "country": "[\"Latvia\",\"Swaziland\"]",
+        "rc_number": "l",
+        "ceo_id": 4,
+        "cto_id": 4,
+        "cfo_id": 4,
+        "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+        "parent_id": null,
+        "address": "45666 Willms Summit",
+        "image": "http://placeimg.com/640/480/nature",
+        "meta": "[\"Neque iste unde enim quia vero.\",\"At repellendus non labore corrupti rerum.\",\"Voluptatem accusamus ducimus quas maiores.\",\"Esse sed porro quia quia quidem molestiae sunt fugit ut.\"]",
+        "other_data": "[{\"City\":\"Keeblerburgh\",\"read\":\"Pacochafurt\"}]",
+        "created_at": "2024-11-21T22:08:12.000000Z",
+        "updated_at": "2024-11-21T22:08:12.000000Z",
+        "mineral": [
+          {
+            "id": 1,
+            "name": "driver",
+            "country": "[\"Tajikistan\",\"San Marino\"]",
+            "meta": "[\"Assumenda laborum minus adipisci recusandae voluptas et error.\",\"Omnis iusto quos.\",\"Ipsam minus doloremque debitis dignissimos neque labore sed.\",\"Alias officia quod nihil consequatur magni corrupti.\"]",
+            "other_data": "[{\"City\":\"Ullrichstad\",\"read\":\"South Angelinaton\"}]",
+            "created_at": "2024-11-21T21:23:49.000000Z",
+            "updated_at": "2024-11-21T21:23:49.000000Z",
+            "pivot": {
+              "company_id": 4,
+              "mineral_id": 1
+            }
+          },
+          {
+            "id": 2,
+            "name": "bus",
+            "country": "[\"Qatar\",\"Austria\"]",
+            "meta": "[\"Sit voluptas optio nostrum illum beatae.\",\"Non necessitatibus et similique eos.\",\"Omnis doloribus sint quasi et quo corrupti impedit autem.\",\"Non mollitia nemo.\"]",
+            "other_data": "[{\"City\":\"Coltenshire\",\"read\":\"Baileyburgh\"}]",
+            "created_at": "2024-11-21T21:24:14.000000Z",
+            "updated_at": "2024-11-21T21:24:14.000000Z",
+            "pivot": {
+              "company_id": 4,
+              "mineral_id": 2
+            }
+          },
+          {
+            "id": 3,
+            "name": "panel",
+            "country": "[\"New Zealand\",\"Romania\"]",
+            "meta": "[\"Eligendi nihil quaerat.\",\"Error fuga quae dicta perferendis et voluptas dolor officia.\",\"Inventore provident veniam expedita.\",\"Occaecati quis explicabo excepturi ex temporibus porro necessitatibus.\"]",
+            "other_data": "[{\"City\":\"Molliehaven\",\"read\":\"East Ernie\"}]",
+            "created_at": "2024-11-21T21:24:18.000000Z",
+            "updated_at": "2024-11-21T21:24:18.000000Z",
+            "pivot": {
+              "company_id": 4,
+              "mineral_id": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "name": "Hamill Group",
+        "country": "[\"Nigeria\",\"United States of America\"]",
+        "rc_number": "c",
+        "ceo_id": 4,
+        "cto_id": 4,
+        "cfo_id": 4,
+        "people_ids": "[]",
+        "parent_id": null,
+        "address": "084 Moen Well",
+        "image": "company/pictures/1732266543/D1b3cRsbl8UrmyE7uk39pk48TOmfqORqGUkKDX0S.png",
+        "meta": "[\"Voluptatem dolorum qui neque maiores est voluptatum in ad illum.\",\"Odio eligendi quasi recusandae totam quidem.\",\"Quos sit molestiae eveniet similique.\"]",
+        "other_data": "[]",
+        "created_at": "2024-11-22T09:09:03.000000Z",
+        "updated_at": "2024-11-22T09:09:03.000000Z",
+        "mineral": [
+          {
+            "id": 1,
+            "name": "driver",
+            "country": "[\"Tajikistan\",\"San Marino\"]",
+            "meta": "[\"Assumenda laborum minus adipisci recusandae voluptas et error.\",\"Omnis iusto quos.\",\"Ipsam minus doloremque debitis dignissimos neque labore sed.\",\"Alias officia quod nihil consequatur magni corrupti.\"]",
+            "other_data": "[{\"City\":\"Ullrichstad\",\"read\":\"South Angelinaton\"}]",
+            "created_at": "2024-11-21T21:23:49.000000Z",
+            "updated_at": "2024-11-21T21:23:49.000000Z",
+            "pivot": {
+              "company_id": 6,
+              "mineral_id": 1
+            }
+          },
+          {
+            "id": 2,
+            "name": "bus",
+            "country": "[\"Qatar\",\"Austria\"]",
+            "meta": "[\"Sit voluptas optio nostrum illum beatae.\",\"Non necessitatibus et similique eos.\",\"Omnis doloribus sint quasi et quo corrupti impedit autem.\",\"Non mollitia nemo.\"]",
+            "other_data": "[{\"City\":\"Coltenshire\",\"read\":\"Baileyburgh\"}]",
+            "created_at": "2024-11-21T21:24:14.000000Z",
+            "updated_at": "2024-11-21T21:24:14.000000Z",
+            "pivot": {
+              "company_id": 6,
+              "mineral_id": 2
+            }
+          },
+          {
+            "id": 3,
+            "name": "panel",
+            "country": "[\"New Zealand\",\"Romania\"]",
+            "meta": "[\"Eligendi nihil quaerat.\",\"Error fuga quae dicta perferendis et voluptas dolor officia.\",\"Inventore provident veniam expedita.\",\"Occaecati quis explicabo excepturi ex temporibus porro necessitatibus.\"]",
+            "other_data": "[{\"City\":\"Molliehaven\",\"read\":\"East Ernie\"}]",
+            "created_at": "2024-11-21T21:24:18.000000Z",
+            "updated_at": "2024-11-21T21:24:18.000000Z",
+            "pivot": {
+              "company_id": 6,
+              "mineral_id": 3
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

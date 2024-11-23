@@ -1,0 +1,76 @@
+{
+  "success": true,
+  "data": [
+    {
+      "id": 4,
+      "first_name": "Tia",
+      "last_name": "Tatyana",
+      "other_name": "Aliya",
+      "location": "76948 Maggio Hill",
+      "country": "[\"Colombia\",\"Cocos (Keeling) Islands\"]",
+      "title": "Mr.",
+      "image": "http://placeimg.com/640/480/nature",
+      "meta": "[\"Esse ipsa exercitationem in harum.\",\"Est quidem quaerat sed corporis fuga porro vero.\",\"Delectus sunt quod molestiae saepe reprehenderit est rerum id est.\",\"Delectus et voluptas possimus adipisci id.\"]",
+      "other_data": "[{\"City\":\"Lake Carolannetown\",\"read\":\"Laredo\"}]",
+      "created_at": "2024-11-21T21:25:12.000000Z",
+      "updated_at": "2024-11-21T21:25:12.000000Z",
+      "cto": [
+        {
+          "id": 4,
+          "name": "Larson, Fritsch and Parisian",
+          "country": "[\"Latvia\",\"Swaziland\"]",
+          "rc_number": "l",
+          "ceo_id": 4,
+          "cto_id": 4,
+          "cfo_id": 4,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": null,
+          "address": "45666 Willms Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Neque iste unde enim quia vero.\",\"At repellendus non labore corrupti rerum.\",\"Voluptatem accusamus ducimus quas maiores.\",\"Esse sed porro quia quia quidem molestiae sunt fugit ut.\"]",
+          "other_data": "[{\"City\":\"Keeblerburgh\",\"read\":\"Pacochafurt\"}]",
+          "created_at": "2024-11-21T22:08:12.000000Z",
+          "updated_at": "2024-11-21T22:08:12.000000Z"
+        }
+      ],
+      "cfo": [
+        {
+          "id": 4,
+          "name": "Larson, Fritsch and Parisian",
+          "country": "[\"Latvia\",\"Swaziland\"]",
+          "rc_number": "l",
+          "ceo_id": 4,
+          "cto_id": 4,
+          "cfo_id": 4,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": null,
+          "address": "45666 Willms Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Neque iste unde enim quia vero.\",\"At repellendus non labore corrupti rerum.\",\"Voluptatem accusamus ducimus quas maiores.\",\"Esse sed porro quia quia quidem molestiae sunt fugit ut.\"]",
+          "other_data": "[{\"City\":\"Keeblerburgh\",\"read\":\"Pacochafurt\"}]",
+          "created_at": "2024-11-21T22:08:12.000000Z",
+          "updated_at": "2024-11-21T22:08:12.000000Z"
+        }
+      ],
+      "ceo": [
+        {
+          "id": 4,
+          "name": "Larson, Fritsch and Parisian",
+          "country": "[\"Latvia\",\"Swaziland\"]",
+          "rc_number": "l",
+          "ceo_id": 4,
+          "cto_id": 4,
+          "cfo_id": 4,
+          "people_ids": "[{\"name\":\"1\",\"role\":\"CEO\"},{\"name\":\"2\",\"role\":\"CTO\"}]",
+          "parent_id": null,
+          "address": "45666 Willms Summit",
+          "image": "http://placeimg.com/640/480/nature",
+          "meta": "[\"Neque iste unde enim quia vero.\",\"At repellendus non labore corrupti rerum.\",\"Voluptatem accusamus ducimus quas maiores.\",\"Esse sed porro quia quia quidem molestiae sunt fugit ut.\"]",
+          "other_data": "[{\"City\":\"Keeblerburgh\",\"read\":\"Pacochafurt\"}]",
+          "created_at": "2024-11-21T22:08:12.000000Z",
+          "updated_at": "2024-11-21T22:08:12.000000Z"
+        }
+      ]
+    }
+  ]
+}

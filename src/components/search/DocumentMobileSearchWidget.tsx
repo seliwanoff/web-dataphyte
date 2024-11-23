@@ -34,7 +34,7 @@ const DocumentSearchMobileWidget: React.FC<CompanySearchWidgetProps> = ({
                 type === "pdf"
                   ? pdf
                   : type === "mp4"
-                  ? "audio"
+                  ? video
                   : type === "audio"
                   ? audio
                   : doc

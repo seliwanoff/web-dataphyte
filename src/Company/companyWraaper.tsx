@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import company from "../assets/images/company.png";
 import SearchFilter from "../components/search/searchfilter";
 import SeachTableFormat from "../components/search/SearchlayourTable";
@@ -6,32 +6,53 @@ import { ProfileProvider } from "../context/ProfileContext";
 import Companymapping from "./CompanyMapping";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
 import CompanyWidgetSub from "../components/company/CompanyWidgetSub";
-import CompanySampleResponse from "../data/companySampleReponse.json";
+import { useLocation } from "react-router-dom";
 
 interface CompanyData {
   logo: string;
   name: string;
 }
+const baseURl = process.env.REACT_APP_URL;
+
+const fetchData = async (
+  url: string,
+  setter: React.Dispatch<React.SetStateAction<any>>
+) => {
+  try {
+    const response = await fetch(`${baseURl}${url}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+    setter(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
 
 const CompanyProfile: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
+  const [sampleData, setSampleData] = useState({});
+  const [eachCompanyDetails, setEachCompanyDetails] = useState<any>({});
+  const location = useLocation();
+  const { id } = location.state;
 
-  const [sampleData, setSampleData] = useState(CompanySampleResponse);
   const companies: CompanyData[] = [
     {
       logo: company,
-      name: CompanySampleResponse.data.parent,
+      name: "Parent Company Name",
     },
   ];
 
-  const subsidiaries: CompanyData[] = CompanySampleResponse.data.children.map(
-    (child: any) => ({
+  const subsidiaries: CompanyData[] =
+    eachCompanyDetails?.data?.children?.map((child: any) => ({
       logo: company,
-      name: child.name,
-    })
-  );
+      name: child?.name,
+    })) || [];
 
-  // console.log(sampleData.data.parent);
+  useEffect(() => {
+    fetchData(`company/getcompany?id=${id}`, setEachCompanyDetails);
+  }, [id]);
 
   const sections = [
     {
@@ -46,43 +67,45 @@ const CompanyProfile: React.FC = () => {
     },
     {
       title: "Stakeholders",
-      companies: subsidiaries,
+      companies: subsidiaries, // Assuming stakeholders are also subsidiaries
       size: "xl:text-[20px] text-[12.65px]",
     },
   ];
+
   const Filters = ["All", "Minerals", "People", "Subsidiaries", "Documents"];
-  const filteredFilters = Filters.filter((item) => item !== "All");
 
   return (
-    <>
-      <ProfileProvider>
-        <ComapnyNameDescription datas={sampleData} />
-        <div className="xl:block hidden">
-          <Companymapping />
-        </div>
-        {sections.map((section, index) => (
-          <CompanyWidgetSub
-            key={index}
-            companies={section.companies}
-            title={section.title}
-            size={section.size}
-          />
-        ))}
-        <div className="xl:hidden block">
-          <Companymapping />
-        </div>
-        <SearchFilter
-          setCurrentTab={setCurrentTab}
-          currentTab={currentTab}
-          filters={Filters}
+    <ProfileProvider>
+      <ComapnyNameDescription
+        datas={eachCompanyDetails}
+        name={eachCompanyDetails && eachCompanyDetails?.data?.name}
+        meta={eachCompanyDetails && eachCompanyDetails?.data?.meta}
+      />
+      <div className="xl:block hidden">
+        <Companymapping />
+      </div>
+      {sections.map((section, index) => (
+        <CompanyWidgetSub
+          key={index}
+          companies={section.companies}
+          title={section.title}
+          size={section.size}
         />
-        <SeachTableFormat
-          widgetTitles={Filters}
-          currentTab={currentTab}
-          datas={CompanySampleResponse}
-        />
-      </ProfileProvider>
-    </>
+      ))}
+      <div className="xl:hidden block">
+        <Companymapping />
+      </div>
+      <SearchFilter
+        setCurrentTab={setCurrentTab}
+        currentTab={currentTab}
+        filters={Filters}
+      />
+      <SeachTableFormat
+        widgetTitles={Filters}
+        currentTab={currentTab}
+        datas={eachCompanyDetails}
+      />
+    </ProfileProvider>
   );
 };
 

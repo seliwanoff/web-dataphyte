@@ -9,7 +9,6 @@ interface HeroRowProps {
   image: any;
   type?: any;
 }
-
 const HeroRow: React.FC<HeroRowProps> = ({ name, width, image, type }) => {
   return (
     <td className="rows  flex items-center gap-4">
@@ -18,8 +17,8 @@ const HeroRow: React.FC<HeroRowProps> = ({ name, width, image, type }) => {
           type === "pdf"
             ? pdf
             : type === "mp4"
-            ? "audio"
-            : type === "audio"
+            ? video
+            : type === "mp3"
             ? audio
             : image
         }

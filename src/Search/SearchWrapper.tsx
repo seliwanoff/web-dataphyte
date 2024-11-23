@@ -1,5 +1,3 @@
-import SearchBar from "../components/search/search";
-import filter from "../assets/images/filter-lines.png";
 import SearchBoxFilter from "./serachBoxFilter";
 import SearchFilter from "../components/search/searchfilter";
 import SearchResult from "../components/search/SearchResult";
@@ -7,25 +5,64 @@ import SeachTableFormat from "../components/search/SearchlayourTable";
 import { useEffect, useState } from "react";
 import { ProfileProvider } from "../context/ProfileContext";
 import sampleDataResponse from "../data/companySampleReponse.json";
-import sampleDataMiningSiteResponse from "../data/miningsiteResponse.json";
-import allcompanySampleResponse from "../data/allCompanyResponse.json";
-import allDocumentSample from "../data/allDocument.json";
-import allPeople from "../data/allPeople.json";
-import allMinerals from "../data/allMineral.json";
-import axiosInstance from "../utills/axiosInstance";
+
+import { useLocation } from "react-router-dom";
+const baseURl = process.env.REACT_APP_URL;
+const fetchData = async (
+  url: string,
+  setter: React.Dispatch<React.SetStateAction<any>>
+) => {
+  try {
+    const response = await fetch(`${baseURl}${url}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    setter(data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+
 const SearchWrapper = () => {
-  const [allCompany, setAllcompany] = useState<[]>(); // replace allcompanysample
-  const [alldocument, setAlldocument] = useState<[]>(); // replace alldocument
-  const [allpeople, setAllpeople] = useState<[]>(); // replace allcompanypeople
-  const [allMineral, setAllmineral] = useState<[]>(); // replace allcmineral
-  const [miningSite, setMiningSite] = useState<[]>(); //replace all miningsite
-  // Search for axiosInstance to set your base Url
+  const [allCompany, setAllCompany] = useState([]);
+  const [allDocument, setAllDocument] = useState([]);
+  const [allNewpeople, setAllPeople] = useState([]);
+  const [allMineral, setAllMineral] = useState([]);
+  const [miningSite, setMiningSite] = useState([]);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const queryName = queryParams.get("query") || "" || "";
+
+  useEffect(() => {
+    fetchData(`search/people?q=${queryName}`, setAllPeople);
+  }, [queryName]);
+
+  useEffect(() => {
+    fetchData(`search/company?q=${queryName}`, setAllCompany);
+  }, [queryName]);
+
+  useEffect(() => {
+    fetchData(`search/document?q=${queryName}`, setAllDocument);
+  }, [queryName]);
+
+  useEffect(() => {
+    fetchData(`search/site?q=${queryName}`, setMiningSite);
+  }, [queryName]);
+  useEffect(() => {
+    fetchData(`search/mineral?q=${queryName}`, setAllMineral);
+  }, [queryName]);
+
+  /***
   useEffect(() => {
     const fetchAllcompany = async () => {
       await axiosInstance
-        .get(`search/company/?q=document Gleaso debitis`)
-        .then((res) => {
-          setAllcompany(res.data); // check the corresponding data
+        .get(`search/company/?q=${queryName}`)
+        .then((res: any) => {
+          setAllcompany(res);
         })
         .catch((e) => {
           console.log(e);
@@ -37,9 +74,9 @@ const SearchWrapper = () => {
   useEffect(() => {
     const fetchAllminer = async () => {
       await axiosInstance
-        .get(`search/mineral/?q=document Gleaso debitis`)
+        .get(`search/mineral/?q=${queryName}`)
         .then((res) => {
-          setAllmineral(res.data); // check the corresponding data
+          setAllmineral(res.data);
         })
         .catch((e) => {
           console.log(e);
@@ -50,9 +87,9 @@ const SearchWrapper = () => {
   useEffect(() => {
     const fetchAllSite = async () => {
       await axiosInstance
-        .get(`search/site/?q=document Gleaso debitis`)
+        .get(`search/site/?q=${queryName}`)
         .then((res) => {
-          setMiningSite(res.data); // check the corresponding data
+          setMiningSite(res.data);
         })
         .catch((e) => {
           console.log(e);
@@ -64,9 +101,9 @@ const SearchWrapper = () => {
   useEffect(() => {
     const fetchAllDocument = async () => {
       await axiosInstance
-        .get(`search/document/?q=document Gleaso debitis`)
-        .then((res) => {
-          setAlldocument(res.data); // check the corresponding data
+        .get(`search/document/?q=${queryName}`)
+        .then((res: any) => {
+          setAlldocument(res);
         })
         .catch((e) => {
           console.log(e);
@@ -77,7 +114,7 @@ const SearchWrapper = () => {
   useEffect(() => {
     const fetchAllPeople = async () => {
       await axiosInstance
-        .get(`search/people/?q=document Gleaso debitis`)
+        .get(`search/people/?q=${queryName}`)
         .then((res) => {
           setAllpeople(res.data);
         })
@@ -87,6 +124,7 @@ const SearchWrapper = () => {
     };
     fetchAllPeople();
   }, []);
+  */
 
   const [currentTab, setCurrentTab] = useState<string>("All");
   const Filters = [
@@ -100,7 +138,7 @@ const SearchWrapper = () => {
   return (
     <>
       <ProfileProvider>
-        <SearchBoxFilter />
+        <SearchBoxFilter setSearchQuery={setSearchQuery} />
         <SearchFilter
           setCurrentTab={setCurrentTab}
           currentTab={currentTab}
@@ -117,12 +155,12 @@ const SearchWrapper = () => {
             "People",
           ]}
           datas={sampleDataResponse}
-          miningSite={sampleDataMiningSiteResponse} // miningSite
-          company={allcompanySampleResponse} //Allcompany
-          document={allDocumentSample} // alldocuments
+          miningSite={miningSite} // miningSite
+          company={allCompany} //Allcompany
+          document={allDocument} // alldocuments
           currentTab={currentTab} // do not change
-          people={allPeople} // allpeople
-          mineral={allMinerals} // all minerals
+          people={allNewpeople} // allpeople
+          mineral={allMineral} // all minerals
         />
       </ProfileProvider>
     </>

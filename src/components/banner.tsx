@@ -1,6 +1,8 @@
+import { useState } from "react";
 import banner from "../assets/images/banner.png";
 import SearchBar from "./search/search";
 const Banner = () => {
+  const [searchQuery, setSearchQuery] = useState("");
   return (
     <div className="w-full relative">
       <img
@@ -24,6 +26,7 @@ const Banner = () => {
           style="mx-auto"
           bg="bg-white"
           border="border border-[#F2F2F2]"
+          setSearchQuery={setSearchQuery}
         />
       </div>
     </div>

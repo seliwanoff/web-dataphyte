@@ -10,6 +10,7 @@ interface CompanySearchWidgetProps {
   docCount: number;
   mineral?: string;
   role?: string;
+  id?: any;
 }
 
 const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
@@ -19,6 +20,7 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
   docCount,
   mineral,
   role,
+  id,
 }) => {
   const navigates = useNavigate();
 
@@ -28,11 +30,9 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
   const queryName = queryParams.get("query") || "" || "";
 
   const handleCompanyRedirect = () => {
-    navigates(
-      `/company-profile?q=${encodeURIComponent(
-        queryName
-      )}&c=${encodeURIComponent(mineralName)}`
-    );
+    navigates(`/company-profile?q=${encodeURIComponent(queryName)}`, {
+      state: { id: id },
+    });
   };
   return (
     <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] widthl">

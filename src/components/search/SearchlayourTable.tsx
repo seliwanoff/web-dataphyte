@@ -25,30 +25,33 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
   mineral,
 }) => {
   const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const queryName = queryParams.get("query") || "Default Title";
   const pathname = location.pathname;
-  const ceoAndCfo = [datas.data.ceo, datas.data.cfo, datas.data.cto].map(
-    (person, index) => ({
+
+  const ceoAndCfo = [
+    { role: "CEO", person: datas?.data?.ceo },
+    { role: "CFO", person: datas?.data?.cfo },
+    { role: "CTO", person: datas?.data?.cto },
+  ]
+    .filter((entry) => entry.person) // Filter out any roles that are missing
+    .map(({ person, role }) => ({
       id: person.id,
-      name: `${person.title} ${person.first_name} ${person.last_name}`,
+      first_name: `${person.title} ${person.first_name}`,
+      last_name: `${person.last_name}`,
+      name: `${person.first_name} ${person.last_name} `,
       image: person.image,
       location: person.location,
       country: person.country,
-      role: index === 0 ? "CEO" : "CFO", // Assign roles dynamically
-    })
-  );
+      role,
+    }));
+
+  console.log(ceoAndCfo);
 
   return (
-    <div className="w-full max-w-[1750px] mx-auto xl:px-[110px] px-[24px]">
+    <div className="w-full max-w-[1750px] mx-auto xl:px-[110px] px-[24px] flex flex-col gap-[40px]">
       {currentTab === "All"
         ? widgetTitles.map((title, index) =>
             pathname === "/people" ? (
-              <PeopleWidget
-                key={index}
-                title={title}
-                datas={peopleSampleData}
-              />
+              <PeopleWidget key={index} title={title} datas={datas} />
             ) : (
               <SearchWidget
                 key={index}
@@ -60,7 +63,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
                 miningSite={miningSite || []}
                 document={
                   pathname === "/company-profile"
-                    ? { data: datas.data.document }
+                    ? { data: datas.data?.document }
                     : document
                 }
                 people={
@@ -68,7 +71,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
                 }
                 mineral={
                   pathname === "/company-profile"
-                    ? { data: datas.data.mineral }
+                    ? { data: datas?.data?.mineral }
                     : mineral
                 }
               />
@@ -78,11 +81,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
             .filter((title) => title === currentTab)
             .map((title, index) =>
               pathname === "/people" ? (
-                <PeopleWidget
-                  key={index}
-                  title={title}
-                  datas={peopleSampleData}
-                />
+                <PeopleWidget key={index} title={title} datas={datas} />
               ) : (
                 <SearchWidget
                   key={index}
@@ -104,7 +103,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
                   }
                   mineral={
                     pathname === "/company-profile"
-                      ? { data: datas.data.mineral }
+                      ? { data: datas?.data?.mineral }
                       : mineral
                   }
                 />
