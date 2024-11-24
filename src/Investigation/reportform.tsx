@@ -166,6 +166,7 @@ const ReportFromWrapper = () => {
               value={formData.display_picture}
               setForm={setFormData}
               name="display_picture"
+              accept="image/*"
             />
           </div>
           <div className="w-full  xl:gap-[50px] gap-[24px] flex xl:flex-row flex-col items-center">
@@ -176,6 +177,7 @@ const ReportFromWrapper = () => {
               value={formData.article}
               setForm={setFormData}
               name="article"
+              accept=".pdf,.docx.xls,.ppt,pptx,.doc"
             />
             <UploadEl
               placeholder="Article Thumbnail"
@@ -184,6 +186,7 @@ const ReportFromWrapper = () => {
               value={formData.article_picture}
               setForm={setFormData}
               name="article_picture"
+              accept="image/*"
             />
           </div>
 

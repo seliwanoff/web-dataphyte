@@ -19,7 +19,7 @@ const CountryOveViewWrapper = () => {
           Documents
         </span>
         <div className="xl:block hidden w-full mt-[32px]">
-          <Maintable datas={companySampleResponse} />
+          <Maintable datas={[]} />
         </div>
         <div className="xl:hidden block w-full mt-[32px]">
           <DocumentSearchMobileWidget

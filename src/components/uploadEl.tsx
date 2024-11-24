@@ -7,6 +7,7 @@ interface UploadElProps<T> {
   name: keyof T; // Ensures the name matches a key in the form data type
   value: File | string; // Updated to allow File type (not just string)
   setForm: React.Dispatch<React.SetStateAction<T>>; // Matches the form data type
+  accept: any;
 }
 
 const UploadEl = <T extends Record<string, any>>({
@@ -16,6 +17,7 @@ const UploadEl = <T extends Record<string, any>>({
   name,
   value,
   setForm,
+  accept,
 }: UploadElProps<T>) => {
   const handleChange = (e: any) => {
     const file = e.target.files?.[0];
@@ -48,6 +50,7 @@ const UploadEl = <T extends Record<string, any>>({
           id={label}
           className="h-full absolute top-0 w-full z-50 opacity-0"
           onChange={handleChange}
+          accept={accept}
         />
         <div className="outline-none border-none w-full font-Inter text-[16px] font-normal leading-6 text-left text-[#667085] relative px-[12px] py-[12px]">
           <div className="h-full flex flex-col gap-[12px] justify-center items-center">
