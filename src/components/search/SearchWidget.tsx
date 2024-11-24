@@ -73,7 +73,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 mineralName={data.name}
                 image={data.image}
                 countries={parseData(data)}
-                miningCount={4}
+                miningCount={mineral && mineral?.data.length}
                 docCount={1500}
                 id={data.id}
               />

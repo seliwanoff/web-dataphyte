@@ -43,7 +43,7 @@ const DocumentSearchMobileWidget: React.FC<CompanySearchWidgetProps> = ({
               className="h-6"
             />
             <h3 className="p-0 m-0 font-semibold font-Poppins text-[16px] leading-6 text-[#000]">
-              {mineralName}
+              {mineralName} - {type}
             </h3>
           </div>
 

@@ -21,7 +21,7 @@ import MiningMapSite from "../components/search/MiningMap";
 const baseURl = process.env.REACT_APP_URL;
 
 interface MiningSiteData {
-  document?: { name: string; location: string }[];
+  document?: { name: string; location: string; type: string }[];
   people?: Array<{
     name: string;
     location: string;
@@ -149,7 +149,11 @@ const MiningSiteWrapper: React.FC = () => {
                         miningSite?.data?.mineral[0]?.name
                       }
                       countries={data.name}
-                      miningCount={4}
+                      miningCount={
+                        (miningSite.data.mineral &&
+                          miningSite?.data?.mineral.length) ||
+                        0
+                      }
                       mineral={
                         miningSite.data.mineral &&
                         miningSite?.data?.mineral[0]?.name
@@ -174,6 +178,7 @@ const MiningSiteWrapper: React.FC = () => {
                       <DocumentSearchMobileWidget
                         mineralName={data.name}
                         countries={data.location}
+                        type={data.type}
                         miningCount={4}
                         mineral={"Maganese"}
                         docCount={5}
@@ -255,7 +260,7 @@ const MiningSiteWrapper: React.FC = () => {
                     <img
                       src={picture?.link}
                       alt={`Picture ${index + 1}`}
-                      className="h-[240px] w-[229px] rounded-md"
+                      className="h-[240px] w-[229px] rounded-mdm"
                       key={index}
                     />
                   ))}
