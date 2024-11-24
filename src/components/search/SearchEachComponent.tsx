@@ -1,6 +1,7 @@
 import React from "react";
 import minerlogo from "../../assets/images/mineral (1).png";
 import ellipse from "../../assets/images/ellipse.png";
+import { useNavigate } from "react-router-dom";
 
 interface EachComponentProps {
   mineralName: string;
@@ -19,8 +20,18 @@ const EachComponent: React.FC<EachComponentProps> = ({
   id,
   image,
 }) => {
+  const navigates = useNavigate();
   return (
-    <div className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl ">
+    <div
+      className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl cursor-pointer "
+      onClick={() => {
+        navigates("/mineral", {
+          state: {
+            id: id,
+          },
+        });
+      }}
+    >
       <div className="flex gap-[10px] items-center">
         <img src={image ? image : minerlogo} alt="" className="h-[70px]" />
 

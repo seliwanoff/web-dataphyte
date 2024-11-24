@@ -27,29 +27,20 @@ interface MiningSiteData {
     location: string;
     country: string;
     role: string;
-    id: any;
-    image: any;
-  }>;
-  company?: Array<{ name: string; country: string }>;
-  picture?: Array<{ name: string; country: string; link: string }>;
-  mineral?: Array<{ name: any; id: any }>;
-  name: string;
-
-  location?: Array<{
-    name: string;
-    location: string;
-    country: string;
-    role: string;
     id: string;
     image: any;
   }>;
+  company?: Array<{ name: string; country: string }>;
+  mineral?: Array<{ name: string }>;
+  name: string;
+  site: string;
 }
 
 interface MiningSiteResponse {
   data: MiningSiteData;
 }
 
-const MiningSiteWrapper: React.FC = () => {
+const MineralWrapper: React.FC = () => {
   const [miningSite, setMiningSite] = useState<MiningSiteResponse | null>(null);
   const location = useLocation();
   const { id } = location.state as { id: string };
@@ -67,7 +58,6 @@ const MiningSiteWrapper: React.FC = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-
       setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -77,7 +67,7 @@ const MiningSiteWrapper: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchData(`mininig_site/getsite?id=${id}`, setMiningSite);
+    fetchData(`mineral/getmineral?id=${id}`, setMiningSite);
   }, [id]);
 
   // Dynamically calculate filter counts
@@ -92,8 +82,8 @@ const MiningSiteWrapper: React.FC = () => {
       ].length,
     },
     {
-      type: "Minerals",
-      count: miningSite?.data?.mineral?.length || 0,
+      type: "Mining site",
+      count: miningSite?.data?.site?.length || 0,
     },
     {
       type: "People",
@@ -137,23 +127,17 @@ const MiningSiteWrapper: React.FC = () => {
               {miningSite && miningSite?.data?.name}
             </div>
             {miningSite &&
-              Array.isArray(miningSite.data?.location) &&
-              miningSite.data.location.length > 0 &&
+              Array.isArray(miningSite.data?.mineral) &&
+              miningSite.data.mineral.length > 0 &&
               renderSection(
                 "Locations",
                 <div className="flex flex-wrap gap-[24px]">
-                  {miningSite.data.location.map((data, index) => (
+                  {miningSite.data.mineral.map((data, index) => (
                     <MiningMapSite
-                      mineralName={
-                        miningSite.data.mineral &&
-                        miningSite?.data?.mineral[0]?.name
-                      }
-                      countries={data.name}
+                      mineralName={"Dataphte"}
+                      countries={"Nigeria"}
                       miningCount={4}
-                      mineral={
-                        miningSite.data.mineral &&
-                        miningSite?.data?.mineral[0]?.name
-                      }
+                      mineral={"Maganese"}
                       docCount={5}
                       key={index}
                     />
@@ -240,27 +224,30 @@ const MiningSiteWrapper: React.FC = () => {
                       countries="Nigeria, Ghana"
                       miningCount={4}
                       docCount={1500}
-                      id={data.id}
                     />
                   ))}
                 </div>
               )}
-            {miningSite &&
-              Array.isArray(miningSite.data?.picture) &&
-              miningSite.data.picture.length > 0 &&
-              renderSection(
-                "Pictures",
-                <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
-                  {miningSite.data.picture.map((picture, index) => (
-                    <img
-                      src={picture?.link}
-                      alt={`Picture ${index + 1}`}
-                      className="h-[240px] w-[229px] rounded-md"
-                      key={index}
-                    />
-                  ))}
-                </div>
-              )}
+            {renderSection(
+              "Pictures",
+              <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
+                {[
+                  picture1,
+                  picture2,
+                  picture3,
+                  picture4,
+                  picture2,
+                  picture1,
+                ].map((picture, index) => (
+                  <img
+                    src={picture}
+                    alt={`Picture ${index + 1}`}
+                    className="h-[240px]"
+                    key={index}
+                  />
+                ))}
+              </div>
+            )}
           </div>
         </>
       )}
@@ -268,4 +255,4 @@ const MiningSiteWrapper: React.FC = () => {
   );
 };
 
-export default MiningSiteWrapper;
+export default MineralWrapper;

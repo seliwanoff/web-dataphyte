@@ -13,25 +13,37 @@ interface CompanyNameDescriptionProps {
   datas?: any;
 }
 const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
-  const handleDownload = async (links: any, name: any) => {
+  const handleDownload = async (link: string, fileName: string) => {
     try {
-      const response = await axiosInstance.get(`${links}`, {
-        responseType: "blob",
+      // Fetch the file as a blob
+      const response = await axiosInstance.get(link, {
+        responseType: "blob", // This ensures the response is treated as binary data
       });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
 
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = `${name}`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      // Create a Blob URL from the file data
+      const url = window.URL.createObjectURL(response.data);
 
+      // Create an anchor element dynamically
+      const anchor = document.createElement("a");
+      anchor.href = url;
+
+      // Use the provided fileName or fallback to a default name
+      anchor.download = fileName || "downloaded_file";
+
+      // Append anchor to the DOM, trigger the click event, then remove it
+      document.body.appendChild(anchor);
+      anchor.click();
+      document.body.removeChild(anchor);
+
+      // Revoke the Blob URL to free up memory
       window.URL.revokeObjectURL(url);
+
+      console.log(`File "${fileName}" downloaded successfully!`);
     } catch (error) {
       console.error("Error downloading the file:", error);
     }
   };
+
   return (
     <table className="bg-inherit w-full border-none">
       <thead className="thead bg-white">

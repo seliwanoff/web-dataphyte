@@ -75,6 +75,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 countries={parseData(data)}
                 miningCount={4}
                 docCount={1500}
+                id={data.id}
               />
             ))}
 

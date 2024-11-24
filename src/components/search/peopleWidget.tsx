@@ -72,6 +72,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               countries="Nigeria, Ghana"
               miningCount={4}
               docCount={1500}
+              id={data?.id}
             />
           )) || null
         );
