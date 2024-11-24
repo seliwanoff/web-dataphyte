@@ -1,6 +1,10 @@
 import SearchBar from "../components/search/search";
 import filter from "../assets/images/filter-lines.png";
 //import SearchBoxFilter from "./serachBoxFilter";
+import picture1 from "../assets/images/picture1.png";
+import picture2 from "../assets/images/picture2.png";
+import picture3 from "../assets/images/picture3.png";
+import picture4 from "../assets/images/picture4.png";
 import SearchFilter from "../components/search/searchfilter";
 import SearchResult from "../components/search/SearchResult";
 import SeachTableFormat from "../components/search/SearchlayourTable";
@@ -95,6 +99,18 @@ const PeopleWrapper = () => {
               datas={people}
               currentTab={currentTab}
             />
+            <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
+              {[picture1, picture2, picture3, picture4, picture2, picture1].map(
+                (picture, index) => (
+                  <img
+                    src={picture}
+                    alt={`Picture ${index + 1}`}
+                    className="h-[240px]"
+                    key={index}
+                  />
+                )
+              )}
+            </div>
           </>
         )}
       </ProfileProvider>

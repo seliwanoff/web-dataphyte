@@ -100,9 +100,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 mineralName={data.name}
                 countries={parseData(data)}
                 miningCount={4}
-                mineral={
-                  data.mineral.length > 1 ? data.mineral[0].name : mineral
-                }
+                mineral={data.mineral[0].name}
                 docCount={1500}
                 id={data.id}
               />

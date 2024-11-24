@@ -119,7 +119,9 @@ const MiningSiteWrapper: React.FC = () => {
                 </div>
               </>
             )}
-          {miningSite?.data.people &&
+          {miningSite &&
+            Array.isArray(miningSite.data?.people) &&
+            miningSite.data.people.length > 0 &&
             renderSection(
               "People",
               <div className="flex flex-wrap gap-[24px]">
@@ -141,7 +143,9 @@ const MiningSiteWrapper: React.FC = () => {
               </div>
             )}
 
-          {miningSite?.data.company &&
+          {miningSite &&
+            Array.isArray(miningSite.data?.company) &&
+            miningSite.data.company.length > 0 &&
             renderSection(
               "Company",
               <div className="flex flex-wrap gap-[24px]">
@@ -158,7 +162,9 @@ const MiningSiteWrapper: React.FC = () => {
               </div>
             )}
 
-          {miningSite?.data.mineral &&
+          {miningSite &&
+            Array.isArray(miningSite.data?.mineral) &&
+            miningSite.data.mineral.length > 0 &&
             renderSection(
               "Mineral",
               <div className="flex flex-wrap gap-[24px]">
