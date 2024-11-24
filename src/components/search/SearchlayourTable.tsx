@@ -44,8 +44,6 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
       role,
     }));
 
-  console.log(ceoAndCfo);
-
   return (
     <div className="w-full max-w-[1750px] mx-auto xl:px-[110px] px-[24px] flex flex-col gap-[40px]">
       {currentTab === "All"

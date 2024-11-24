@@ -11,12 +11,11 @@ import SkeletonLoader from "../components/skeletonLoader/skeleton";
 const baseURl = process.env.REACT_APP_URL;
 
 const SearchWrapper = () => {
-  const [allCompany, setAllCompany] = useState([]);
-  const [allDocument, setAllDocument] = useState([]);
-  const [allNewpeople, setAllPeople] = useState([]);
-  const [allMineral, setAllMineral] = useState([]);
-  const [miningSite, setMiningSite] = useState([]);
-
+  const [allCompany, setAllCompany] = useState<any>({ data: [] });
+  const [allDocument, setAllDocument] = useState<any>({ data: [] });
+  const [allNewpeople, setAllPeople] = useState<any>({ data: [] });
+  const [allMineral, setAllMineral] = useState<any>({ data: [] });
+  const [miningSite, setMiningSite] = useState<any>({ data: [] });
   const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -62,13 +61,28 @@ const SearchWrapper = () => {
 
   const [currentTab, setCurrentTab] = useState<string>("All");
   const Filters = [
-    "All",
-    "Minerals",
-    "People",
-    "Mining Sites",
-    "Documents",
-    "Companies",
+    {
+      type: "All",
+      count:
+        allCompany.data.length +
+        allDocument.data.length +
+        allNewpeople.data.length +
+        allMineral.data.length +
+        miningSite.data.length,
+    },
+    { type: "Minerals", count: allMineral.data.length },
+    { type: "People", count: allNewpeople.data.length },
+    { type: "Mining Sites", count: miningSite.data.length },
+    { type: "Documents", count: allDocument.data.length },
+    { type: "Companies", count: allCompany.data.length },
   ];
+
+  const isDataEmpty =
+    allCompany.data.length === 0 &&
+    allDocument.data.length === 0 &&
+    allNewpeople.data.length === 0 &&
+    allMineral.data.length === 0 &&
+    miningSite.data.length === 0;
 
   return (
     <>
@@ -76,6 +90,10 @@ const SearchWrapper = () => {
         <SearchBoxFilter setSearchQuery={setSearchQuery} />
         {isLoading ? (
           <SkeletonLoader />
+        ) : isDataEmpty ? (
+          <div className="text-center text-gray-500 xl:mt-[50px] mt-[10px] font-Inter">
+            No data found
+          </div>
         ) : (
           <>
             {}

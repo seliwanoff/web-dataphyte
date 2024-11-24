@@ -6,8 +6,6 @@ import SearchResult from "../components/search/SearchResult";
 import SeachTableFormat from "../components/search/SearchlayourTable";
 import { useEffect, useState } from "react";
 import { ProfileProvider } from "../context/ProfileContext";
-import sampleDataResponse from "../data/companySampleReponse.json";
-import peopleSampleDataResponse from "../data/peopleSampleResponse.json";
 import SearchBoxFilter from "../Search/serachBoxFilter";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
@@ -16,8 +14,7 @@ const baseURl = process.env.REACT_APP_URL;
 const PeopleWrapper = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [people, setPeople] = useState([]);
-  const Filters = ["All", "Minerals", "Mining Sites", "Documents", "Companies"];
+  const [people, setPeople] = useState<any>(null); // Updated to allow access to nested properties
   const location = useLocation();
   const { id } = location.state;
   const [isLoading, setIsLoading] = useState(false);
@@ -40,9 +37,34 @@ const PeopleWrapper = () => {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     fetchData(`people/getpeople?id=${id}`, setPeople);
   }, [id]);
+
+  // Calculate counts for filters
+  const Filters = [
+    {
+      type: "All",
+      count:
+        people?.data?.mineral?.length +
+        people?.data?.site?.length +
+        people?.data?.document?.length +
+        people?.data?.ceo?.length +
+        people?.data.cfo.length +
+        people.data.cto.length,
+    },
+    { type: "Minerals", count: people?.data?.mineral?.length || 0 },
+    { type: "Mining Sites", count: people?.data?.site?.length || 0 },
+    { type: "Documents", count: people?.data?.document?.length || 0 },
+    {
+      type: "Companies",
+      count:
+        people?.data?.ceo?.length +
+        people?.data.cfo.length +
+        people.data.cto.length,
+    },
+  ];
 
   return (
     <>
@@ -55,7 +77,7 @@ const PeopleWrapper = () => {
             <SearchFilter
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}
-              filters={Filters}
+              filters={Filters} // Updated to pass an array of objects with `type` and `count`
             />
             <SearchResult
               setCurrentTab={setCurrentTab}

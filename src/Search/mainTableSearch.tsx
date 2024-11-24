@@ -53,7 +53,7 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
                 image={doc}
                 type={data.type}
               />
-              <TableRow name={data.location} width={15} />
+              <TableRow name={JSON.parse(data.meta)} width={15} />
 
               <ActionRow
                 name="Download file"

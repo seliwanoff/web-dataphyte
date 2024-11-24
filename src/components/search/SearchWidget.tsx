@@ -57,7 +57,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
   if (!hasData()) return null;
 
   return (
-    <div className="w-full border-b-2 border-[#cecece] mx-auto pb-[32px]">
+    <div className="w-full border-b-2 border-[#cecece] mx-auto pb-[32px] pt-[32px]">
       <div className="flex flex-col gap-[24px]">
         {title && (
           <span className="text-[#373737] font-semibold text-[18px] leading-6 font-Poppins">
@@ -71,6 +71,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
               <EachComponent
                 key={index}
                 mineralName={data.name}
+                image={data.image}
                 countries={parseData(data)}
                 miningCount={4}
                 docCount={1500}
@@ -84,6 +85,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 mineralName={` ${data.first_name} ${data.last_name}`}
                 countries={parseData(data)}
                 miningCount={4}
+                image={data.image}
                 mineral={"Dataphyte Limited"}
                 docCount={1500}
                 role={data.role}
@@ -115,7 +117,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 {document?.data?.map((data: any, index: number) => (
                   <DocumentSearchMobileWidget
                     mineralName={data.name}
-                    countries={parseData(data)}
+                    countries={document?.data?.location}
                     miningCount={4}
                     mineral={"Maganese"}
                     docCount={5}

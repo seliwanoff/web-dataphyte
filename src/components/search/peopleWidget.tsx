@@ -88,6 +88,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               docCount={1500}
               role={data.role}
               id={data.id}
+              image={data.image}
             />
           )) || null
         );

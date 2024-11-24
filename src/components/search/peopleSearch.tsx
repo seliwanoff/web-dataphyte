@@ -13,6 +13,7 @@ interface PeopleSearchWidgetProps {
   mineral?: string;
   role?: string;
   id: any;
+  image: any;
 }
 
 const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
@@ -23,6 +24,7 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
   mineral,
   role,
   id,
+  image,
 }) => {
   const { addProfile } = useProfileContext();
   const navigate = useNavigate();
@@ -42,7 +44,11 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
 
   return (
     <div className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
-      <img src={profile} alt="" className="h-[64px] mx-auto mb-1" />
+      <img
+        src={image ? image : profile}
+        alt=""
+        className="h-[64px] mx-auto mb-1"
+      />
       <div className="flex gap-[10px] items-center">
         <div className="flex flex-col gap-[4px]">
           <h3 className="p-0 m-0 font-semibold font-Poppins text-[16px] leading-6 text-[#000]">

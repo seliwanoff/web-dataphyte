@@ -26,6 +26,7 @@ interface MiningSiteData {
     country: string;
     role: string;
     id: string;
+    image: any;
   }>;
   company?: Array<{ name: string; country: string }>;
   mineral?: Array<{ name: string }>;
@@ -133,6 +134,7 @@ const MiningSiteWrapper: React.FC = () => {
                       key={index}
                       role={data.role}
                       id={data.id}
+                      image={data.image}
                     />
                   ))}
                 </ProfileProvider>

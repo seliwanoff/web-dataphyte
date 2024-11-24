@@ -22,7 +22,7 @@ const EachComponent: React.FC<EachComponentProps> = ({
   return (
     <div className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl ">
       <div className="flex gap-[10px] items-center">
-        <img src={minerlogo} alt="" className="h-[70px]" />
+        <img src={image ? image : minerlogo} alt="" className="h-[70px]" />
 
         <div className="flex flex-col gap-[4px]">
           <h3 className="p-0 m-0 font-semibold font-Poppins text-[16px] leading-6 text-[#000]">
