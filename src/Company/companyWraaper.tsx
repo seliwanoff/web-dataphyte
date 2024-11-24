@@ -28,7 +28,7 @@ const CompanyProfile: React.FC = () => {
     {
       logo: company,
       name: eachCompanyDetails?.data?.parent,
-      image: eachCompanyDetails?.data.image,
+      image: eachCompanyDetails?.data?.image,
     },
   ];
 

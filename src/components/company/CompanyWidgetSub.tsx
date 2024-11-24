@@ -35,7 +35,7 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
                   <div className="flex flex-col items-center gap-2">
                     <img
                       src={company.image}
-                      alt={company.name}
+                      alt={company.image}
                       className="xl:h-[58.85px] h-[40px] xl:w-[58.85px] w-10"
                     />
                     <span
