@@ -5,6 +5,9 @@ import RegulationText from "../components/regulationText";
 import Textarea from "../components/Textarea";
 import UploadEl from "../components/uploadEl";
 import RegulationForm from "../Regulation/regualtionForm";
+
+import { Store } from "react-notifications-component";
+import "react-notifications-component/dist/theme.css";
 type FormDataType = {
   name: string;
   email: string;
@@ -17,6 +20,7 @@ type FormDataType = {
 };
 const ReportFromWrapper = () => {
   const baseURl = process.env.REACT_APP_URL;
+  const [isLoading, setIsLoading] = useState(false);
 
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
@@ -28,9 +32,9 @@ const ReportFromWrapper = () => {
     location: "No location",
     display_picture: null,
   });
-  console.log(formData.display_picture);
   const handleSubmit = async (event: any) => {
     event.preventDefault();
+    setIsLoading(true);
 
     const data = new FormData();
     data.append("name", formData.name);
@@ -63,9 +67,49 @@ const ReportFromWrapper = () => {
       }
 
       const result = await response.json();
-      console.log("Upload successful:", result);
+      //console.log("Upload successful:", result);
+
+      Store.addNotification({
+        title: "Success!",
+        message: "Upload successful",
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
     } catch (error) {
-      console.error("Error uploading form data:", error);
+      // console.error("Error uploading form data:", error);
+
+      Store.addNotification({
+        title: "Error!",
+        message: `Error uploading form data:, ${error}`,
+        type: "danger",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
+    } finally {
+      setFormData({
+        name: "",
+        email: "",
+        meta: "",
+        title: "",
+        article: null,
+        article_picture: null,
+        display_picture: null,
+        location: "No location",
+      });
+      setIsLoading(false);
     }
   };
 
@@ -144,11 +188,12 @@ const ReportFromWrapper = () => {
           </div>
 
           <button
+            disabled={isLoading}
             className={`py-[16px] h-[55px] text-unwrap flex justify-center items-center px-[32px] w-full max-w-[318px]
        rounded-[36px] bg-[#7F55DA] text-[#fff] font-Satoshi text-[16px] font-bold leading-[21.6px] outline-none border-none`}
             onClick={handleSubmit} // Pass the event handler
           >
-            Submit Report
+            {isLoading ? "Submitting" : "Submit Report"}
           </button>
         </div>
       </div>

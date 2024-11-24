@@ -117,7 +117,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 {document?.data?.map((data: any, index: number) => (
                   <DocumentSearchMobileWidget
                     mineralName={data.name}
-                    countries={document?.data?.location}
+                    countries={JSON.parse(data.meta)}
                     miningCount={4}
                     mineral={"Maganese"}
                     docCount={5}

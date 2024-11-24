@@ -5,7 +5,7 @@ interface UploadElProps<T> {
   placeholder?: string;
   helperText?: string;
   name: keyof T; // Ensures the name matches a key in the form data type
-  value: string;
+  value: File | string; // Updated to allow File type (not just string)
   setForm: React.Dispatch<React.SetStateAction<T>>; // Matches the form data type
 }
 
@@ -21,7 +21,7 @@ const UploadEl = <T extends Record<string, any>>({
     const file = e.target.files?.[0];
 
     if (file) {
-      // Set only the file name
+      // Set the file object to form state
       setForm((prev) => ({ ...prev, [name]: file }));
     }
   };
@@ -64,6 +64,12 @@ const UploadEl = <T extends Record<string, any>>({
           </div>
         </div>
       </div>
+      {/* Check if a file has been selected, then display its name */}
+      {value && typeof value !== "string" && value.name && (
+        <div className="w-full bg-[#475467] rounded-md py-2 text-white font-Poppins px-4  overflow-hidden text-ellipsis text-nowrap">
+          {value.name}
+        </div>
+      )}
       <span className="text-[#475467] font-Inter text-[14px] font-normal leading-[20px] text-left">
         40 characters maximum
       </span>
