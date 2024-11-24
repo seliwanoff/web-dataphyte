@@ -16,7 +16,11 @@ const PeopleProfile: React.FC<SearchResultProps> = ({
   return (
     <>
       <div className="flex flex-col gap-8 xl:mb-0 mb-5">
-        <img src={profiledata} alt="" className="h-[100px] w-[100px]" />
+        <img
+          src={datas && datas?.data.image}
+          alt=""
+          className="h-[100px] w-[100px]"
+        />
 
         <div className="flex gap-[10px] items-center ">
           <div className="flex flex-col gap-[4px]">
