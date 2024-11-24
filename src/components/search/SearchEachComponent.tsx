@@ -38,9 +38,11 @@ const EachComponent: React.FC<EachComponentProps> = ({
             </span>
 
             <img src={ellipse} alt="" className="h-[8px]" />
+            {/***
             <span className="flex gap-[4px] text-[14px] font-Poppins leading-[21px] items-center text-[#828282]">
               <p className="font-medium text-[#000]">{docCount}</p> Docs
             </span>
+            */}
           </div>
         </div>
       </div>

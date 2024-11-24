@@ -34,9 +34,11 @@ const MiningSearchWidget: React.FC<MiningSearchWidgetProps> = ({
             </span>
 
             <img src={ellipse} alt="" className="h-[8px]" />
+            {/**
             <span className="flex gap-[4px] text-[14px] font-Poppins leading-[21px] items-center text-[#828282]">
               <p className="font-medium text-[#000]">{docCount}</p> Docs
             </span>
+            */}
           </div>
           <span className="text-[#333] text-[14px] font-normal leading-[21px] font-Poppins flex items-center">
             <img src={location} alt="" className="h-[16px] mr-2" />
