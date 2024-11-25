@@ -243,7 +243,7 @@ const MineralWrapper: React.FC = () => {
                     <img
                       src={picture?.link}
                       alt={`Picture ${index + 1}`}
-                      className="h-[240px] w-[229px] rounded-mdm"
+                      className="h-[240px] w-[229px] rounded-md flex-shrink-0"
                       key={index}
                     />
                   ))}

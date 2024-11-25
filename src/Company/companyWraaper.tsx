@@ -58,6 +58,13 @@ const CompanyProfile: React.FC = () => {
       image: child.image,
     })) || [];
 
+  const stakeholders: CompanyData[] =
+    eachCompanyDetails?.data?.stakeholder?.map((child: any) => ({
+      logo: company,
+      name: child?.name,
+      image: child.image,
+    })) || [];
+
   useEffect(() => {
     fetchData(`company/getcompany?id=${id}`, setEachCompanyDetails);
   }, [id]);
@@ -82,7 +89,7 @@ const CompanyProfile: React.FC = () => {
     },
     {
       type: "Subsidiaries",
-      count: eachCompanyDetails?.data?.subsidiaries?.length || 0,
+      count: eachCompanyDetails?.data?.children?.length || 0,
     },
     {
       type: "Documents",
@@ -101,9 +108,10 @@ const CompanyProfile: React.FC = () => {
       companies: subsidiaries,
       size: "xl:text-[20px] text-[12.65px]",
     },
+
     {
       title: "Stakeholders",
-      companies: subsidiaries, // Assuming stakeholders are also subsidiaries
+      companies: stakeholders, // Assuming stakeholders are also subsidiaries
       size: "xl:text-[20px] text-[12.65px]",
     },
   ];
@@ -119,7 +127,7 @@ const CompanyProfile: React.FC = () => {
             name={eachCompanyDetails?.data?.name}
             meta={eachCompanyDetails?.data?.meta}
           />
-          <div className="xl:block hidden">
+          <div className=" hidden">
             <Companymapping />
           </div>
           {sections.map((section, index) => (
@@ -130,7 +138,7 @@ const CompanyProfile: React.FC = () => {
               size={section.size}
             />
           ))}
-          <div className="xl:hidden block">
+          <div className="hidden">
             <Companymapping />
           </div>
           <SearchFilter

@@ -95,6 +95,7 @@ const PeopleWrapper = () => {
                 "Mining Sites",
                 "Documents",
                 "Companies",
+                "Picture",
               ]}
               datas={people}
               currentTab={currentTab}

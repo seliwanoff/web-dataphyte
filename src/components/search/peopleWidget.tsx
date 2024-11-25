@@ -17,7 +17,6 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || title || "Default Title";
-
   const combined = [
     ...(datas?.data?.ceo?.map((persons: any) => ({
       ...persons,
