@@ -2,7 +2,7 @@ import React from "react";
 
 interface Company {
   logo: string;
-  name: string;
+  name?: string | { name: string };
   image?: string;
 }
 
@@ -19,9 +19,9 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
   size,
   image,
 }) => {
+  //console.log(companies);
   return (
     <>
-      {/* Render only if companies length > 0 */}
       {companies.length > 0 && (
         <div className="w-full xl:px-[110px] px-[24px]">
           <div className="w-full max-w-[1750px] mx-auto border-t-2 border-[#d6d6d6] py-6 flex xl:flex-row flex-col gap-6 justify-start xl:pb-[56px]">
@@ -36,12 +36,14 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
                     <img
                       src={company.image}
                       alt={company.image}
-                      className="xl:h-[58.85px] h-[40px] xl:w-[58.85px] w-10"
+                      className="xl:h-[58.85px] h-[40px] xl:w-[58.85px] w-10 rounded-full"
                     />
                     <span
                       className={`font-Poppins font-bold leading-[23.4px] ${size} text-[#161616]m`}
                     >
-                      {company?.name}
+                      {typeof company.name === "string"
+                        ? company.name
+                        : company.name && company?.name.name}
                     </span>
                   </div>
                 </div>

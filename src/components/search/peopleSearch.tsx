@@ -47,11 +47,11 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
       <img
         src={image ? image : profile}
         alt=""
-        className="h-[64px] mx-auto mb-1"
+        className="h-[64px] w-[64px] rounded-full mx-auto mb-1 object-fill"
       />
       <div className="flex gap-[10px] items-center">
-        <div className="flex flex-col gap-[4px]">
-          <h3 className="p-0 m-0 font-semibold font-Poppins text-[16px] leading-6 text-[#000]">
+        <div className="flex flex-col gap-[4px] mt-2">
+          <h3 className="p-0 m-0 font-semibold font-Poppins text-[16px] leading-6 text-[#000] text-nowrap text-ellipsis w-[300px] overflow-hidden">
             {mineralName}
           </h3>
           <div className="flex gap-[8px] items-center">

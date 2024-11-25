@@ -32,8 +32,9 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
   const queryName = queryParams.get("query") || title || "Default Title";
 
   const parseData = (data: any) => parseCountry(data);
-
-  // Centralized logic for checking data presence
+  const mineralCount = (mineral.data && mineral?.data.length) || 0;
+  const documentCount = (document.data && document?.data.length) || 0;
+  console.log(miningSite.data);
   const hasData = () => {
     switch (title) {
       case "Minerals":
@@ -53,7 +54,6 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
     }
   };
 
-  // Conditional rendering
   if (!hasData()) return null;
 
   return (
@@ -73,8 +73,8 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 mineralName={data.name}
                 image={data.image}
                 countries={parseData(data)}
-                miningCount={mineral && mineral?.data.length}
-                docCount={1500}
+                miningCount={(data?.site && data?.site?.length) || 0}
+                docCount={(data?.document && data?.document?.length) || 0}
                 id={data.id}
               />
             ))}
@@ -83,13 +83,27 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
             people?.data?.map((data: any, index: number) => (
               <PeopleSearchWidget
                 key={index}
-                mineralName={` ${data.first_name} ${data.last_name}`}
+                mineralName={`${data.first_name} ${data.last_name}`}
                 countries={parseData(data)}
                 miningCount={4}
                 image={data.image}
-                mineral={"Dataphyte Limited"}
-                docCount={1500}
-                role={data.role}
+                mineral={
+                  data.ceo && data.ceo
+                    ? data?.ceo[0]?.name
+                    : data?.cfo && data?.cfo
+                    ? data?.cfo[0]?.name
+                    : (data?.cto && data?.cto[0]?.name) || null
+                }
+                docCount={documentCount}
+                role={
+                  data.ceo?.length > 0
+                    ? "CEO"
+                    : data?.cfo?.length > 0
+                    ? "CFO"
+                    : data.cto?.length > 0
+                    ? "CTO"
+                    : ""
+                }
                 id={data.id}
               />
             ))}
@@ -100,9 +114,9 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 key={index}
                 mineralName={data.name}
                 countries={parseData(data)}
-                miningCount={4}
-                mineral={data.mineral[0].name}
-                docCount={1500}
+                miningCount={(data?.mineral && data?.mineral?.length) || 0}
+                mineral={data?.mineral[0].name}
+                docCount={(data?.document && data?.document?.length) || 0}
                 id={data.id}
               />
             ))}
@@ -134,8 +148,8 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 key={index}
                 mineralName={data.name}
                 countries={parseData(data)}
-                miningCount={4}
-                docCount={1500}
+                miningCount={data?.mineral?.length}
+                docCount={data?.document?.length}
                 id={data.id}
               />
             ))}
@@ -146,8 +160,8 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 key={index}
                 mineralName={data.name}
                 countries={parseData(data)}
-                miningCount={4}
-                docCount={1500}
+                miningCount={0}
+                docCount={0}
               />
             ))}
         </div>

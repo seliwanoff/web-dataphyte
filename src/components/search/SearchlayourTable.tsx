@@ -32,7 +32,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
     { role: "CFO", person: datas?.data?.cfo },
     { role: "CTO", person: datas?.data?.cto },
   ]
-    .filter((entry) => entry.person) // Filter out any roles that are missing
+    .filter((entry) => entry.person)
     .map(({ person, role }) => ({
       id: person.id,
       first_name: `${person.title} ${person.first_name}`,
@@ -86,9 +86,15 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
                   title={title}
                   datas={datas}
                   company={
-                    pathname === "/company-profile" ? { data: {} } : company
+                    pathname === "/company-profile"
+                      ? { data: datas.data.children }
+                      : company
                   }
-                  miningSite={miningSite || []}
+                  miningSite={
+                    pathname === "/company-profile"
+                      ? { data: datas.data.site }
+                      : miningSite
+                  }
                   document={
                     pathname === "/company-profile"
                       ? { data: datas.data.document }

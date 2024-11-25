@@ -69,9 +69,9 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
             <EachComponent
               key={index}
               mineralName={data.name}
-              countries="Nigeria, Ghana"
-              miningCount={4}
-              docCount={1500}
+              countries={parseCountry(data)}
+              miningCount={datas?.data?.site && datas?.data?.site.length}
+              docCount={datas?.data?.document && datas?.data?.document.length}
               id={data?.id}
             />
           )) || null
@@ -102,8 +102,12 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               mineralName={data.name}
               countries={parseCountry(data)}
               miningCount={4}
-              mineral={data.mineral}
-              docCount={1500}
+              mineral={
+                (datas?.data?.mineral && datas?.data?.mineral.length) || 0
+              }
+              docCount={
+                (datas?.data?.document && datas?.data?.document.length) || 0
+              }
               id={data.id}
             />
           )) || null
@@ -141,7 +145,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               key={index}
               mineralName={data.name}
               countries={`${parseCountry(data)}`}
-              miningCount={4}
+              miningCount={datas?.data?.mineral && datas?.data?.mineral.length}
               mineral={"Dataphyte Limited"}
               docCount={1500}
               role={data.role}

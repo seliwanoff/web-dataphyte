@@ -29,6 +29,10 @@ interface MiningSiteData {
     role: string;
     id: any;
     image: any;
+    last_name: string;
+    first_name: string;
+    title: string;
+    mineral: any;
   }>;
   company?: Array<{ name: string; country: string }>;
   picture?: Array<{ name: string; country: string; link: string }>;
@@ -84,12 +88,7 @@ const MiningSiteWrapper: React.FC = () => {
   const Filters = [
     {
       type: "All",
-      count: [
-        ...(miningSite?.data?.document || []),
-        ...(miningSite?.data?.people || []),
-        ...(miningSite?.data?.company || []),
-        ...(miningSite?.data?.mineral || []),
-      ].length,
+      count: 20,
     },
     {
       type: "Minerals",
@@ -198,10 +197,13 @@ const MiningSiteWrapper: React.FC = () => {
                   <ProfileProvider>
                     {miningSite.data.people.map((data, index) => (
                       <PeopleSearchWidget
-                        mineralName={data.name}
+                        mineralName={`${data.title} ${data.first_name} ${data.last_name}`}
                         countries={`${data.location}, ${parseCountry(data)}`}
                         miningCount={4}
-                        mineral={"Dataphyte Limited"}
+                        mineral={
+                          miningSite?.data?.mineral &&
+                          miningSite?.data?.mineral[0]?.name
+                        }
                         docCount={1500}
                         key={index}
                         role={data.role}

@@ -29,11 +29,16 @@ interface MiningSiteData {
     role: string;
     id: string;
     image: any;
+    first_name: string;
+    last_name: string;
+    title: string;
+    picture: any;
   }>;
   company?: Array<{ name: string; country: string }>;
   mineral?: Array<{ name: string }>;
   name: string;
   site: string;
+  picture: any;
 }
 
 interface MiningSiteResponse {
@@ -177,7 +182,7 @@ const MineralWrapper: React.FC = () => {
                   <ProfileProvider>
                     {miningSite.data.people.map((data, index) => (
                       <PeopleSearchWidget
-                        mineralName={data.name}
+                        mineralName={`${data.title} ${data.first_name} ${data.last_name}`}
                         countries={`${data.location}, ${parseCountry(data)}`}
                         miningCount={4}
                         mineral={"Dataphyte Limited"}
@@ -228,26 +233,22 @@ const MineralWrapper: React.FC = () => {
                   ))}
                 </div>
               )}
-            {renderSection(
-              "Pictures",
-              <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
-                {[
-                  picture1,
-                  picture2,
-                  picture3,
-                  picture4,
-                  picture2,
-                  picture1,
-                ].map((picture, index) => (
-                  <img
-                    src={picture}
-                    alt={`Picture ${index + 1}`}
-                    className="h-[240px]"
-                    key={index}
-                  />
-                ))}
-              </div>
-            )}
+            {miningSite &&
+              Array.isArray(miningSite.data?.picture) &&
+              miningSite.data.picture.length > 0 &&
+              renderSection(
+                "Pictures",
+                <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
+                  {miningSite.data.picture.map((picture, index) => (
+                    <img
+                      src={picture?.link}
+                      alt={`Picture ${index + 1}`}
+                      className="h-[240px] w-[229px] rounded-mdm"
+                      key={index}
+                    />
+                  ))}
+                </div>
+              )}
           </div>
         </>
       )}
