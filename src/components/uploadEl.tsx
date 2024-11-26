@@ -8,6 +8,7 @@ interface UploadElProps<T> {
   value: File | string; // Updated to allow File type (not just string)
   setForm: React.Dispatch<React.SetStateAction<T>>; // Matches the form data type
   accept: any;
+  instruction: any;
 }
 
 const UploadEl = <T extends Record<string, any>>({
@@ -18,6 +19,7 @@ const UploadEl = <T extends Record<string, any>>({
   value,
   setForm,
   accept,
+  instruction,
 }: UploadElProps<T>) => {
   const handleChange = (e: any) => {
     const file = e.target.files?.[0];
@@ -62,7 +64,7 @@ const UploadEl = <T extends Record<string, any>>({
                 </span>
                 or drag and drop
               </span>
-              <span>SVG, PNG, JPG or GIF (max. 800x400px)</span>
+              <span>{instruction}</span>
             </div>
           </div>
         </div>

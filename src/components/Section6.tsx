@@ -1,7 +1,17 @@
 import star from "../assets/images/star.png";
 import EachNewsCard from "./eachNewCards";
 
-const Section6 = () => {
+import {
+  calculateMinutesToRead,
+  getExcerpt,
+} from "../utils/readTimeCalculator";
+import SkeletonLoader from "./skeletonLoader/skeleton";
+
+type SelectElProps = {
+  data: any;
+};
+
+const Section6: React.FC<SelectElProps> = ({ data }) => {
   return (
     <div className="w-full bg-white xl:px-[110px] px-[24px] xl:py-[32px] py-[16px]">
       <div className="max-w-[1750px]  mx-auto py-[30px] xl:py-[100px] flex  flex-col gap-16">
@@ -22,10 +32,20 @@ const Section6 = () => {
           </div>
         </div>
         <div className="parent-scroll flex items-center gap-8  xl:flex-nowrap flex-wrap xl:overflow-x-auto relative">
-          <EachNewsCard />
-          <EachNewsCard />
-          <EachNewsCard />
-          <EachNewsCard />
+          <>
+            {data.length > 0 ? (
+              <>
+                {data.length > 0 &&
+                  data?.map((report: any, index: any) => (
+                    <EachNewsCard key={index} data={report} />
+                  ))}
+              </>
+            ) : (
+              <div className="text-center text-gray-500 xl:mt-[50px] mt-[10px] font-Inter w-full">
+                No report found
+              </div>
+            )}
+          </>
         </div>
       </div>
     </div>

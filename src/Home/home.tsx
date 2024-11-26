@@ -23,6 +23,10 @@ import d4 from "../assets/images/access.png";
 import d5 from "../assets/images/d5.png";
 import banner from "../assets/images/banner.png";
 import search from "../assets/images/search-normal.png";
+import { useEffect, useState } from "react";
+
+const baseURl = process.env.REACT_APP_URL;
+
 const Home = () => {
   const images = [
     africa,
@@ -42,6 +46,33 @@ const Home = () => {
     d4,
     d5,
   ];
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [reports, setReports] = useState([]);
+
+  const fetchData = async (
+    url: string,
+    setter: React.Dispatch<React.SetStateAction<any>>
+  ) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${baseURl}${url}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log(data);
+      setter(data.data.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData(`report/get`, setReports);
+  }, []);
   return (
     <>
       <PreloaderProvider images={images}>
@@ -49,7 +80,7 @@ const Home = () => {
         <Section3 />
         <Section4 />
         <Sectin5 />
-        <Section6 />
+        <Section6 data={reports} />
         <Section7 />
         <Footer />
       </PreloaderProvider>

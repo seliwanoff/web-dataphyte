@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import chevron_down from "../assets/images/chevron-down.png";
-import { continents } from "./country/allCountry";
+// import { continents } from "./country/allCountry"; // Commented out
 import ContinentDropDown from "./country/continentDropdown";
 import CountryDownList from "./country/countryDownList";
 
@@ -9,17 +9,20 @@ type Country = {
   code: string;
 };
 
-type Continent = {
-  continent: string;
-  countries: Country[];
-};
+// Define a fixed array for countries
+const predefinedCountries: Country[] = [
+  { name: "Nigeria", code: "NG" },
+  { name: "Ghana", code: "GH" },
+  { name: "Benin", code: "BJ" },
+  { name: "Turkey", code: "TR" },
+];
 
 type SelectElProps = {
   selectedContinent: string;
   setSelectedContinent: Dispatch<SetStateAction<string>>;
   selectedCountry: string;
   setSelectedCountry: Dispatch<SetStateAction<string>>;
-  countries: Country[];
+  countries?: Country[]; // Optional since we're using predefinedCountries
   text?: string;
 };
 
@@ -28,20 +31,19 @@ const SelectEl: React.FC<SelectElProps> = ({
   setSelectedContinent,
   selectedCountry,
   setSelectedCountry,
-  countries,
+  countries = predefinedCountries, // Default to predefined countries
   text,
 }) => {
   const [showContinentDrop, setShowContinentDrop] = useState<boolean>(false);
   const [showCountryDrop, setShowCountryDrop] = useState<boolean>(false);
 
   const handleMainDropdownClick = () => {
-    // If country dropdown is open, close it and open continent dropdown
+    // If country dropdown is open, close it
     if (showCountryDrop) {
       setShowCountryDrop(false);
-      setShowContinentDrop(true);
     } else {
-      // Toggle continent dropdown
-      setShowContinentDrop((prev) => !prev);
+      // Toggle country dropdown
+      setShowCountryDrop((prev) => !prev);
     }
   };
 
@@ -58,26 +60,15 @@ const SelectEl: React.FC<SelectElProps> = ({
         onClick={handleMainDropdownClick}
       >
         <section className="w-full font-Inter text-[16px] font-normal leading-6 text-[#667085]">
-          {selectedCountry || selectedContinent || "Select country"}
+          {selectedCountry || "Select country"}
         </section>
         <img src={chevron_down} alt="" className="h-[20px]" />
       </div>
 
-      {showContinentDrop && (
-        <ContinentDropDown
-          data={continents}
-          setSelectedContinent={(continent) => {
-            setSelectedContinent(continent);
-            setShowContinentDrop(false);
-            setShowCountryDrop(true); // Show country dropdown after selecting a continent
-          }}
-        />
-      )}
-
-      {showCountryDrop && selectedContinent && countries.length > 0 && (
+      {showCountryDrop && predefinedCountries.length > 0 && (
         <CountryDownList
-          title={`Select a Country in ${selectedContinent}`}
-          items={countries}
+          title="Select a Country"
+          items={predefinedCountries}
           selectedItem={selectedCountry}
           onSelect={(countryName) => {
             setSelectedCountry(countryName);

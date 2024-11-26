@@ -22,7 +22,7 @@ const ButtonEl: React.FC<ButtonElProps> = ({
         size ? size : "max-w-[166px]"
       } rounded-[36px] bg-[#7F55DA] text-[#fff] font-Satoshi text-[16px] font-bold leading-[21.6px] outline-none border-none`}
       onClick={() => {
-        navigate(`${link}?c=${selectedCountry}&r=${selectedContinent}`);
+        navigate(`${link}?c=${selectedCountry}`);
       }}
     >
       {text}

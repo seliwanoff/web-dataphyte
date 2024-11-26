@@ -8,6 +8,7 @@ import RegulationForm from "../Regulation/regualtionForm";
 
 import { Store } from "react-notifications-component";
 import "react-notifications-component/dist/theme.css";
+import { useLocation } from "react-router-dom";
 type FormDataType = {
   name: string;
   email: string;
@@ -21,7 +22,10 @@ type FormDataType = {
 const ReportFromWrapper = () => {
   const baseURl = process.env.REACT_APP_URL;
   const [isLoading, setIsLoading] = useState(false);
-
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const queryName = queryParams.get("c") || "" || "";
+  const [query, setQuery] = useState(queryName);
   const [formData, setFormData] = useState<FormDataType>({
     name: "",
     email: "",
@@ -29,7 +33,7 @@ const ReportFromWrapper = () => {
     title: "",
     article: null,
     article_picture: null,
-    location: "No location",
+    location: queryName,
     display_picture: null,
   });
   const handleSubmit = async (event: any) => {
@@ -82,6 +86,16 @@ const ReportFromWrapper = () => {
           onScreen: true,
         },
       });
+      setFormData({
+        name: "",
+        email: "",
+        meta: "",
+        title: "",
+        article: null,
+        article_picture: null,
+        display_picture: null,
+        location: "No location",
+      });
     } catch (error) {
       // console.error("Error uploading form data:", error);
 
@@ -99,16 +113,6 @@ const ReportFromWrapper = () => {
         },
       });
     } finally {
-      setFormData({
-        name: "",
-        email: "",
-        meta: "",
-        title: "",
-        article: null,
-        article_picture: null,
-        display_picture: null,
-        location: "No location",
-      });
       setIsLoading(false);
     }
   };
@@ -167,6 +171,7 @@ const ReportFromWrapper = () => {
               setForm={setFormData}
               name="display_picture"
               accept="image/*"
+              instruction="SVG, PNG, JPG or GIF (max. 800x400px)"
             />
           </div>
           <div className="w-full  xl:gap-[50px] gap-[24px] flex xl:flex-row flex-col items-center">
@@ -178,6 +183,7 @@ const ReportFromWrapper = () => {
               setForm={setFormData}
               name="article"
               accept=".pdf,.docx.xls,.ppt,pptx,.doc"
+              instruction="PDF, DOC, XLSX or PPT (max. 800x400px)"
             />
             <UploadEl
               placeholder="Article Thumbnail"
@@ -187,6 +193,7 @@ const ReportFromWrapper = () => {
               setForm={setFormData}
               name="article_picture"
               accept="image/*"
+              instruction="SVG, PNG, JPG or GIF (max. 800x400px)"
             />
           </div>
 
