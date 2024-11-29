@@ -15,28 +15,33 @@ interface MiningData {
   miningInfo: string;
 }
 
+// JSON data for states with mining activities
+const miningStates = [
+  "Kaduna",
+  "Plateau",
+  "Zamfara",
+  "Kogi",
+  "Niger",
+  "Enugu",
+  "Ogun",
+  "Ondo",
+];
+
 const CountryMap: React.FC = () => {
   const [zoom, setZoom] = useState(1); // Zoom level
-  const [selectedRegion, setSelectedRegion] = useState<MiningData | null>(null); // State for selected region
+  const [selectedRegion, setSelectedRegion] = useState<MiningData | null>(null);
 
   const handleGeographyClick = (geo: any) => {
-    // Extract state, local government, and coordinates
-    const state = geo.properties.state || "Unknown State"; // Ensure this matches your GeoJSON property
-    const localGovernment = geo.properties.local_government || "Unknown LGA"; // Ensure this matches your GeoJSON property
+    const state = geo.properties.state || "Unknown State";
+    const localGovernment = geo.properties.local_government || "Unknown LGA";
     const coordinates = geo.geometry.coordinates; // Extract coordinates
-    console.log(selectedRegion);
-    // Example mining data (replace with actual data)
+
     const miningData: MiningData = {
       state,
       localGovernment,
       coordinates,
       miningInfo: `Sample mining data for ${localGovernment}, ${state}.`,
     };
-
-    // Log details for debugging
-    console.log("State:", state);
-    console.log("Local Government:", localGovernment);
-    console.log("Coordinates:", coordinates);
 
     setSelectedRegion(miningData); // Set selected region data
   };
@@ -59,32 +64,40 @@ const CountryMap: React.FC = () => {
         >
           <Geographies geography={nigeriaGeoJson}>
             {({ geographies }) =>
-              geographies.map((geo) => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  fill="#272727;"
-                  stroke="#FFFFFF"
-                  strokeWidth={1}
-                  onClick={() => handleGeographyClick(geo)} // Handle clicks
-                />
-              ))
+              geographies.map((geo) => {
+                const state = geo.properties.state || "Unknown State";
+                const fillColor = miningStates.includes(state)
+                  ? "#7F55DA"
+                  : "#272727"; // Set color based on JSON data
+
+                return (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    fill={fillColor}
+                    stroke="#FFFFFF"
+                    strokeWidth={1}
+                    onClick={() => handleGeographyClick(geo)} // Handle clicks
+                  />
+                );
+              })
             }
           </Geographies>
         </ComposableMap>
       </div>
 
-      {/*
+      {/***
+
       {selectedRegion && (
-        <div className="mt-4 p-4 bg-white shadow rounded">
-          <h2 className="font-semibold text-lg">Selected Region Details:</h2>
+        <div className="mt-4 p-4 border rounded bg-white">
+          <h2 className="text-lg font-semibold">Selected Region</h2>
           <p>State: {selectedRegion.state}</p>
           <p>Local Government: {selectedRegion.localGovernment}</p>
-
+          <p>Coordinates: {JSON.stringify(selectedRegion.coordinates)}</p>
           <p>Mining Info: {selectedRegion.miningInfo}</p>
         </div>
       )}
-         */}
+      */}
     </div>
   );
 };
