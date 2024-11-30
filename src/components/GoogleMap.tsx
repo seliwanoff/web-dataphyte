@@ -28,7 +28,7 @@ const blinkingIcon = new L.DivIcon({
 
 const LeafletMapComponent: React.FC<LeafletMapComponentProps> = ({
   center,
-  zoom = 6,
+  zoom = 14,
   markers = [],
   datas,
 }) => {

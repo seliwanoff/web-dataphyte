@@ -7,7 +7,7 @@ import GoogleMapComponent from "../GoogleMap";
 import PlaceIframe from "../placeID";
 
 interface CompanySearchWidgetProps {
-  mineralName: string;
+  mineralName: any;
   countries: string;
   miningCount: number;
   docCount: number;
