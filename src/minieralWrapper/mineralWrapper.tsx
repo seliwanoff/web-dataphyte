@@ -52,6 +52,7 @@ const MineralWrapper: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentTab, setCurrentTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showIframe, setShowIframe] = useState(false);
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<MiningSiteResponse | null>>
@@ -145,6 +146,9 @@ const MineralWrapper: React.FC = () => {
                       mineral={"Maganese"}
                       docCount={5}
                       key={index}
+                      setShowIframe={setShowIframe}
+                      setPlaceId={undefined}
+                      showIframe={showIframe}
                     />
                   ))}
                 </div>

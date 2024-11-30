@@ -17,6 +17,7 @@ import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import SearchFilter from "../components/search/searchfilter";
 import SearchBoxFilter from "../Search/serachBoxFilter";
 import MiningMapSite from "../components/search/MiningMap";
+import PlaceIframe from "../components/placeID";
 
 const baseURl = process.env.REACT_APP_URL;
 
@@ -46,6 +47,7 @@ interface MiningSiteData {
     role: string;
     id: string;
     image: any;
+    place_id: any;
   }>;
 }
 
@@ -60,6 +62,8 @@ const MiningSiteWrapper: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentTab, setCurrentTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [showIframe, setShowIframe] = useState(false);
+  const [placeId, setPlaceId] = useState("");
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<MiningSiteResponse | null>>
@@ -109,7 +113,7 @@ const MiningSiteWrapper: React.FC = () => {
   ];
 
   const renderSection = (title: string, children: React.ReactNode) => (
-    <div className="w-full mt-[46px] flex flex-col gap-8">
+    <div className="w-full mt-[46px] flex flex-col gap-8 relative">
       <span className="text-[#373737] font-semibold text-[18px] leading-6 font-Poppins">
         {title}
       </span>
@@ -118,7 +122,11 @@ const MiningSiteWrapper: React.FC = () => {
   );
 
   return (
-    <>
+    <div className="relative">
+      {showIframe && (
+        <PlaceIframe placeId={placeId} setShowIframe={setShowIframe} />
+      )}
+
       <SearchBoxFilter setSearchQuery={setSearchQuery} />
 
       {isLoading ? (
@@ -131,7 +139,7 @@ const MiningSiteWrapper: React.FC = () => {
             filters={Filters}
           />
 
-          <div className="w-full mx-auto xl:px-[110px] py-[32px] px-[24px] ">
+          <div className="w-full mx-auto xl:px-[110px] py-[32px] px-[24px] relative">
             <div className="text-[32px] font-Poppins font-semibold text-[#202020] leading-6] mb-4">
               {miningSite && miningSite?.data?.name}
             </div>
@@ -143,11 +151,13 @@ const MiningSiteWrapper: React.FC = () => {
                 <div className="flex flex-wrap gap-[24px]">
                   {miningSite.data.location.map((data, index) => (
                     <MiningMapSite
+                      data={data}
                       mineralName={
                         miningSite.data.mineral &&
                         miningSite?.data?.mineral[0]?.name
                       }
                       countries={data.name}
+                      setPlaceId={setPlaceId}
                       miningCount={
                         (miningSite.data.mineral &&
                           miningSite?.data?.mineral.length) ||
@@ -158,7 +168,9 @@ const MiningSiteWrapper: React.FC = () => {
                         miningSite?.data?.mineral[0]?.name
                       }
                       docCount={5}
+                      showIframe={showIframe}
                       key={index}
+                      setShowIframe={setShowIframe}
                     />
                   ))}
                 </div>
@@ -271,7 +283,7 @@ const MiningSiteWrapper: React.FC = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 

@@ -34,7 +34,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
   const parseData = (data: any) => parseCountry(data);
   const mineralCount = (mineral.data && mineral?.data.length) || 0;
   const documentCount = (document.data && document?.data.length) || 0;
-  console.log(miningSite.data);
+
   const hasData = () => {
     switch (title) {
       case "Minerals":
