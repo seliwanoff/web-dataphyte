@@ -71,7 +71,7 @@ code {
   @apply border-b-8 border-[#F3F3F3];
 }
 .widthl {
-  @apply w-full max-w-[480px] flex-1 basis-[calc((100%-72px)/3)];
+  @apply w-full max-w-[480px] flex-1 basis-[391px] xl:basis-[calc((100%-72px)/3)];
 }
 
 #nprogress {
