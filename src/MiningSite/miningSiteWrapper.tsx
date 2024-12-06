@@ -267,7 +267,7 @@ const MiningSiteWrapper: React.FC = () => {
                 <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
                   {miningSite.data.picture.map((picture, index) => (
                     <img
-                      src={picture?.link}
+                      src={`https://cardri.s3.eu-west-1.amazonaws.com/${picture?.link}`}
                       alt={`Picture ${index + 1}`}
                       className="h-[240px] w-[229px] rounded-md flex-shrink-0"
                       key={index}
