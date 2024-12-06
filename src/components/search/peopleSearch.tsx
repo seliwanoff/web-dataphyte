@@ -27,6 +27,8 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
   image,
 }) => {
   const { addProfile } = useProfileContext();
+  const baseURl = process.env.REACT_APP_URL;
+
   const navigate = useNavigate();
   const handleViewProfile = () => {
     navigate("/people", { state: { id: id } });
@@ -45,9 +47,9 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
   return (
     <div className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <img
-        src={image ? image : profile}
+        src={image && `https://cardri.s3.eu-west-1.amazonaws.com/${image}`}
         alt=""
-        className="h-[64px] w-[64px] rounded-full mx-auto mb-1 object-fill"
+        className="h-[64px] w-[64px] rounded-full mx-auto mb-1 object-fill "
       />
       <div className="flex gap-[10px] items-center">
         <div className="flex flex-col gap-[4px] mt-2">

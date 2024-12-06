@@ -20,6 +20,8 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
   image,
 }) => {
   //console.log(companies);
+  const baseURl = process.env.REACT_APP_URL;
+
   return (
     <>
       {companies.length > 0 && (
@@ -34,7 +36,7 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
                 <div key={index} className="flex flex-col gap-6 items-center">
                   <div className="flex flex-col items-center gap-2">
                     <img
-                      src={company.image}
+                      src={`https://cardri.s3.eu-west-1.amazonaws.com/${company.image}`}
                       alt={company.image}
                       className="xl:h-[58.85px] h-[40px] xl:w-[58.85px] w-10 rounded-full"
                     />

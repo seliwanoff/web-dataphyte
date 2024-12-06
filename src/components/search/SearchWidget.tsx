@@ -7,6 +7,7 @@ import Maintable from "../../Search/mainTableSearch";
 import DocumentSearchMobileWidget from "./DocumentMobileSearchWidget";
 import PeopleSearchWidget from "./peopleSearch";
 import parseCountry from "../parseCountry";
+import RealText from "../RealText";
 
 interface SearchWidgetProps {
   title?: string;
@@ -165,7 +166,14 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
               />
             ))}
         </div>
+        {/**
+          <div className="block w-full ">
+        <RealText richText={datas?.data.rich_text || ""} />
       </div>
+      */}
+      </div>
+
+      {/** **/}
     </div>
   );
 };
