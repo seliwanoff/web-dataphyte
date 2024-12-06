@@ -32,7 +32,7 @@ interface MiningSiteData {
   }>;
   company?: Array<{ name: string; country: string }>;
   picture?: Array<{ name: string; country: string; link: string }>;
-  mineral?: Array<{ name: any; id: any }>;
+  mineral?: Array<{ name: any; id: any; image: any }>;
   name: string;
 
   location?: Array<{
@@ -253,6 +253,7 @@ const MiningSiteWrapper: React.FC = () => {
                       countries="Nigeria, Ghana"
                       miningCount={4}
                       docCount={1500}
+                      image={data.image}
                       id={data.id}
                     />
                   ))}

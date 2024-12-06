@@ -93,9 +93,10 @@ const CompanyProfile: React.FC = () => {
     },
     {
       type: "Documents",
-      count: eachCompanyDetails?.data?.documents?.length || 0,
+      count: eachCompanyDetails?.data?.document?.length || 0,
     },
   ];
+  // console.log(eachCompanyDetails);
 
   const sections = [
     {
