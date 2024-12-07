@@ -3,6 +3,7 @@ import SearchWidget from "./SearchWidget";
 import PeopleSearchWidget from "./peopleSearch";
 import PeopleWidget from "./peopleWidget";
 import peopleSampleData from "../../data/peopleSampleResponse.json";
+//import { title } from "process";
 interface SeachTableFormatProps {
   widgetTitles: string[];
   currentTab: string;

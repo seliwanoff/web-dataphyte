@@ -47,7 +47,6 @@ const PeopleWrapper = () => {
     fetchData(`people/getpeople?id=${id}`, setPeople);
   }, [id]);
 
-  // Calculate counts for filters
   const Filters = [
     {
       type: "All",
@@ -68,6 +67,10 @@ const PeopleWrapper = () => {
         people?.data?.ceo?.length +
         people?.data?.cfo.length +
         people?.data?.cto.length,
+    },
+    {
+      type: "Rich Text",
+      count: 1,
     },
   ];
 
@@ -96,6 +99,7 @@ const PeopleWrapper = () => {
                 "Documents",
                 "Companies",
                 "Picture",
+                "Rich Text",
               ]}
               datas={people}
               currentTab={currentTab}

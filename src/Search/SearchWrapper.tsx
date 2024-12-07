@@ -75,6 +75,7 @@ const SearchWrapper = () => {
     { type: "Mining Sites", count: miningSite.data.length },
     { type: "Documents", count: allDocument.data.length },
     { type: "Companies", count: allCompany.data.length },
+    { type: "Rich Text", count: 0 },
   ];
 
   const isDataEmpty =

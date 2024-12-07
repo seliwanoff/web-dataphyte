@@ -13,10 +13,12 @@ import SearchFilter from "../components/search/searchfilter";
 import SearchBoxFilter from "../Search/serachBoxFilter";
 import MiningMapSite from "../components/search/MiningMap";
 import PlaceIframe from "../components/placeID";
+import RealText from "../components/RealText";
 
 const baseURl = process.env.REACT_APP_URL;
 
 interface MiningSiteData {
+  rich_text: string;
   document?: { name: string; location: string; type: string }[];
   people?: Array<{
     name: string;
@@ -34,6 +36,7 @@ interface MiningSiteData {
   picture?: Array<{ name: string; country: string; link: string }>;
   mineral?: Array<{ name: any; id: any; image: any }>;
   name: string;
+  real_text: any;
 
   location?: Array<{
     name: string;
@@ -103,6 +106,14 @@ const MiningSiteWrapper: React.FC = () => {
     {
       type: "Companies",
       count: miningSite?.data?.company?.length || 0,
+    },
+    {
+      type: "Rich Text",
+      count:
+        miningSite?.data?.rich_text !== null &&
+        miningSite?.data?.rich_text !== ""
+          ? 1
+          : 0,
     },
   ];
 
@@ -274,6 +285,14 @@ const MiningSiteWrapper: React.FC = () => {
                     />
                   ))}
                 </div>
+              )}
+
+            {miningSite &&
+              miningSite?.data?.rich_text !== "" &&
+              miningSite?.data?.rich_text !== null &&
+              renderSection(
+                "Rich Text",
+                <RealText richText={miningSite?.data?.rich_text} />
               )}
           </div>
         </>

@@ -95,6 +95,14 @@ const CompanyProfile: React.FC = () => {
       type: "Documents",
       count: eachCompanyDetails?.data?.document?.length || 0,
     },
+    {
+      type: "Pictures",
+      count: eachCompanyDetails?.data?.picture?.length || 0,
+    },
+    {
+      type: "Rich Text",
+      count: eachCompanyDetails?.data?.rich_text !== "" ? 1 : 0,
+    },
   ];
   // console.log(eachCompanyDetails);
 

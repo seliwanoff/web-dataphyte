@@ -50,6 +50,11 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
         return company?.data?.length > 0;
       case "Subsidiaries":
         return datas?.data?.children?.length > 0;
+
+      case "Rich Text":
+        return datas?.data?.rich_text !== null && datas?.data?.rich_text !== "";
+      case "Pictures":
+        return datas?.data?.picture?.length > 0;
       default:
         return false;
     }
@@ -166,6 +171,22 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 docCount={0}
               />
             ))}
+          {title === "Pictures" && datas?.data?.picture.length > 0 && (
+            <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
+              {datas?.data?.picture.map((picture: any, index: any) => (
+                <img
+                  src={`https://cardri.s3.eu-west-1.amazonaws.com/${picture?.link}`}
+                  alt={`Picture ${index + 1}`}
+                  className="h-[240px] w-[229px] rounded-md flex-shrink-0"
+                  key={index}
+                />
+              ))}
+            </div>
+          )}
+
+          {title === "Rich Text" && (
+            <RealText richText={datas?.data?.rich_text} />
+          )}
         </div>
         {/**
           <div className="block w-full ">

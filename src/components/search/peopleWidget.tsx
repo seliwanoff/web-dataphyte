@@ -7,6 +7,7 @@ import DocumentSearchMobileWidget from "./DocumentMobileSearchWidget";
 import PeopleSearchWidget from "./peopleSearch";
 import PeopleMaintable from "../table/PeopleMaintable";
 import parseCountry from "../parseCountry";
+import RealText from "../RealText";
 
 interface SearchWidgetProps {
   title?: string;
@@ -55,6 +56,8 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
         return ceoAndCfo.length > 0;
       case "Mining Type":
         return datas?.data?.miningtype?.length > 0;
+      case "Rich Text":
+        return datas?.data?.rich_text !== "";
       default:
         return false;
     }
@@ -69,6 +72,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               key={index}
               mineralName={data.name}
               countries={parseCountry(data)}
+              image={data.image}
               miningCount={datas?.data?.site && datas?.data?.site.length}
               docCount={datas?.data?.document && datas?.data?.document.length}
               id={data?.id}
@@ -165,6 +169,8 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
             />
           )) || null
         );
+      case "Rich Text":
+        return <RealText richText={"<p>vukvukref</p>"} />;
 
       default:
         return null;

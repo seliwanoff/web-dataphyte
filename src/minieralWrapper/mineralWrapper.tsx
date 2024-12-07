@@ -17,10 +17,12 @@ import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import SearchFilter from "../components/search/searchfilter";
 import SearchBoxFilter from "../Search/serachBoxFilter";
 import MiningMapSite from "../components/search/MiningMap";
+import RealText from "../components/RealText";
 
 const baseURl = process.env.REACT_APP_URL;
 
 interface MiningSiteData {
+  rich_text: any;
   document?: { name: string; location: string }[];
   people?: Array<{
     name: string;
@@ -102,6 +104,14 @@ const MineralWrapper: React.FC = () => {
     {
       type: "Companies",
       count: miningSite?.data?.company?.length || 0,
+    },
+    {
+      type: "Pictures",
+      count: miningSite?.data?.picture?.length || 0,
+    },
+    {
+      type: "Rich Text",
+      count: miningSite?.data.rich_text !== "" ? 1 : 0,
     },
   ];
 
@@ -252,6 +262,12 @@ const MineralWrapper: React.FC = () => {
                     />
                   ))}
                 </div>
+              )}
+            {miningSite &&
+              miningSite?.data?.rich_text !== "" &&
+              renderSection(
+                "Rich Text",
+                <RealText richText={miningSite.data.rich_text} />
               )}
           </div>
         </>
