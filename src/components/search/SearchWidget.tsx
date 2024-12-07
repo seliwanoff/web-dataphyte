@@ -137,6 +137,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                     docCount={5}
                     type={data.type}
                     key={index}
+                    link={data.id}
                   />
                 ))}
               </div>

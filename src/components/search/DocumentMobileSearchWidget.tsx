@@ -14,6 +14,7 @@ interface CompanySearchWidgetProps {
   docCount: number;
   mineral?: string;
   type?: string;
+  link?: any;
 }
 
 const DocumentSearchMobileWidget: React.FC<CompanySearchWidgetProps> = ({
@@ -23,7 +24,16 @@ const DocumentSearchMobileWidget: React.FC<CompanySearchWidgetProps> = ({
   docCount,
   mineral,
   type,
+  link,
 }) => {
+  const handleDownload = async () => {
+    //console.log(id);
+
+    window.open(
+      `https://do.supidoo.com/api/v2/document/download?id=${link}`,
+      "_blank"
+    );
+  };
   return (
     <div className="gap-[10px] p-[12px] mt-4  flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <div className="flex gap-[10px] items-center">
@@ -49,7 +59,7 @@ const DocumentSearchMobileWidget: React.FC<CompanySearchWidgetProps> = ({
 
           <div className="flex gap-[8px] items-center">
             <span className="flex gap-[4px] text-[14px] font-Poppins leading-[21px] items-center text-[#828282]">
-              <p className="font-medium text-[#000] ml-8">708kb</p>
+              <p className="font-medium text-[#000] ml-8">708kb </p>
             </span>
           </div>
           <span className="text-[#333] text-[14px] font-normal leading-[21px] font-Poppins flex items-center">
@@ -59,7 +69,8 @@ const DocumentSearchMobileWidget: React.FC<CompanySearchWidgetProps> = ({
         </div>
       </div>
       <button className="mt-4  w-full gap-4 py-[10px] px-[32px]  bg-[#7F55DA0F] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]">
-        <img src={dd} alt="" className="h-6" /> Download file
+        <img src={dd} alt="" className="h-6" onClick={() => handleDownload} />{" "}
+        Download file
       </button>
     </div>
   );

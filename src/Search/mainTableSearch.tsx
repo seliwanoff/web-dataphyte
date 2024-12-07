@@ -8,75 +8,67 @@ import TableColumn from "../components/table/tableColumn";
 import TableRow from "../components/table/tableRow";
 import axiosInstance from "../utills/axiosInstance";
 import { click } from "@testing-library/user-event/dist/click";
+import DocumentViewer from "../components/documentViewers";
+import { useState } from "react";
 
 interface CompanyNameDescriptionProps {
   datas?: any;
 }
 const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
-  const handleDownload = async (link: string, fileName: string) => {
-    try {
-      // Fetch the file as a blob
-      const response = await axiosInstance.get(link, {
-        responseType: "blob", // This ensures the response is treated as binary data
-      });
+  const handleDownload = async (link: string, fileName: string, id: number) => {
+    //console.log(id);
 
-      // Create a Blob URL from the file data
-      const url = window.URL.createObjectURL(response.data);
-
-      // Create an anchor element dynamically
-      const anchor = document.createElement("a");
-      anchor.href = url;
-
-      // Use the provided fileName or fallback to a default name
-      anchor.download = fileName || "downloaded_file";
-
-      // Append anchor to the DOM, trigger the click event, then remove it
-      document.body.appendChild(anchor);
-      anchor.click();
-      document.body.removeChild(anchor);
-
-      // Revoke the Blob URL to free up memory
-      window.URL.revokeObjectURL(url);
-
-      console.log(`File "${fileName}" downloaded successfully!`);
-    } catch (error) {
-      console.error("Error downloading the file:", error);
-    }
+    window.open(
+      `https://do.supidoo.com/api/v2/document/download?id=${id}`,
+      "_blank"
+    );
   };
 
+  const [showDocument, setShowDocumment] = useState(false);
+  const [url, setUrl] = useState("");
+
   return (
-    <table className="bg-inherit w-full border-none">
-      <thead className="thead bg-white">
-        <tr className="w-full ">
-          <TableColumn name="Document name" width={20} />
-          <TableColumn name="Description" width={20} />
+    <>
+      {showDocument && (
+        <DocumentViewer documentUrl={url} onClose={setShowDocumment} />
+      )}
+      <table className="bg-inherit w-full border-none">
+        <thead className="thead bg-white">
+          <tr className="w-full ">
+            <TableColumn name="Document name" width={20} />
+            <TableColumn name="Description" width={20} />
 
-          <TableColumn name="" width={15} />
-        </tr>
-      </thead>
+            <TableColumn name="" width={15} />
+          </tr>
+        </thead>
 
-      <tbody className="tbody bg-white">
-        {datas.data &&
-          datas?.data?.map((data: any, index: any) => (
-            <tr className="" key={index}>
-              <HeroRow
-                name={data.name}
-                width={20}
-                image={doc}
-                type={data.type}
-              />
-              <TableRow name={JSON.parse(data.meta)} width={15} />
+        <tbody className="tbody bg-white">
+          {datas.data &&
+            datas?.data?.map((data: any, index: any) => (
+              <tr className="" key={index}>
+                <HeroRow
+                  name={data.name}
+                  width={20}
+                  image={doc}
+                  type={data.type}
+                />
+                <TableRow name={JSON.parse(data.meta)} width={15} />
 
-              <ActionRow
-                name="Download file"
-                width={15}
-                link={data.link}
-                handleDownload={() => handleDownload(data.link, data.name)}
-              />
-            </tr>
-          ))}
-      </tbody>
-    </table>
+                <ActionRow
+                  name="Download file"
+                  width={15}
+                  link={data.link}
+                  setShowDocumment={setShowDocumment}
+                  setUrl={setUrl}
+                  handleDownload={() =>
+                    handleDownload(data.link, data.name, data.id)
+                  }
+                />
+              </tr>
+            ))}
+        </tbody>
+      </table>
+    </>
   );
 };
 
