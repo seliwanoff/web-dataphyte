@@ -57,6 +57,7 @@ const MineralWrapper: React.FC = () => {
   const baseURl = process.env.REACT_APP_URL;
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
+
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<MiningSiteResponse | null>>
@@ -122,6 +123,9 @@ const MineralWrapper: React.FC = () => {
     </div>
   );
 
+  const shouldRender = (tab: string) =>
+    currentTab === "All" || currentTab === tab;
+
   return (
     <>
       <SearchBoxFilter setSearchQuery={setSearchQuery} />
@@ -137,10 +141,12 @@ const MineralWrapper: React.FC = () => {
           />
 
           <div className="w-full mx-auto xl:px-[110px] py-[32px] px-[24px] ">
-            <div className="text-[32px] font-Poppins font-semibold text-[#202020] leading-6] mb-4">
+            <div className="text-[32px] font-Poppins font-semibold text-[#202020] leading-6 mb-4">
               {miningSite && miningSite?.data?.name}
             </div>
+
             {miningSite &&
+              shouldRender("Locations") &&
               Array.isArray(miningSite.data?.mineral) &&
               miningSite.data.mineral.length > 0 &&
               renderSection(
@@ -161,7 +167,9 @@ const MineralWrapper: React.FC = () => {
                   ))}
                 </div>
               )}
+
             {miningSite &&
+              shouldRender("Documents") &&
               Array.isArray(miningSite.data?.document) &&
               miningSite.data.document.length > 0 &&
               renderSection(
@@ -186,6 +194,7 @@ const MineralWrapper: React.FC = () => {
               )}
 
             {miningSite &&
+              shouldRender("People") &&
               Array.isArray(miningSite.data?.people) &&
               miningSite.data.people.length > 0 &&
               renderSection(
@@ -210,6 +219,7 @@ const MineralWrapper: React.FC = () => {
               )}
 
             {miningSite &&
+              shouldRender("Companies") &&
               Array.isArray(miningSite.data?.company) &&
               miningSite.data.company.length > 0 &&
               renderSection(
@@ -229,6 +239,7 @@ const MineralWrapper: React.FC = () => {
               )}
 
             {miningSite &&
+              shouldRender("Mineral") &&
               Array.isArray(miningSite.data?.mineral) &&
               miningSite.data.mineral.length > 0 &&
               renderSection(
@@ -245,7 +256,9 @@ const MineralWrapper: React.FC = () => {
                   ))}
                 </div>
               )}
+
             {miningSite &&
+              shouldRender("Pictures") &&
               Array.isArray(miningSite.data?.picture) &&
               miningSite.data.picture.length > 0 &&
               renderSection(
@@ -261,7 +274,9 @@ const MineralWrapper: React.FC = () => {
                   ))}
                 </div>
               )}
+
             {miningSite &&
+              shouldRender("Detail Description") &&
               miningSite?.data?.rich_text !== "" &&
               renderSection(
                 "Detail Description",
