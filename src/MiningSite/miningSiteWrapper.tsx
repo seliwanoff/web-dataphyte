@@ -100,7 +100,8 @@ const MiningSiteWrapper: React.FC = () => {
         <span className="text-[#373737] font-semibold text-[18px] leading-6 font-Poppins">
           {title}
         </span>
-        {children}
+
+        <div className="flex gap-[32px] flex-wrap">{children}</div>
       </div>
     );
 
