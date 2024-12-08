@@ -56,7 +56,7 @@ interface MiningSiteResponse {
 const MiningSiteWrapper: React.FC = () => {
   const [miningSite, setMiningSite] = useState<MiningSiteResponse | null>(null);
   const location = useLocation();
-  const { id } = location?.state || null;
+  const { id } = location?.state || {};
   const [isLoading, setIsLoading] = useState(false);
   const [currentTab, setCurrentTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
