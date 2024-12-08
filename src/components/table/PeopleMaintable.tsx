@@ -39,13 +39,13 @@ const PeopleMaintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
           </tr>
         </thead>
 
-        <tbody className="tbody bg-white">
+        <tbody className="tbody bg-white w-full border border-red-300">
           {datas.data.document &&
             datas?.data?.document?.map((data: any, index: any) => (
               <tr className="" key={index}>
                 <HeroRow
                   name={data.name}
-                  width={20}
+                  width={30}
                   image={doc}
                   type={data.type}
                 />

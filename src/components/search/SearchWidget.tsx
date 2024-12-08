@@ -51,8 +51,6 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
       case "Subsidiaries":
         return datas?.data?.children?.length > 0;
 
-      case "Rich Text":
-        return datas?.data?.rich_text !== null && datas?.data?.rich_text !== "";
       case "Pictures":
         return datas?.data?.picture?.length > 0;
       default:
@@ -121,7 +119,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 mineralName={data.name}
                 countries={parseData(data)}
                 miningCount={(data?.mineral && data?.mineral?.length) || 0}
-                mineral={data?.mineral[0].name}
+                mineral={data?.mineral && data?.mineral[0]?.name}
                 docCount={(data?.document && data?.document?.length) || 0}
                 id={data.id}
               />
@@ -183,10 +181,11 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
               ))}
             </div>
           )}
-
-          {title === "Rich Text" && (
+          {/***
+          {title === "Detail Description" && (
             <RealText richText={datas?.data?.rich_text} />
           )}
+            */}
         </div>
         {/**
           <div className="block w-full ">

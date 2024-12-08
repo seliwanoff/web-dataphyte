@@ -107,14 +107,6 @@ const MiningSiteWrapper: React.FC = () => {
       type: "Companies",
       count: miningSite?.data?.company?.length || 0,
     },
-    {
-      type: "Rich Text",
-      count:
-        miningSite?.data?.rich_text !== null &&
-        miningSite?.data?.rich_text !== ""
-          ? 1
-          : 0,
-    },
   ];
 
   const renderSection = (title: string, children: React.ReactNode) => (
@@ -291,7 +283,7 @@ const MiningSiteWrapper: React.FC = () => {
               miningSite?.data?.rich_text !== "" &&
               miningSite?.data?.rich_text !== null &&
               renderSection(
-                "Rich Text",
+                "Detail Description",
                 <RealText richText={miningSite?.data?.rich_text} />
               )}
           </div>

@@ -52,14 +52,14 @@ const CompanyProfile: React.FC = () => {
   };
 
   const subsidiaries: CompanyData[] =
-    eachCompanyDetails?.data?.children?.map((child: any) => ({
+    eachCompanyDetails?.data?.children?.slice(0, 3)?.map((child: any) => ({
       logo: company,
       name: child?.name,
       image: child.image,
     })) || [];
 
   const stakeholders: CompanyData[] =
-    eachCompanyDetails?.data?.stakeholder?.map((child: any) => ({
+    eachCompanyDetails?.data?.stakeholder?.slice(1, 3)?.map((child: any) => ({
       logo: company,
       name: child?.name,
       image: child.image,
@@ -100,7 +100,7 @@ const CompanyProfile: React.FC = () => {
       count: eachCompanyDetails?.data?.picture?.length || 0,
     },
     {
-      type: "Rich Text",
+      type: "Detail Description",
       count: eachCompanyDetails?.data?.rich_text !== "" ? 1 : 0,
     },
   ];

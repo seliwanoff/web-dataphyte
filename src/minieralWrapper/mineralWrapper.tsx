@@ -109,10 +109,6 @@ const MineralWrapper: React.FC = () => {
       type: "Pictures",
       count: miningSite?.data?.picture?.length || 0,
     },
-    {
-      type: "Rich Text",
-      count: miningSite?.data.rich_text !== "" ? 1 : 0,
-    },
   ];
 
   const renderSection = (title: string, children: React.ReactNode) => (
@@ -266,7 +262,7 @@ const MineralWrapper: React.FC = () => {
             {miningSite &&
               miningSite?.data?.rich_text !== "" &&
               renderSection(
-                "Rich Text",
+                "Detail Description",
                 <RealText richText={miningSite.data.rich_text} />
               )}
           </div>

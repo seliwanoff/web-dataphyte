@@ -56,7 +56,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
         return ceoAndCfo.length > 0;
       case "Mining Type":
         return datas?.data?.miningtype?.length > 0;
-      case "Rich Text":
+      case "Detail Description":
         return datas?.data?.rich_text !== "";
       default:
         return false;
@@ -169,7 +169,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
             />
           )) || null
         );
-      case "Rich Text":
+      case "Detail Description":
         return <RealText richText={"<p>vukvukref</p>"} />;
 
       default:
