@@ -27,7 +27,7 @@ const EachComponent: React.FC<EachComponentProps> = ({
     <div
       className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl cursor-pointer "
       onClick={() => {
-        navigates("/mineral", {
+        navigates(`/mineral?id=${id}`, {
           state: {
             id: id,
           },

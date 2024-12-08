@@ -30,7 +30,7 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
   const queryName = queryParams.get("query") || "" || "";
 
   const handleCompanyRedirect = () => {
-    navigates(`/company-profile?q=${encodeURIComponent(queryName)}`, {
+    navigates(`/company-profile?q=${encodeURIComponent(queryName)}&id=${id}`, {
       state: { id: id },
     });
   };

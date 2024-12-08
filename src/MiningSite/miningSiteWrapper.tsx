@@ -62,6 +62,8 @@ const MiningSiteWrapper: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [showIframe, setShowIframe] = useState(false);
   const [placeId, setPlaceId] = useState("");
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("id");
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<MiningSiteResponse | null>>
@@ -83,9 +85,8 @@ const MiningSiteWrapper: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchData(`mininig_site/getsite?id=${id}`, setMiningSite);
+    fetchData(`mininig_site/getsite?id=${id || query}`, setMiningSite);
   }, [id]);
-
   const Filters = [
     {
       type: "All",

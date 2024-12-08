@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+
+import React, { useState, useEffect } from "react";
 import DocumentSearchMobileWidget from "../components/search/DocumentMobileSearchWidget";
 import Maintable from "../Search/mainTableSearch";
 import CompanySearchWidget from "../components/search/CompnySearchWidget";
@@ -18,8 +19,6 @@ import SearchFilter from "../components/search/searchfilter";
 import SearchBoxFilter from "../Search/serachBoxFilter";
 import MiningMapSite from "../components/search/MiningMap";
 import RealText from "../components/RealText";
-
-const baseURl = process.env.REACT_APP_URL;
 
 interface MiningSiteData {
   rich_text: any;
@@ -55,6 +54,9 @@ const MineralWrapper: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [showIframe, setShowIframe] = useState(false);
+  const baseURl = process.env.REACT_APP_URL;
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("id");
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<MiningSiteResponse | null>>
@@ -75,7 +77,7 @@ const MineralWrapper: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchData(`mineral/getmineral?id=${id}`, setMiningSite);
+    fetchData(`mineral/getmineral?id=${id || query}`, setMiningSite);
   }, [id]);
 
   // Dynamically calculate filter counts

@@ -64,9 +64,10 @@ const CompanyProfile: React.FC = () => {
       name: child?.name,
       image: child.image,
     })) || [];
-
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("id");
   useEffect(() => {
-    fetchData(`company/getcompany?id=${id}`, setEachCompanyDetails);
+    fetchData(`company/getcompany?id=${id || query}`, setEachCompanyDetails);
   }, [id]);
 
   const allPeopleCount =

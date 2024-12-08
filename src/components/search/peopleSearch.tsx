@@ -31,17 +31,9 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
 
   const navigate = useNavigate();
   const handleViewProfile = () => {
-    navigate("/people", { state: { id: id } });
-    /**
-    addProfile({
-      mineralName,
-      countries,
-      miningCount,
-      docCount,
-      mineral,
-      role,
-    })
-      */
+    navigate(`/people?id=${encodeURIComponent(`${id}`)}`, {
+      state: { id: id },
+    });
   };
 
   return (

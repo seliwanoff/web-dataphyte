@@ -49,7 +49,9 @@ const MiningSearchWidget: React.FC<MiningSearchWidgetProps> = ({
       </div>
       <button
         className="mt-4  w-full py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]"
-        onClick={() => navigates("/mining-site", { state: { id: id } })}
+        onClick={() =>
+          navigates(`/mining-site?id=${id}`, { state: { id: id } })
+        }
       >
         View site location
       </button>

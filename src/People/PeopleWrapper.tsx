@@ -22,7 +22,8 @@ const PeopleWrapper = () => {
   const location = useLocation();
   const { id } = location.state;
   const [isLoading, setIsLoading] = useState(false);
-
+  const queryParams = new URLSearchParams(location.search);
+  const query = queryParams.get("id");
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<any>>
@@ -44,7 +45,7 @@ const PeopleWrapper = () => {
   };
 
   useEffect(() => {
-    fetchData(`people/getpeople?id=${id}`, setPeople);
+    fetchData(`people/getpeople?id=${id || query}`, setPeople);
   }, [id]);
 
   const Filters = [
@@ -67,10 +68,6 @@ const PeopleWrapper = () => {
         people?.data?.ceo?.length +
         people?.data?.cfo.length +
         people?.data?.cto.length,
-    },
-    {
-      type: "Rich Text",
-      count: 1,
     },
   ];
 
@@ -99,7 +96,7 @@ const PeopleWrapper = () => {
                 "Documents",
                 "Companies",
                 "Picture",
-                "Rich Text",
+                "Detail Description",
               ]}
               datas={people}
               currentTab={currentTab}
