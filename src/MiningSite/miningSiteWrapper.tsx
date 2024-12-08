@@ -85,10 +85,7 @@ const MiningSiteWrapper: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchData(
-      `mininig_site/getsite?id=${id !== null ? id : query}`,
-      setMiningSite
-    );
+    fetchData(`mininig_site/getsite?id=${id || query}`, setMiningSite);
   }, [id]);
   const Filters = [
     {

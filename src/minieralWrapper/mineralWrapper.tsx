@@ -77,10 +77,7 @@ const MineralWrapper: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchData(
-      `mineral/getmineral?id=${id !== null ? id : query}`,
-      setMiningSite
-    );
+    fetchData(`mineral/getmineral?id=${id || query}`, setMiningSite);
   }, [id]);
 
   // Dynamically calculate filter counts

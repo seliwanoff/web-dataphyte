@@ -67,10 +67,7 @@ const CompanyProfile: React.FC = () => {
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
   useEffect(() => {
-    fetchData(
-      `company/getcompany?id=${id !== null ? id : query}`,
-      setEachCompanyDetails
-    );
+    fetchData(`company/getcompany?id=${id || query}`, setEachCompanyDetails);
   }, [id]);
 
   const allPeopleCount =

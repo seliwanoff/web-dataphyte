@@ -45,7 +45,7 @@ const PeopleWrapper = () => {
   };
 
   useEffect(() => {
-    fetchData(`people/getpeople?id=${id !== null ? id : query}`, setPeople);
+    fetchData(`people/getpeople?id=${id || query}`, setPeople);
   }, [id]);
 
   const Filters = [
