@@ -21,7 +21,7 @@ const CompanyProfile: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
   const [eachCompanyDetails, setEachCompanyDetails] = useState<any>({});
   const location = useLocation();
-  const { id } = location?.state;
+  const { id } = location?.state || null;
   const [isLoading, setIsLoading] = useState(false);
 
   const companies: CompanyData[] = [

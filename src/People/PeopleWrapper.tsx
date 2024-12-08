@@ -20,7 +20,7 @@ const PeopleWrapper = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [people, setPeople] = useState<any>(null); // Updated to allow access to nested properties
   const location = useLocation();
-  const { id } = location?.state;
+  const { id } = location?.state || null;
   const [isLoading, setIsLoading] = useState(false);
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
