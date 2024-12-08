@@ -39,7 +39,7 @@ const PeopleMaintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
           </tr>
         </thead>
 
-        <tbody className="tbody bg-white w-full border border-red-300">
+        <tbody className="tbody bg-white w-full">
           {datas.data.document &&
             datas?.data?.document?.map((data: any, index: any) => (
               <tr className="" key={index}>
