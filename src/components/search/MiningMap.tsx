@@ -46,7 +46,7 @@ const MiningMapSite: React.FC<CompanySearchWidgetProps> = ({
   };
   return (
     <>
-      <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
+      <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] widthl z-10">
         <div className="flex gap-[10px]  flex-col">
           <div className={`w-full h-[171pmx] ${showIframe && "z-0"}`}>
             <GoogleMapComponent
