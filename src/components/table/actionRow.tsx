@@ -22,44 +22,34 @@ const ActionRow: React.FC<ActionRowProps> = ({
 
   return (
     <td className="rows" style={{ maxWidth: `${width}%` }}>
-      <div className="flex items-end gap-2 relative  justify-end">
+      <div className="flex items-center justify-end gap-20 relative">
+        {/* Download Button */}
         <button
-          className="py-[6px] px-3 bg-[#7F56D91F] rounded-xl flex items-center gap-[4px] cursor-pointer justify-center h-8"
-          onClick={() => setIsActionsVisible(!isActionsVisible)}
+          className="py-2 px-4 bg-[#7F56D91F] rounded-lg flex items-center gap-2 cursor-pointer justify-center"
+          onClick={() => {
+            handleDownload(link);
+            setIsActionsVisible(false);
+          }}
         >
-          <span className="text-[14px] text-[#7F55DA] leading-5 font-bold font-Satoshi">
-            Actions
+          <img src={ddownload} alt="Download" className="h-5" />
+          <span className="text-[14px] text-[#7F55DA] font-medium">
+            Download
           </span>
         </button>
 
-        {isActionsVisible && (
-          <div className="absolute bg-white shadow-md rounded-md p-2 flex flex-col gap-2 top-8 z-40">
-            <div
-              className="py-2 px-3 bg-[#7F56D91F] rounded flex items-center gap-2 cursor-pointer"
-              onClick={() => {
-                handleDownload(link);
-                setIsActionsVisible(false);
-              }}
-            >
-              <img src={ddownload} alt="Download" className="h-5" />
-              <span className="text-[14px] text-[#7F55DA] font-medium">
-                {name}
-              </span>
-            </div>
-            <div
-              className="py-2 px-3 text-[#7F55DA] font-medium cursor-pointer"
-              onClick={() => {
-                if (setShowDocumment && setUrl) {
-                  setShowDocumment(true);
-                  setUrl(`https://cardri.s3.eu-west-1.amazonaws.com/${link}`);
-                }
-                setIsActionsVisible(false);
-              }}
-            >
-              Preview
-            </div>
-          </div>
-        )}
+        {/* Preview Button */}
+        <button
+          className="py-2 px-4 bg-[#7F56D91F] rounded-lg text-[#7F55DA] font-medium cursor-pointer"
+          onClick={() => {
+            if (setShowDocumment && setUrl) {
+              setShowDocumment(true);
+              setUrl(`https://cardri.s3.eu-west-1.amazonaws.com/${link}`);
+            }
+            setIsActionsVisible(false);
+          }}
+        >
+          Preview
+        </button>
       </div>
     </td>
   );

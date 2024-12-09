@@ -50,6 +50,8 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
         return company?.data?.length > 0;
       case "Subsidiaries":
         return datas?.data?.children?.length > 0;
+      case "Detail Description":
+        return datas?.data?.rich_text !== null;
 
       case "Pictures":
         return datas?.data?.picture?.length > 0;
@@ -181,11 +183,10 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
               ))}
             </div>
           )}
-          {/***
+
           {title === "Detail Description" && (
             <RealText richText={datas?.data?.rich_text} />
           )}
-            */}
         </div>
         {/**
           <div className="block w-full ">
