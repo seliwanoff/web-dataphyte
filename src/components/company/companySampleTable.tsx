@@ -35,7 +35,7 @@ const CompanyTableFormat: React.FC<SeachTableFormatProps> = ({
       image: person.image,
       location: person.location,
       country: person.country,
-      role: index === 0 ? "CEO" : "CFO", // Assign roles dynamically
+      role: index === 0 ? "CEO" : index === 1 ? "CTO" : "CFO", // Assign roles dynamically
     })
   );
   return (

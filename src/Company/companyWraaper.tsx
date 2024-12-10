@@ -93,11 +93,7 @@ const CompanyProfile: React.FC = () => {
   const Filters = [
     {
       type: "All",
-      count:
-        (eachCompanyDetails?.data?.mineral?.length || 0) +
-        (eachCompanyDetails?.data?.people?.length || 0) +
-        (eachCompanyDetails?.data?.subsidiaries?.length || 0) +
-        (eachCompanyDetails?.data?.documents?.length || 0),
+      count: 4,
     },
     { type: "Minerals", count: eachCompanyDetails?.data?.mineral?.length || 0 },
     {
