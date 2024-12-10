@@ -32,7 +32,7 @@ const CompanyProfile: React.FC = () => {
       image: eachCompanyDetails?.data?.image,
       id: eachCompanyDetails?.data?.id,
     },
-  ];
+  ].filter((company) => company.name); // Filter out companies with null or undefined parent
 
   const fetchData = async (
     url: string,
@@ -69,13 +69,7 @@ const CompanyProfile: React.FC = () => {
       role: index === 0 ? "CEO" : index === 1 ? "CFO" : "CTO", // Assign roles dynamically
     }));
 
-  if (ceoAndCfo.length > 0) {
-    // Proceed with further logic if at least one of CEO, CFO, or CTO is present
-    console.log(ceoAndCfo);
-  } else {
-    console.log("No CEO, CFO, or CTO found.");
-  }
-
+  // console.log(ceoAndCfo);
   const subsidiaries: CompanyData[] =
     eachCompanyDetails?.data?.children?.slice(0, 3)?.map((child: any) => ({
       logo: company,
