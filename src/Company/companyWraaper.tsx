@@ -52,6 +52,18 @@ const CompanyProfile: React.FC = () => {
       setIsLoading(false);
     }
   };
+  const ceoAndCfo = [
+    eachCompanyDetails?.data?.ceo,
+    eachCompanyDetails?.data?.cfo,
+    eachCompanyDetails?.data?.cto,
+  ].map((person, index) => ({
+    id: person?.id,
+    name: `${person?.title} ${person?.first_name} ${person?.last_name}`,
+    image: person?.image,
+    location: person?.location,
+    country: person?.country,
+    role: index === 0 ? "CEO" : index === 1 ? "CFO" : "CTO", // Assign roles dynamically
+  }));
 
   const subsidiaries: CompanyData[] =
     eachCompanyDetails?.data?.children?.slice(0, 3)?.map((child: any) => ({
@@ -62,7 +74,7 @@ const CompanyProfile: React.FC = () => {
     })) || [];
 
   const stakeholders: CompanyData[] =
-    eachCompanyDetails?.data?.stakeholder?.slice(1, 3)?.map((child: any) => ({
+    ceoAndCfo?.slice(0, 3)?.map((child: any) => ({
       logo: company,
       name: child?.name,
       image: child.image,
@@ -109,7 +121,6 @@ const CompanyProfile: React.FC = () => {
       count: eachCompanyDetails?.data?.picture?.length || 0,
     },
   ];
-  // console.log(eachCompanyDetails);
 
   const sections = [
     {
