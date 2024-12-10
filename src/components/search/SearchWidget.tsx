@@ -113,7 +113,9 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 id={data.id}
               />
             ))}
-
+          {title === "Detail Description" && (
+            <RealText richText={datas?.data?.rich_text} />
+          )}
           {title === "Mining Sites" &&
             miningSite?.data?.map((data: any, index: number) => (
               <MiningSearchWidget
@@ -182,10 +184,6 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                 />
               ))}
             </div>
-          )}
-
-          {title === "Detail Description" && (
-            <RealText richText={datas?.data?.rich_text} />
           )}
         </div>
         {/**

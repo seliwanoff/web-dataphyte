@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Company {
   logo: string;
   name?: string | { name: string };
   image?: string;
+  id: any;
 }
 
 interface CompanyWidgetSubProps {
@@ -11,6 +13,7 @@ interface CompanyWidgetSubProps {
   title: string;
   size: string;
   image?: string;
+  id?: any;
 }
 
 const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
@@ -18,9 +21,11 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
   title,
   size,
   image,
+  id,
 }) => {
   //console.log(companies);
   const baseURl = process.env.REACT_APP_URL;
+  const navigate = useNavigate();
 
   return (
     <>
@@ -33,7 +38,24 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
 
             <div className="w-full gap-[29px] flex justify-center items-center">
               {companies.map((company, index) => (
-                <div key={index} className="flex flex-col gap-6 items-center">
+                <div
+                  key={index}
+                  className="flex flex-col gap-6 items-center cursor-pointer"
+                  onClick={() =>
+                    navigate(
+                      `/company-profile?q=${
+                        typeof company.name === "string"
+                          ? company.name
+                          : company.name && company?.name.name
+                      }&id=${company.id}`,
+                      {
+                        state: {
+                          id: company.id,
+                        },
+                      }
+                    )
+                  }
+                >
                   <div className="flex flex-col items-center gap-2">
                     <img
                       src={`https://cardri.s3.eu-west-1.amazonaws.com/${company.image}`}

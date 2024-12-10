@@ -7,12 +7,7 @@ import CompanySearchWidget from "../components/search/CompnySearchWidget";
 import EachComponent from "../components/search/SearchEachComponent";
 import PeopleSearchWidget from "../components/search/peopleSearch";
 import { ProfileProvider } from "../context/ProfileContext";
-import CountryStatistics from "../components/country/CountryStatistics";
-import CountryTitle from "../components/country/CuntryTitle";
-import picture1 from "../assets/images/picture1.png";
-import picture2 from "../assets/images/picture2.png";
-import picture3 from "../assets/images/picture3.png";
-import picture4 from "../assets/images/picture4.png";
+
 import parseCountry from "../components/parseCountry";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import SearchFilter from "../components/search/searchfilter";
@@ -167,6 +162,13 @@ const MineralWrapper: React.FC = () => {
                   ))}
                 </div>
               )}
+            {miningSite &&
+              shouldRender("Detail Description") &&
+              miningSite?.data?.rich_text !== "" &&
+              renderSection(
+                "Detail Description",
+                <RealText richText={miningSite.data.rich_text} />
+              )}
 
             {miningSite &&
               shouldRender("Documents") &&
@@ -273,14 +275,6 @@ const MineralWrapper: React.FC = () => {
                     />
                   ))}
                 </div>
-              )}
-
-            {miningSite &&
-              shouldRender("Detail Description") &&
-              miningSite?.data?.rich_text !== "" &&
-              renderSection(
-                "Detail Description",
-                <RealText richText={miningSite.data.rich_text} />
               )}
           </div>
         </>

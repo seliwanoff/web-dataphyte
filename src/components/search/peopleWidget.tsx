@@ -79,7 +79,8 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
             />
           )) || null
         );
-
+      case "Detail Description":
+        return <RealText richText={datas?.data?.rich_text} />;
       case "People":
         return (
           ceoAndCfo.map((data: any, index: number) => (
@@ -169,8 +170,6 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
             />
           )) || null
         );
-      case "Detail Description":
-        return <RealText richText={"<p>vukvukref</p>"} />;
 
       default:
         return null;

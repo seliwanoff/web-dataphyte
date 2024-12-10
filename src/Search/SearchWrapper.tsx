@@ -116,12 +116,12 @@ const SearchWrapper = () => {
                 "People",
               ]}
               datas={sampleDataResponse}
-              miningSite={miningSite} // miningSite
-              company={allCompany} //Allcompany
-              document={allDocument} // alldocuments
-              currentTab={currentTab} // do not change
-              people={allNewpeople} // allpeople
-              mineral={allMineral} // all minerals
+              miningSite={miningSite}
+              company={allCompany}
+              document={allDocument}
+              currentTab={currentTab}
+              people={allNewpeople}
+              mineral={allMineral}
             />
           </>
         )}

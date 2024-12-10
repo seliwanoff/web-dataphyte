@@ -145,6 +145,10 @@ const MiningSiteWrapper: React.FC = () => {
                 />
               ))
             )}
+            {renderSection(
+              "Detail Description",
+              <RealText richText={miningSite?.data?.rich_text} />
+            )}
             {miningSite?.data?.document &&
               miningSite?.data?.document?.length > 0 &&
               renderSection(
@@ -237,11 +241,6 @@ const MiningSiteWrapper: React.FC = () => {
                   ))}
                 </div>
               )}
-
-            {renderSection(
-              "Detail Description",
-              <RealText richText={miningSite?.data?.rich_text} />
-            )}
           </div>
         </>
       )}

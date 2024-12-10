@@ -13,6 +13,7 @@ interface CompanyData {
   logo: string;
   name: string;
   image: any;
+  id: any;
 }
 
 const baseURl = process.env.REACT_APP_URL;
@@ -29,6 +30,7 @@ const CompanyProfile: React.FC = () => {
       logo: company,
       name: eachCompanyDetails?.data?.parent,
       image: eachCompanyDetails?.data?.image,
+      id: eachCompanyDetails?.data?.id,
     },
   ];
 
@@ -56,6 +58,7 @@ const CompanyProfile: React.FC = () => {
       logo: company,
       name: child?.name,
       image: child.image,
+      id: child.id,
     })) || [];
 
   const stakeholders: CompanyData[] =
@@ -63,6 +66,7 @@ const CompanyProfile: React.FC = () => {
       logo: company,
       name: child?.name,
       image: child.image,
+      id: child.id,
     })) || [];
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
@@ -85,6 +89,10 @@ const CompanyProfile: React.FC = () => {
     },
     { type: "Minerals", count: eachCompanyDetails?.data?.mineral?.length || 0 },
     {
+      type: "Detail Description",
+      count: eachCompanyDetails?.data?.rich_text !== "" ? 1 : 0,
+    },
+    {
       type: "People",
       count: allPeopleCount,
     },
@@ -99,10 +107,6 @@ const CompanyProfile: React.FC = () => {
     {
       type: "Pictures",
       count: eachCompanyDetails?.data?.picture?.length || 0,
-    },
-    {
-      type: "Detail Description",
-      count: eachCompanyDetails?.data?.rich_text !== "" ? 1 : 0,
     },
   ];
   // console.log(eachCompanyDetails);
@@ -136,6 +140,7 @@ const CompanyProfile: React.FC = () => {
             datas={eachCompanyDetails}
             name={eachCompanyDetails?.data?.name}
             meta={eachCompanyDetails?.data?.meta}
+            id={eachCompanyDetails?.data?.id}
           />
           <div className=" hidden">
             <Companymapping />
