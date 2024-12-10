@@ -1,6 +1,8 @@
 import { useLocation } from "react-router-dom";
 import Nigeria from "../../assets/images/Nigeria.png";
 import Ghana from "../../assets/images/ghana.png";
+import moz from "../../assets/images/moz.png";
+import dr from "../../assets/images/drcongo.png";
 import { useState } from "react";
 
 const CountryTitle = () => {
@@ -13,7 +15,13 @@ const CountryTitle = () => {
       <div className="flex gap-[40px] items-center border-b-2 border-[#cecece] pb-2">
         <div className=" gap-[8px]">
           <h3 className="text-[#161616] text-[40px] font-polySans font-semibold leading-[55.36px] p-0 m-0">
-            {queryName === "Ghana" ? "Ghana" : "Nigeria"}
+            {queryName === "Ghana"
+              ? "Ghana"
+              : queryName === "Nigeria"
+              ? "Nigeria"
+              : queryName === "Dr Congo"
+              ? "Dr Congo"
+              : "Mozambique"}
           </h3>
           <p className="text-[#515151] text-[16px] leading-6  font-normal font-Poppins">
             {queryName !== "Ghana" ? " 36 States" : "16 regions"} |{" "}
@@ -23,7 +31,15 @@ const CountryTitle = () => {
         </div>
 
         <img
-          src={queryName !== "Ghana" ? Nigeria : Ghana}
+          src={
+            queryName === "Ghana"
+              ? Ghana
+              : queryName === "Nigeria"
+              ? Nigeria
+              : queryName === "Dr Congo"
+              ? dr
+              : moz
+          }
           alt=""
           className="xl:h-14 h-9"
         />

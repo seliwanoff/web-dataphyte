@@ -92,6 +92,7 @@ const MiningSiteWrapper: React.FC = () => {
     { type: "People", count: miningSite?.data?.people?.length || 0 },
     { type: "Documents", count: miningSite?.data?.document?.length || 0 },
     { type: "Companies", count: miningSite?.data?.company?.length || 0 },
+    { type: "Pictures", count: miningSite?.data?.picture?.length || 0 },
   ];
 
   const renderSection = (title: string, children: React.ReactNode) =>

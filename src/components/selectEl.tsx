@@ -13,6 +13,8 @@ type Country = {
 const predefinedCountries: Country[] = [
   { name: "Nigeria", code: "NG" },
   { name: "Ghana", code: "GH" },
+  { name: "Dr Congo", code: "DR" },
+  { name: "Mozambique", code: "MZ" },
 ];
 
 type SelectElProps = {
