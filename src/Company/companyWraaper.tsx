@@ -56,14 +56,25 @@ const CompanyProfile: React.FC = () => {
     eachCompanyDetails?.data?.ceo,
     eachCompanyDetails?.data?.cfo,
     eachCompanyDetails?.data?.cto,
-  ].map((person, index) => ({
-    id: person?.id,
-    name: `${person?.title} ${person?.first_name} ${person?.last_name}`,
-    image: person?.image,
-    location: person?.location,
-    country: person?.country,
-    role: index === 0 ? "CEO" : index === 1 ? "CFO" : "CTO", // Assign roles dynamically
-  }));
+  ]
+    .filter((person) => person) // Filter out undefined or null values
+    .map((person, index) => ({
+      id: person?.id,
+      name: `${person?.title || ""} ${person?.first_name || ""} ${
+        person?.last_name || ""
+      }`.trim(),
+      image: person?.image,
+      location: person?.location,
+      country: person?.country,
+      role: index === 0 ? "CEO" : index === 1 ? "CFO" : "CTO", // Assign roles dynamically
+    }));
+
+  if (ceoAndCfo.length > 0) {
+    // Proceed with further logic if at least one of CEO, CFO, or CTO is present
+    console.log(ceoAndCfo);
+  } else {
+    console.log("No CEO, CFO, or CTO found.");
+  }
 
   const subsidiaries: CompanyData[] =
     eachCompanyDetails?.data?.children?.slice(0, 3)?.map((child: any) => ({
