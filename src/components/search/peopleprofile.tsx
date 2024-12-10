@@ -28,8 +28,7 @@ const PeopleProfile: React.FC<SearchResultProps> = ({
         <div className="flex gap-[10px] items-center ">
           <div className="flex flex-col gap-[4px]">
             <h3 className="p-0 m-0 font-semibold font-Poppins text-[16px] leading-6 text-[#000]">
-              {datas && datas?.data?.title}
-              {datas && datas?.data?.first_name}{" "}
+              {datas && datas?.data?.title} {datas && datas?.data?.first_name}{" "}
               {datas && datas?.data?.last_name}
             </h3>
             <div className="flex gap-[8px] items-center">
