@@ -85,11 +85,11 @@ const PeopleWrapper = () => {
             <SeachTableFormat
               widgetTitles={[
                 "Minerals",
+                "Detail Description",
                 "Mining Sites",
                 "Documents",
                 "Companies",
                 "Picture",
-                "Detail Description",
               ]}
               datas={people}
               currentTab={currentTab}
