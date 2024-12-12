@@ -10,6 +10,7 @@ import axiosInstance from "../utills/axiosInstance";
 import { click } from "@testing-library/user-event/dist/click";
 import DocumentViewer from "../components/documentViewers";
 import { useState } from "react";
+import { data } from "../type";
 
 interface CompanyNameDescriptionProps {
   datas?: any;
@@ -26,7 +27,7 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
 
   const [showDocument, setShowDocumment] = useState(false);
   const [url, setUrl] = useState("");
-
+  console.log(datas);
   return (
     <>
       {showDocument && (

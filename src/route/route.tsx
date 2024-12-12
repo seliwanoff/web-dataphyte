@@ -9,6 +9,7 @@ import "nprogress/nprogress.css"; // Import the NProgress CSS
 import NProgress from "nprogress";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import React, { Suspense, useEffect, startTransition } from "react";
+import MainCountryOview from "../Company/MainCountrywrapper";
 
 const Home = React.lazy(() => import("../Home/home"));
 const SearchWrapper = React.lazy(() => import("../Search/SearchWrapper"));
@@ -73,6 +74,7 @@ const RouteWrapper = () => {
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchWrapper />} />
           <Route path="/country-overview" element={<CountryOveViewWrapper />} />
+          <Route path="/country" element={<MainCountryOview />} />
           <Route path="/map" element={<InteractiveMapWrapper />} />
           <Route path="/company-profile" element={<CompanyProfileWrapper />} />
           <Route

@@ -5,7 +5,12 @@ import {
   Geography,
   ZoomableGroup,
 } from "react-simple-maps";
-import nigeriaGeoJson from "../../data/nigeria_geojson.geojson"; // Ensure this path is correct
+import nigeriaGeoJson from "../../data/nigeria_geojson.geojson";
+import ghana from "../../data/ghana_towns.json";
+import mz from "../../data/mozambique.json";
+import cd from "../../data/administraveDivision.json";
+
+// Ensure this path is correct
 
 // Define the interface for the selected region data
 interface MiningData {
@@ -13,6 +18,9 @@ interface MiningData {
   localGovernment: string;
   coordinates: any; // You can adjust this type based on your specific needs
   miningInfo: string;
+}
+interface MapdataPops {
+  country?: any;
 }
 
 // JSON data for states with mining activities
@@ -27,7 +35,7 @@ const miningStates = [
   "Ondo",
 ];
 
-const CountryMap: React.FC = () => {
+const CountryMap = ({ country }: MapdataPops) => {
   const [zoom, setZoom] = useState(1); // Zoom level
   const [selectedRegion, setSelectedRegion] = useState<MiningData | null>(null);
 
@@ -49,10 +57,10 @@ const CountryMap: React.FC = () => {
   return (
     <div className="w-full max-w-[1750px] mx-auto">
       <h1 className="font-polySans text-[32px] font-semibold leading-[44.29px] text-[#161616]">
-        Map of Nigeria
+        Map of {country}
       </h1>
 
-      <div className="rounded-[32px] bg-[#f0f0f0] flex justify-center w-full mt-[36px]">
+      <div className="rounded-[32px] bg-[#f0f0f0] flex justify-center w-full mt-[36px] content-center">
         <ComposableMap
           width={712}
           height={570}
@@ -62,7 +70,17 @@ const CountryMap: React.FC = () => {
             center: [8.6753, 9.082], // Center coordinates for Nigeria
           }}
         >
-          <Geographies geography={nigeriaGeoJson}>
+          <Geographies
+            geography={
+              country === "Nigeria"
+                ? nigeriaGeoJson
+                : country === "Ghana"
+                ? ghana
+                : country === "Mozambique"
+                ? mz
+                : cd
+            }
+          >
             {({ geographies }) =>
               geographies.map((geo) => {
                 const state = geo.properties.state || "Unknown State";

@@ -47,7 +47,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
             </li>
             <li>
               <Link
-                to="/country-overview"
+                to="/country"
                 className={`${
                   currentPath === "/country-overview"
                     ? "text-[#7F55DA] font-semibold"

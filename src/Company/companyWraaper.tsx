@@ -32,7 +32,7 @@ const CompanyProfile: React.FC = () => {
       image: eachCompanyDetails?.data?.image,
       id: eachCompanyDetails?.data?.id,
     },
-  ].filter((company) => company.name); // Filter out companies with null or undefined parent
+  ].filter((company) => company.name);
 
   const fetchData = async (
     url: string,

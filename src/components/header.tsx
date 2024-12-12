@@ -30,7 +30,7 @@ const Header = () => {
                     : ""
                 }`}
               >
-                <Link to={"/country-overview"}>Country Overview</Link>
+                <Link to={"/country"}>Country Overview</Link>
               </li>
               <li
                 className={`${
