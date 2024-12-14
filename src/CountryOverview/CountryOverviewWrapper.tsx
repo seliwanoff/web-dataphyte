@@ -43,7 +43,6 @@ const CountryOveViewWrapper = () => {
       setAllDocument
     );
   }, [queryName]);
-  //  console.log(allDoc.documents.data);
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
       {isLoading ? (

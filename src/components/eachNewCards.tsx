@@ -6,14 +6,22 @@ import {
   fixLinkSlashes,
   getExcerpt,
 } from "../utils/readTimeCalculator";
+import { useNavigate } from "react-router-dom";
 
 type SelectElProps = {
   data: any;
 };
 
 const EachNewsCard: React.FC<SelectElProps> = ({ data }) => {
+  const navigate = useNavigate();
+  const navigateToBllog = () => {
+    navigate(`/report/blog?id=${data.id}`);
+  };
   return (
-    <div className="w-full flex flex-col cursor-pointer  xl:max-w-[480px] h-fit lg:basis-[calc((100%-72px)/3)] xl:flex-grow-0  lg:flex-1 xl:flex-shrink-0  gap-6 ">
+    <div
+      className="w-full flex flex-col cursor-pointer  xl:max-w-[480px] h-fit lg:basis-[calc((100%-72px)/3)] xl:flex-grow-0  lg:flex-1 xl:flex-shrink-0  gap-6 "
+      onClick={navigateToBllog}
+    >
       <img
         src={
           data.article_picture !== "1"

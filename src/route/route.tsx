@@ -49,6 +49,7 @@ const ReportForm = React.lazy(() => import("../Investigation/reportform"));
 const MiningSiteWrapper = React.lazy(
   () => import("../MiningSite/miningSiteWrapper")
 );
+const BlogDemo = React.lazy(() => import("../Investigation/blogPageWrapper"));
 
 //import PeopleWrapper from "../People/PeopleWrapper";
 
@@ -92,6 +93,7 @@ const RouteWrapper = () => {
           <Route path="/mineral" element={<MineralWrapper />} />
 
           <Route path="/people" element={<PeopleWrapper />} />
+          <Route path="/report/blog" element={<BlogDemo />} />
         </Routes>
       </Suspense>
     </Layout>
