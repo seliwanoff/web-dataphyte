@@ -9,7 +9,9 @@ const LicenseWrapper = () => {
       <div className="w-full max-w-[1750px] mx-auto ">
         <LicenseText />
         <div className="flex xl:flex-row  flex-col items-center gap-[24px]">
+          {/***
           <FilterLicense />
+          */}
           <PageSearch />
         </div>
 

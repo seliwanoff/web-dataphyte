@@ -27,7 +27,7 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
 
   const [showDocument, setShowDocumment] = useState(false);
   const [url, setUrl] = useState("");
-  console.log(datas);
+  // console.log(datas);
   return (
     <>
       {showDocument && (
