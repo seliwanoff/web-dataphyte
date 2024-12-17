@@ -109,11 +109,11 @@ const SearchWrapper = () => {
             <SeachTableFormat
               widgetTitles={[
                 "Minerals",
+                "People",
+                "Companies",
 
                 "Mining Sites",
                 "Documents",
-                "Companies",
-                "People",
               ]}
               datas={sampleDataResponse}
               miningSite={miningSite}

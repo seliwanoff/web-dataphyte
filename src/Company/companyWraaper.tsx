@@ -92,9 +92,10 @@ const CompanyProfile: React.FC = () => {
   }, [id]);
 
   const allPeopleCount =
-    [eachCompanyDetails?.data?.ceo]?.length +
-    [eachCompanyDetails?.data?.cto]?.length +
-    [eachCompanyDetails?.data?.cfo]?.length;
+    (eachCompanyDetails?.data?.ceo ? eachCompanyDetails.data.ceo.length : 0) +
+    (eachCompanyDetails?.data?.cto ? eachCompanyDetails.data.cto.length : 0) +
+    (eachCompanyDetails?.data?.cfo ? eachCompanyDetails.data.cfo.length : 0);
+
   const Filters = [
     {
       type: "All",
@@ -103,7 +104,7 @@ const CompanyProfile: React.FC = () => {
     { type: "Minerals", count: eachCompanyDetails?.data?.mineral?.length || 0 },
     {
       type: "Detail Description",
-      count: eachCompanyDetails?.data?.rich_text !== "" ? 1 : 0,
+      count: eachCompanyDetails?.data?.rich_text !== null ? 1 : 0,
     },
     {
       type: "People",
@@ -122,7 +123,7 @@ const CompanyProfile: React.FC = () => {
       count: eachCompanyDetails?.data?.picture?.length || 0,
     },
   ];
-
+  // console.log(allPeopleCount);
   const sections = [
     {
       title: "Parent Company",
