@@ -26,7 +26,7 @@ const LicenseMainTable = () => {
       }
       const data = await response.json();
       //console.log(data);
-      setter(data.data.data);
+      setter(data.data.data?.reverse());
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -57,16 +57,16 @@ const LicenseMainTable = () => {
       <table className="bg-inherit w-full border-none mt-[20px] ">
         <thead className="thead bg-white overflow-auto flex-nowrap">
           <tr className="w-full overflow-auto flex-nowrap">
-            <TableColumn name="Name" width={20} />
+            <TableColumn name="Name" width={25} />
             <TableColumn name="Country" width={10} />
-            <TableColumn name="Description" width={20} />
+            <TableColumn name="Description" width={25} />
 
             <TableColumn name="Date" width={10} />
             {/***
             <TableColumn name="License use" width={15} />
             <TableColumn name="Status" width={15} />
             */}
-            <TableColumn name="" width={20} />
+            <TableColumn name="" width={10} />
           </tr>
         </thead>
 

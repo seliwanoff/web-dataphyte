@@ -11,7 +11,7 @@ interface HeroRowProps {
 }
 const HeroRow: React.FC<HeroRowProps> = ({ name, width, image, type }) => {
   return (
-    <td className="rows  flex items-center gap-4">
+    <td className="rows  flex  gap-4">
       <img
         src={
           type === "pdf"
