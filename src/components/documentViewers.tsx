@@ -9,8 +9,10 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({
   documentUrl,
   onClose,
 }) => {
-  // console.log(documentUrl);
-  const fileType = documentUrl.split(".").pop()?.toLowerCase() || "";
+  console.log(documentUrl);
+  const fileType =
+    (documentUrl !== null && documentUrl?.split(".").pop()?.toLowerCase()) ||
+    "";
 
   const renderContent = () => {
     switch (fileType) {
@@ -61,7 +63,7 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center overflow-hidden pl-5 pr-5 ">
+    <div className="fixed inset-0 z-[1000px] bg-black bg-opacity-50 flex items-center justify-center overflow-hidden pl-5 pr-5 ">
       <div className="bg-white rounded-lg shadow-lg p-6 w-[100%] max-w-8xl relative z-50">
         <button
           onClick={() => onClose(false)}

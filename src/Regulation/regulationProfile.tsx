@@ -14,6 +14,7 @@ const RegulationProfile = () => {
 
   const baseURl = process.env.REACT_APP_URL;
   const [allDoc, setAllDocument] = useState<any>([]);
+  const [mainDoc, setMainDoc] = useState<any>([]);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -30,7 +31,7 @@ const RegulationProfile = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      //    console.log(data);
+      //console.log(data);
       setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -48,6 +49,16 @@ const RegulationProfile = () => {
     );
   }, [queryName]);
 
+  useEffect(() => {
+    fetchData(
+      `document/getdocuments?country=${
+        queryName === "Dr Congo" ? "Congo" : queryName
+      }&category=regulation`,
+      setMainDoc
+    );
+  }, [queryName]);
+
+  // console.log(mainDoc.data.data);
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
       <div className="flex xl:flex-row flex-col w-full">
@@ -76,16 +87,15 @@ const RegulationProfile = () => {
           <div className="xl:block hidden w-full mt-[32px]">
             <Maintable
               datas={{
-                data:
-                  allDoc?.documents?.data.length > 0 && allDoc?.documents?.data,
+                data: mainDoc?.data?.data.length > 0 && mainDoc?.data?.data,
               }}
             />
           </div>
         )}
 
         <div className="xl:hidden block w-full mt-[32px]">
-          {allDoc?.documents?.data.length > 0 &&
-            allDoc?.documents?.data?.map((item: any, index: any) => (
+          {mainDoc?.data?.data.length > 0 &&
+            mainDoc?.data?.data?.map((item: any, index: any) => (
               <DocumentSearchMobileWidget
                 mineralName={item?.name}
                 countries={item.country}
