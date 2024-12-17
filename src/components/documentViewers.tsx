@@ -63,7 +63,7 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[1000px] bg-black bg-opacity-50 flex items-center justify-center overflow-hidden pl-5 pr-5 ">
+    <div className="fixed inset-0 z-[1000] bg-black bg-opacity-50 flex items-center justify-center overflow-hidden pl-5 pr-5 ">
       <div className="bg-white rounded-lg shadow-lg p-6 w-[100%] max-w-8xl relative z-50">
         <button
           onClick={() => onClose(false)}
