@@ -231,7 +231,7 @@ const MineralWrapper: React.FC = () => {
                     <CompanySearchWidget
                       mineralName={data.name}
                       countries={parseCountry(data)}
-                      miningCount={4}
+                      miningCount={1}
                       mineral={"Maganese"}
                       docCount={5}
                       key={index}

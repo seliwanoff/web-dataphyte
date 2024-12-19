@@ -152,7 +152,7 @@ const CompanyProfile: React.FC = () => {
           <ComapnyNameDescription
             datas={eachCompanyDetails}
             name={eachCompanyDetails?.data?.name}
-            meta={eachCompanyDetails?.data?.meta}
+            meta={eachCompanyDetails?.data?.rc_number}
             id={eachCompanyDetails?.data?.id}
           />
           <div className=" hidden">
