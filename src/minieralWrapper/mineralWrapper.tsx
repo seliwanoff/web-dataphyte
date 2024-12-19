@@ -164,7 +164,7 @@ const MineralWrapper: React.FC = () => {
               )}
             {miningSite &&
               shouldRender("Detail Description") &&
-              miningSite?.data?.rich_text !== "" &&
+              miningSite?.data?.rich_text !== null &&
               renderSection(
                 "Detail Description",
                 <RealText richText={miningSite.data.rich_text} />
