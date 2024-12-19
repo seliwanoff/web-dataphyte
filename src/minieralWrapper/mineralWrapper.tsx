@@ -30,8 +30,8 @@ interface MiningSiteData {
     title: string;
     picture: any;
   }>;
-  company?: Array<{ name: string; country: string }>;
-  mineral?: Array<{ name: string }>;
+  company?: Array<{ name: string; country: string; id: any }>;
+  mineral?: Array<{ name: string; id: any }>;
   name: string;
   site: string;
   picture: any;
@@ -235,6 +235,7 @@ const MineralWrapper: React.FC = () => {
                       mineral={"Maganese"}
                       docCount={5}
                       key={index}
+                      id={data.id}
                     />
                   ))}
                 </div>
@@ -254,6 +255,7 @@ const MineralWrapper: React.FC = () => {
                       countries="Nigeria, Ghana"
                       miningCount={4}
                       docCount={1500}
+                      id={data.id}
                     />
                   ))}
                 </div>
