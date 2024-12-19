@@ -19,7 +19,7 @@ const ComapnyNameDescription: React.FC<CompanyNameDescriptionProps> = ({
             {name}
           </h3>
           <p className=" font-Satoshi text-[18px] font-medium leading-8 text-center text-[#434343]">
-            {meta !== undefined && JSON.parse(meta)}
+            {meta !== undefined && meta}
           </p>
         </div>
       </div>
