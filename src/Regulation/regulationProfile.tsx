@@ -8,6 +8,7 @@ import SearchBar from "../components/search/search";
 import Maintable from "../Search/mainTableSearch";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
+import Pagination from "../components/pagination";
 
 const RegulationProfile = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -20,6 +21,18 @@ const RegulationProfile = () => {
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("c") || "" || "";
   const [isLoading, setIsLoading] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [totalItems, setTotalItems] = useState(0);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleRowsPerPageChange = (rows: number) => {
+    setRowsPerPage(rows);
+  };
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<any>>
@@ -31,7 +44,8 @@ const RegulationProfile = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      //console.log(data);
+      setTotalItems(data?.data?.total);
+
       setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -53,12 +67,12 @@ const RegulationProfile = () => {
     fetchData(
       `document/getdocuments?country=${
         queryName === "Dr Congo" ? "Congo" : queryName
-      }&category=regulation`,
+      }&category=regulation&count=${rowsPerPage}&page=${currentPage}`,
       setMainDoc
     );
-  }, [queryName]);
+  }, [queryName, rowsPerPage, currentPage, currentPage]);
 
-  // console.log(mainDoc.data.data);
+  //console.log(allDoc);
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
       <div className="flex xl:flex-row flex-col w-full">
@@ -106,6 +120,12 @@ const RegulationProfile = () => {
               />
             ))}
         </div>
+        <Pagination
+          totalItems={totalItems}
+          rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleRowsPerPageChange}
+        />
       </div>
     </div>
   );

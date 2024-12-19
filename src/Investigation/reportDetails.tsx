@@ -5,6 +5,7 @@ import EachNewsCard from "../components/eachNewCards";
 import SearchBar from "../components/search/search";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
+import Pagination from "../components/pagination";
 const baseURl = process.env.REACT_APP_URL;
 
 const ReportDetails = () => {
@@ -17,6 +18,18 @@ const ReportDetails = () => {
   const [reports, setReports] = useState([]);
   const [allDoc, setAllDocument] = useState<any>([]);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [totalItems, setTotalItems] = useState(0);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleRowsPerPageChange = (rows: number) => {
+    setRowsPerPage(rows);
+  };
+
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<any>>
@@ -28,7 +41,10 @@ const ReportDetails = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
+
       // console.log(data);
+      setTotalItems(data.data.total);
+
       setter(data.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -121,6 +137,13 @@ const ReportDetails = () => {
             </>
           )}
         </div>
+
+        <Pagination
+          totalItems={totalItems}
+          rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleRowsPerPageChange}
+        />
       </div>
     </div>
   );

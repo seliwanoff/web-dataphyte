@@ -6,6 +6,7 @@ import DocumentSearchMobileWidget from "../components/search/DocumentMobileSearc
 import Maintable from "../Search/mainTableSearch";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
+import Pagination from "../components/pagination";
 
 const CountryOveViewWrapper = () => {
   const baseURl = process.env.REACT_APP_URL;
@@ -15,18 +16,34 @@ const CountryOveViewWrapper = () => {
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("c") || "" || "";
   const [isLoading, setIsLoading] = useState(false);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [totalItems, setTotalItems] = useState(0);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleRowsPerPageChange = (rows: number) => {
+    setRowsPerPage(rows);
+  };
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<any>>
   ) => {
     setIsLoading(true);
     try {
-      const response = await fetch(`${baseURl}${url}`);
+      const response = await fetch(
+        `${baseURl}${url}&count=${rowsPerPage}&page=${currentPage}`
+      );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      //    console.log(data);
+      //console.log(data);
+
+      setTotalItems(data.documents.total);
       setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -42,7 +59,7 @@ const CountryOveViewWrapper = () => {
       }`,
       setAllDocument
     );
-  }, [queryName]);
+  }, [queryName, rowsPerPage, currentPage, currentPage]);
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
       {isLoading ? (
@@ -90,6 +107,13 @@ const CountryOveViewWrapper = () => {
               />
             ))}
         </div>
+
+        <Pagination
+          totalItems={totalItems}
+          rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleRowsPerPageChange}
+        />
       </div>
     </div>
   );

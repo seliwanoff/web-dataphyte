@@ -9,10 +9,23 @@ import StatusRow from "../components/table/statusRow";
 import TableColumn from "../components/table/tableColumn";
 import TableRow from "../components/table/tableRow";
 import DocumentViewer from "../components/documentViewers";
+import Pagination from "../components/pagination";
 const LicenseMainTable = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [mainDoc, setMainDoc] = useState<any>([]);
   const baseURl = process.env.REACT_APP_URL;
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [totalItems, setTotalItems] = useState(0);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
+  const handleRowsPerPageChange = (rows: number) => {
+    setRowsPerPage(rows);
+  };
 
   const fetchData = async (
     url: string,
@@ -25,8 +38,8 @@ const LicenseMainTable = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      //console.log(data);
       setter(data.data.data?.reverse());
+      setTotalItems(data.data.total);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -35,12 +48,13 @@ const LicenseMainTable = () => {
   };
 
   useEffect(() => {
-    fetchData(`document/getdocuments?category=license`, setMainDoc);
-  }, []);
+    fetchData(
+      `document/getdocuments?category=license&count=${rowsPerPage}&page=${currentPage}`,
+      setMainDoc
+    );
+  }, [rowsPerPage, currentPage]);
 
   const handleDownload = async (link: string, fileName: string, id: number) => {
-    //console.log(id);
-
     window.open(
       `https://do.supidoo.com/api/v2/document/download?id=${id}`,
       "_blank"
@@ -105,6 +119,12 @@ const LicenseMainTable = () => {
           ))}
         </tbody>
       </table>
+      <Pagination
+        totalItems={totalItems}
+        rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+        onPageChange={handlePageChange}
+        onRowsPerPageChange={handleRowsPerPageChange}
+      />
     </>
   );
 };
