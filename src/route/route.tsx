@@ -54,6 +54,8 @@ const BlogDemo = React.lazy(() => import("../Investigation/blogPageWrapper"));
 //import PeopleWrapper from "../People/PeopleWrapper";
 
 const PeopleWrapper = React.lazy(() => import("../People/PeopleWrapper"));
+const TreeView = React.lazy(() => import("../Company/ExampleMapping"));
+
 const RouteWrapper = () => {
   const location = useLocation();
 
@@ -94,6 +96,8 @@ const RouteWrapper = () => {
 
           <Route path="/people" element={<PeopleWrapper />} />
           <Route path="/report/blog" element={<BlogDemo />} />
+          <Route path="/tree" element={<TreeView />} />
+
         </Routes>
       </Suspense>
     </Layout>

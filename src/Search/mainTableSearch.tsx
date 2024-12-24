@@ -17,8 +17,6 @@ interface CompanyNameDescriptionProps {
 }
 const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
   const handleDownload = async (link: string, fileName: string, id: number) => {
-    //console.log(id);
-
     window.open(
       `https://do.supidoo.com/api/v2/document/download?id=${id}`,
       "_blank"

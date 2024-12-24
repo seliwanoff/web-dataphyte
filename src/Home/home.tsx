@@ -61,7 +61,6 @@ const Home = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
       setter(data.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
