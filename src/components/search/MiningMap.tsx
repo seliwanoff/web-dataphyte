@@ -55,6 +55,7 @@ const MiningMapSite: React.FC<CompanySearchWidgetProps> = ({
                 lng: data.lng && data.lng,
               }}
               datas={data}
+              height={"171px"}
               markers={[
                 {
                   lat: (data.lat && data.lat) || 0,

@@ -10,7 +10,7 @@ interface MarkerProps {
   label?: string;
 }
 
-interface LeafletMapComponentProps {
+interface LargeMapComponentProps {
   center: { lat: number; lng: number };
   zoom?: number;
   markers?: MarkerProps[];
@@ -27,7 +27,7 @@ const blinkingIcon = new L.DivIcon({
   popupAnchor: [0, -15], // Adjust popup position
 });
 
-const LeafletMapComponent: React.FC<LeafletMapComponentProps> = ({
+const LargeMapComponent: React.FC<LargeMapComponentProps> = ({
   center,
   zoom = 10,
   markers = [],
@@ -40,29 +40,23 @@ const LeafletMapComponent: React.FC<LeafletMapComponentProps> = ({
       zoom={zoom}
       style={{ width: "100%", height: height || "171px" }}
     >
+      {/* Base map layer */}
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {/* Render static markers */}
       {markers.map((marker, index) => (
         <Marker
           key={index}
           position={[marker.lat, marker.lng]}
           icon={blinkingIcon}
         >
-          <Popup>{marker.label || "No label provided"}</Popup>
+          <Popup>{marker.label || "Dynamic Marker"}</Popup>
         </Marker>
       ))}
-
-      {datas?.lat && datas?.lng && (
-        <Marker position={[datas.lat, datas.lng]} icon={blinkingIcon}>
-          <Popup>{datas.label || "Dynamic Marker"}</Popup>
-        </Marker>
-      )}
     </MapContainer>
   );
 };
 
-export default LeafletMapComponent;
+export default LargeMapComponent;
