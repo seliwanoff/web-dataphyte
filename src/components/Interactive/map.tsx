@@ -10,6 +10,7 @@ import Europe from "../../data/europe.geo.json";
 import Oceania from "../../data/oceania.geo.json";
 import Nigeria from "../../data/countriesdata/nigeria.json";
 import { FeatureCollection, Feature, Geometry } from "geojson";
+import { useNavigate } from "react-router-dom";
 
 interface GeoProperties {
   CONTINENT?: string;
@@ -45,7 +46,6 @@ const countryGeoDataMap: Record<
   FeatureCollection<Geometry, GeoProperties>
 > = {
   Nigeria: Nigeria as FeatureCollection<Geometry, GeoProperties>,
-  // Add additional countries here
 };
 
 const InteractiveMap: React.FC = () => {
@@ -59,6 +59,22 @@ const InteractiveMap: React.FC = () => {
     lat: number;
     lon: number;
   } | null>(null);
+  const navigate = useNavigate();
+
+  const miningContinent = [
+    "Africa",
+    "Nigeria",
+    "Mozambique",
+    "Ghana",
+    "Democratic Republic of the Congo",
+  ];
+
+  const miningCompany = [
+    "Nigeria",
+    "Mozambique",
+    "Ghana",
+    "Democratic Republic of the Congo",
+  ];
 
   useEffect(() => {
     d3.select(svgRef.current).selectAll("*").remove();
@@ -89,7 +105,21 @@ const InteractiveMap: React.FC = () => {
       .data(geoData.features)
       .join("path")
       .attr("d", pathGenerator)
-      .attr("fill", "#272727")
+      .attr("fill", (d) => {
+        if (!selectedContinent) {
+          return miningContinent.includes(d.properties.continent)
+            ? "#7F55DA"
+            : "#272727";
+        }
+
+        if (selectedContinent) {
+          return miningCompany.includes(d.properties.geounit)
+            ? "#7F55DA"
+            : "#272727";
+        }
+
+        return "#272727";
+      })
       .attr("stroke", "#FFFFFF")
       .on("click", (event, d) => {
         if (!selectedContinent) {
@@ -97,6 +127,17 @@ const InteractiveMap: React.FC = () => {
           setSelectedContinent(continent);
         } else if (!selectedCountry) {
           const country = d.properties.geounit;
+
+          if (miningCompany.includes(country)) {
+            navigate(
+              `/interactive-country?c=${
+                country === "Democratic Republic of the Congo"
+                  ? "Dr Congo"
+                  : country
+              }`
+            );
+          }
+
           setSelectedCountry(country);
           setCountryLatLng({
             lat: d.properties.lat ?? 0,
@@ -104,7 +145,7 @@ const InteractiveMap: React.FC = () => {
           });
         }
       });
-  }, [selectedContinent, selectedCountry]);
+  }, [selectedContinent, selectedCountry, navigate]);
 
   const resetMap = () => {
     if (selectedCountry) {
@@ -113,13 +154,6 @@ const InteractiveMap: React.FC = () => {
       setSelectedContinent(null);
     }
   };
-
-  const generateGoogleMapsUrl = useMemo(() => {
-    const googleMapApiKey = process.env.REACT_APP_GOOGLE_MAP_API_KEY;
-    return countryLatLng
-      ? `https://www.google.com/maps/embed/v1/view?key=${googleMapApiKey}&center=${countryLatLng.lat},${countryLatLng.lon}&zoom=10`
-      : "";
-  }, [countryLatLng]);
 
   return (
     <div className="w-full">
@@ -146,7 +180,9 @@ const InteractiveMap: React.FC = () => {
       </div>
       <div className="w-full mt-10">
         <RegulationForm
-          buttonLink="javascript:void(0)"
+          setSelectedContinents={setSelectedContinent}
+          setSelectedCountrys={setSelectedCountry}
+          buttonLink={`/interactive-country`}
           text="Pick preferred region"
         />
       </div>

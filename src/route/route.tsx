@@ -10,11 +10,16 @@ import NProgress from "nprogress";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import React, { Suspense, useEffect, startTransition } from "react";
 import MainCountryOview from "../Company/MainCountrywrapper";
+//import InteractiveCountryMap from "../components/country/InteractiveCountryMap";
 
 const Home = React.lazy(() => import("../Home/home"));
 const SearchWrapper = React.lazy(() => import("../Search/SearchWrapper"));
 const CountryOveViewWrapper = React.lazy(
   () => import("../CountryOverview/CountryOverviewWrapper")
+);
+
+const InteractiveCountryMap = React.lazy(
+  () => import("../components/country/InteractiveCountryMap")
 );
 const DataVisualiztionWrapper = React.lazy(
   () => import("../DataVisualization/datavisualizationWrapper")
@@ -93,11 +98,14 @@ const RouteWrapper = () => {
           <Route path="/data" element={<DataVisualiztionWrapper />} />
           <Route path="/mining-site" element={<MiningSiteWrapper />} />
           <Route path="/mineral" element={<MineralWrapper />} />
+          <Route
+            path="/interactive-country"
+            element={<InteractiveCountryMap />}
+          />
 
           <Route path="/people" element={<PeopleWrapper />} />
           <Route path="/report/blog" element={<BlogDemo />} />
           <Route path="/tree" element={<TreeView />} />
-
         </Routes>
       </Suspense>
     </Layout>

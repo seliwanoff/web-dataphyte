@@ -1,8 +1,11 @@
 import React from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css"; // Import Leaflet's default styles
+import MarkerClusterGroup from "react-leaflet-markercluster";
+import "leaflet/dist/leaflet.css"; // Leaflet default styles
+import "leaflet.markercluster/dist/MarkerCluster.Default.css"; // Marker cluster styles
+import "leaflet.markercluster/dist/MarkerCluster.css"; // Marker cluster base styles
 import L from "leaflet";
-import "./MapStyles.css"; // Add this file for the custom blinking styles
+import "./MapStyles.css"; // Custom styles for blinking icons
 
 interface MarkerProps {
   lat: number;
@@ -46,15 +49,18 @@ const LargeMapComponent: React.FC<LargeMapComponentProps> = ({
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
 
-      {markers.map((marker, index) => (
-        <Marker
-          key={index}
-          position={[marker.lat, marker.lng]}
-          icon={blinkingIcon}
-        >
-          <Popup>{marker.label || "Dynamic Marker"}</Popup>
-        </Marker>
-      ))}
+      {/* Marker cluster group */}
+      <MarkerClusterGroup>
+        {markers.map((marker, index) => (
+          <Marker
+            key={index}
+            position={[marker.lat, marker.lng]}
+            icon={blinkingIcon}
+          >
+            <Popup>{marker.label || "Dynamic Marker"}</Popup>
+          </Marker>
+        ))}
+      </MarkerClusterGroup>
     </MapContainer>
   );
 };

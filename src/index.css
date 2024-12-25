@@ -128,3 +128,22 @@ code {
 .scrollbar-rounded::-webkit-scrollbar-thumb:hover {
   background-color: #a3a3a9; /* Darker color on hover */
 }
+.marker-cluster-small div {
+  background-color: white !important;
+  color: black;
+}
+
+.marker-cluster-medium div {
+  background-color: white !important;
+  color: black;
+}
+
+.marker-cluster-large div {
+  background-color: white !important;
+  color: black;
+}
+
+.marker-cluster div {
+  font-size: 12px;
+  color: black;
+}
