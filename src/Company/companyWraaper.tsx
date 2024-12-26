@@ -71,7 +71,7 @@ const CompanyProfile: React.FC = () => {
 
   // console.log(ceoAndCfo);
   const subsidiaries: CompanyData[] =
-    eachCompanyDetails?.data?.children?.slice(0, 3)?.map((child: any) => ({
+    eachCompanyDetails?.data?.children?.slice(0, 5)?.map((child: any) => ({
       logo: company,
       name: child?.name,
       image: child.image,
@@ -79,7 +79,7 @@ const CompanyProfile: React.FC = () => {
     })) || [];
 
   const stakeholders: CompanyData[] =
-    ceoAndCfo?.slice(0, 3)?.map((child: any) => ({
+    ceoAndCfo?.slice(0, 5)?.map((child: any) => ({
       logo: company,
       name: child?.name,
       image: child.image,
