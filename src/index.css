@@ -147,3 +147,9 @@ code {
   font-size: 12px;
   color: black;
 }
+.reactOrgChart .orgNodeChildGroup .nodeGroupLineVerticalMiddle {
+  border-right: 1px solid #7f55da !important;
+}
+.reactOrgChart .nodeLineBorderTop {
+  border-top: solid 1px #7f55da !important;
+}

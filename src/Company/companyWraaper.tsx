@@ -155,7 +155,7 @@ const CompanyProfile: React.FC = () => {
             meta={eachCompanyDetails?.data?.rc_number}
             id={eachCompanyDetails?.data?.id}
           />
-          <div className=" hidden">
+          <div className="xl:block hidden">
             <Companymapping />
           </div>
           {sections.map((section, index) => (
@@ -166,7 +166,7 @@ const CompanyProfile: React.FC = () => {
               size={section.size}
             />
           ))}
-          <div className="hidden">
+          <div className="xl:hidden block">
             <Companymapping />
           </div>
           <SearchFilter

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import OrgChart from "react-orgchart";
 import "react-orgchart/index.css";
+import ComapnyNameDescription from "../components/company/companyNameDescription";
+import { useLocation } from "react-router-dom";
+import SkeletonLoader from "../components/skeletonLoader/skeleton";
 
 interface Descendant {
   id: number;
@@ -11,7 +14,15 @@ interface Descendant {
   image: string;
   created_at: string;
   updated_at: string;
-  children: Descendant[];
+  children?: Descendant[];
+  ceo_id?: any;
+  cto_id?: any;
+  cfo_id?: any;
+  people_ids?: any;
+  parent_id?: any;
+  meta?: any;
+  other_data?: any;
+  rich_text?: any;
 }
 
 interface CompanyData extends Descendant {
@@ -19,126 +30,60 @@ interface CompanyData extends Descendant {
 }
 
 const ExampleMap: React.FC = () => {
-  const [data, setData] = useState<CompanyData[]>([]);
+  const [data, setData] = useState<any>([]);
+  const baseURl = process.env.REACT_APP_URL;
+  const [isLoading, setIsLoading] = useState(false);
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const queryName = queryParams.get("id") || "" || "";
 
   useEffect(() => {
-    // Replace YOUR_ENDPOINT_HERE with the actual API endpoint
-    fetch("YOUR_ENDPOINT_HERE")
+    setIsLoading(true);
+    fetch(`${baseURl}company/getcompanytrees?id=${queryName}`)
       .then((response) => response.json())
-      .then((data: CompanyData[]) => setData(data))
+      .then((data: CompanyData[]) => {
+        setData(data);
+        setIsLoading(false);
+      })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const companyData: CompanyData = {
-    id: 160,
-    name: "AAY Mining Sites",
-    country: '["Nigeria","Ghana"]',
-    rc_number: "2344455",
-    address: "Akpet",
-    image: "dataphyte/1734872178_Screenshot 2024-12-15 at 19.04.02.png",
-    created_at: "2024-12-22T12:56:20.000000Z",
-    updated_at: "2024-12-22T12:56:20.000000Z",
-    descendants: [
-      {
-        id: 162,
-        name: "AAY Mining Sites",
-        country: '["Nigeria","Ghana"]',
-        rc_number: "2344455",
-        address: "Akpet",
-        image: "dataphyte/1734872420_Screenshot 2024-12-15 at 19.04.02.png",
-        created_at: "2024-12-22T13:00:21.000000Z",
-        updated_at: "2024-12-22T13:00:21.000000Z",
-        children: [
-          {
-            id: 163,
-            name: "AAY Mining Sites",
-            country: '["Nigeria","Ghana"]',
-            rc_number: "2344455",
-            address: "Akpet",
-            image: "dataphyte/1734872465_Screenshot 2024-12-15 at 19.04.02.png",
-            created_at: "2024-12-22T13:01:07.000000Z",
-            updated_at: "2024-12-22T13:01:07.000000Z",
-            // descendants: [],
-            children: [],
-          },
-        ],
-      },
-    ],
-    children: [
-      {
-        id: 162,
-        name: "AAY Mining Sites",
-        country: '["Nigeria","Ghana"]',
-        rc_number: "2344455",
-        address: "Akpet",
-        image: "dataphyte/1734872420_Screenshot 2024-12-15 at 19.04.02.png",
-        created_at: "2024-12-22T13:00:21.000000Z",
-        updated_at: "2024-12-22T13:00:21.000000Z",
-
-        children: [
-          {
-            id: 163,
-            name: "AAY Mining Sites",
-            country: '["Nigeria","Ghana"]',
-            rc_number: "2344455",
-            address: "Akpet",
-            image: "dataphyte/1734872465_Screenshot 2024-12-15 at 19.04.02.png",
-            created_at: "2024-12-22T13:01:07.000000Z",
-            updated_at: "2024-12-22T13:01:07.000000Z",
-            //descendants: [],
-            children: [],
-          },
-        ],
-      },
-    ],
-  };
-
   const MyNodeComponent: React.FC<{ node: any }> = ({ node }) => (
-    <div
-      className="bg-white p-4 border rounded shadow-md text-center cursor-pointer hover:bg-gray-100"
-      onClick={() => alert(`Hi, my real name is: ${node.actor}`)}
-    >
-      <p className="font-semibold text-gray-800">{node.name}</p>
+    <div className="bg-[#E9D9FF] w-fit p-1  mx-auto  text-center cursor-pointer hover:bg-gray-100 rounded-sm">
+      <div className="flex gap-[8px] flex-col justify-center items-center">
+        <img
+          src={`https://cardri.s3.eu-west-1.amazonaws.com/${node.image}`}
+          alt=""
+          className="h-[40px] w-[40px] rounded-full "
+        />
+      </div>
+      <p className="font-semibol font-Poppins  text-[#000] text-[18px]">
+        {node.name}
+      </p>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">
-        Company Hierarchy
-      </h1>
-
-      <OrgChart
-        tree={companyData}
-        NodeComponent={MyNodeComponent}
-        className="mt-8"
-      />
-
-      <div className="mt-12">
-        <h2 className="text-xl font-semibold text-gray-700 mb-4">
-          Fetched Data
-        </h2>
-        <ul className="space-y-4">
-          {(data.length > 0 ? data : []).map((company) => (
-            <li
-              key={company.id}
-              className="p-4 bg-white border rounded shadow-sm"
-            >
-              <h3 className="text-lg font-bold">{company.name}</h3>
-              <p className="text-sm text-gray-600">
-                Country: {company.country}
-              </p>
-              <p className="text-sm text-gray-600">
-                RC Number: {company.rc_number}
-              </p>
-              <p className="text-sm text-gray-600">
-                Address: {company.address}
-              </p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <>
+      {isLoading ? (
+        <SkeletonLoader />
+      ) : (
+        <div className="min-h-screen flex flex-col gap-[46px]">
+          <ComapnyNameDescription
+            datas={data}
+            name={data?.name}
+            meta={""}
+            id={data?.id}
+          />
+          <OrgChart
+            tree={data}
+            NodeComponent={MyNodeComponent}
+            className="mt-4"
+          />
+        </div>
+      )}
+    </>
   );
 };
 

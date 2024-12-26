@@ -1,10 +1,7 @@
 import React, { useState } from "react";
-import ellipse from "../../assets/images/ellipse.png";
 import locations from "../../assets/images/location.png";
 import { useLocation, useNavigate } from "react-router-dom";
-import map from "../../assets/images/picmap.png";
 import GoogleMapComponent from "../GoogleMap";
-import PlaceIframe from "../placeID";
 
 interface CompanySearchWidgetProps {
   mineralName: any;
