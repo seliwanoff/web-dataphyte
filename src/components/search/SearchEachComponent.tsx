@@ -22,6 +22,7 @@ const EachComponent: React.FC<EachComponentProps> = ({
 }) => {
   const navigates = useNavigate();
   const baseURl = process.env.REACT_APP_URL;
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   return (
     <div
@@ -36,7 +37,7 @@ const EachComponent: React.FC<EachComponentProps> = ({
     >
       <div className="flex gap-[10px] items-center">
         <img
-          src={image && `https://cardri.s3.eu-west-1.amazonaws.com/${image}`}
+          src={image && `${baseURlFile}${image}`}
           alt=""
           className="h-[70px] rounded-full w-[70px]"
         />

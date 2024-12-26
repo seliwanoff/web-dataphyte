@@ -63,6 +63,8 @@ const MiningSiteWrapper: React.FC = () => {
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
 
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
+
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<MiningSiteResponse | null>>
@@ -235,7 +237,7 @@ const MiningSiteWrapper: React.FC = () => {
                   {miningSite?.data?.picture?.map((picture, index) => (
                     <img
                       key={index}
-                      src={`https://cardri.s3.eu-west-1.amazonaws.com/${picture?.link}`}
+                      src={`${baseURlFile}${picture?.link}`}
                       alt={`Picture ${index + 1}`}
                       className="h-[240px] w-[229px] rounded-md flex-shrink-0"
                     />

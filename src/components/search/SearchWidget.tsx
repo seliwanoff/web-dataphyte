@@ -35,6 +35,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
   const parseData = (data: any) => parseCountry(data);
   const mineralCount = (mineral.data && mineral?.data.length) || 0;
   const documentCount = (document.data && document?.data.length) || 0;
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   const hasData = () => {
     switch (title) {
@@ -177,7 +178,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
             <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
               {datas?.data?.picture.map((picture: any, index: any) => (
                 <img
-                  src={`https://cardri.s3.eu-west-1.amazonaws.com/${picture?.link}`}
+                  src={`${baseURlFile}${picture?.link}`}
                   alt={`Picture ${index + 1}`}
                   className="h-[240px] w-[229px] rounded-md flex-shrink-0"
                   key={index}

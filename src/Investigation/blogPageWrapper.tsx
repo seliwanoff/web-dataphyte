@@ -22,6 +22,7 @@ const BlogDemo = () => {
   const queryName = queryParams.get("id") || "" || "";
   const [isLoading, setIsLoading] = useState(false);
   const [reports, setReports] = useState<Article | null>(null);
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   const fetchData = async (
     url: string,
@@ -53,8 +54,8 @@ const BlogDemo = () => {
       title={reports?.title || ""}
       date={new Date(reports?.created_at || "").toLocaleDateString()}
       authorName={reports?.name || ""}
-      authorProfilePic={`https://cardri.s3.eu-west-1.amazonaws.com/${reports?.display_picture}`}
-      thumbnail={`https://cardri.s3.eu-west-1.amazonaws.com/${reports?.article_picture}`}
+      authorProfilePic={`${baseURlFile}${reports?.display_picture}`}
+      thumbnail={`${baseURlFile}${reports?.article_picture}`}
       content={`${reports?.article || ""}`}
     />
   );

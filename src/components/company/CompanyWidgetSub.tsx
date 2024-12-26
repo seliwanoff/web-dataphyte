@@ -26,6 +26,9 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
   //console.log(companies);
   const baseURl = process.env.REACT_APP_URL;
   const navigate = useNavigate();
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
+
+  console.log(baseURlFile);
 
   return (
     <>
@@ -58,7 +61,7 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
                 >
                   <div className="flex flex-col items-center gap-2">
                     <img
-                      src={`https://cardri.s3.eu-west-1.amazonaws.com/${company.image}`}
+                      src={`${baseURlFile}${company.image}`}
                       alt={company.image}
                       className="xl:h-[58.85px] h-[40px] xl:w-[58.85px] w-10 rounded-full"
                     />

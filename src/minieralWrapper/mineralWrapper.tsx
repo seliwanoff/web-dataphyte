@@ -52,6 +52,7 @@ const MineralWrapper: React.FC = () => {
   const baseURl = process.env.REACT_APP_URL;
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   const fetchData = async (
     url: string,
@@ -270,7 +271,7 @@ const MineralWrapper: React.FC = () => {
                 <div className="flex overflow-x-auto gap-[24px] scrollbar-rounded parent-scroll">
                   {miningSite.data.picture.map((picture, index) => (
                     <img
-                      src={`https://cardri.s3.eu-west-1.amazonaws.com/${picture?.link}`}
+                      src={`${baseURlFile}${picture?.link}`}
                       alt={`Picture ${index + 1}`}
                       className="h-[240px] w-[229px] rounded-md flex-shrink-0"
                       key={index}

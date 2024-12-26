@@ -19,6 +19,7 @@ const CountryTitle = ({
   description,
 }: CountryTitleProps) => {
   const [query, setQuery] = useState(countryName);
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   return (
     <div className="mx-auto w-full max-w-[1750px] flex flex-col gap-4">
@@ -33,7 +34,7 @@ const CountryTitle = ({
         </div>
 
         <img
-          src={`https://cardri.s3.eu-west-1.amazonaws.com/${image}`}
+          src={`${baseURlFile}${image}`}
           alt={query}
           className="xl:h-14 h-9"
         />

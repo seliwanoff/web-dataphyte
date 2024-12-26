@@ -17,6 +17,8 @@ const EachNewsCard: React.FC<SelectElProps> = ({ data }) => {
   const navigateToBllog = () => {
     navigate(`/report/blog?id=${data.id}`);
   };
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
+
   return (
     <div
       className="w-full flex flex-col cursor-pointer  xl:max-w-[480px] h-fit lg:basis-[calc((100%-72px)/3)] xl:flex-grow-0  lg:flex-1 xl:flex-shrink-0  gap-6 "
@@ -25,9 +27,7 @@ const EachNewsCard: React.FC<SelectElProps> = ({ data }) => {
       <img
         src={
           data.article_picture !== "1"
-            ? `https://cardri.s3.eu-west-1.amazonaws.com/${fixLinkSlashes(
-                data.article_picture
-              )}`
+            ? `${baseURlFile}${fixLinkSlashes(data.article_picture)}`
             : image
         }
         alt=""
@@ -60,9 +60,7 @@ const EachNewsCard: React.FC<SelectElProps> = ({ data }) => {
           <img
             src={
               data.display_picture !== ""
-                ? `https://cardri.s3.eu-west-1.amazonaws.com/${fixLinkSlashes(
-                    data.display_picture
-                  )}`
+                ? `${baseURlFile}${fixLinkSlashes(data.display_picture)}`
                 : avater
             }
             alt=""

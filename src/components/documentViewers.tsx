@@ -9,7 +9,7 @@ const DocumentViewer: React.FC<DocumentViewerProps> = ({
   documentUrl,
   onClose,
 }) => {
-  console.log(documentUrl);
+  //console.log(documentUrl);
   const fileType =
     (documentUrl !== null && documentUrl?.split(".").pop()?.toLowerCase()) ||
     "";

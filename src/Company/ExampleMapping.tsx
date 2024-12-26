@@ -37,6 +37,7 @@ const ExampleMap: React.FC = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("id") || "" || "";
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   useEffect(() => {
     setIsLoading(true);
@@ -53,7 +54,7 @@ const ExampleMap: React.FC = () => {
     <div className="bg-[#E9D9FF] w-fit p-1  mx-auto  text-center cursor-pointer hover:bg-gray-100 rounded-sm">
       <div className="flex gap-[8px] flex-col justify-center items-center">
         <img
-          src={`https://cardri.s3.eu-west-1.amazonaws.com/${node.image}`}
+          src={`${baseURlFile}${node.image}`}
           alt=""
           className="h-[40px] w-[40px] rounded-full "
         />
@@ -76,11 +77,13 @@ const ExampleMap: React.FC = () => {
             meta={""}
             id={data?.id}
           />
-          <OrgChart
-            tree={data}
-            NodeComponent={MyNodeComponent}
-            className="mt-4"
-          />
+          <div className="p-2">
+            <OrgChart
+              tree={data}
+              NodeComponent={MyNodeComponent}
+              className="mt-4"
+            />
+          </div>
         </div>
       )}
     </>

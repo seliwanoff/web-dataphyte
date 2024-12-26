@@ -19,6 +19,7 @@ const ActionRow: React.FC<ActionRowProps> = ({
   setUrl,
 }) => {
   const [isActionsVisible, setIsActionsVisible] = useState(false);
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   return (
     <td className="rows" style={{ maxWidth: `${width}%` }}>
@@ -43,7 +44,7 @@ const ActionRow: React.FC<ActionRowProps> = ({
           onClick={() => {
             if (setShowDocumment && setUrl) {
               setShowDocumment(true);
-              setUrl(`https://cardri.s3.eu-west-1.amazonaws.com/${link}`);
+              setUrl(`${baseURlFile}${link}`);
             }
             setIsActionsVisible(false);
           }}

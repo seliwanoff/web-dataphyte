@@ -11,16 +11,13 @@ const PeopleProfile: React.FC<SearchResultProps> = ({
   //currentTab,
   datas,
 }) => {
-  // const { profiles } = useProfileContext();
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
 
   return (
     <>
       <div className="flex flex-col gap-8 xl:mb-0 mb-5">
         <img
-          src={
-            datas &&
-            `https://cardri.s3.eu-west-1.amazonaws.com/${datas?.data?.image}`
-          }
+          src={datas && `${baseURlFile}${datas?.data?.image}`}
           alt=""
           className="h-[100px] w-[100px] rounded-full"
         />

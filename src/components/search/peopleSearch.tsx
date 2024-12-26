@@ -28,6 +28,7 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
 }) => {
   const { addProfile } = useProfileContext();
   const baseURl = process.env.REACT_APP_URL;
+  const baseURlFile = process.env.REACT_FILE_URL;
 
   const navigate = useNavigate();
   const handleViewProfile = () => {
@@ -39,7 +40,7 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
   return (
     <div className="gap-[10px] p-[12px] flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <img
-        src={image && `https://cardri.s3.eu-west-1.amazonaws.com/${image}`}
+        src={image && `${baseURlFile}${image}`}
         alt=""
         className="h-[64px] w-[64px] rounded-full mx-auto mb-1 object-fill "
       />
