@@ -108,8 +108,8 @@ const InteractiveMap: React.FC = () => {
       .attr("fill", (d) => {
         if (!selectedContinent) {
           return miningContinent.includes(d.properties.continent)
-            ? "#7F55DA"
-            : "#272727";
+            ? "#7F55DA" // Highlighted color
+            : "#272727"; // Default color
         }
 
         if (selectedContinent) {
@@ -120,7 +120,11 @@ const InteractiveMap: React.FC = () => {
 
         return "#272727";
       })
-      .attr("stroke", "#FFFFFF")
+      .attr("stroke", (d) =>
+        miningContinent.includes(d.properties.continent) && !selectedContinent
+          ? "#7F55DA"
+          : "#FFFFFF"
+      )
       .on("click", (event, d) => {
         if (!selectedContinent) {
           const continent = d.properties.continent;
