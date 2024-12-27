@@ -62,7 +62,12 @@ const InteractiveCountryMap = ({ country }: MapdataPops) => {
 
   const markers = miningData
     .flatMap((item: any) => item.location)
-    .map((loc: any) => ({ lat: loc.lat, lng: loc.lng, label: loc.name }));
+    .map((loc: any) => ({
+      lat: loc.lat,
+      lng: loc.lng,
+      label: loc.name,
+      id: loc.place_id,
+    }));
 
   const center =
     markers.length > 0

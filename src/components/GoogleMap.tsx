@@ -18,13 +18,12 @@ interface LeafletMapComponentProps {
   datas?: { lat?: number; lng?: number; label?: string };
 }
 
-// Create a blinking circular icon using Leaflet's DivIcon
 const blinkingIcon = new L.DivIcon({
-  className: "blinking-icon", // Custom class defined in CSS
+  className: "blinking-icon",
   html: `<div class="blinking-circle"></div>`,
   iconSize: [30, 30],
-  iconAnchor: [15, 15], // Center the icon
-  popupAnchor: [0, -15], // Adjust popup position
+  iconAnchor: [15, 15],
+  popupAnchor: [0, -15],
 });
 
 const LeafletMapComponent: React.FC<LeafletMapComponentProps> = ({

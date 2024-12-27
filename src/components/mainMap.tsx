@@ -14,7 +14,7 @@ const center = {
 interface MapProps {
   markers?: { lat: number; lng: number }[];
 }
-console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY);
+//console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY);
 const GMap: React.FC<MapProps> = ({ markers = [] }) => {
   return (
     <LoadScript googleMapsApiKey={`AIzaSyANCcAa09J_M6N_tRRd6_K8cF8mIthUPB`}>

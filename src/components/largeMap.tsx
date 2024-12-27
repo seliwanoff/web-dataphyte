@@ -11,6 +11,7 @@ interface MarkerProps {
   lat: number;
   lng: number;
   label?: string;
+  id?: any;
 }
 
 interface LargeMapComponentProps {
@@ -56,6 +57,12 @@ const LargeMapComponent: React.FC<LargeMapComponentProps> = ({
             key={index}
             position={[marker.lat, marker.lng]}
             icon={blinkingIcon}
+            eventHandlers={{
+              click: () => {
+                const googleMapUrl = `https://www.google.com/maps/place/?q=place_id:${marker.id}`;
+                window.open(googleMapUrl, "_blank");
+              },
+            }}
           >
             <Popup>{marker.label || "Dynamic Marker"}</Popup>
           </Marker>
