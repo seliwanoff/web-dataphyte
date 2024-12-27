@@ -1,80 +1,126 @@
 import React, { useState } from "react";
+import ComapnyNameDescription from "../components/company/companyNameDescription";
 
-interface CompanyNode {
+interface Company {
   id: number;
   name: string;
-  image: string;
-  address: string;
-  children: CompanyNode[];
+  children?: Company[];
+  image?: any;
 }
 
 interface OrganizationChartProps {
-  data: CompanyNode;
+  data: Company[];
 }
+
+interface ChartNodeProps {
+  company: Company;
+  onNodeClick: (company: Company) => void;
+  isExpanded: boolean;
+}
+
+const ChartNode: React.FC<ChartNodeProps> = ({
+  company,
+  onNodeClick,
+  isExpanded,
+}) => {
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
+
+  return (
+    <div className="flex flex-col items-center gap-9 relative w-full max-w-[400px]">
+      <div
+        className="bg-[#E9D9FF] w-full max-w-[400px] text-center p-2 rounded-lg mb-4 cursor-pointer z-50"
+        onClick={() => onNodeClick(company)}
+      >
+        <div className="flex items-center justify-center mb-2">
+          <img
+            src={`${baseURlFile}${company.image}`}
+            alt=""
+            className="h-8 w-8 rounded-full object-center"
+          />
+        </div>
+        <p className="text-[#161616] font-bold font-Poppins">{company.name}</p>
+      </div>
+
+      {company.children && company.children.length > 0 && isExpanded && (
+        <div className="absolute top-[0px] left-1/2 border-r border-[#7F55DA]  h-[90%]  box-border z-20"></div>
+      )}
+
+      {isExpanded && company.children && company.children.length > 0 && (
+        <div className="w-full flex flex-col gap-6">
+          {company.children.map((child) => (
+            <ChartNode
+              key={child.id}
+              company={child}
+              onNodeClick={onNodeClick}
+              isExpanded={false}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
 
 const OrganizationChart: React.FC<OrganizationChartProps> = ({ data }) => {
   //console.log(data);
-  const [currentNode, setCurrentNode] = useState<CompanyNode>(data);
-  const [history, setHistory] = useState<CompanyNode[]>([]);
+  const [selectedNodeId, setSelectedNodeId] = useState<number | null>(null);
 
-  const navigateToChild = (node: CompanyNode) => {
-    setHistory((prev) => [...prev, currentNode]);
-    setCurrentNode(node);
+  const handleNodeClick = (node: Company) => {
+    setSelectedNodeId((prev) => (prev === node.id ? null : node.id));
   };
 
-  const navigateBack = () => {
-    const previousNode = history.pop();
-    if (previousNode) {
-      setCurrentNode(previousNode);
-      setHistory([...history]);
-    }
-  };
-
-  const renderNode = (node: CompanyNode) => {
+  const renderChart = (nodes: Company[]) => {
     return (
-      <div key={node.id} className="border rounded-lg p-4 bg-white shadow-md">
-        <div className="flex items-center">
-          {node.name}
-          <img
-            src={node.image}
-            alt={node.name}
-            className="w-12 h-12 rounded-full border-2 border-purple-500"
-          />
-          <div className="ml-4">
-            <h3 className="text-lg font-semibold text-gray-800">{node.name}</h3>
-            <p className="text-sm text-gray-600">{node.address}</p>
-          </div>
-          {node.children?.length > 0 && (
-            <button
-              className="ml-auto text-sm bg-purple-500 text-white px-3 py-1 rounded hover:bg-purple-700 transition"
-              onClick={() => navigateToChild(node)}
-            >
-              View Children
-            </button>
-          )}
-        </div>
+      <div className="flex flex-col gap-6 relative w-full max-w-[400px] mx-auto">
+        {nodes &&
+          nodes?.map((node) => (
+            <ChartNode
+              key={node.id}
+              company={node}
+              onNodeClick={handleNodeClick}
+              isExpanded={selectedNodeId === node.id}
+            />
+          ))}
+        {/***
+        {selectedNodeId === null && (
+          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-[#7F55DA]"></div>
+        )}
+          */}
       </div>
     );
   };
 
+  const findSelectedNode = (nodes: Company[], id: number): Company | null => {
+    for (const node of nodes) {
+      if (node.id === id) return node;
+      if (node.children) {
+        const child = findSelectedNode(node.children, id);
+        if (child) return child;
+      }
+    }
+    return null;
+  };
+
+  const selectedNode =
+    selectedNodeId !== null ? findSelectedNode(data, selectedNodeId) : null;
+
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <div className="mb-4 flex items-center justify-between">
-        {history?.length > 0 && (
-          <button
-            className="text-sm bg-blue-500 text-white px-3 py-2 rounded hover:bg-blue-700 transition"
-            onClick={navigateBack}
-          >
-            Back to Parent
-          </button>
-        )}
-        <h1 className="text-2xl font-bold text-center">Organization Chart</h1>
-        <div />
-      </div>
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {renderNode(currentNode)}
-        {currentNode.children?.map((child) => renderNode(child))}
-      </div>
+    <div className="min-h-screen bg-gray-50 p-4 flex flex-col  gap-10 items-center">
+      <ComapnyNameDescription
+        datas={data}
+        name={data[0]?.name}
+        meta={""}
+        id={data[0]?.id}
+      />
+      {selectedNode ? (
+        <ChartNode
+          company={selectedNode}
+          onNodeClick={handleNodeClick}
+          isExpanded={true}
+        />
+      ) : (
+        renderChart(data)
+      )}
     </div>
   );
 };

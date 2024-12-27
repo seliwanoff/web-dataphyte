@@ -28,7 +28,7 @@ const CompanyWidgetSub: React.FC<CompanyWidgetSubProps> = ({
   const navigate = useNavigate();
   const baseURlFile = process.env.REACT_APP_FILE_URL;
 
-  console.log(baseURlFile);
+  // console.log(baseURlFile);
 
   return (
     <>

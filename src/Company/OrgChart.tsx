@@ -3,6 +3,7 @@ import OrgChart from "../components/company/OrgChart";
 import ExampleMap from "./ExampleMapping";
 import OrganizationChart from "./MobileMappingChart";
 import { useLocation } from "react-router-dom";
+import SkeletonLoader from "../components/skeletonLoader/skeleton";
 
 interface Descendant {
   id: number;
@@ -50,10 +51,18 @@ const OrgCharWrapper: React.FC = () => {
   }, []);
   return (
     <div className="">
-      <ExampleMap />
-      {/**
-      <OrganizationChart data={data} />
-      */}
+      {isLoading ? (
+        <SkeletonLoader />
+      ) : (
+        <>
+          <div className="w-full hidden lg:block">
+            <ExampleMap />
+          </div>
+          <div className="w-full block lg:hidden">
+            <OrganizationChart data={[data]} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
