@@ -45,6 +45,9 @@ const ChartNode: React.FC<ChartNodeProps> = ({
         </div>
         <p className="text-[#161616] font-bold font-Poppins">{company.name}</p>
       </div>
+      {company.children && company.children.length > 0 && isExpanded && (
+        <div className="absolute top-[0px] left-1/2 border-r border-[#7F55DA]  h-[90%]  box-border z-20"></div>
+      )}
 
       {/* Immediate Children */}
       {isExpanded && hasChildren && (
