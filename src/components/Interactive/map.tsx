@@ -161,9 +161,9 @@ const InteractiveMap: React.FC = () => {
 
   return (
     <div className="w-full">
-      <div className="mt-[100px] w-full p-[30px] rounded-[30px] bg-[#f0f0f0]">
+      <div className="mt-[100px] w-full lg:p-[30px] p-4 rounded-[30px] bg-[#f0f0f0]">
         <svg ref={svgRef}></svg>
-        <div className="text-[32px] font-semibold text-right text-[#8B5CF6]">
+        <div className="lg:text-[32px] text-[16px] font-semibold text-right text-[#8B5CF6]">
           {selectedCountry || selectedContinent || ""}
         </div>
       </div>

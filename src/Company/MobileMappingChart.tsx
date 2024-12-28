@@ -25,11 +25,16 @@ const ChartNode: React.FC<ChartNodeProps> = ({
 }) => {
   const baseURlFile = process.env.REACT_APP_FILE_URL;
 
+  const hasChildren = company.children && company.children.length > 0;
+
   return (
-    <div className="flex flex-col items-center gap-9 relative w-full max-w-[400px]">
+    <div className="flex flex-col items-center gap-4 relative w-full max-w-[400px]">
+      {/* Node Header */}
       <div
-        className="bg-[#E9D9FF] w-full max-w-[400px] text-center p-2 rounded-lg mb-4 cursor-pointer z-50"
-        onClick={() => onNodeClick(company)}
+        className={`bg-[#E9D9FF] w-full max-w-[400px] text-center p-2 rounded-lg mb-4 ${
+          hasChildren ? "cursor-pointer" : "cursor-not-allowed"
+        } z-50`}
+        onClick={() => hasChildren && onNodeClick(company)}
       >
         <div className="flex items-center justify-center mb-2">
           <img
@@ -41,13 +46,10 @@ const ChartNode: React.FC<ChartNodeProps> = ({
         <p className="text-[#161616] font-bold font-Poppins">{company.name}</p>
       </div>
 
-      {company.children && company.children.length > 0 && isExpanded && (
-        <div className="absolute top-[0px] left-1/2 border-r border-[#7F55DA]  h-[90%]  box-border z-20"></div>
-      )}
-
-      {isExpanded && company.children && company.children.length > 0 && (
+      {/* Immediate Children */}
+      {isExpanded && hasChildren && (
         <div className="w-full flex flex-col gap-6">
-          {company.children.map((child) => (
+          {company.children?.map((child) => (
             <ChartNode
               key={child.id}
               company={child}
@@ -62,33 +64,21 @@ const ChartNode: React.FC<ChartNodeProps> = ({
 };
 
 const OrganizationChart: React.FC<OrganizationChartProps> = ({ data }) => {
-  //console.log(data);
-  const [selectedNodeId, setSelectedNodeId] = useState<number | null>(null);
+  const [expandedNodeId, setExpandedNodeId] = useState<number | null>(null);
 
   const handleNodeClick = (node: Company) => {
-    setSelectedNodeId((prev) => (prev === node.id ? null : node.id));
+    setExpandedNodeId((prev) => (prev === node.id ? null : node.id));
   };
 
-  const renderChart = (nodes: Company[]) => {
-    return (
-      <div className="flex flex-col gap-6 relative w-full max-w-[400px] mx-auto">
-        {nodes &&
-          nodes?.map((node) => (
-            <ChartNode
-              key={node.id}
-              company={node}
-              onNodeClick={handleNodeClick}
-              isExpanded={selectedNodeId === node.id}
-            />
-          ))}
-        {/***
-        {selectedNodeId === null && (
-          <div className="absolute left-1/2 top-0 h-full w-0.5 bg-[#7F55DA]"></div>
-        )}
-          */}
-      </div>
-    );
-  };
+  const renderInitialChart = (root: Company) => (
+    <div className="flex flex-col gap-6 relative w-full max-w-[400px] mx-auto">
+      <ChartNode
+        company={root}
+        onNodeClick={handleNodeClick}
+        isExpanded={true}
+      />
+    </div>
+  );
 
   const findSelectedNode = (nodes: Company[], id: number): Company | null => {
     for (const node of nodes) {
@@ -101,17 +91,21 @@ const OrganizationChart: React.FC<OrganizationChartProps> = ({ data }) => {
     return null;
   };
 
+  const rootNode = data[0];
   const selectedNode =
-    selectedNodeId !== null ? findSelectedNode(data, selectedNodeId) : null;
+    expandedNodeId !== null ? findSelectedNode(data, expandedNodeId) : null;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 flex flex-col  gap-10 items-center">
+    <div className="min-h-screen bg-gray-50 p-4 flex flex-col gap-10 items-center">
+      {/* Parent Company Info */}
       <ComapnyNameDescription
         datas={data}
-        name={data[0]?.name}
+        name={rootNode?.name}
         meta={""}
-        id={data[0]?.id}
+        id={rootNode?.id}
       />
+
+      {/* Chart */}
       {selectedNode ? (
         <ChartNode
           company={selectedNode}
@@ -119,7 +113,7 @@ const OrganizationChart: React.FC<OrganizationChartProps> = ({ data }) => {
           isExpanded={true}
         />
       ) : (
-        renderChart(data)
+        renderInitialChart(rootNode)
       )}
     </div>
   );
