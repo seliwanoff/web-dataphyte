@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
+import { useNavigate } from "react-router-dom";
 
 interface Company {
   id: number;
@@ -24,6 +25,7 @@ const ChartNode: React.FC<ChartNodeProps> = ({
   isExpanded,
 }) => {
   const baseURlFile = process.env.REACT_APP_FILE_URL;
+  const navigate = useNavigate();
 
   const hasChildren = company.children && company.children.length > 0;
 
@@ -34,7 +36,11 @@ const ChartNode: React.FC<ChartNodeProps> = ({
         className={`bg-[#E9D9FF] w-full max-w-[400px] text-center p-2 rounded-lg mb-4 ${
           hasChildren ? "cursor-pointer" : "cursor-not-allowed"
         } z-50`}
-        onClick={() => hasChildren && onNodeClick(company)}
+        onClick={() =>
+          hasChildren
+            ? onNodeClick(company)
+            : navigate(`../company-profile?q=&id=${company.id}`)
+        }
       >
         <div className="flex items-center justify-center mb-2">
           <img

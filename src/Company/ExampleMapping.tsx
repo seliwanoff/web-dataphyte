@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import OrgChart from "react-orgchart";
 import "react-orgchart/index.css";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 
 interface Descendant {
@@ -30,6 +30,7 @@ interface CompanyData extends Descendant {
 }
 
 const ExampleMap: React.FC = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState<any>([]);
   const baseURl = process.env.REACT_APP_URL;
   const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +52,10 @@ const ExampleMap: React.FC = () => {
   }, []);
 
   const MyNodeComponent: React.FC<{ node: any }> = ({ node }) => (
-    <div className="bg-[#E9D9FF] w-fit p-1  mx-auto  text-center cursor-pointer hover:bg-gray-100 rounded-sm">
+    <div
+      className="bg-[#E9D9FF] w-fit p-1  mx-auto  text-center cursor-pointer hover:bg-gray-100 rounded-sm"
+      onClick={() => navigate(`../company-profile?q=&id=${node.id}`)}
+    >
       <div className="flex gap-[8px] flex-col justify-center items-center">
         <img
           src={`${baseURlFile}${node.image}`}
