@@ -7,12 +7,13 @@ const Header = () => {
   const [showDrop, setIshowDrop] = useState<boolean>(false);
   const location = useLocation();
   const currentPath = location.pathname;
+  const title = process.env.REACT_APP_TITLE;
   return (
     <div className="w-full relative">
       <header className=" h-[98px] border-b-2 border-[#d6d6d6] justify-center  flex w-full items-center bg-white max-w-[1750px] mx-auto lg:px-[100px] px-[24px] ">
         <div className="w-full  flex justify-between items-center">
           <h2 className="text-[#7F55DA]  text-2xl leading-6 font-semibold font-Poppins">
-            <Link to={"/"}>Dataphyte</Link>
+            <Link to={"/"}>{title}</Link>
           </h2>
           <nav className="xl:block hidden">
             <ul className="flex gap-8 items-center text-[#525252] text-[16px] leading-6 font-normal font-Poppins list-none cursor-pointer">

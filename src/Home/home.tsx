@@ -26,6 +26,7 @@ import search from "../assets/images/search-normal.png";
 import { useEffect, useState } from "react";
 
 const baseURl = process.env.REACT_APP_URL;
+const title = process.env.REACT_APP_TITLE;
 
 const Home = () => {
   const images = [

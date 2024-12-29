@@ -3,12 +3,14 @@ import facebook from "../assets/images/facebook.png";
 import imstagram from "../assets/images/instagram.png";
 
 const Footer = () => {
+  const title = process.env.REACT_APP_TITLE;
+
   return (
     <footer className="w-full bg-[#462F78] xl:px-[110px] xl:py-[32px] py-[16px] px-[24px]">
       <div className=" xl:pt-[52px] pt-[20px] max-w-[1750px] mx-auto flex xl:flex-nowrap flex-wrap gap-[32px] justify-between">
         <div className="flex gap-[23px] flex-col w-full max-w-[286px]">
           <h1 className="font-Poppins text-[24px]  font-semibold leading-6 text-white">
-            Dataphyte
+            {title}
           </h1>
           <p className="font-Satoshi text-white text-[14px] font-bold leading-6">
             Lorem ipsum dolor sit amet consectetur. Aliquet sed scelerisque id

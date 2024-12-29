@@ -6,6 +6,7 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css"; // Marker cluster
 import "leaflet.markercluster/dist/MarkerCluster.css"; // Marker cluster base styles
 import L from "leaflet";
 import "./MapStyles.css"; // Custom styles for blinking icons
+import { useNavigate } from "react-router-dom";
 
 interface MarkerProps {
   lat: number;
@@ -22,13 +23,12 @@ interface LargeMapComponentProps {
   datas?: { lat?: number; lng?: number; label?: string };
 }
 
-// Create a blinking circular icon using Leaflet's DivIcon
 const blinkingIcon = new L.DivIcon({
-  className: "blinking-icon", // Custom class defined in CSS
+  className: "blinking-icon",
   html: `<div class="blinking-circle"></div>`,
   iconSize: [30, 30],
-  iconAnchor: [15, 15], // Center the icon
-  popupAnchor: [0, -15], // Adjust popup position
+  iconAnchor: [15, 15],
+  popupAnchor: [0, -15],
 });
 
 const LargeMapComponent: React.FC<LargeMapComponentProps> = ({
@@ -38,6 +38,7 @@ const LargeMapComponent: React.FC<LargeMapComponentProps> = ({
   datas,
   height,
 }) => {
+  const navigate = useNavigate();
   return (
     <MapContainer
       center={center}
@@ -59,8 +60,9 @@ const LargeMapComponent: React.FC<LargeMapComponentProps> = ({
             icon={blinkingIcon}
             eventHandlers={{
               click: () => {
-                const googleMapUrl = `https://www.google.com/maps/place/?q=place_id:${marker.id}`;
-                window.open(googleMapUrl, "_blank");
+                navigate(`../mining-site?id=${marker.id}`);
+                //const googleMapUrl = `https://www.google.com/maps/place/?q=place_id:${marker.id}`;
+                //  window.open(googleMapUrl, "_blank");
               },
             }}
           >

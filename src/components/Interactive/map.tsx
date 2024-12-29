@@ -104,12 +104,13 @@ const InteractiveMap: React.FC = () => {
       .selectAll<SVGPathElement, GeoFeature>("path")
       .data(geoData.features)
       .join("path")
+      .text("Text")
       .attr("d", pathGenerator)
       .attr("fill", (d) => {
         if (!selectedContinent) {
           return miningContinent.includes(d.properties.continent)
-            ? "#7F55DA" // Highlighted color
-            : "#272727"; // Default color
+            ? "#7F55DA"
+            : "#272727";
         }
 
         if (selectedContinent) {

@@ -57,16 +57,14 @@ const CountryMap = ({ country }: MapdataPops) => {
     );
   }, [queryName, fetchData]);
 
-  //console.log(mapState);
-
-  const markers = miningData
-    .flatMap((item: any) => item.location)
-    .map((loc: any) => ({
+  const markers = miningData.flatMap((item: any) =>
+    item.location.map((loc: any) => ({
       lat: loc.lat,
       lng: loc.lng,
       label: loc.name,
-      id: loc.place_id,
-    }));
+      id: item.id,
+    }))
+  );
 
   const center =
     markers.length > 0
