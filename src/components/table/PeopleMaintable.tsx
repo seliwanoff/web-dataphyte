@@ -13,13 +13,12 @@ interface CompanyNameDescriptionProps {
   datas?: any;
 }
 const PeopleMaintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
+  const baseURL = process.env.REACT_APP_URL;
+
   const handleDownload = async (link: string, fileName: string, id: number) => {
     //console.log(id);
 
-    window.open(
-      `https://do.supidoo.com/api/v2/document/download?id=${id}`,
-      "_blank"
-    );
+    window.open(`${baseURL}document/download?id=${id}`, "_blank");
   };
 
   const [showDocument, setShowDocumment] = useState(false);

@@ -29,7 +29,7 @@ const CountryTitle = ({
             {countryName}
           </h3>
           <p className="text-[#515151] text-[16px] leading-6 font-normal font-Poppins">
-            {regions} | {subdivisions} | {miningSites}
+            {regions || 0} | {subdivisions || 0} | {miningSites}
           </p>
         </div>
 

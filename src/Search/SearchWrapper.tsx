@@ -32,7 +32,8 @@ const SearchWrapper = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setter(data);
+      console.log(data);
+      setter(data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {

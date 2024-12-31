@@ -10,7 +10,15 @@ import TableColumn from "../components/table/tableColumn";
 import TableRow from "../components/table/tableRow";
 import DocumentViewer from "../components/documentViewers";
 import Pagination from "../components/pagination";
-const LicenseMainTable = () => {
+
+interface SearchBarProps {
+  searchQuery?: any;
+  setInnerMainDoc?: any;
+}
+const LicenseMainTable: React.FC<SearchBarProps> = ({
+  searchQuery,
+  setInnerMainDoc,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [mainDoc, setMainDoc] = useState<any>([]);
   const baseURl = process.env.REACT_APP_URL;
@@ -38,7 +46,30 @@ const LicenseMainTable = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setter(data.data.data?.reverse());
+      setter(data.data.data);
+      setInnerMainDoc(data.data.data);
+      setTotalItems(data.data.total);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchDatas = async (
+    url: string,
+    setter: React.Dispatch<React.SetStateAction<any>>
+  ) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${baseURl}${url}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setter(data.data.data);
+      setInnerMainDoc(data.data.data);
+
       setTotalItems(data.data.total);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -54,11 +85,19 @@ const LicenseMainTable = () => {
     );
   }, [rowsPerPage, currentPage]);
 
+  useEffect(() => {
+    if (searchQuery) {
+      fetchDatas(`search/document?q=${searchQuery}`, setMainDoc);
+    } else {
+      fetchData(
+        `document/getdocuments?category=license&count=${rowsPerPage}&page=${currentPage}`,
+        setMainDoc
+      );
+    }
+  }, [searchQuery, rowsPerPage, currentPage]);
+
   const handleDownload = async (link: string, fileName: string, id: number) => {
-    window.open(
-      `https://do.supidoo.com/api/v2/document/download?id=${id}`,
-      "_blank"
-    );
+    window.open(`${baseURl}document/download?id=${id}`, "_blank");
   };
 
   const [showDocument, setShowDocumment] = useState(false);

@@ -9,6 +9,7 @@ import Maintable from "../Search/mainTableSearch";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import Pagination from "../components/pagination";
+import ReportsSearchBar from "../components/search/ReportSearchBar";
 
 const RegulationProfile = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -33,6 +34,7 @@ const RegulationProfile = () => {
   const handleRowsPerPageChange = (rows: number) => {
     setRowsPerPage(rows);
   };
+  // console.log(searchQuery);
   const fetchData = async (
     url: string,
     setter: React.Dispatch<React.SetStateAction<any>>
@@ -53,7 +55,36 @@ const RegulationProfile = () => {
       setIsLoading(false);
     }
   };
+  const fetchDatas = async (
+    url: string,
+    setter: React.Dispatch<React.SetStateAction<any>>
+  ) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${baseURl}${url}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setter(data.data.data);
+      setTotalItems(data.data.total);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
+    if (searchQuery) {
+      fetchDatas(`search/document?q=${searchQuery}`, setMainDoc);
+    } else {
+      fetchData(
+        `document/getdocuments?category=regulation&count=${rowsPerPage}&page=${currentPage}`,
+        setMainDoc
+      );
+    }
+  }, [searchQuery, rowsPerPage, currentPage]);
   useEffect(() => {
     fetchData(
       `country/getcountryresource?country=${
@@ -72,19 +103,18 @@ const RegulationProfile = () => {
     );
   }, [queryName, rowsPerPage, currentPage, currentPage]);
 
-  //console.log(allDoc);
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
       <div className="flex xl:flex-row flex-col w-full">
         <CountryTitle
           countryName={queryName}
-          regions={`${allDoc.country && allDoc.country.states} state`}
-          description={allDoc.country && allDoc.country.description}
-          image={allDoc.country && allDoc.country.image}
-          subdivisions={allDoc.country && allDoc.country.lg}
+          regions={`${allDoc.country && allDoc.country.states} state` || "0"}
+          description={(allDoc.country && allDoc.country.description) || ""}
+          image={(allDoc.country && allDoc.country.image) || ""}
+          subdivisions={`${allDoc.country && allDoc.country.lg} LGs` || "0"}
         />
 
-        <SearchBar
+        <ReportsSearchBar
           border="border border-[#CCCCCC]"
           bg="bg-[#f0f0f0]"
           setSearchQuery={setSearchQuery}
@@ -117,15 +147,18 @@ const RegulationProfile = () => {
                 type={item.type}
                 mineral={"Maganese"}
                 docCount={5}
+                link={item.id}
               />
             ))}
         </div>
-        <Pagination
-          totalItems={totalItems}
-          rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
-          onPageChange={handlePageChange}
-          onRowsPerPageChange={handleRowsPerPageChange}
-        />
+        {mainDoc?.data?.data.length > 0 && (
+          <Pagination
+            totalItems={totalItems}
+            rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+            onPageChange={handlePageChange}
+            onRowsPerPageChange={handleRowsPerPageChange}
+          />
+        )}
       </div>
     </div>
   );

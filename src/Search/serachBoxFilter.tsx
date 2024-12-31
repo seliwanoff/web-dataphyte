@@ -14,6 +14,7 @@ const SearchBoxFilter: React.FC<SearchWidgetProps> = ({ setSearchQuery }) => {
           border="border border-[#ccc]"
           setSearchQuery={setSearchQuery}
         />
+        {/***
         <div className="border border-[#D0D5DD] shadow-custom-light rounded-md py-[10px] cursor-pointer px-[24px] flex justify-center items-center gap-[10px]">
           <img src={filter} alt="" className="h-[20px]" />
 
@@ -21,6 +22,7 @@ const SearchBoxFilter: React.FC<SearchWidgetProps> = ({ setSearchQuery }) => {
             Search
           </span>
         </div>
+        */}
       </div>
     </div>
   );

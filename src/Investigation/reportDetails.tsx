@@ -6,6 +6,7 @@ import SearchBar from "../components/search/search";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import Pagination from "../components/pagination";
+import ReportsSearchBar from "../components/search/ReportSearchBar";
 const baseURl = process.env.REACT_APP_URL;
 
 const ReportDetails = () => {
@@ -70,6 +71,25 @@ const ReportDetails = () => {
       setIsLoading(false);
     }
   };
+
+  const fetchDatasearch = async (
+    url: string,
+    setter: React.Dispatch<React.SetStateAction<any>>
+  ) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${baseURl}${url}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setter(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   useEffect(() => {
     fetchData(`report/get?location=${queryName}`, setReports);
   }, [queryName]);
@@ -82,8 +102,12 @@ const ReportDetails = () => {
       setAllDocument
     );
   }, [queryName]);
-
-  // console.log(allDoc);
+  useEffect(() => {
+    fetchDatasearch(
+      `search/report?q=${searchQuery}&location=${queryName}&count=${rowsPerPage}`,
+      setReports
+    );
+  }, [searchQuery]);
 
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
@@ -110,7 +134,7 @@ const ReportDetails = () => {
           <h3 className="text-[#161616] text-[32px] font-semibold leading-[44.29px] text-left font-polySans">
             Investigations and Reports
           </h3>
-          <SearchBar
+          <ReportsSearchBar
             style=""
             bg="bg-[#f0f0f0]"
             border="border border-[#ccc]"

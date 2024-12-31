@@ -16,11 +16,9 @@ interface CompanyNameDescriptionProps {
   datas?: any;
 }
 const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
+  const baseURL = process.env.REACT_APP_URL;
   const handleDownload = async (link: string, fileName: string, id: number) => {
-    window.open(
-      `https://do.supidoo.com/api/v2/document/download?id=${id}`,
-      "_blank"
-    );
+    window.open(`${baseURL}document/download?id=${id}`, "_blank");
   };
 
   const [showDocument, setShowDocumment] = useState(false);
@@ -31,42 +29,49 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
       {showDocument && (
         <DocumentViewer documentUrl={url} onClose={setShowDocumment} />
       )}
-      <table className="bg-inherit w-full border-none">
-        <thead className="thead bg-white">
-          <tr className="w-full ">
-            <TableColumn name="Document name" width={20} />
-            <TableColumn name="Description" width={20} />
 
-            <TableColumn name="" width={15} />
-          </tr>
-        </thead>
+      {datas.data === false ? (
+        <div className="text-center text-gray-500 xl:mt-[50px] mt-[10px] font-Inter w-full  ">
+          No data found
+        </div>
+      ) : (
+        <table className="bg-inherit w-full border-none">
+          <thead className="thead bg-white">
+            <tr className="w-full ">
+              <TableColumn name="Document name" width={20} />
+              <TableColumn name="Description" width={20} />
 
-        <tbody className="tbody bg-white">
-          {datas.data &&
-            datas?.data?.map((data: any, index: any) => (
-              <tr className="" key={index}>
-                <HeroRow
-                  name={data.name}
-                  width={20}
-                  image={doc}
-                  type={data.type}
-                />
-                <TableRow name={JSON.parse(data.meta)} width={15} />
+              <TableColumn name="" width={15} />
+            </tr>
+          </thead>
 
-                <ActionRow
-                  name="Download file"
-                  width={15}
-                  link={data.link}
-                  setShowDocumment={setShowDocumment}
-                  setUrl={setUrl}
-                  handleDownload={() =>
-                    handleDownload(data.link, data.name, data.id)
-                  }
-                />
-              </tr>
-            ))}
-        </tbody>
-      </table>
+          <tbody className="tbody bg-white">
+            {datas.data &&
+              datas?.data?.map((data: any, index: any) => (
+                <tr className="" key={index}>
+                  <HeroRow
+                    name={data.name}
+                    width={20}
+                    image={doc}
+                    type={data.type}
+                  />
+                  <TableRow name={JSON.parse(data.meta)} width={15} />
+
+                  <ActionRow
+                    name="Download file"
+                    width={15}
+                    link={data.link}
+                    setShowDocumment={setShowDocumment}
+                    setUrl={setUrl}
+                    handleDownload={() =>
+                      handleDownload(data.link, data.name, data.id)
+                    }
+                  />
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      )}
     </>
   );
 };

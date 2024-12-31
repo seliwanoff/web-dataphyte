@@ -88,6 +88,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
             >
               <Link to={"/reports"}> Investigations & Reports</Link>
             </li>
+            {/**
             <li
               className={`${
                 currentPath === "/data-visualization"
@@ -98,6 +99,7 @@ const DropDownMenu: React.FC<DropDownMenuProps> = ({ setIshowDrop }) => {
             >
               <Link to={"/data"}> Data & Visualization</Link>
             </li>
+            */}
           </ul>
         </nav>
       </div>
