@@ -6,6 +6,7 @@ interface SearchBarProps {
   bg?: string;
   border?: string;
   setSearchQuery?: any;
+  title?: any;
 }
 
 const ReportsSearchBar: React.FC<SearchBarProps> = ({
@@ -13,6 +14,7 @@ const ReportsSearchBar: React.FC<SearchBarProps> = ({
   bg,
   border,
   setSearchQuery,
+  title = "Search Reoports",
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -34,7 +36,7 @@ const ReportsSearchBar: React.FC<SearchBarProps> = ({
         value={query}
         type="text"
         className="outline-none border-none text-[#828282] bg-inherit text-[14px] leading-6 font-normal font-Poppins xl:w-3/4 w-full"
-        placeholder="Search Reoports"
+        placeholder={title}
       />
       <button
         className="bg-[#7F55DA] h-full py-2 xl:mr-0  mr-1 px-6 rounded-[26px] text-white text-[14px] leading-6 font-normal flex items-center justify-center font-Poppins"

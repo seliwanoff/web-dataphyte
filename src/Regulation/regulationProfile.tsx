@@ -118,6 +118,7 @@ const RegulationProfile = () => {
           border="border border-[#CCCCCC]"
           bg="bg-[#f0f0f0]"
           setSearchQuery={setSearchQuery}
+          title={"Search Document"}
         />
       </div>
 
