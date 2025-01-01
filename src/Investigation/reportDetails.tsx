@@ -103,10 +103,14 @@ const ReportDetails = () => {
     );
   }, [queryName]);
   useEffect(() => {
-    fetchDatasearch(
-      `search/report?q=${searchQuery}&location=${queryName}&count=${rowsPerPage}`,
-      setReports
-    );
+    if (searchQuery) {
+      fetchDatasearch(
+        `search/report?q=${searchQuery}&location=${queryName}&count=${rowsPerPage}`,
+        setReports
+      );
+    } else {
+      fetchData(`report/get?location=${queryName}`, setReports);
+    }
   }, [searchQuery]);
 
   return (
@@ -161,13 +165,14 @@ const ReportDetails = () => {
             </>
           )}
         </div>
-
-        <Pagination
-          totalItems={totalItems}
-          rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
-          onPageChange={handlePageChange}
-          onRowsPerPageChange={handleRowsPerPageChange}
-        />
+        {reports.length > 0 && (
+          <Pagination
+            totalItems={totalItems}
+            rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+            onPageChange={handlePageChange}
+            onRowsPerPageChange={handleRowsPerPageChange}
+          />
+        )}
       </div>
     </div>
   );
