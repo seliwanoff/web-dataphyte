@@ -107,57 +107,63 @@ const LicenseMainTable: React.FC<SearchBarProps> = ({
       {showDocument && (
         <DocumentViewer documentUrl={url} onClose={setShowDocumment} />
       )}
-      <table className="bg-inherit w-full border-none mt-[20px] ">
-        <thead className="thead bg-white overflow-auto flex-nowrap">
-          <tr className="w-full overflow-auto flex-nowrap">
-            <TableColumn name="Name" width={25} />
-            <TableColumn name="Country" width={10} />
-            <TableColumn name="Description" width={25} />
+      {mainDoc.length > 0 ? (
+        <table className="bg-inherit w-full border-none mt-[20px] ">
+          <thead className="thead bg-white overflow-auto flex-nowrap">
+            <tr className="w-full overflow-auto flex-nowrap">
+              <TableColumn name="Name" width={25} />
+              <TableColumn name="Country" width={10} />
+              <TableColumn name="Description" width={25} />
 
-            <TableColumn name="Date" width={10} />
-            {/***
+              <TableColumn name="Date" width={10} />
+              {/***
             <TableColumn name="License use" width={15} />
             <TableColumn name="Status" width={15} />
             */}
-            <TableColumn name="" width={10} />
-          </tr>
-        </thead>
+              <TableColumn name="" width={10} />
+            </tr>
+          </thead>
 
-        <tbody className="tbody bg-white overflow-auto flex-nowrap">
-          {mainDoc?.map((item: any, index: any) => (
-            <tr className="" key={index}>
-              <HeroRow
-                name={item.name}
-                type={item.type}
-                width={30}
-                image={doc}
-              />
-              <TableRow name={item.country} width={10} />
-              <TableRow name={item.description} width={20} />
+          <tbody className="tbody bg-white overflow-auto flex-nowrap">
+            {mainDoc?.map((item: any, index: any) => (
+              <tr className="" key={index}>
+                <HeroRow
+                  name={item.name}
+                  type={item.type}
+                  width={30}
+                  image={doc}
+                />
+                <TableRow name={item.country} width={10} />
+                <TableRow name={item.description} width={20} />
 
-              <TableRow
-                name={new Date(item.created_at).toLocaleDateString()}
-                width={10}
-              />
-              {/**
+                <TableRow
+                  name={new Date(item.created_at).toLocaleDateString()}
+                  width={10}
+                />
+                {/**
               <LicenseUseRow name="Active" width={15} percentage={"50"} />
               <StatusRow name="Active" width={15} />
               <TableRow name="Type of license" width={20} />
               */}
-              <ActionRow
-                name="Download file"
-                width={15}
-                link={item.link}
-                setShowDocumment={setShowDocumment}
-                setUrl={setUrl}
-                handleDownload={() =>
-                  handleDownload(item.link, item.name, item.id)
-                }
-              />
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                <ActionRow
+                  name="Download file"
+                  width={15}
+                  link={item.link}
+                  setShowDocumment={setShowDocumment}
+                  setUrl={setUrl}
+                  handleDownload={() =>
+                    handleDownload(item.link, item.name, item.id)
+                  }
+                />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      ) : (
+        <div className="text-center text-gray-500 xl:mt-[50px] mt-[10px] font-Inter w-full">
+          No report found
+        </div>
+      )}
       {mainDoc.length > 0 && (
         <Pagination
           totalItems={totalItems}
