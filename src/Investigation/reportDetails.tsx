@@ -83,7 +83,7 @@ const ReportDetails = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setter(data);
+      setter(data.data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -168,7 +168,7 @@ const ReportDetails = () => {
         {reports.length > 0 && (
           <Pagination
             totalItems={totalItems}
-            rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+            rowsPerPageOptions={[10, 20, 50, 100, 200]}
             onPageChange={handlePageChange}
             onRowsPerPageChange={handleRowsPerPageChange}
           />
