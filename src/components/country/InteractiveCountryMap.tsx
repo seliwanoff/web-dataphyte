@@ -152,7 +152,7 @@ const InteractiveCountryMap = ({ country }: MapdataPops) => {
 
           <div
             ref={mapRef}
-            className="rounded-[32px] bg-[#f0f0f0] flex justify-center w-full mt-[36px] content-center relative"
+            className="rounded-[32px] bg-[#f0f0f0] flex justify-center w-full mt-[36px] content-center relative cursor-pointer"
           >
             <ComposableMap
               width={712}
