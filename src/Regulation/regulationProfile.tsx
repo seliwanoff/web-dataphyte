@@ -24,7 +24,7 @@ const RegulationProfile = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
 
   const handlePageChange = (page: number) => {
@@ -66,7 +66,8 @@ const RegulationProfile = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setter(data.data.data);
+      // console.log(data.data.data);
+      setter(data);
       setTotalItems(data.data.total);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -77,10 +78,17 @@ const RegulationProfile = () => {
 
   useEffect(() => {
     if (searchQuery) {
-      fetchDatas(`search/document?q=${searchQuery}`, setMainDoc);
+      fetchDatas(
+        `search/document?q=${searchQuery}&country=${
+          queryName === "Dr Congo" ? "Congo" : queryName
+        }&category=Regulation`,
+        setMainDoc
+      );
     } else {
       fetchData(
-        `document/getdocuments?category=regulation&count=${rowsPerPage}&page=${currentPage}`,
+        `document/getdocuments?country=${
+          queryName === "Dr Congo" ? "Congo" : queryName
+        }&category=regulation&count=${rowsPerPage}&page=${currentPage}`,
         setMainDoc
       );
     }
@@ -149,13 +157,14 @@ const RegulationProfile = () => {
                 mineral={"Maganese"}
                 docCount={5}
                 link={item.id}
+                key={index}
               />
             ))}
         </div>
         {mainDoc?.data?.data.length > 0 && (
           <Pagination
             totalItems={totalItems}
-            rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+            rowsPerPageOptions={[10, 20, 50, 100, 200]}
             onPageChange={handlePageChange}
             onRowsPerPageChange={handleRowsPerPageChange}
           />

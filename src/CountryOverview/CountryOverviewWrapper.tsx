@@ -12,6 +12,7 @@ import ReportsSearchBar from "../components/search/ReportSearchBar";
 const CountryOveViewWrapper = () => {
   const baseURl = process.env.REACT_APP_URL;
   const [allDoc, setAllDocument] = useState<any>([]);
+  const [searchDoc, setSearchDoc] = useState<any>([]);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -68,7 +69,7 @@ const CountryOveViewWrapper = () => {
       //  console.log(data.data.data);
 
       // setTotalItems(data.documents.total);
-      setter(data.data.data);
+      setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -87,11 +88,9 @@ const CountryOveViewWrapper = () => {
 
   useEffect(() => {
     if (searchQuery)
-      fetchDataDocumentSearch(
-        `search/document?q=${searchQuery}`,
-        setAllDocument
-      );
+      fetchDataDocumentSearch(`search/document?q=${searchQuery}`, setSearchDoc);
   }, [searchQuery]);
+
   return (
     <div className="w-full px-[24px] xl:px-[100px] py-[32px]">
       {isLoading ? (
@@ -129,31 +128,46 @@ const CountryOveViewWrapper = () => {
           <div className="xl:block hidden w-full mt-[32px]">
             <Maintable
               datas={{
-                data:
-                  allDoc?.documents?.data?.length > 0 &&
-                  allDoc?.documents?.data,
+                data: searchQuery
+                  ? searchDoc.data.data
+                  : allDoc?.documents?.data?.length > 0 &&
+                    allDoc?.documents?.data,
               }}
             />
           </div>
         )}
         <div className="xl:hidden block w-full mt-[32px]">
-          {allDoc?.documents?.data.length > 0 &&
-            allDoc?.documents?.data?.map((item: any, index: any) => (
-              <DocumentSearchMobileWidget
-                mineralName={item?.name}
-                countries={item.country}
-                miningCount={4}
-                type={item.type}
-                mineral={"Maganese"}
-                docCount={5}
-                link={item.id}
-              />
-            ))}
+          {searchQuery
+            ? searchDoc.data.data?.map((item: any, index: any) => (
+                <DocumentSearchMobileWidget
+                  mineralName={item?.name}
+                  countries={item.country}
+                  miningCount={4}
+                  type={item.type}
+                  mineral={"Maganese"}
+                  docCount={5}
+                  link={item.id}
+                  key={index}
+                />
+              ))
+            : allDoc?.documents?.data.length > 0 &&
+              allDoc?.documents?.data?.map((item: any, index: any) => (
+                <DocumentSearchMobileWidget
+                  mineralName={item?.name}
+                  countries={item.country}
+                  miningCount={4}
+                  type={item.type}
+                  mineral={"Maganese"}
+                  docCount={5}
+                  link={item.id}
+                  key={index}
+                />
+              ))}
         </div>
         {allDoc?.documents?.data?.length > 0 && (
           <Pagination
             totalItems={totalItems}
-            rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+            rowsPerPageOptions={[10, 20, 50, 100, 200]}
             onPageChange={handlePageChange}
             onRowsPerPageChange={handleRowsPerPageChange}
           />

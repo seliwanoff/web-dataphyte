@@ -54,6 +54,7 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
                     width={20}
                     image={doc}
                     type={data.type}
+                    size={data.size}
                   />
                   <TableRow name={JSON.parse(data.meta)} width={15} />
 

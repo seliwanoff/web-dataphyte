@@ -24,7 +24,7 @@ const LicenseMainTable: React.FC<SearchBarProps> = ({
   const baseURl = process.env.REACT_APP_URL;
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
 
   const handlePageChange = (page: number) => {
@@ -87,7 +87,10 @@ const LicenseMainTable: React.FC<SearchBarProps> = ({
 
   useEffect(() => {
     if (searchQuery) {
-      fetchDatas(`search/document?q=${searchQuery}`, setMainDoc);
+      fetchDatas(
+        `search/document?q=${searchQuery}&category=License`,
+        setMainDoc
+      );
     } else {
       fetchData(
         `document/getdocuments?category=license&count=${rowsPerPage}&page=${currentPage}`,
@@ -125,38 +128,40 @@ const LicenseMainTable: React.FC<SearchBarProps> = ({
           </thead>
 
           <tbody className="tbody bg-white overflow-auto flex-nowrap">
-            {mainDoc?.map((item: any, index: any) => (
-              <tr className="" key={index}>
-                <HeroRow
-                  name={item.name}
-                  type={item.type}
-                  width={30}
-                  image={doc}
-                />
-                <TableRow name={item.country} width={10} />
-                <TableRow name={item.description} width={20} />
+            {mainDoc
+              ?.filter((item: any) => item.category === "License")
+              .map((item: any, index: any) => (
+                <tr className="" key={index}>
+                  <HeroRow
+                    name={item.name}
+                    type={item.type}
+                    width={30}
+                    image={doc}
+                  />
+                  <TableRow name={item.country} width={10} />
+                  <TableRow name={item.description} width={20} />
 
-                <TableRow
-                  name={new Date(item.created_at).toLocaleDateString()}
-                  width={10}
-                />
-                {/**
+                  <TableRow
+                    name={new Date(item.created_at).toLocaleDateString()}
+                    width={10}
+                  />
+                  {/**
               <LicenseUseRow name="Active" width={15} percentage={"50"} />
               <StatusRow name="Active" width={15} />
               <TableRow name="Type of license" width={20} />
               */}
-                <ActionRow
-                  name="Download file"
-                  width={15}
-                  link={item.link}
-                  setShowDocumment={setShowDocumment}
-                  setUrl={setUrl}
-                  handleDownload={() =>
-                    handleDownload(item.link, item.name, item.id)
-                  }
-                />
-              </tr>
-            ))}
+                  <ActionRow
+                    name="Download file"
+                    width={15}
+                    link={item.link}
+                    setShowDocumment={setShowDocumment}
+                    setUrl={setUrl}
+                    handleDownload={() =>
+                      handleDownload(item.link, item.name, item.id)
+                    }
+                  />
+                </tr>
+              ))}
           </tbody>
         </table>
       ) : (
@@ -167,7 +172,7 @@ const LicenseMainTable: React.FC<SearchBarProps> = ({
       {mainDoc.length > 0 && (
         <Pagination
           totalItems={totalItems}
-          rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+          rowsPerPageOptions={[10, 20, 50, 100, 200]}
           onPageChange={handlePageChange}
           onRowsPerPageChange={handleRowsPerPageChange}
         />
