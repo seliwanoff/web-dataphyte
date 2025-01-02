@@ -66,7 +66,7 @@ const CountryOveViewWrapper = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      //  console.log(data.data.data);
+      //mmmmmgvm console.log(data);
 
       // setTotalItems(data.documents.total);
       setter(data);
@@ -76,7 +76,7 @@ const CountryOveViewWrapper = () => {
       setIsLoading(false);
     }
   };
-
+  //console.log(searchDoc);
   useEffect(() => {
     fetchData(
       `country/getcountryresource?country=${
@@ -129,7 +129,7 @@ const CountryOveViewWrapper = () => {
             <Maintable
               datas={{
                 data: searchQuery
-                  ? searchDoc.data.data
+                  ? searchDoc?.data?.data
                   : allDoc?.documents?.data?.length > 0 &&
                     allDoc?.documents?.data,
               }}
@@ -138,7 +138,7 @@ const CountryOveViewWrapper = () => {
         )}
         <div className="xl:hidden block w-full mt-[32px]">
           {searchQuery
-            ? searchDoc.data.data?.map((item: any, index: any) => (
+            ? searchDoc?.data?.data?.map((item: any, index: any) => (
                 <DocumentSearchMobileWidget
                   mineralName={item?.name}
                   countries={item.country}
