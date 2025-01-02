@@ -75,9 +75,6 @@ const UploadEl = <T extends Record<string, any>>({
           {value.name}
         </div>
       )}
-      <span className="text-[#475467] font-Inter text-[14px] font-normal leading-[20px] text-left">
-        40 characters maximum
-      </span>
     </div>
   );
 };
