@@ -65,7 +65,7 @@ const CountryOveViewWrapper = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data.data.data);
+      //  console.log(data.data.data);
 
       // setTotalItems(data.documents.total);
       setter(data.data.data);

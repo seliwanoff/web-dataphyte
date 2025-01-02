@@ -91,8 +91,11 @@ const ReportDetails = () => {
     }
   };
   useEffect(() => {
-    fetchData(`report/get?location=${queryName}`, setReports);
-  }, [queryName]);
+    fetchData(
+      `report/get?location=${queryName}&count=${rowsPerPage}&page=${currentPage}`,
+      setReports
+    );
+  }, [queryName, rowsPerPage, currentPage]);
 
   useEffect(() => {
     fetchDatas(

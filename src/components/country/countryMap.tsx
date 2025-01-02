@@ -147,7 +147,7 @@ const CountryMap = ({ country }: MapdataPops) => {
 
         <div
           ref={mapRef}
-          className="rounded-[32px] bg-[#f0f0f0] flex justify-center w-full mt-[36px] content-center relative"
+          className="rounded-[32px] bg-[#f0f0f0] flex justify-center w-full mt-[36px] content-center relative cursor-pointer"
         >
           <ComposableMap
             width={712}
@@ -203,7 +203,7 @@ const CountryMap = ({ country }: MapdataPops) => {
                       strokeWidth={1}
                       onClick={(event) => handleGeographyClick(geo, event)}
                       style={{
-                        default: { outline: "none" },
+                        default: { outline: "none", cursor: "pointer" },
                         hover: { fill: "#FFD700", outline: "none" },
                         pressed: { fill: "#FF5733", outline: "none" },
                       }}
