@@ -27,18 +27,20 @@ const LicenseWrapper = () => {
 
         <div className="xl:hidden block w-full mt-[32px]">
           {mainDoc?.length > 0 &&
-            mainDoc?.map((item: any, index: any) => (
-              <DocumentSearchMobileWidget
-                mineralName={item?.name}
-                countries={item.country}
-                miningCount={4}
-                type={item.type}
-                mineral={"Maganese"}
-                docCount={5}
-                link={item.id}
-                key={index}
-              />
-            ))}
+            mainDoc
+              ?.filter((item: any) => item.category === "License")
+              .map((item: any, index: any) => (
+                <DocumentSearchMobileWidget
+                  mineralName={item?.name}
+                  countries={item.country}
+                  miningCount={4}
+                  type={item.type}
+                  mineral={"Maganese"}
+                  docCount={5}
+                  link={item.id}
+                  key={index}
+                />
+              ))}
         </div>
       </div>
     </div>
