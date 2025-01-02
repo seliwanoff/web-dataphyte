@@ -40,6 +40,32 @@ const ReportFromWrapper = () => {
     event.preventDefault();
     setIsLoading(true);
 
+    // Validation for required fields
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.meta ||
+      !formData.title ||
+      !formData.article ||
+      !formData.location
+    ) {
+      Store.addNotification({
+        title: "Error!",
+        message: "All fields except display picture are required.",
+        type: "danger",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animated", "fadeIn"],
+        animationOut: ["animated", "fadeOut"],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
+      setIsLoading(false);
+      return;
+    }
+
     const data = new FormData();
     data.append("name", formData.name);
     data.append("email", formData.email);
@@ -94,7 +120,7 @@ const ReportFromWrapper = () => {
         article: null,
         article_picture: null,
         display_picture: null,
-        location: "No location",
+        location: queryName,
       });
     } catch (error) {
       // console.error("Error uploading form data:", error);
