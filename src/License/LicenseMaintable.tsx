@@ -158,12 +158,14 @@ const LicenseMainTable: React.FC<SearchBarProps> = ({
           ))}
         </tbody>
       </table>
-      <Pagination
-        totalItems={totalItems}
-        rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
-        onPageChange={handlePageChange}
-        onRowsPerPageChange={handleRowsPerPageChange}
-      />
+      {mainDoc.length > 0 && (
+        <Pagination
+          totalItems={totalItems}
+          rowsPerPageOptions={[5, 10, 20, 50, 100, 200]}
+          onPageChange={handlePageChange}
+          onRowsPerPageChange={handleRowsPerPageChange}
+        />
+      )}
     </>
   );
 };
