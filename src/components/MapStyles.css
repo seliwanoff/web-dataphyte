@@ -1,10 +1,10 @@
 .blinking-circle {
   width: 20px;
   height: 20px;
-  background-color: rgba(255, 0, 0, 0.7); /* Semi-transparent red */
+  background-color: #01360fb3;
   border-radius: 50%;
   animation: blink 1s infinite ease-in-out;
-  box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); /* Glow effect */
+  box-shadow: 0 0 10px #01360fb3;
 }
 
 @keyframes blink {
