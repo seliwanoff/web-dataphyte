@@ -1,18 +1,20 @@
 .blinking-circle {
-  width: 25px;
-  height: 25px;
-  background-color: #01360fb3;
+  width: 15px;
+  height: 15px;
+  background-color: crimson;
   border-radius: 50%;
-  animation: blink 1s infinite ease-in-out;
-  box-shadow: 0 0 10px #01360fb3;
+  animation: spread-out 1.5s infinite ease-in-out;
+  position: relative;
+  box-shadow: 0 0 10px crimson;
 }
 
-@keyframes blink {
-  0%,
-  100% {
+@keyframes spread-out {
+  0% {
+    transform: scale(1);
     opacity: 1;
   }
-  50% {
-    opacity: 0.3;
+  100% {
+    transform: scale(2.5); /* Adjust to control the spread size */
+    opacity: 0.5; /* Fade out as it spreads */
   }
 }
