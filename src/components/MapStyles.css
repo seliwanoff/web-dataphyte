@@ -14,7 +14,7 @@
     opacity: 1;
   }
   100% {
-    transform: scale(2.5); /* Adjust to control the spread size */
-    opacity: 0.5; /* Fade out as it spreads */
+    transform: scale(2.5);
+    opacity: 0.5;
   }
 }
