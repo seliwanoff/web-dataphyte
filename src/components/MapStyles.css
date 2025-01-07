@@ -18,6 +18,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   animation: spread-out 1.5s infinite ease-in-out;
+  box-shadow: 0 0 5px crimson;
 }
 
 @keyframes spread-out {
