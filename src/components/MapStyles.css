@@ -1,20 +1,32 @@
 .blinking-circle {
-  width: 15px;
-  height: 15px;
+  width: 8px;
+  height: 8px;
   background-color: crimson;
   border-radius: 50%;
-  animation: spread-out 1.5s infinite ease-in-out;
   position: relative;
   box-shadow: 0 0 10px crimson;
 }
 
+.blinking-circle::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  border: 1px solid crimson;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: spread-out 1.5s infinite ease-in-out;
+}
+
 @keyframes spread-out {
   0% {
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
   100% {
-    transform: scale(2.5);
+    transform: translate(-50%, -50%) scale(2.5);
     opacity: 0.5;
   }
 }
