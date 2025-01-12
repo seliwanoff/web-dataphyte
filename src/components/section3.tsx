@@ -4,12 +4,15 @@ import img2 from "../assets/images/img2.png";
 import img3 from "../assets/images/img3.png";
 import folder from "../assets/images/folder.png";
 
-const Section3 = () => {
+type SelectElProps = {
+  data: any;
+};
+const Section3: React.FC<SelectElProps> = ({ data }) => {
   return (
     <div className="xl:px-[110px] py-12  w-full flex justify-center px-[24px]">
       <div className="flex flex-wrap gap-[32px]  w-full max-w-[1750px] mx-auto xl:h-[369px]">
         <EachBannerCard
-          text={"100"}
+          text={"4"}
           link={"https://m"}
           image={img}
           logoImage={folder}
@@ -17,7 +20,7 @@ const Section3 = () => {
           linktext="View countries"
         />
         <EachBannerCard
-          text={"2000"}
+          text={data?.mining_site || 0}
           link={"https://m"}
           image={img2}
           logoImage={folder}
@@ -25,7 +28,7 @@ const Section3 = () => {
           linktext="View Sites"
         />
         <EachBannerCard
-          text={"50"}
+          text={data?.mineral || 0}
           link={"https://m"}
           image={img3}
           logoImage={folder}

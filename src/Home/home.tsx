@@ -50,6 +50,7 @@ const Home = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [reports, setReports] = useState([]);
+  const [stat, setStat] = useState({});
 
   const fetchData = async (
     url: string,
@@ -62,7 +63,28 @@ const Home = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setter(data.data.data);
+      //  console.log(data);
+      setter(data?.data?.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchDataStat = async (
+    url: string,
+    setter: React.Dispatch<React.SetStateAction<any>>
+  ) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(`${baseURl}${url}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      //  console.log(data);
+      setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
@@ -72,12 +94,13 @@ const Home = () => {
 
   useEffect(() => {
     fetchData(`report/get`, setReports);
+    fetchDataStat(`user/stats`, setStat);
   }, []);
   return (
     <>
       <PreloaderProvider images={images}>
         <Banner />
-        <Section3 />
+        <Section3 data={stat} />
         <Section4 />
         <Sectin5 />
         <Section6 data={reports} />
