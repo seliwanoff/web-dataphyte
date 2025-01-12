@@ -12,12 +12,12 @@ const Section3: React.FC<SelectElProps> = ({ data }) => {
     <div className="xl:px-[110px] py-12  w-full flex justify-center px-[24px]">
       <div className="flex flex-wrap gap-[32px]  w-full max-w-[1750px] mx-auto xl:h-[369px]">
         <EachBannerCard
-          text={"4"}
+          text={data?.document || 0}
           link={"https://m"}
           image={img}
           logoImage={folder}
-          undertext="Countries"
-          linktext="View countries"
+          undertext="Documents"
+          linktext="View documents"
         />
         <EachBannerCard
           text={data?.mining_site || 0}
