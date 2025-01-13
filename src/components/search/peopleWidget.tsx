@@ -35,7 +35,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
     })) || []),
   ]***/
 
-  const ceoAndCfo = combined.map((person: any) => ({
+  const ceoAndCfo = combined?.map((person: any) => ({
     id: person.id,
     name: person.name,
     image: person.image,
