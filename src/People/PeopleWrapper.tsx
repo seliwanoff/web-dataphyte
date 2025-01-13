@@ -49,8 +49,8 @@ const PeopleWrapper = () => {
         people?.data?.site?.length +
         people?.data?.document?.length +
         people?.data?.ceo?.length +
-        people?.data.cfo.length +
-        people?.data?.cto.length,
+        people?.data?.cfo?.length +
+        people?.data?.cto?.length,
     },
     { type: "Minerals", count: people?.data?.mineral?.length || 0 },
     { type: "Mining Sites", count: people?.data?.site?.length || 0 },
@@ -59,8 +59,8 @@ const PeopleWrapper = () => {
       type: "Companies",
       count:
         people?.data?.ceo?.length +
-        people?.data?.cfo.length +
-        people?.data?.cto.length,
+        people?.data?.cfo?.length +
+        people?.data?.cto?.length,
     },
   ];
 
