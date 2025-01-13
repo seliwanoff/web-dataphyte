@@ -30,6 +30,7 @@ interface MiningSiteData {
     first_name: string;
     title: string;
     mineral: any;
+    pivot: any;
   }>;
   company?: Array<{ name: string; country: string }>;
   picture?: Array<{ name: string; country: string; link: string }>;
@@ -188,7 +189,7 @@ const MiningSiteWrapper: React.FC = () => {
                       miningCount={4}
                       mineral={miningSite?.data?.mineral?.[0]?.name}
                       docCount={1500}
-                      role={data.role}
+                      role={data?.pivot?.role}
                       id={data.id}
                       image={data.image}
                     />

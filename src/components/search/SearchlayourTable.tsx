@@ -25,6 +25,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
   people,
   mineral,
 }) => {
+  // console.log(people);
   const location = useLocation();
   const pathname = location.pathname;
 
