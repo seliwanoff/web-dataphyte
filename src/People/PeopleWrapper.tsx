@@ -57,10 +57,7 @@ const PeopleWrapper = () => {
     { type: "Documents", count: people?.data?.document?.length || 0 },
     {
       type: "Companies",
-      count:
-        people?.data?.ceo?.length +
-        people?.data?.cfo?.length +
-        people?.data?.cto?.length,
+      count: people?.data?.company?.length,
     },
   ];
 

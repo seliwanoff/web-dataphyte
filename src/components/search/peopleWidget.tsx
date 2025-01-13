@@ -18,7 +18,9 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || title || "Default Title";
-  const combined = [
+  const combined = datas.data.company;
+
+  /**[
     ...(datas?.data?.ceo?.map((persons: any) => ({
       ...persons,
       role: "CEO",
@@ -31,7 +33,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
       ...persons,
       role: "CTO",
     })) || []),
-  ];
+  ]***/
 
   const ceoAndCfo = combined.map((person: any) => ({
     id: person.id,
@@ -39,7 +41,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
     image: person.image,
     location: person.location,
     country: person.country,
-    role: person.role,
+    role: person?.role,
   }));
 
   const hasData = (title: string) => {
@@ -144,7 +146,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
 
       case "Companies":
         return (
-          ceoAndCfo.map((data: any, index: number) => (
+          datas.data.company.map((data: any, index: number) => (
             <CompanySearchWidget
               key={index}
               mineralName={data.name}
@@ -152,7 +154,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
               miningCount={datas?.data?.mineral && datas?.data?.mineral.length}
               mineral={"Dataphyte Limited"}
               docCount={1500}
-              role={data.role}
+              role={data?.pivot?.role}
               id={data.id}
             />
           )) || null
