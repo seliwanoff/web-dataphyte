@@ -25,26 +25,21 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
   people,
   mineral,
 }) => {
-  // console.log(people);
+  console.log(datas?.data?.people);
   const location = useLocation();
   const pathname = location.pathname;
 
-  const ceoAndCfo = [
-    { role: "CEO", person: datas?.data?.ceo },
-    { role: "CFO", person: datas?.data?.cfo },
-    { role: "CTO", person: datas?.data?.cto },
-  ]
-    .filter((entry) => entry.person)
-    .map(({ person, role }) => ({
+  const ceoAndCfo =
+    datas?.data?.people?.map((person: any) => ({
       id: person.id,
       first_name: `${person.title} ${person.first_name}`,
-      last_name: `${person.last_name}`,
-      name: `${person.first_name} ${person.last_name} `,
+      last_name: person.last_name,
+      name: `${person.first_name} ${person.last_name}`,
       image: person.image,
       location: person.location,
       country: person.country,
-      role,
-    }));
+      role: person?.pivot?.role,
+    })) || []; // Ensure an empty array if `datas?.data?.people` is undefined or null
 
   return (
     <div className="w-full max-w-[1750px] mx-auto xl:px-[110px] px-[24px] flex flex-col gap-[40px]">

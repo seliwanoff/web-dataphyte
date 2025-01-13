@@ -52,11 +52,7 @@ const CompanyProfile: React.FC = () => {
       setIsLoading(false);
     }
   };
-  const ceoAndCfo = [
-    eachCompanyDetails?.data?.ceo,
-    eachCompanyDetails?.data?.cfo,
-    eachCompanyDetails?.data?.cto,
-  ]
+  const ceoAndCfo = [eachCompanyDetails?.data?.people]
     .filter((person) => person) // Filter out undefined or null values
     .map((person, index) => ({
       id: person?.id,
@@ -66,7 +62,7 @@ const CompanyProfile: React.FC = () => {
       image: person?.image,
       location: person?.location,
       country: person?.country,
-      role: index === 0 ? "CEO" : index === 1 ? "CFO" : "CTO", // Assign roles dynamically
+      role: person?.pivot?.role || "",
     }));
 
   // console.log(ceoAndCfo);
@@ -91,10 +87,9 @@ const CompanyProfile: React.FC = () => {
     fetchData(`company/getcompany?id=${id || query}`, setEachCompanyDetails);
   }, [id]);
 
-  const allPeopleCount =
-    (eachCompanyDetails?.data?.ceo ? eachCompanyDetails.data.ceo.length : 0) +
-    (eachCompanyDetails?.data?.cto ? eachCompanyDetails.data.cto.length : 0) +
-    (eachCompanyDetails?.data?.cfo ? eachCompanyDetails.data.cfo.length : 0);
+  const allPeopleCount = eachCompanyDetails?.data?.people
+    ? eachCompanyDetails.data.people.length
+    : 0;
 
   const Filters = [
     {

@@ -102,7 +102,7 @@ const SearchWidget: React.FC<SearchWidgetProps> = ({
                     : (data?.cto && data?.cto[0]?.name) || null
                 }
                 docCount={documentCount}
-                role={data?.pivot?.role || ""}
+                role={data?.pivot?.role || data.role || ""}
                 id={data.id}
               />
             ))}
