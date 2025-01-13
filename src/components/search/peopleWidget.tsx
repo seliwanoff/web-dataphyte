@@ -18,7 +18,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const queryName = queryParams.get("query") || title || "Default Title";
-  const combined = datas.data.company;
+  const combined = datas?.data?.company;
 
   /**[
     ...(datas?.data?.ceo?.map((persons: any) => ({
@@ -55,7 +55,7 @@ const PeopleWidget: React.FC<SearchWidgetProps> = ({ title, datas }) => {
       case "Documents":
         return datas?.data?.document?.length > 0;
       case "Companies":
-        return ceoAndCfo.length > 0;
+        return datas?.data?.company?.length > 0;
       case "Mining Type":
         return datas?.data?.miningtype?.length > 0;
       case "Detail Description":
