@@ -18,25 +18,25 @@ const EachBannerCard: React.FC<EachBannerCardProps> = ({
   undertext,
   linktext,
 }) => {
-  const [count, setCount] = useState(0); // State to hold the current count
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     const target = parseInt(text, 10); // Convert text to a number
     if (isNaN(target)) return; // If text is not a number, exit early
 
-    const increment = target / 50; // Determine how much to increment (adjust for smoothness)
+    const increment = target / 50;
     const interval = setInterval(() => {
       setCount((prev) => {
         const nextValue = prev + increment;
         if (nextValue >= target) {
-          clearInterval(interval); // Stop the interval when the target is reached
-          return target; // Ensure it stops exactly at the target
+          clearInterval(interval);
+          return target;
         }
         return nextValue;
       });
-    }, 30); // Adjust the interval timing for speed (30ms in this example)
+    }, 300);
 
-    return () => clearInterval(interval); // Clean up the interval
+    return () => clearInterval(interval);
   }, [text]);
 
   return (
