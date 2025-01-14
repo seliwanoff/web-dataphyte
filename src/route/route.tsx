@@ -10,9 +10,6 @@ import NProgress from "nprogress";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import React, { Suspense, useEffect, startTransition } from "react";
 import MainCountryOview from "../Company/MainCountrywrapper";
-//import HomeViewer from "../MiningSite/homeViewer";
-//import DocumentWrapper from "../Documents/documentWrapper";
-//import InteractiveCountryMap from "../components/country/InteractiveCountryMap";
 
 const Home = React.lazy(() => import("../Home/home"));
 const SearchWrapper = React.lazy(() => import("../Search/SearchWrapper"));
@@ -56,6 +53,10 @@ const MineralWrapper = React.lazy(
 //import MiningSiteWrapper from "../MiningSite/miningSiteWrapper";
 
 const ReportForm = React.lazy(() => import("../Investigation/reportform"));
+
+const HomeMIneralViewer = React.lazy(
+  () => import("../minieralWrapper/homeMineralViewer")
+);
 
 const MiningSiteWrapper = React.lazy(
   () => import("../MiningSite/miningSiteWrapper")
@@ -114,6 +115,7 @@ const RouteWrapper = () => {
           <Route path="/tree" element={<TreeView />} />
           <Route path="/document/view" element={<DocumentWrapper />} />
           <Route path="/site/view" element={<HomeViewer />} />
+          <Route path="/mineral/view" element={<HomeMIneralViewer />} />
         </Routes>
       </Suspense>
     </Layout>

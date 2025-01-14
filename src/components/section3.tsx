@@ -29,7 +29,7 @@ const Section3: React.FC<SelectElProps> = ({ data }) => {
         />
         <EachBannerCard
           text={data?.mineral || 0}
-          link={"https://m"}
+          link={"/mineral/view"}
           image={img3}
           logoImage={folder}
           undertext="Mineral types"
