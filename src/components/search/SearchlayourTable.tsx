@@ -1,9 +1,6 @@
 import { useLocation } from "react-router-dom";
 import SearchWidget from "./SearchWidget";
-import PeopleSearchWidget from "./peopleSearch";
 import PeopleWidget from "./peopleWidget";
-import peopleSampleData from "../../data/peopleSampleResponse.json";
-//import { title } from "process";
 interface SeachTableFormatProps {
   widgetTitles: string[];
   currentTab: string;
@@ -25,7 +22,6 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
   people,
   mineral,
 }) => {
-  console.log(datas?.data?.people);
   const location = useLocation();
   const pathname = location.pathname;
 
@@ -39,7 +35,7 @@ const SeachTableFormat: React.FC<SeachTableFormatProps> = ({
       location: person.location,
       country: person.country,
       role: person?.pivot?.role,
-    })) || []; // Ensure an empty array if `datas?.data?.people` is undefined or null
+    })) || [];
 
   return (
     <div className="w-full max-w-[1750px] mx-auto xl:px-[110px] px-[24px] flex flex-col gap-[40px]">

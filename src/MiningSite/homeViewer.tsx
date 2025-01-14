@@ -13,7 +13,7 @@ import PageSearch from "../components/PageSearch";
 import ReportsSearchBar from "../components/search/ReportSearchBar";
 const baseURl = process.env.REACT_APP_URL;
 
-const DocumentWrapper = () => {
+const HomeViewer = () => {
   const [allCompany, setAllCompany] = useState<any>({ data: [] });
   const [allDocument, setAllDocument] = useState<any>({ data: [] });
   const [allNewpeople, setAllPeople] = useState<any>({ data: [] });
@@ -47,6 +47,7 @@ const DocumentWrapper = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
+      console.log(data);
       setter(data.data);
       setTotalItems(data.data.total);
     } catch (error) {
@@ -58,27 +59,26 @@ const DocumentWrapper = () => {
 
   useEffect(() => {
     fetchData(
-      `document/getdocuments?page=${currentPage}&count=${rowsPerPage}`,
-      setAllDocument
+      `mininig_site/get_mining_site?page=${currentPage}&count=${rowsPerPage}`,
+      setMiningSite
     );
   }, [currentPage, rowsPerPage]);
 
   useEffect(() => {
-    if (searchQuery)
-      fetchData(`search/document/?q=${searchQuery}`, setAllDocument);
+    if (searchQuery) fetchData(`search/site?q=${searchQuery}`, setMiningSite);
   }, [searchQuery]);
 
   const [currentTab, setCurrentTab] = useState<string>("All");
   const Filters = [
     {
       type: "All",
-      count: allDocument.data.length,
+      count: miningSite.total,
     },
 
-    { type: "Documents", count: allDocument.total },
+    { type: "Mining Sites", count: miningSite.total },
   ];
 
-  const isDataEmpty = allDocument.data.length === 0;
+  const isDataEmpty = miningSite.data.length === 0;
 
   return (
     <>
@@ -86,7 +86,7 @@ const DocumentWrapper = () => {
         <div className="w-full lg:px-[110px] px-[24px] mx-auto mt-12 max-w-[1750px] mb-6">
           <ReportsSearchBar
             setSearchQuery={setSearchQuery}
-            title={"Search Documents"}
+            title={"Search site"}
           />
         </div>
         {isLoading ? (
@@ -107,9 +107,9 @@ const DocumentWrapper = () => {
               currentTab={currentTab}
             />
             <SeachTableFormat
-              widgetTitles={["Documents"]}
+              widgetTitles={["Mining Sites"]}
               datas={sampleDataResponse}
-              miningSite={miningSite}
+              miningSite={{ data: miningSite.data }}
               company={allCompany}
               document={allDocument}
               currentTab={currentTab}
@@ -117,7 +117,7 @@ const DocumentWrapper = () => {
               mineral={allMineral}
             />
 
-            {allDocument && allDocument?.data?.length > 0 && (
+            {miningSite && miningSite?.data?.length > 0 && (
               <div className="w-full lg:px-[110px] px-[24px] mx-auto mt-12 max-w-[1750px] ">
                 <Pagination
                   totalItems={totalItems}
@@ -134,4 +134,4 @@ const DocumentWrapper = () => {
   );
 };
 
-export default DocumentWrapper;
+export default HomeViewer;

@@ -21,7 +21,7 @@ const Section3: React.FC<SelectElProps> = ({ data }) => {
         />
         <EachBannerCard
           text={data?.mining_site || 0}
-          link={"https://m"}
+          link={"/site/view"}
           image={img2}
           logoImage={folder}
           undertext="Mining sites"
