@@ -98,11 +98,13 @@ const HomeMIneralViewer = () => {
           </div>
         ) : (
           <>
+            {/***
             <SearchFilter
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}
               filters={Filters}
             />
+            */}
             <SearchResult
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}

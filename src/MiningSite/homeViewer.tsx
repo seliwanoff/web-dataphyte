@@ -97,11 +97,13 @@ const HomeViewer = () => {
           </div>
         ) : (
           <>
+            {/**
             <SearchFilter
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}
               filters={Filters}
             />
+            */}
             <SearchResult
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}

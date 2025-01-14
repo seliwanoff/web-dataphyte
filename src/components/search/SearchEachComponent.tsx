@@ -51,8 +51,7 @@ const EachComponent: React.FC<EachComponentProps> = ({
           </span>
           <div className="flex gap-[8px] items-center">
             <span className="flex gap-[4px] text-[14px] font-Poppins leading-[21px] text-[#828282]">
-              <p className="font-medium text-[#000]">{miningCount}</p> mining
-              Sites
+              <p className="font-medium text-[#000]"></p>
             </span>
             {/**
 
