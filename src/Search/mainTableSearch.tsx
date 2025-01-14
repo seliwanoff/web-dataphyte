@@ -48,7 +48,7 @@ const Maintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
           <tbody className="tbody bg-white">
             {datas.data &&
               datas?.data?.map((data: any, index: any) => (
-                <tr className="" key={index}>
+                <tr className="border-b border-b-[#F2F2F2]" key={index}>
                   <HeroRow
                     name={data.name}
                     width={20}

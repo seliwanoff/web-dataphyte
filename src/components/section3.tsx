@@ -13,7 +13,7 @@ const Section3: React.FC<SelectElProps> = ({ data }) => {
       <div className="flex flex-wrap gap-[32px]  w-full max-w-[1750px] mx-auto xl:h-[369px]">
         <EachBannerCard
           text={data?.document || 0}
-          link={"https://m"}
+          link={"/document/view"}
           image={img}
           logoImage={folder}
           undertext="Documents"

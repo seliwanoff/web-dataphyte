@@ -14,7 +14,7 @@ const ReportsSearchBar: React.FC<SearchBarProps> = ({
   bg,
   border,
   setSearchQuery,
-  title = "Search Reoports",
+  title = "Search Reports",
 }) => {
   const navigate = useNavigate();
   const location = useLocation();

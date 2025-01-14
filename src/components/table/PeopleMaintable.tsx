@@ -41,7 +41,7 @@ const PeopleMaintable: React.FC<CompanyNameDescriptionProps> = ({ datas }) => {
         <tbody className="tbody bg-white w-full">
           {datas.data.document &&
             datas?.data?.document?.map((data: any, index: any) => (
-              <tr className="" key={index}>
+              <tr className="border-b border-b-[#F2F2F2] space-x-6" key={index}>
                 <HeroRow
                   name={data.name}
                   width={30}
