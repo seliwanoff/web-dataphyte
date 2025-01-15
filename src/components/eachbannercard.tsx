@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import arrow from "../assets/images/arrow-right.png";
+import { Link } from "react-router-dom";
 
 interface EachBannerCardProps {
   image?: string;
@@ -34,7 +35,7 @@ const EachBannerCard: React.FC<EachBannerCardProps> = ({
         }
         return nextValue;
       });
-    }, 300);
+    }, 100);
 
     return () => clearInterval(interval);
   }, [text]);
@@ -61,13 +62,13 @@ const EachBannerCard: React.FC<EachBannerCardProps> = ({
         </div>
       </div>
       <div className="absolute bottom-0 p-8">
-        <a
-          href={`${link}`}
+        <Link
+          to={`${link}`}
           className="text-white font-semibold text-[14px] leading-6 font-Poppins flex items-center gap-2"
         >
           {linktext}
           <img src={arrow} alt="" className="h-[14px]" />
-        </a>
+        </Link>
       </div>
     </div>
   );

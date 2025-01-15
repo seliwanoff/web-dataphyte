@@ -11,6 +11,7 @@ import SearchBoxFilter from "../Search/serachBoxFilter";
 import Pagination from "../components/pagination";
 import PageSearch from "../components/PageSearch";
 import ReportsSearchBar from "../components/search/ReportSearchBar";
+import FilterDropdown from "../components/search/filter/filterDropdown";
 const baseURl = process.env.REACT_APP_URL;
 
 const HomeViewer = () => {
@@ -28,6 +29,8 @@ const HomeViewer = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const options = ["Nigeria", "Ghana", "Mozambique", "Dr Congo"];
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -59,24 +62,16 @@ const HomeViewer = () => {
 
   useEffect(() => {
     fetchData(
-      `mininig_site/get_mining_site?page=${currentPage}&count=${rowsPerPage}`,
+      `mininig_site/get_mining_site?page=${currentPage}&count=${rowsPerPage}&country=${selectedFilter}`,
       setMiningSite
     );
-  }, [currentPage, rowsPerPage]);
+  }, [currentPage, rowsPerPage, selectedFilter]);
 
   useEffect(() => {
     if (searchQuery) fetchData(`search/site?q=${searchQuery}`, setMiningSite);
   }, [searchQuery]);
 
   const [currentTab, setCurrentTab] = useState<string>("All");
-  const Filters = [
-    {
-      type: "All",
-      count: miningSite.total,
-    },
-
-    { type: "Mining Sites", count: miningSite.total },
-  ];
 
   const isDataEmpty = miningSite.data.length === 0;
 
@@ -84,10 +79,19 @@ const HomeViewer = () => {
     <>
       <ProfileProvider>
         <div className="w-full lg:px-[110px] px-[24px] mx-auto mt-12 max-w-[1750px] mb-6">
-          <ReportsSearchBar
-            setSearchQuery={setSearchQuery}
-            title={"Search site"}
-          />
+          <div className="flex justify-between items-center  flex-col lg:flex-row lg:gap-0 gap-8">
+            <ReportsSearchBar
+              setSearchQuery={setSearchQuery}
+              title={"Search site"}
+            />
+            <FilterDropdown
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+              options={options}
+              title="Filter by country"
+              width="lg:w-fit w-full"
+            />
+          </div>
         </div>
         {isLoading ? (
           <SkeletonLoader />
