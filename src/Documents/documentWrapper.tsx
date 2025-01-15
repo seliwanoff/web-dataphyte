@@ -11,6 +11,7 @@ import SearchBoxFilter from "../Search/serachBoxFilter";
 import Pagination from "../components/pagination";
 import PageSearch from "../components/PageSearch";
 import ReportsSearchBar from "../components/search/ReportSearchBar";
+import FilterDropdown from "../components/search/filter/filterDropdown";
 const baseURl = process.env.REACT_APP_URL;
 
 const DocumentWrapper = () => {
@@ -28,6 +29,8 @@ const DocumentWrapper = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const options = ["License", "Regulation", "Others"];
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -58,10 +61,10 @@ const DocumentWrapper = () => {
 
   useEffect(() => {
     fetchData(
-      `document/getdocuments?page=${currentPage}&count=${rowsPerPage}`,
+      `document/getdocuments?page=${currentPage}&count=${rowsPerPage}&category=${selectedFilter}`,
       setAllDocument
     );
-  }, [currentPage, rowsPerPage]);
+  }, [currentPage, rowsPerPage, selectedFilter]);
 
   useEffect(() => {
     if (searchQuery)
@@ -84,10 +87,19 @@ const DocumentWrapper = () => {
     <>
       <ProfileProvider>
         <div className="w-full lg:px-[110px] px-[24px] mx-auto mt-12 max-w-[1750px] mb-6">
-          <ReportsSearchBar
-            setSearchQuery={setSearchQuery}
-            title={"Search Documents"}
-          />
+          <div className="flex justify-between items-center  flex-col lg:flex-row lg:gap-0 gap-8">
+            <ReportsSearchBar
+              setSearchQuery={setSearchQuery}
+              title={"Search Documents"}
+            />
+            <FilterDropdown
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+              options={options}
+              title="Filter by category"
+              width="lg:w-fit w-full"
+            />
+          </div>
         </div>
         {isLoading ? (
           <SkeletonLoader />
