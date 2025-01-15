@@ -12,6 +12,7 @@ import Pagination from "../components/pagination";
 import PageSearch from "../components/PageSearch";
 import ReportsSearchBar from "../components/search/ReportSearchBar";
 import FilterDropdown from "../components/search/filter/filterDropdown";
+import SmallCard from "../components/search/counterCard";
 const baseURl = process.env.REACT_APP_URL;
 
 const HomeMIneralViewer = () => {
@@ -81,10 +82,14 @@ const HomeMIneralViewer = () => {
       <ProfileProvider>
         <div className="w-full lg:px-[110px] px-[24px] mx-auto mt-12 max-w-[1750px] mb-6">
           <div className="flex justify-between items-center  flex-col lg:flex-row lg:gap-0 gap-8">
+            {/***
             <ReportsSearchBar
               setSearchQuery={setSearchQuery}
               title={"Search mineral"}
             />
+            **/}
+            <SmallCard title={"Total minerals"} count={totalItems || 0} />
+
             <FilterDropdown
               selectedFilter={selectedFilter}
               setSelectedFilter={setSelectedFilter}
@@ -102,13 +107,14 @@ const HomeMIneralViewer = () => {
           </div>
         ) : (
           <>
-            {/***
+            {/**
             <SearchFilter
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}
               filters={Filters}
             />
             */}
+
             <SearchResult
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}
