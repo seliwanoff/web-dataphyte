@@ -11,6 +11,7 @@ import SearchBoxFilter from "../Search/serachBoxFilter";
 import Pagination from "../components/pagination";
 import PageSearch from "../components/PageSearch";
 import ReportsSearchBar from "../components/search/ReportSearchBar";
+import FilterDropdown from "../components/search/filter/filterDropdown";
 const baseURl = process.env.REACT_APP_URL;
 
 const HomeMIneralViewer = () => {
@@ -28,6 +29,8 @@ const HomeMIneralViewer = () => {
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedFilter, setSelectedFilter] = useState("");
+  const options = ["Nigeria", "Ghana", "Mozambique", "Dr Congo"];
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -59,10 +62,10 @@ const HomeMIneralViewer = () => {
 
   useEffect(() => {
     fetchData(
-      `mineral/getminerals?page=${currentPage}&count=${rowsPerPage}`,
+      `mineral/getminerals?page=${currentPage}&count=${rowsPerPage}&country=${selectedFilter}`,
       setAllMineral
     );
-  }, [currentPage, rowsPerPage]);
+  }, [currentPage, rowsPerPage, selectedFilter]);
 
   useEffect(() => {
     if (searchQuery)
@@ -70,14 +73,6 @@ const HomeMIneralViewer = () => {
   }, [searchQuery]);
 
   const [currentTab, setCurrentTab] = useState<string>("All");
-  const Filters = [
-    {
-      type: "All",
-      count: allMineral.total,
-    },
-
-    { type: "Minerals", count: allMineral.total },
-  ];
 
   const isDataEmpty = allMineral.data.length === 0;
 
@@ -85,10 +80,19 @@ const HomeMIneralViewer = () => {
     <>
       <ProfileProvider>
         <div className="w-full lg:px-[110px] px-[24px] mx-auto mt-12 max-w-[1750px] mb-6">
-          <ReportsSearchBar
-            setSearchQuery={setSearchQuery}
-            title={"Search mineral"}
-          />
+          <div className="flex justify-between items-center  flex-col lg:flex-row lg:gap-0 gap-8">
+            <ReportsSearchBar
+              setSearchQuery={setSearchQuery}
+              title={"Search mineral"}
+            />
+            <FilterDropdown
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+              options={options}
+              title="Filter by country"
+              width="lg:w-fit w-full"
+            />
+          </div>
         </div>
         {isLoading ? (
           <SkeletonLoader />
