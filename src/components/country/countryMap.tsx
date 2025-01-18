@@ -6,6 +6,7 @@ import mz from "../../data/mz (1).json";
 import cd from "../../data/administraveDivision.json";
 import { useLocation } from "react-router-dom";
 import LargeMapComponent from "../largeMap";
+import { geoCentroid } from "d3-geo";
 
 interface MiningData {
   state: string;
@@ -183,7 +184,7 @@ const CountryMap = ({ country }: MapdataPops) => {
                   : cd
               }
             >
-              {({ geographies }) =>
+              {({ geographies, projection }) =>
                 geographies.map((geo) => {
                   const state =
                     geo.properties.state ||
@@ -194,20 +195,38 @@ const CountryMap = ({ country }: MapdataPops) => {
                     ? "#7F55DA"
                     : "#272727";
 
+                  // Calculate the pixel coordinates for the centroid
+                  const centroid = geoCentroid(geo);
+                  const [x, y] = projection(centroid) || [0, 0]; // Use projection to convert to pixel coordinates
+
                   return (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      fill={fillColor}
-                      stroke="#FFFFFF"
-                      strokeWidth={1}
-                      onClick={(event) => handleGeographyClick(geo, event)}
-                      style={{
-                        default: { outline: "none", cursor: "pointer" },
-                        hover: { fill: "#FFD700", outline: "none" },
-                        pressed: { fill: "#FF5733", outline: "none" },
-                      }}
-                    />
+                    <g key={geo.rsmKey}>
+                      {/* Render the state shape */}
+                      <Geography
+                        geography={geo}
+                        fill={fillColor}
+                        stroke="#FFFFFF"
+                        strokeWidth={1}
+                        onClick={(event) => handleGeographyClick(geo, event)}
+                        style={{
+                          default: { outline: "none", cursor: "pointer" },
+                          hover: { fill: "#FFD700", outline: "none" },
+                          pressed: { fill: "#FF5733", outline: "none" },
+                        }}
+                      />
+
+                      {/* Render the state name */}
+                      <text
+                        x={x} // Position text at the projected x-coordinate
+                        y={y} // Position text at the projected y-coordinate
+                        textAnchor="middle"
+                        fill="#FFFFFF"
+                        fontSize={6}
+                        fontWeight="bold"
+                      >
+                        {state}
+                      </text>
+                    </g>
                   );
                 })
               }
