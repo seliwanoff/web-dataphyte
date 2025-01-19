@@ -77,11 +77,13 @@ const InteractiveMap: React.FC = () => {
   ];
 
   useEffect(() => {
+    // Clear previous SVG content
     d3.select(svgRef.current).selectAll("*").remove();
 
     const baseWidth = 800;
     const baseHeight = 400;
 
+    // Select GeoJSON data
     const geoData: FeatureCollection<Geometry, GeoProperties> =
       selectedCountry && countryGeoDataMap[selectedCountry]
         ? countryGeoDataMap[selectedCountry]
@@ -89,22 +91,24 @@ const InteractiveMap: React.FC = () => {
         ? continentGeoDataMap[selectedContinent]
         : worldGeoData;
 
+    // Create SVG container
     const svg = d3
       .select(svgRef.current)
       .attr("viewBox", `0 0 ${baseWidth} ${baseHeight}`)
       .style("width", "100%")
       .style("height", "auto");
 
+    // Create projection and path generator
     const projection = d3
       .geoMercator()
       .fitSize([baseWidth, baseHeight], geoData);
     const pathGenerator = d3.geoPath().projection(projection);
 
+    // Draw map features
     svg
       .selectAll<SVGPathElement, GeoFeature>("path")
       .data(geoData.features)
       .join("path")
-      .text("Text")
       .attr("d", pathGenerator)
       .attr("fill", (d) => {
         if (!selectedContinent) {
@@ -112,27 +116,20 @@ const InteractiveMap: React.FC = () => {
             ? "#7F55DA"
             : "#272727";
         }
-
         if (selectedContinent) {
           return miningCompany.includes(d.properties.geounit)
             ? "#7F55DA"
             : "#272727";
         }
-
         return "#272727";
       })
-      .attr("stroke", (d) =>
-        miningContinent.includes(d.properties.continent) && !selectedContinent
-          ? "#7F55DA"
-          : "#FFFFFF"
-      )
+      .attr("stroke", "#FFFFFF")
       .on("click", (event, d) => {
         if (!selectedContinent) {
           const continent = d.properties.continent;
           setSelectedContinent(continent);
         } else if (!selectedCountry) {
           const country = d.properties.geounit;
-
           if (miningCompany.includes(country)) {
             navigate(
               `/interactive-country?c=${
@@ -142,7 +139,6 @@ const InteractiveMap: React.FC = () => {
               }`
             );
           }
-
           setSelectedCountry(country);
           setCountryLatLng({
             lat: d.properties.lat ?? 0,
@@ -150,6 +146,59 @@ const InteractiveMap: React.FC = () => {
           });
         }
       });
+
+    // Add continent labels (ensure uniqueness)
+    if (!selectedContinent && !selectedCountry) {
+      const seenContinents = new Set<string>();
+
+      svg
+        .selectAll<SVGTextElement, GeoFeature>("text")
+        .data(
+          geoData.features.filter((d) => {
+            const continent = d.properties.continent;
+            if (continent && !seenContinents.has(continent)) {
+              seenContinents.add(continent);
+              return true;
+            }
+            return false;
+          })
+        )
+        .join("text")
+        .text((d) => d.properties.continent)
+        .attr("x", (d) => {
+          const centroid = pathGenerator.centroid(d);
+          return centroid[0];
+        })
+        .attr("y", (d) => {
+          const centroid = pathGenerator.centroid(d);
+          return centroid[1];
+        })
+        .attr("text-anchor", "middle")
+        .attr("font-size", 9)
+        .attr("fill", "#FFFFFF")
+        .style("pointer-events", "none");
+    }
+
+    // Add country labels when a continent is selected
+    if (selectedContinent && !selectedCountry) {
+      svg
+        .selectAll<SVGTextElement, GeoFeature>("text")
+        .data(geoData.features)
+        .join("text")
+        .text((d) => d.properties.geounit || "")
+        .attr("x", (d) => {
+          const centroid = pathGenerator.centroid(d);
+          return centroid[0];
+        })
+        .attr("y", (d) => {
+          const centroid = pathGenerator.centroid(d);
+          return centroid[1];
+        })
+        .attr("text-anchor", "middle")
+        .attr("font-size", 7)
+        .attr("fill", "#FFFFFF")
+        .style("pointer-events", "none");
+    }
   }, [selectedContinent, selectedCountry, navigate]);
 
   const resetMap = () => {
