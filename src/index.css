@@ -153,3 +153,6 @@ code {
 .reactOrgChart .nodeLineBorderTop {
   border-top: solid 1px #7f55da !important;
 }
+.yfiles-canvascomponent {
+  background: #fff !important;
+}

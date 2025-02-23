@@ -4,6 +4,8 @@ import "react-orgchart/index.css";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
 import { useLocation, useNavigate } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
+import OwnershipChart from "../components/bod.js";
+import OwnerShipComapnyChart from "../components/bod2";
 
 interface Descendant {
   id: number;
@@ -46,6 +48,7 @@ const ExampleMap: React.FC = () => {
       .then((response) => response.json())
       .then((data: CompanyData[]) => {
         setData(data);
+        console.log(data);
         setIsLoading(false);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -82,11 +85,18 @@ const ExampleMap: React.FC = () => {
             id={data?.id}
           />
           <div className="p-2">
+            {/**
+            <OwnershipChart rawData={data} />
+            */}
+
+            <OwnerShipComapnyChart data={data} />
+            {/**
             <OrgChart
               tree={data}
               NodeComponent={MyNodeComponent}
               className="mt-4"
             />
+            */}
           </div>
         </div>
       )}
