@@ -1,15 +1,6 @@
 import React from "react";
-import "@yworks/react-yfiles-company-ownership/dist/index.css";
-import {
-  CompanyOwnership,
-  CompanyOwnershipData,
-  registerLicense,
-  Entity,
-  Ownership,
-} from "@yworks/react-yfiles-company-ownership";
-import licenseData from "../assets/license.json";
-
-registerLicense(licenseData);
+import OwnershipChart from "./bod3"; // Import your custom OwnershipChart component
+import { OwnershipChartData } from "../types/types"; // Import the necessary types
 
 interface CompanyNode {
   id: number;
@@ -19,77 +10,54 @@ interface CompanyNode {
 }
 
 interface OwnerShipCompanyChartProps {
-  data: {
-    companies: Entity[];
-    connections: Ownership[];
-  };
+  data: CompanyNode; // Input data in the tree structure
 }
 
-const transformEndpointData = (
-  rawData: any
-): CompanyOwnershipData<Entity, Ownership> => {
-  const companies = Array.isArray(rawData?.companies) ? rawData.companies : [];
-  const connections = Array.isArray(rawData?.connections)
-    ? rawData.connections
-    : [];
-
-  const transformedCompanies = companies.map((company: Entity) => ({
-    ...company,
-    type: "Corporation", // Ensure the type is set correctly
-  }));
-
-  const transformedConnections = connections.map(
-    ({ ownership, ...conn }: Ownership) => ({
-      ...conn,
-      type: "Ownership",
-      // ownership: parseFloat(ownership), // Ensure ownership is a number
-    })
-  );
-
-  return {
-    companies: transformedCompanies,
-    connections: transformedConnections,
-  };
-};
-
-const transformData = (
-  node: CompanyNode
-): { companies: Entity[]; connections: Ownership[] } => {
-  const companies: Entity[] = [];
-  const connections: Ownership[] = [];
+// Function to transform the tree structure into the format expected by OwnershipChart
+const transformData = (node: CompanyNode): OwnershipChartData => {
+  const companies: { id: number; name: string; type: string }[] = [];
+  const connections: {
+    sourceId: number;
+    targetId: number;
+    type: string;
+    ownership: number;
+  }[] = [];
 
   const traverse = (node: CompanyNode) => {
+    // Add the current node to the companies list
     companies.push({
       id: node.id,
       name: node.name,
-      type: "Corporation",
+      type: "Corporation", // Set the type to match the expected Entity type
     });
 
+    // If the node has a parent, create a connection
     if (node.parent_id !== null) {
       connections.push({
         sourceId: node.parent_id,
-        type: "Ownership",
-        ownership: 0,
         targetId: node.id,
+        type: "Ownership",
+        ownership: 0, // Set ownership to a number
       });
     }
 
+    // Recursively process children
     if (node.children) {
       node.children.forEach((child) => traverse(child));
     }
   };
 
+  // Start the traversal
   traverse(node);
 
   return { companies, connections };
 };
 
-const OwnerShipCompanyChart = ({ data }: any) => {
+const OwnerShipCompanyChart = ({ data }: OwnerShipCompanyChartProps) => {
+  // Transform the input data into the format expected by OwnershipChart
   const transformedData = transformData(data);
 
-  const chartData = transformEndpointData(transformedData);
-
-  return <CompanyOwnership data={chartData} />;
+  return <OwnershipChart data={transformedData} />;
 };
 
 export default OwnerShipCompanyChart;

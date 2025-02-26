@@ -156,3 +156,7 @@ code {
 .yfiles-canvascomponent {
   background: #fff !important;
 }
+#svg-holder svg {
+  transform: rotate(90deg);
+  transform-origin: center;
+}

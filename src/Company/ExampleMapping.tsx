@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import OwnershipChart from "../components/bod.js";
 import OwnerShipComapnyChart from "../components/bod2";
+import BODSGraph from "../components/bod4";
 
 interface Descendant {
   id: number;
@@ -34,6 +35,8 @@ interface CompanyData extends Descendant {
 const ExampleMap: React.FC = () => {
   const navigate = useNavigate();
   const [data, setData] = useState<any>([]);
+  const [datas, setDatas] = useState<any>([]);
+
   const baseURl = process.env.REACT_APP_URL;
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,13 +45,277 @@ const ExampleMap: React.FC = () => {
   const queryName = queryParams.get("id") || "" || "";
   const baseURlFile = process.env.REACT_APP_FILE_URL;
 
+  const sampleData = [
+    {
+      statementId: "company-001",
+      declarationSubject: "global-holdings",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Global Holdings Ltd",
+        },
+      },
+      recordId: "global-holdings",
+      recordStatus: "new",
+      recordType: "entity",
+      recordDetails: {
+        entityType: {
+          type: "registeredEntity",
+        },
+        name: "Global Holdings Ltd",
+        foundingDate: "2010-01-10",
+        identifiers: [
+          {
+            scheme: "GB-COH",
+            id: "000001",
+          },
+        ],
+      },
+    },
+    {
+      statementId: "company-002",
+      declarationSubject: "techcorp",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Global Holdings Ltd",
+        },
+      },
+      recordId: "techcorp",
+      recordStatus: "new",
+      recordType: "entity",
+      recordDetails: {
+        entityType: {
+          type: "registeredEntity",
+        },
+        name: "TechCorp Ltd",
+        foundingDate: "2015-08-20",
+        identifiers: [
+          {
+            scheme: "GB-COH",
+            id: "000002",
+          },
+        ],
+      },
+    },
+
+    {
+      statementId: "company-003",
+      declarationSubject: "innosoft",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Global Holdings Ltd",
+        },
+      },
+      recordId: "innosoft",
+      recordStatus: "new",
+      recordType: "entity",
+      recordDetails: {
+        entityType: {
+          type: "registeredEntity",
+        },
+        name: "InnoSoft Ltd",
+        foundingDate: "2018-04-10",
+        identifiers: [
+          {
+            scheme: "GB-COH",
+            id: "000003",
+          },
+        ],
+      },
+    },
+    {
+      statementId: "ownership-002",
+      declarationSubject: "innosoft",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Global Holdings Ltd",
+        },
+      },
+      recordId: "ownership-002",
+      recordStatus: "new",
+      recordType: "relationship",
+      recordDetails: {
+        subject: "innosoft",
+        interestedParty: "global-holdings",
+        interests: [
+          {
+            type: "shareholding",
+            beneficialOwnershipOrControl: true,
+            directOrIndirect: "direct",
+            startDate: "2018-04-10",
+          },
+        ],
+      },
+    },
+    {
+      statementId: "company-004",
+      declarationSubject: "Cardri Lmt",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Ibrahim Yusuf Ltd",
+        },
+      },
+      recordId: "Cardri Lmt",
+      recordStatus: "new",
+      recordType: "entity",
+      recordDetails: {
+        entityType: {
+          type: "registeredEntity",
+        },
+        name: "Cardri Lmt",
+        foundingDate: "2018-04-10",
+        identifiers: [
+          {
+            scheme: "GB-COH",
+            id: "000004",
+          },
+        ],
+      },
+    },
+    {
+      statementId: "company-005",
+      declarationSubject: "Cardri Lmt 2",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Ibrahim Yusuf Ltd",
+        },
+      },
+      recordId: "Cardri Lmt 2",
+      recordStatus: "new",
+      recordType: "entity",
+      recordDetails: {
+        entityType: {
+          type: "registeredEntity",
+        },
+        name: "Cardri Lmt 2",
+        foundingDate: "2018-04-10",
+        identifiers: [
+          {
+            scheme: "GB-COH",
+            id: "000005",
+          },
+        ],
+      },
+    },
+    {
+      statementId: "ownership-004",
+      declarationSubject: "Cardri Lmt 2",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Ibrahim Yusuf Ltd 2",
+        },
+      },
+      recordId: "ownership-004",
+      recordStatus: "new",
+      recordType: "relationship",
+      recordDetails: {
+        subject: "Cardri Lmt 2",
+        interestedParty: "innosoft",
+        interests: [
+          {
+            type: "shareholding",
+            beneficialOwnershipOrControl: true,
+            directOrIndirect: "direct",
+            startDate: "2018-04-10",
+          },
+        ],
+      },
+    },
+    {
+      statementId: "ownership-003",
+      declarationSubject: "Cardri Lmt",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Ibrahim Yusuf Ltd",
+        },
+      },
+      recordId: "ownership-003",
+      recordStatus: "new",
+      recordType: "relationship",
+      recordDetails: {
+        subject: "Cardri Lmt",
+        interestedParty: "innosoft",
+        interests: [
+          {
+            type: "shareholding",
+            beneficialOwnershipOrControl: true,
+            directOrIndirect: "direct",
+            startDate: "2018-04-10",
+          },
+        ],
+      },
+    },
+    {
+      statementId: "ownership-001",
+      declarationSubject: "techcorp",
+      statementDate: "2023-06-15",
+      publicationDetails: {
+        publicationDate: "2023-06-15",
+        bodsVersion: "0.4",
+        publisher: {
+          name: "Global Holdings Ltd",
+        },
+      },
+      recordId: "ownership-001",
+      recordStatus: "new",
+      recordType: "relationship",
+      recordDetails: {
+        subject: "techcorp",
+        interestedParty: "global-holdings",
+        interests: [
+          {
+            type: "shareholding",
+            beneficialOwnershipOrControl: true,
+            directOrIndirect: "direct",
+            startDate: "2015-08-20",
+          },
+        ],
+      },
+    },
+  ];
   useEffect(() => {
     setIsLoading(true);
     fetch(`${baseURl}company/getcompanytrees?id=${queryName}`)
       .then((response) => response.json())
       .then((data: CompanyData[]) => {
+        //  console.log(data);
+        setDatas(data);
+        setIsLoading(false);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  useEffect(() => {
+    setIsLoading(true);
+    fetch(`${baseURl}company/get-company-map?id=${queryName}`)
+      .then((response) => response.json())
+      .then((data: CompanyData[]) => {
+        //@ts-ignore
+        console.log(data.companies);
         setData(data);
-        console.log(data);
         setIsLoading(false);
       })
       .catch((error) => console.error("Error fetching data:", error));
@@ -79,17 +346,17 @@ const ExampleMap: React.FC = () => {
       ) : (
         <div className="min-h-screen flex flex-col gap-[46px]">
           <ComapnyNameDescription
-            datas={data}
-            name={data?.name}
+            datas={datas}
+            name={datas?.name}
             meta={""}
-            id={data?.id}
+            id={datas?.id}
           />
           <div className="p-2">
             {/**
             <OwnershipChart rawData={data} />
             */}
 
-            <OwnerShipComapnyChart data={data} />
+            <BODSGraph data={data.companies || []} />
             {/**
             <OrgChart
               tree={data}
