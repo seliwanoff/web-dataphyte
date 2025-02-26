@@ -4,8 +4,6 @@ import "react-orgchart/index.css";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
 import { useLocation, useNavigate } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
-import OwnershipChart from "../components/bod.js";
-import OwnerShipComapnyChart from "../components/bod2";
 import BODSGraph from "../components/bod4";
 
 interface Descendant {
