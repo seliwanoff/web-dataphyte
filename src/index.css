@@ -153,3 +153,10 @@ code {
 .reactOrgChart .nodeLineBorderTop {
   border-top: solid 1px #7f55da !important;
 }
+.yfiles-canvascomponent {
+  background: #fff !important;
+}
+#svg-holder svg {
+  transform: rotate(90deg);
+  transform-origin: center;
+}
