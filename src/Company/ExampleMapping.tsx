@@ -37,6 +37,7 @@ const ExampleMap: React.FC = () => {
 
   const baseURl = process.env.REACT_APP_URL;
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingBod, setIsLoadingBod] = useState(false);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -307,14 +308,14 @@ const ExampleMap: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
+    setIsLoadingBod(true);
     fetch(`${baseURl}company/get-company-map?id=${queryName}`)
       .then((response) => response.json())
       .then((data: CompanyData[]) => {
         //@ts-ignore
-        console.log(data.companies);
+        // console.log(data.companies);
         setData(data);
-        setIsLoading(false);
+        setIsLoadingBod(false);
       })
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
@@ -353,8 +354,7 @@ const ExampleMap: React.FC = () => {
             {/**
             <OwnershipChart rawData={data} />
             */}
-
-            <BODSGraph data={data.companies || []} />
+            {!isLoadingBod && <BODSGraph data={data.companies} />}
             {/**
             <OrgChart
               tree={data}
