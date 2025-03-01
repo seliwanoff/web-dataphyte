@@ -354,7 +354,11 @@ const ExampleMap: React.FC = () => {
             {/**
             <OwnershipChart rawData={data} />
             */}
-            {!isLoadingBod && <BODSGraph data={data.companies} />}
+            {!isLoadingBod && data.companies.length > 1 ? (
+              <BODSGraph data={data.companies} />
+            ) : (
+              "No enough data to draw chart."
+            )}
             {/**
             <OrgChart
               tree={data}
