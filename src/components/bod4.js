@@ -32,20 +32,38 @@ const BODSGraph = ({ data }) => {
 
   return (
     <div className="container">
-      <div className="d-none hidden">
+      <div className="d-none">
         <div id="slider-container"></div>
 
-        <div id="disclosure-widget"></div>
-        <button id="download-svg">Download SVG</button>
-        <button id="download-png">Download PNG</button>
+        <div id="disclosure-widget" className=""></div>
+        <div className="flex gap-2 items-center pt-5">
+          <button
+            id="download-svg"
+            className="bg-[#7f55da] text-white  rounded-md py-2 px-4 font-polySans bottom-0 mt-3"
+          >
+            Download SVG
+          </button>
+          <button
+            id="download-png"
+            className="bg-[#7f55da] text-white  rounded-md py-2 px-4 font-polySans bottom-0 mt-3"
+          >
+            Download PNG
+          </button>
+        </div>
       </div>
 
-      <div id="svg-holder" className="-mt-14">
+      <div id="svg-holder" className="mt-3">
         <svg id="bods-svg"></svg>
-        <button id="zoom_in" className="hidden">
+        <button
+          id="zoom_in"
+          className="bg-[#7f55da] text-white max-w-24 rounded-md py-2 px-4 mr-4 bottom-0"
+        >
           +
         </button>
-        <button id="zoom_out" className="hidden">
+        <button
+          id="zoom_out"
+          className="bg-[#7f55da] text-white max-w-24 rounded-md py-2 px-4 bottom-0"
+        >
           -
         </button>
       </div>
