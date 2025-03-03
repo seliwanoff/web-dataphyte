@@ -6,6 +6,7 @@ import { ProfileProvider } from "../context/ProfileContext";
 import Companymapping from "./CompanyMapping";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
 import CompanyWidgetSub from "../components/company/CompanyWidgetSub";
+import CompanyIframe from '../components/companyIframe'
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 
@@ -52,20 +53,22 @@ const CompanyProfile: React.FC = () => {
       setIsLoading(false);
     }
   };
-  const ceoAndCfo = [eachCompanyDetails?.data?.people]
-    .filter((person) => person) // Filter out undefined or null values
-    .map((person, index) => ({
-      id: person?.id,
-      name: `${person?.title || ""} ${person?.first_name || ""} ${
-        person?.last_name || ""
-      }`.trim(),
-      image: person?.image,
-      location: person?.location,
-      country: person?.country,
-      role: person?.pivot?.role || "",
-    }));
+  const ceoAndCfo =
+  Array.isArray(eachCompanyDetails?.data?.people) &&
+  eachCompanyDetails?.data?.people.length > 0
+    ? eachCompanyDetails?.data?.people.map((person:any) => ({
+        id: person?.id,
+        name: `${person?.title || ""} ${person?.first_name || ""} ${
+          person?.last_name || ""
+        }`.trim(),
+        image: person?.image,
+        location: person?.location,
+        country: person?.country,
+        role: person?.pivot?.role || "",
+      }))
+    : [];
 
-  // console.log(ceoAndCfo);
+
   const subsidiaries: CompanyData[] =
     eachCompanyDetails?.data?.children?.slice(0, 5)?.map((child: any) => ({
       logo: company,
@@ -74,6 +77,7 @@ const CompanyProfile: React.FC = () => {
       id: child.id,
     })) || [];
 
+
   const stakeholders: CompanyData[] =
     ceoAndCfo?.slice(0, 5)?.map((child: any) => ({
       logo: company,
@@ -81,6 +85,8 @@ const CompanyProfile: React.FC = () => {
       image: child.image,
       id: child.id,
     })) || [];
+
+    console.log(stakeholders, "stakeholder")
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
   useEffect(() => {
@@ -152,6 +158,10 @@ const CompanyProfile: React.FC = () => {
           />
           <div className="xl:block hidden">
             <Companymapping />
+          </div>
+          <div className="xl:block hidden">
+          <CompanyIframe id={id}/>
+
           </div>
           {sections.map((section, index) => (
             <CompanyWidgetSub

@@ -28,7 +28,8 @@ const PeopleSearchWidget: React.FC<PeopleSearchWidgetProps> = ({
 }) => {
   const { addProfile } = useProfileContext();
   const baseURl = process.env.REACT_APP_URL;
-  const baseURlFile = process.env.REACT_FILE_URL;
+  const baseURlFile = process.env.REACT_APP_FILE_URL;
+  console.log(baseURlFile);
 
   const navigate = useNavigate();
   const handleViewProfile = () => {
