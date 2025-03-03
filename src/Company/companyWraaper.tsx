@@ -156,13 +156,17 @@ const CompanyProfile: React.FC = () => {
             meta={eachCompanyDetails?.data?.rc_number}
             id={eachCompanyDetails?.data?.id}
           />
+
           <div className="xl:block hidden">
             <Companymapping />
           </div>
+
+          {/***
           <div className="xl:block hidden">
           <CompanyIframe id={id}/>
 
           </div>
+            */}
           {sections.map((section, index) => (
             <CompanyWidgetSub
               key={index}

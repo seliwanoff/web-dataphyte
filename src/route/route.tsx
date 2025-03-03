@@ -67,6 +67,8 @@ const BlogDemo = React.lazy(() => import("../Investigation/blogPageWrapper"));
 
 const PeopleWrapper = React.lazy(() => import("../People/PeopleWrapper"));
 const TreeView = React.lazy(() => import("../Company/ExampleMapping"));
+const Iframe = React.lazy(() => import("../Company/iframe"));
+
 
 const RouteWrapper = () => {
   const location = useLocation();
@@ -113,6 +115,7 @@ const RouteWrapper = () => {
           <Route path="/people" element={<PeopleWrapper />} />
           <Route path="/report/blog" element={<BlogDemo />} />
           <Route path="/tree" element={<TreeView />} />
+          <Route path="/iframe" element={<Iframe />} />
           <Route path="/document/view" element={<DocumentWrapper />} />
           <Route path="/site/view" element={<HomeViewer />} />
           <Route path="/mineral/view" element={<HomeMIneralViewer />} />
