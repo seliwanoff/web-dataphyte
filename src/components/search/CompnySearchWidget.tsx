@@ -34,6 +34,17 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
       state: { id: id },
     });
   };
+
+  const handleCompanyRedirecttoMap = () => {
+    navigates(
+      `/company/organization-mapping?q=${encodeURIComponent(
+        queryName
+      )}&id=${id}`,
+      {
+        state: { id: id },
+      }
+    );
+  };
   return (
     <div className="gap-[10px] p-[12px]   flex-grow border border-[#e0e0e0] rounded-[8px] widthl">
       <div className="flex gap-[10px] items-center">
@@ -52,12 +63,21 @@ const CompanySearchWidget: React.FC<CompanySearchWidgetProps> = ({
           </span>
         </div>
       </div>
-      <button
-        className="mt-4  w-full py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]"
-        onClick={handleCompanyRedirect}
-      >
-        View company profile
-      </button>
+
+      <div className="flex gap-4 items-center justify-between">
+        <button
+          className="mt-4  w-fit text-nowrap py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] text-[#7F55DA]"
+          onClick={handleCompanyRedirect}
+        >
+          View company
+        </button>
+        <button
+          className="mt-4 bg-[#7F55DA] text-white hover:bg-[#000] hover:text-white  w-fit text-nowrap py-[10px] px-[32px] border border-[#7F55DA] rounded-[32px] flex items-center justify-center font-Satoshi font-semibold text-[15px] leading-[21.6px] "
+          onClick={handleCompanyRedirecttoMap}
+        >
+          View chart
+        </button>
+      </div>
     </div>
   );
 };
