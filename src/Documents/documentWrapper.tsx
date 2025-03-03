@@ -88,15 +88,18 @@ const DocumentWrapper = () => {
     <>
       <ProfileProvider>
         <div className="w-full lg:px-[110px] px-[24px] mx-auto mt-12 max-w-[1750px] mb-6">
+
+          <div className="mb-6"> <ReportsSearchBar
+              setSearchQuery={setSearchQuery}
+              title={"Search Documents"}
+            /></div>
+
           <div className="flex justify-between items-center  flex-col lg:flex-row lg:gap-0 gap-8">
             <SmallCard title={"Total documents"} count={totalItems || 0} />
 
-            {/***
-            <ReportsSearchBar
-              setSearchQuery={setSearchQuery}
-              title={"Search Documents"}
-            />
-            */}
+
+
+
             <FilterDropdown
               selectedFilter={selectedFilter}
               setSelectedFilter={setSelectedFilter}
