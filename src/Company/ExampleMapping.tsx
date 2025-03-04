@@ -357,7 +357,9 @@ const ExampleMap: React.FC = () => {
             {!isLoadingBod && data?.companies?.length > 1 ? (
               <BODSGraph data={data.companies} />
             ) : (
-              "No enough data to draw chart."
+              <span className="text-center w-full block text-[#000] font-Poppins font-semibold text-[18px]">
+                No enough data to draw the chart
+              </span>
             )}
             {/**
             <OrgChart
