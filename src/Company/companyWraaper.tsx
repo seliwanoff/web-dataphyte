@@ -6,7 +6,7 @@ import { ProfileProvider } from "../context/ProfileContext";
 import Companymapping from "./CompanyMapping";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
 import CompanyWidgetSub from "../components/company/CompanyWidgetSub";
-import CompanyIframe from '../components/companyIframe'
+import CompanyIframe from "../components/companyIframe";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
 
@@ -54,20 +54,19 @@ const CompanyProfile: React.FC = () => {
     }
   };
   const ceoAndCfo =
-  Array.isArray(eachCompanyDetails?.data?.people) &&
-  eachCompanyDetails?.data?.people.length > 0
-    ? eachCompanyDetails?.data?.people.map((person:any) => ({
-        id: person?.id,
-        name: `${person?.title || ""} ${person?.first_name || ""} ${
-          person?.last_name || ""
-        }`.trim(),
-        image: person?.image,
-        location: person?.location,
-        country: person?.country,
-        role: person?.pivot?.role || "",
-      }))
-    : [];
-
+    Array.isArray(eachCompanyDetails?.data?.people) &&
+    eachCompanyDetails?.data?.people.length > 0
+      ? eachCompanyDetails?.data?.people.map((person: any) => ({
+          id: person?.id,
+          name: `${person?.title || ""} ${person?.first_name || ""} ${
+            person?.last_name || ""
+          }`.trim(),
+          image: person?.image,
+          location: person?.location,
+          country: person?.country,
+          role: person?.pivot?.role || "",
+        }))
+      : [];
 
   const subsidiaries: CompanyData[] =
     eachCompanyDetails?.data?.children?.slice(0, 5)?.map((child: any) => ({
@@ -77,7 +76,6 @@ const CompanyProfile: React.FC = () => {
       id: child.id,
     })) || [];
 
-
   const stakeholders: CompanyData[] =
     ceoAndCfo?.slice(0, 5)?.map((child: any) => ({
       logo: company,
@@ -86,7 +84,7 @@ const CompanyProfile: React.FC = () => {
       id: child.id,
     })) || [];
 
-    console.log(stakeholders, "stakeholder")
+  // console.log(stakeholders, "stakeholder")
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
   useEffect(() => {

@@ -6,6 +6,10 @@ import { ProfileProvider } from "../context/ProfileContext";
 import SearchBoxFilter from "../Search/serachBoxFilter";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
+import ComapnyNameDescription from "../components/company/companyNameDescription";
+import Companymapping from "../Company/CompanyMapping";
+import { Link } from "react-router-dom";
+
 const baseURl = process.env.REACT_APP_URL;
 
 const PeopleWrapper = () => {
@@ -28,7 +32,7 @@ const PeopleWrapper = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-
+      console.log(data);
       setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -69,16 +73,29 @@ const PeopleWrapper = () => {
         ) : (
           <>
             <SearchBoxFilter setSearchQuery={setSearchQuery} />
+
             <SearchFilter
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}
               filters={Filters} // Updated to pass an array of objects with `type` and `count`
             />
+            <div className="font-Poppins text-[18px] font-semibold leading-5  text-center xl:text-right text-[#7F55DA] w-full xl:px-[110px] px-[24px] lg:block hidden">
+              <div className="w-full max-w-[1750px] mt-4">
+                <Link
+                  to={`/people/chart?id=${id}&name=${
+                    people?.data?.first_name
+                  }${" "}${people?.data?.last_name}`}
+                >
+                  View people mapping{" "}
+                </Link>
+              </div>
+            </div>
             <SearchResult
               setCurrentTab={setCurrentTab}
               currentTab={currentTab}
               datas={people}
             />
+
             <SeachTableFormat
               widgetTitles={[
                 "Minerals",

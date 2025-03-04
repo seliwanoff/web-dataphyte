@@ -58,6 +58,8 @@ const HomeMIneralViewer = React.lazy(
   () => import("../minieralWrapper/homeMineralViewer")
 );
 
+const PeopleChartt = React.lazy(() => import("../People/people_organization"));
+
 const MiningSiteWrapper = React.lazy(
   () => import("../MiningSite/miningSiteWrapper")
 );
@@ -68,7 +70,6 @@ const BlogDemo = React.lazy(() => import("../Investigation/blogPageWrapper"));
 const PeopleWrapper = React.lazy(() => import("../People/PeopleWrapper"));
 const TreeView = React.lazy(() => import("../Company/ExampleMapping"));
 const Iframe = React.lazy(() => import("../Company/iframe"));
-
 
 const RouteWrapper = () => {
   const location = useLocation();
@@ -119,6 +120,7 @@ const RouteWrapper = () => {
           <Route path="/document/view" element={<DocumentWrapper />} />
           <Route path="/site/view" element={<HomeViewer />} />
           <Route path="/mineral/view" element={<HomeMIneralViewer />} />
+          <Route path="/people/chart" element={<PeopleChartt />} />
         </Routes>
       </Suspense>
     </Layout>
