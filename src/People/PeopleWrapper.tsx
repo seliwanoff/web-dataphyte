@@ -9,15 +9,43 @@ import SkeletonLoader from "../components/skeletonLoader/skeleton";
 import ComapnyNameDescription from "../components/company/companyNameDescription";
 import Companymapping from "../Company/CompanyMapping";
 import { Link } from "react-router-dom";
+import BODSGraph from "../components/bod4";
 
 const baseURl = process.env.REACT_APP_URL;
+
+interface Descendant {
+  id: number;
+  name: string;
+  country: string;
+  rc_number: string;
+  address: string;
+  image: string;
+  created_at: string;
+  updated_at: string;
+  children?: Descendant[];
+  ceo_id?: any;
+  cto_id?: any;
+  cfo_id?: any;
+  people_ids?: any;
+  parent_id?: any;
+  meta?: any;
+  other_data?: any;
+  rich_text?: any;
+}
+
+interface CompanyData extends Descendant {
+  descendants: Descendant[];
+}
 
 const PeopleWrapper = () => {
   const [currentTab, setCurrentTab] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [people, setPeople] = useState<any>(null); // Updated to allow access to nested properties
   const location = useLocation();
+  const [datax, setDatax] = useState<any>([]);
   const { id } = location?.state || {};
+  const [isLoadingBod, setIsLoadingBod] = useState(false);
+
   const [isLoading, setIsLoading] = useState(false);
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get("id");
@@ -32,7 +60,7 @@ const PeopleWrapper = () => {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       setter(data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -44,6 +72,19 @@ const PeopleWrapper = () => {
   useEffect(() => {
     fetchData(`people/getpeople?id=${id || query}`, setPeople);
   }, [id]);
+
+  useEffect(() => {
+    setIsLoadingBod(true);
+    fetch(`${baseURl}people/get-people-mappin?id=${query}`)
+      .then((response) => response.json())
+      .then((data: CompanyData[]) => {
+        //@ts-ignore
+        console.log(data);
+        setDatax(data);
+        setIsLoadingBod(false);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   const Filters = [
     {
@@ -95,6 +136,13 @@ const PeopleWrapper = () => {
               currentTab={currentTab}
               datas={people}
             />
+            {!isLoadingBod && datax?.length > 1 ? (
+              <div className="h-[300px] max-w-[1750px] mx-auto overflow-auto lg:block hidden w-full">
+                <BODSGraph data={datax} isType="people" />
+              </div>
+            ) : (
+              ""
+            )}
 
             <SeachTableFormat
               widgetTitles={[

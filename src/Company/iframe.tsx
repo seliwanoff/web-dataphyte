@@ -357,7 +357,7 @@ const Iframe: React.FC = () => {
             <OwnershipChart rawData={data} />
             */}
             {!isLoadingBod && data?.companies?.length > 1 ? (
-              <BODSGraph data={data.companies} />
+              <BODSGraph data={data.companies} isType={""} />
             ) : (
               "No enough data to draw chart."
             )}

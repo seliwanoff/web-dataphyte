@@ -355,7 +355,7 @@ const ExampleMap: React.FC = () => {
             <OwnershipChart rawData={data} />
             */}
             {!isLoadingBod && data?.companies?.length > 1 ? (
-              <BODSGraph data={data.companies} />
+              <BODSGraph data={data.companies} isType="" />
             ) : (
               <span className="text-center w-full block text-[#000] font-Poppins font-semibold text-[18px]">
                 No enough data to draw the chart

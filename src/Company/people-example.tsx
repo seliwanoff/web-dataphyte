@@ -95,7 +95,7 @@ const PeopleExample: React.FC = () => {
             <OwnershipChart rawData={data} />
             */}
             {!isLoadingBod && data?.length > 1 ? (
-              <BODSGraph data={data} />
+              <BODSGraph data={data} isType="" />
             ) : (
               <span className="text-center w-full block text-[#000] font-Poppins font-semibold text-[18px]">
                 No enough data to draw the chart

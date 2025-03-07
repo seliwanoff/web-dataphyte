@@ -9,6 +9,7 @@ import CompanyWidgetSub from "../components/company/CompanyWidgetSub";
 import CompanyIframe from "../components/companyIframe";
 import { useLocation } from "react-router-dom";
 import SkeletonLoader from "../components/skeletonLoader/skeleton";
+import BODSGraph from "../components/bod4";
 
 interface CompanyData {
   logo: string;
@@ -25,6 +26,8 @@ const CompanyProfile: React.FC = () => {
   const location = useLocation();
   const { id } = location?.state || {};
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingBod, setIsLoadingBod] = useState(false);
+  const [datax, setDatax] = useState<any>([]);
 
   const companies: CompanyData[] = [
     {
@@ -141,6 +144,18 @@ const CompanyProfile: React.FC = () => {
       size: "xl:text-[20px] text-[12.65px]",
     },
   ];
+  useEffect(() => {
+    setIsLoadingBod(true);
+    fetch(`${baseURl}company/get-company-map?id=${query}`)
+      .then((response) => response.json())
+      .then((data: CompanyData[]) => {
+        //@ts-ignore
+        console.log(data);
+        setDatax(data);
+        setIsLoadingBod(false);
+      })
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
 
   return (
     <ProfileProvider>
@@ -181,6 +196,15 @@ const CompanyProfile: React.FC = () => {
             currentTab={currentTab}
             filters={Filters}
           />
+
+          {!isLoadingBod && datax?.companies?.length > 1 ? (
+            <div className="h-[300px] max-w-[1750px] w-full mx-auto overflow-auto lg:block hidden">
+              <BODSGraph data={datax.companies} isType="people" />
+            </div>
+          ) : (
+            ""
+          )}
+
           <SeachTableFormat
             widgetTitles={Filters.map((filter) => filter.type)}
             currentTab={currentTab}
